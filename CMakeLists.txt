@@ -18,6 +18,8 @@ find_package(APR REQUIRED)
 # Find Apache Runtime Utilities
 find_package(APR-Util REQUIRED)
 
+set(CMAKE_CXX_STANDARD 11)
+
 # Building
 add_subdirectory(src)
 
