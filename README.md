@@ -2,6 +2,11 @@
 
 Log4cxxNG is a C++ logging library based on Apache log4cxx project.
 
+Requirments:
+* Apache Portable Runtime
+* CMake 3.11
+* Compiler with C++11 support
+
 ## Bugs
 
 Please report bugs in the GitHub issue tracker.
