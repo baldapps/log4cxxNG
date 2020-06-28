@@ -31,43 +31,51 @@ IMPLEMENT_LOG4CXX_OBJECT_WITH_CUSTOM_CLASS(Level, LevelClass)
 
 LevelPtr Level::getOff()
 {
-	return LevelPtr(new Level(Level::OFF_INT, LOG4CXX_STR("OFF"), 0));
+    static LevelPtr level(new Level(Level::OFF_INT, LOG4CXX_STR("OFF"), 0));
+	return level;
 }
 
 LevelPtr Level::getFatal()
 {
-	return LevelPtr(new Level(Level::FATAL_INT, LOG4CXX_STR("FATAL"), 0));
+	static LevelPtr level(new Level(Level::FATAL_INT, LOG4CXX_STR("FATAL"), 0));
+	return level;
 }
 
 LevelPtr Level::getError()
 {
-	return LevelPtr(new Level(Level::ERROR_INT, LOG4CXX_STR("ERROR"), 3));
+	static LevelPtr level(new Level(Level::ERROR_INT, LOG4CXX_STR("ERROR"), 3));
+	return level;
 }
 
 LevelPtr Level::getWarn()
 {
-	return LevelPtr(new Level(Level::WARN_INT, LOG4CXX_STR("WARN"), 4));
+    static LevelPtr level(new Level(Level::WARN_INT, LOG4CXX_STR("WARN"), 4));
+    return level;
 }
 
 LevelPtr Level::getInfo()
 {
-	return LevelPtr(new Level(Level::INFO_INT, LOG4CXX_STR("INFO"), 6));
+	static LevelPtr level(new Level(Level::INFO_INT, LOG4CXX_STR("INFO"), 6));
+	return level;
 }
 
 LevelPtr Level::getDebug()
 {
-	return LevelPtr(new Level(Level::DEBUG_INT, LOG4CXX_STR("DEBUG"), 7));
+	static LevelPtr level(new Level(Level::DEBUG_INT, LOG4CXX_STR("DEBUG"), 7));
+	return level;
 }
 
 LevelPtr Level::getTrace()
 {
-	return LevelPtr(new Level(Level::TRACE_INT, LOG4CXX_STR("TRACE"), 7));
+	static LevelPtr level(new Level(Level::TRACE_INT, LOG4CXX_STR("TRACE"), 7));
+	return level;
 }
 
 
 LevelPtr Level::getAll()
 {
-	return LevelPtr(new Level(Level::ALL_INT, LOG4CXX_STR("ALL"), 7));
+	static LevelPtr level(new Level(Level::ALL_INT, LOG4CXX_STR("ALL"), 7));
+	return level;
 }
 
 
