@@ -5,25 +5,15 @@
 *.o
 *.swp
 
-ar-lib
 config**
-depcomp
-install-sh
-liblog4cxx.pc
-libtool
-ltmain.sh
-Makefile
-Makefile.in
-missing
-pom.xml.releaseBackup
-release.properties
+liblog4cxxNG.pc
 
-autom4te.cache/
 src/main/cpp/.libs/
-src/main/cpp/liblog4cxx.la
-src/main/include/log4cxx/log4cxx.h
-src/main/include/log4cxx/private/log4cxx_private.h
+src/main/cpp/liblog4cxxNG.la
+src/main/include/log4cxxNG/log4cxxNG.h
+src/main/include/log4cxxNG/private/log4cxxNG_private.h
 src/site/doxy/Doxyfile
 src/site/doxy/manual/
 src/test/resources/output/
 target/
+build/
