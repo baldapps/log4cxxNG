@@ -16,15 +16,15 @@
  */
 
 #define LOG4CXX_TEST 1
-#include <log4cxx/private/log4cxx_private.h>
+#include <log4cxxNG/private/log4cxx_private.h>
 
 #if LOG4CXX_HAVE_SMTP
 
-#include <log4cxx/net/smtpappender.h>
+#include <log4cxxNG/net/smtpappender.h>
 #include "../appenderskeletontestcase.h"
-#include <log4cxx/xml/domconfigurator.h>
-#include <log4cxx/logmanager.h>
-#include <log4cxx/ttcclayout.h>
+#include <log4cxxNG/xml/domconfigurator.h>
+#include <log4cxxNG/logmanager.h>
+#include <log4cxxNG/ttcclayout.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

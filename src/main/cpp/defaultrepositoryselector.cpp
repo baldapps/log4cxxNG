@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#include <log4cxx/spi/defaultrepositoryselector.h>
+#include <log4cxxNG/spi/defaultrepositoryselector.h>
 
 using namespace log4cxx;
 using namespace log4cxx::spi;

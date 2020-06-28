@@ -14,9 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/logstring.h>
-#include <log4cxx/rolling/action.h>
-#include <log4cxx/helpers/synchronized.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/rolling/action.h>
+#include <log4cxxNG/helpers/synchronized.h>
 
 using namespace log4cxx;
 using namespace log4cxx::rolling;

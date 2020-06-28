@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#include <log4cxx/helpers/transcoder.h>
+#include <log4cxxNG/helpers/transcoder.h>
 #include "../insertwide.h"
 #include "../logunit.h"
 

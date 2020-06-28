@@ -21,10 +21,10 @@
 
 
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/pattern/ndcpatternconverter.h>
-#include <log4cxx/spi/loggingevent.h>
-#include <log4cxx/spi/location/locationinfo.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/pattern/ndcpatternconverter.h>
+#include <log4cxxNG/spi/loggingevent.h>
+#include <log4cxxNG/spi/location/locationinfo.h>
 
 using namespace log4cxx;
 using namespace log4cxx::pattern;

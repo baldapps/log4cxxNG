@@ -28,18 +28,18 @@
 	#ifndef MAX_FILE_LEN
 		#define MAX_FILE_LEN 2048
 	#endif
-	#include <log4cxx/pattern/filedatepatternconverter.h>
-	#include <log4cxx/helpers/date.h>
+	#include <log4cxxNG/pattern/filedatepatternconverter.h>
+	#include <log4cxxNG/helpers/date.h>
 #endif
 
-#include <log4cxx/rolling/rollingfileappender.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/synchronized.h>
-#include <log4cxx/rolling/rolloverdescription.h>
-#include <log4cxx/helpers/fileoutputstream.h>
-#include <log4cxx/helpers/bytebuffer.h>
-#include <log4cxx/rolling/fixedwindowrollingpolicy.h>
-#include <log4cxx/rolling/manualtriggeringpolicy.h>
+#include <log4cxxNG/rolling/rollingfileappender.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/synchronized.h>
+#include <log4cxxNG/rolling/rolloverdescription.h>
+#include <log4cxxNG/helpers/fileoutputstream.h>
+#include <log4cxxNG/helpers/bytebuffer.h>
+#include <log4cxxNG/rolling/fixedwindowrollingpolicy.h>
+#include <log4cxxNG/rolling/manualtriggeringpolicy.h>
 
 using namespace log4cxx;
 using namespace log4cxx::rolling;

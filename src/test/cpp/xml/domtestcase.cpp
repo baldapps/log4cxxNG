@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logger.h>
-#include <log4cxx/xml/domconfigurator.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/xml/domconfigurator.h>
 #include "../logunit.h"
 #include "../util/compare.h"
 #include "xlevel.h"
@@ -25,8 +25,8 @@
 #include "../util/threadfilter.h"
 #include "../util/transformer.h"
 #include <iostream>
-#include <log4cxx/file.h>
-#include <log4cxx/fileappender.h>
+#include <log4cxxNG/file.h>
+#include <log4cxxNG/fileappender.h>
 #include <apr_pools.h>
 #include <apr_file_io.h>
 #include "../testchar.h"

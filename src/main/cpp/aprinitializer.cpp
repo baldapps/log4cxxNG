@@ -14,19 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/logstring.h>
+#include <log4cxxNG/logstring.h>
 #if !defined(LOG4CXX)
 	#define LOG4CXX 1
 #endif
-#include <log4cxx/helpers/aprinitializer.h>
+#include <log4cxxNG/helpers/aprinitializer.h>
 #include <apr_pools.h>
 #include <apr_atomic.h>
 #include <assert.h>
-#include <log4cxx/helpers/threadspecificdata.h>
+#include <log4cxxNG/helpers/threadspecificdata.h>
 #include <apr_thread_mutex.h>
 #include <apr_thread_proc.h>
-#include <log4cxx/helpers/synchronized.h>
-#include <log4cxx/helpers/filewatchdog.h>
+#include <log4cxxNG/helpers/synchronized.h>
+#include <log4cxxNG/helpers/filewatchdog.h>
 
 using namespace log4cxx::helpers;
 using namespace log4cxx;

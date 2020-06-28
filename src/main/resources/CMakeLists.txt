@@ -1,7 +1,7 @@
 # Configure
 if(WIN32)
-target_sources(log4cxx
+target_sources(log4cxxNG
   PRIVATE
-  log4cxx.rc
+  log4cxxMG.rc
 )
 endif()

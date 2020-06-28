@@ -26,7 +26,7 @@
 #include <string>
 #include <vector>
 #include <map>
-#include <log4cxx/helpers/exception.h>
+#include <log4cxxNG/helpers/exception.h>
 
 #define BASIC_PAT "\\[0x[0-9A-F]*] (FATAL|ERROR|WARN|INFO|DEBUG)"
 #define ISO8601_PAT "[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\} [0-9]\\{2\\}:[0-9]\\{2\\}:[0-9]\\{2\\},[0-9]\\{3\\}"

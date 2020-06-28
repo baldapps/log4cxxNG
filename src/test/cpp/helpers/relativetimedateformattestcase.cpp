@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/relativetimedateformat.h>
-#include <log4cxx/spi/loggingevent.h>
-#include <log4cxx/helpers/pool.h>
-#include <log4cxx/helpers/stringhelper.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/relativetimedateformat.h>
+#include <log4cxxNG/spi/loggingevent.h>
+#include <log4cxxNG/helpers/pool.h>
+#include <log4cxxNG/helpers/stringhelper.h>
 #include "../insertwide.h"
 #include "../logunit.h"
-#include <log4cxx/helpers/date.h>
+#include <log4cxxNG/helpers/date.h>
 
 
 

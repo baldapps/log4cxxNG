@@ -14,10 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/logstring.h>
-#include <log4cxx/simplelayout.h>
-#include <log4cxx/spi/loggingevent.h>
-#include <log4cxx/level.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/simplelayout.h>
+#include <log4cxxNG/spi/loggingevent.h>
+#include <log4cxxNG/level.h>
 
 using namespace log4cxx;
 using namespace log4cxx::spi;

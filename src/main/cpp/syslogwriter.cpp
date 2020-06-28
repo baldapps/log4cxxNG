@@ -18,13 +18,13 @@
 	#pragma warning ( disable: 4231 4251 4275 4786 )
 #endif
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/syslogwriter.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/inetaddress.h>
-#include <log4cxx/helpers/datagramsocket.h>
-#include <log4cxx/helpers/datagrampacket.h>
-#include <log4cxx/helpers/transcoder.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/syslogwriter.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/inetaddress.h>
+#include <log4cxxNG/helpers/datagramsocket.h>
+#include <log4cxxNG/helpers/datagrampacket.h>
+#include <log4cxxNG/helpers/transcoder.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

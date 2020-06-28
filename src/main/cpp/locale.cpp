@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#include <log4cxx/helpers/locale.h>
+#include <log4cxxNG/helpers/locale.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

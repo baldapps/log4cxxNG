@@ -15,10 +15,10 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/spi/configurator.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/spi/configurator.h>
 #include <assert.h>
-#include <log4cxx/logger.h>
+#include <log4cxxNG/logger.h>
 
 using namespace log4cxx;
 using namespace log4cxx::spi;

@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-#include <log4cxx/spi/loggingevent.h>
-#include <log4cxx/appenderskeleton.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/onlyonceerrorhandler.h>
-#include <log4cxx/level.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/helpers/synchronized.h>
+#include <log4cxxNG/spi/loggingevent.h>
+#include <log4cxxNG/appenderskeleton.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/onlyonceerrorhandler.h>
+#include <log4cxxNG/level.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/synchronized.h>
 #include <apr_atomic.h>
 
 

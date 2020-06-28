@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#include <log4cxx/appenderskeleton.h>
+#include <log4cxxNG/appenderskeleton.h>
 #include "logunit.h"
 
 /**

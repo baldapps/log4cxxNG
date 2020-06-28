@@ -14,9 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/helpers/socket.h>
-#include <log4cxx/helpers/bytebuffer.h>
-#include <log4cxx/helpers/transcoder.h>
+#include <log4cxxNG/helpers/socket.h>
+#include <log4cxxNG/helpers/bytebuffer.h>
+#include <log4cxxNG/helpers/transcoder.h>
 #include "apr_network_io.h"
 #include "apr_signal.h"
 

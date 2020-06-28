@@ -19,58 +19,58 @@
 	#pragma warning ( disable: 4231 4251 4275 4786 )
 #endif
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/class.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/helpers/object.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/class.h>
+#include <log4cxxNG/helpers/exception.h>
+#include <log4cxxNG/helpers/object.h>
 #include <map>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/log4cxx.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/log4cxxNG.h>
 #if !defined(LOG4CXX)
 	#define LOG4CXX 1
 #endif
-#include <log4cxx/private/log4cxx_private.h>
-#include <log4cxx/rollingfileappender.h>
-#include <log4cxx/dailyrollingfileappender.h>
+#include <log4cxxNG/private/log4cxxNG_private.h>
+#include <log4cxxNG/rollingfileappender.h>
+#include <log4cxxNG/dailyrollingfileappender.h>
 
 
-#include <log4cxx/asyncappender.h>
-#include <log4cxx/consoleappender.h>
-#include <log4cxx/fileappender.h>
-#include <log4cxx/db/odbcappender.h>
+#include <log4cxxNG/asyncappender.h>
+#include <log4cxxNG/consoleappender.h>
+#include <log4cxxNG/fileappender.h>
+#include <log4cxxNG/db/odbcappender.h>
 #if defined(WIN32) || defined(_WIN32)
 	#if !defined(_WIN32_WCE)
-		#include <log4cxx/nt/nteventlogappender.h>
+		#include <log4cxxNG/nt/nteventlogappender.h>
 	#endif
-	#include <log4cxx/nt/outputdebugstringappender.h>
+	#include <log4cxxNG/nt/outputdebugstringappender.h>
 #endif
-#include <log4cxx/net/smtpappender.h>
-#include <log4cxx/net/socketappender.h>
-#include <log4cxx/net/sockethubappender.h>
-#include <log4cxx/helpers/datagramsocket.h>
-#include <log4cxx/net/syslogappender.h>
-#include <log4cxx/net/telnetappender.h>
-#include <log4cxx/writerappender.h>
-#include <log4cxx/net/xmlsocketappender.h>
-#include <log4cxx/layout.h>
-#include <log4cxx/patternlayout.h>
-#include <log4cxx/htmllayout.h>
-#include <log4cxx/simplelayout.h>
-#include <log4cxx/xml/xmllayout.h>
-#include <log4cxx/ttcclayout.h>
+#include <log4cxxNG/net/smtpappender.h>
+#include <log4cxxNG/net/socketappender.h>
+#include <log4cxxNG/net/sockethubappender.h>
+#include <log4cxxNG/helpers/datagramsocket.h>
+#include <log4cxxNG/net/syslogappender.h>
+#include <log4cxxNG/net/telnetappender.h>
+#include <log4cxxNG/writerappender.h>
+#include <log4cxxNG/net/xmlsocketappender.h>
+#include <log4cxxNG/layout.h>
+#include <log4cxxNG/patternlayout.h>
+#include <log4cxxNG/htmllayout.h>
+#include <log4cxxNG/simplelayout.h>
+#include <log4cxxNG/xml/xmllayout.h>
+#include <log4cxxNG/ttcclayout.h>
 
-#include <log4cxx/filter/levelmatchfilter.h>
-#include <log4cxx/filter/levelrangefilter.h>
-#include <log4cxx/filter/stringmatchfilter.h>
-#include <log4cxx/rolling/filterbasedtriggeringpolicy.h>
-#include <log4cxx/rolling/fixedwindowrollingpolicy.h>
-#include <log4cxx/rolling/manualtriggeringpolicy.h>
-#include <log4cxx/rolling/rollingfileappender.h>
-#include <log4cxx/rolling/sizebasedtriggeringpolicy.h>
-#include <log4cxx/rolling/timebasedrollingpolicy.h>
+#include <log4cxxNG/filter/levelmatchfilter.h>
+#include <log4cxxNG/filter/levelrangefilter.h>
+#include <log4cxxNG/filter/stringmatchfilter.h>
+#include <log4cxxNG/rolling/filterbasedtriggeringpolicy.h>
+#include <log4cxxNG/rolling/fixedwindowrollingpolicy.h>
+#include <log4cxxNG/rolling/manualtriggeringpolicy.h>
+#include <log4cxxNG/rolling/rollingfileappender.h>
+#include <log4cxxNG/rolling/sizebasedtriggeringpolicy.h>
+#include <log4cxxNG/rolling/timebasedrollingpolicy.h>
 
-#include <log4cxx/xml/domconfigurator.h>
-#include <log4cxx/propertyconfigurator.h>
+#include <log4cxxNG/xml/domconfigurator.h>
+#include <log4cxxNG/propertyconfigurator.h>
 #include <apr.h>
 
 

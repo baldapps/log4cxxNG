@@ -14,22 +14,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/charsetdecoder.h>
-#include <log4cxx/helpers/bytebuffer.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/helpers/mutex.h>
-#include <log4cxx/helpers/synchronized.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/charsetdecoder.h>
+#include <log4cxxNG/helpers/bytebuffer.h>
+#include <log4cxxNG/helpers/exception.h>
+#include <log4cxxNG/helpers/mutex.h>
+#include <log4cxxNG/helpers/synchronized.h>
+#include <log4cxxNG/helpers/pool.h>
 #include <apr_xlate.h>
 #if !defined(LOG4CXX)
 	#define LOG4CXX 1
 #endif
-#include <log4cxx/private/log4cxx_private.h>
+#include <log4cxxNG/private/log4cxxNG_private.h>
 #include <locale.h>
 #include <apr_portable.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/helpers/transcoder.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/transcoder.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#include <log4cxx/writerappender.h>
+#include <log4cxxNG/writerappender.h>
 #include "appenderskeletontestcase.h"
 
 

@@ -16,17 +16,17 @@
  */
 
 #define LOG4CXX_TEST 1
-#include <log4cxx/private/log4cxx_private.h>
+#include <log4cxxNG/private/log4cxx_private.h>
 
 
 
 #include "../logunit.h"
 
-#include <log4cxx/logger.h>
-#include <log4cxx/xml/domconfigurator.h>
-#include <log4cxx/consoleappender.h>
-#include <log4cxx/patternlayout.h>
-#include <log4cxx/file.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/xml/domconfigurator.h>
+#include <log4cxxNG/consoleappender.h>
+#include <log4cxxNG/patternlayout.h>
+#include <log4cxxNG/file.h>
 
 #include "../util/compare.h"
 #include "xlevel.h"

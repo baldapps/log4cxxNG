@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/datagrampacket.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/datagrampacket.h>
 
 using namespace log4cxx::helpers;
 

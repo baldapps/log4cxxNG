@@ -14,12 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/logstring.h>
+#include <log4cxxNG/logstring.h>
 #include "xlogger.h"
-#include <log4cxx/level.h>
-#include <log4cxx/logmanager.h>
-#include <log4cxx/spi/location/locationinfo.h>
-#include <log4cxx/spi/loggerrepository.h>
+#include <log4cxxNG/level.h>
+#include <log4cxxNG/logmanager.h>
+#include <log4cxxNG/spi/location/locationinfo.h>
+#include <log4cxxNG/spi/loggerrepository.h>
 
 
 using namespace log4cxx;

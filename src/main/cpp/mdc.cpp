@@ -15,9 +15,9 @@
  * limitations under the License.
  */
 
-#include <log4cxx/mdc.h>
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/helpers/threadspecificdata.h>
+#include <log4cxxNG/mdc.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/helpers/threadspecificdata.h>
 
 #if LOG4CXX_CFSTRING_API
 	#include <CoreFoundation/CFString.h>

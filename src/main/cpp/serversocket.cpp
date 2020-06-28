@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#include <log4cxx/helpers/serversocket.h>
-#include <log4cxx/helpers/synchronized.h>
+#include <log4cxxNG/helpers/serversocket.h>
+#include <log4cxxNG/helpers/synchronized.h>
 #include "apr_network_io.h"
 #include "apr_pools.h"
 #include "apr_poll.h"

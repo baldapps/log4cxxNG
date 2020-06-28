@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 #define __STDC_CONSTANT_MACROS
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/relativetimedateformat.h>
-#include <log4cxx/spi/loggingevent.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/relativetimedateformat.h>
+#include <log4cxxNG/spi/loggingevent.h>
 
 #include <apr.h>
 #include <apr_time.h>
-#include <log4cxx/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/stringhelper.h>
 
 
 log4cxx::helpers::RelativeTimeDateFormat::RelativeTimeDateFormat()

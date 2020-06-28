@@ -15,32 +15,32 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/propertyconfigurator.h>
-#include <log4cxx/spi/loggerfactory.h>
-#include <log4cxx/helpers/properties.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/logmanager.h>
-#include <log4cxx/helpers/optionconverter.h>
-#include <log4cxx/level.h>
-#include <log4cxx/defaultloggerfactory.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/appender.h>
-#include <log4cxx/logger.h>
-#include <log4cxx/layout.h>
-#include <log4cxx/config/propertysetter.h>
-#include <log4cxx/spi/loggerrepository.h>
-#include <log4cxx/helpers/stringtokenizer.h>
-#include <log4cxx/helpers/synchronized.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/propertyconfigurator.h>
+#include <log4cxxNG/spi/loggerfactory.h>
+#include <log4cxxNG/helpers/properties.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/exception.h>
+#include <log4cxxNG/logmanager.h>
+#include <log4cxxNG/helpers/optionconverter.h>
+#include <log4cxxNG/level.h>
+#include <log4cxxNG/defaultloggerfactory.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/appender.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/layout.h>
+#include <log4cxxNG/config/propertysetter.h>
+#include <log4cxxNG/spi/loggerrepository.h>
+#include <log4cxxNG/helpers/stringtokenizer.h>
+#include <log4cxxNG/helpers/synchronized.h>
 #include <apr_file_io.h>
 #include <apr_file_info.h>
 #include <apr_pools.h>
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/helpers/fileinputstream.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/helpers/fileinputstream.h>
 
 #define LOG4CXX 1
-#include <log4cxx/helpers/aprinitializer.h>
+#include <log4cxxNG/helpers/aprinitializer.h>
 
 
 using namespace log4cxx;
@@ -50,7 +50,7 @@ using namespace log4cxx::config;
 
 
 #if APR_HAS_THREADS
-#include <log4cxx/helpers/filewatchdog.h>
+#include <log4cxxNG/helpers/filewatchdog.h>
 namespace log4cxx
 {
 class PropertyWatchdog  : public FileWatchdog

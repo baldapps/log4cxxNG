@@ -15,27 +15,27 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/spi/loggerfactory.h>
-#include <log4cxx/spi/loggerrepository.h>
-#include <log4cxx/appenderskeleton.h>
-#include <log4cxx/helpers/optionconverter.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/spi/loggerfactory.h>
+#include <log4cxxNG/spi/loggerrepository.h>
+#include <log4cxxNG/appenderskeleton.h>
+#include <log4cxxNG/helpers/optionconverter.h>
 #include <algorithm>
 #include <ctype.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/helpers/exception.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/exception.h>
 #include <stdlib.h>
-#include <log4cxx/helpers/properties.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/level.h>
-#include <log4cxx/helpers/object.h>
-#include <log4cxx/helpers/class.h>
-#include <log4cxx/helpers/loader.h>
-#include <log4cxx/helpers/system.h>
-#include <log4cxx/propertyconfigurator.h>
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/file.h>
-#include <log4cxx/xml/domconfigurator.h>
+#include <log4cxxNG/helpers/properties.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/level.h>
+#include <log4cxxNG/helpers/object.h>
+#include <log4cxxNG/helpers/class.h>
+#include <log4cxxNG/helpers/loader.h>
+#include <log4cxxNG/helpers/system.h>
+#include <log4cxxNG/propertyconfigurator.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/file.h>
+#include <log4cxxNG/xml/domconfigurator.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

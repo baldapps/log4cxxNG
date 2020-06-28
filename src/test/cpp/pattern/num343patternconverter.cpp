@@ -18,7 +18,7 @@
 	#pragma warning ( disable: 4231 4251 4275 4786 )
 #endif
 
-#include <log4cxx/logstring.h>
+#include <log4cxxNG/logstring.h>
 #include "num343patternconverter.h"
 
 using namespace log4cxx;

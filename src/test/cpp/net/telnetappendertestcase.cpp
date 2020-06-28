@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#include <log4cxx/net/telnetappender.h>
-#include <log4cxx/ttcclayout.h>
+#include <log4cxxNG/net/telnetappender.h>
+#include <log4cxxNG/ttcclayout.h>
 #include "../appenderskeletontestcase.h"
 #include <apr_thread_proc.h>
 #include <apr_time.h>

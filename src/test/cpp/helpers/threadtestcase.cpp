@@ -14,11 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/helpers/thread.h>
+#include <log4cxxNG/helpers/thread.h>
 #include "../insertwide.h"
 #include "../logunit.h"
 #include <apr_time.h>
-#include <log4cxx/helpers/exception.h>
+#include <log4cxxNG/helpers/exception.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

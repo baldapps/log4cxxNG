@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 #define LOG4CXX_TEST
-#include <log4cxx/private/log4cxx_private.h>
+#include <log4cxxNG/private/log4cxxNG_private.h>
 #if LOG4CXX_HAS_STD_LOCALE
 
 #include "localechanger.h"

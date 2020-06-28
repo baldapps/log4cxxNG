@@ -15,16 +15,16 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/fileinputstream.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/helpers/bytebuffer.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/fileinputstream.h>
+#include <log4cxxNG/helpers/exception.h>
+#include <log4cxxNG/helpers/bytebuffer.h>
 #include <apr_file_io.h>
-#include <log4cxx/helpers/transcoder.h>
+#include <log4cxxNG/helpers/transcoder.h>
 #if !defined(LOG4CXX)
 	#define LOG4CXX 1
 #endif
-#include <log4cxx/helpers/aprinitializer.h>
+#include <log4cxxNG/helpers/aprinitializer.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

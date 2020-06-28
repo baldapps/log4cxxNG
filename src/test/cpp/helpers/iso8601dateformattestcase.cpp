@@ -14,17 +14,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/iso8601dateformat.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/iso8601dateformat.h>
 #include "../logunit.h"
 #define LOG4CXX_TEST
-#include <log4cxx/private/log4cxx_private.h>
+#include <log4cxxNG/private/log4cxxNG_private.h>
 #if LOG4CXX_HAS_STD_LOCALE
 	#include <locale>
 #endif
 #include "../insertwide.h"
-#include <log4cxx/helpers/pool.h>
-#include <log4cxx/helpers/date.h>
+#include <log4cxxNG/helpers/pool.h>
+#include <log4cxxNG/helpers/date.h>
 
 
 

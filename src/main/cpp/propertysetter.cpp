@@ -15,16 +15,16 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/config/propertysetter.h>
-#include <log4cxx/helpers/object.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/optionconverter.h>
-#include <log4cxx/spi/optionhandler.h>
-#include <log4cxx/helpers/properties.h>
-#include <log4cxx/appender.h>
-#include <log4cxx/layout.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/config/propertysetter.h>
+#include <log4cxxNG/helpers/object.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/optionconverter.h>
+#include <log4cxxNG/spi/optionhandler.h>
+#include <log4cxxNG/helpers/properties.h>
+#include <log4cxxNG/appender.h>
+#include <log4cxxNG/layout.h>
+#include <log4cxxNG/helpers/pool.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

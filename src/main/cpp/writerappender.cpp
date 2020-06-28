@@ -15,11 +15,11 @@
  * limitations under the License.
  */
 
-#include <log4cxx/writerappender.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/synchronized.h>
-#include <log4cxx/layout.h>
-#include <log4cxx/helpers/stringhelper.h>
+#include <log4cxxNG/writerappender.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/synchronized.h>
+#include <log4cxxNG/layout.h>
+#include <log4cxxNG/helpers/stringhelper.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

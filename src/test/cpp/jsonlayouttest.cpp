@@ -16,13 +16,13 @@
  */
 
 #include "logunit.h"
-#include <log4cxx/logger.h>
-#include <log4cxx/jsonlayout.h>
-#include <log4cxx/ndc.h>
-#include <log4cxx/mdc.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/jsonlayout.h>
+#include <log4cxxNG/ndc.h>
+#include <log4cxxNG/mdc.h>
 
 #include <iostream>
-#include <log4cxx/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/stringhelper.h>
 
 
 using namespace log4cxx;

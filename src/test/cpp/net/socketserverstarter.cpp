@@ -22,7 +22,7 @@
 #include <apr_file_io.h>
 #include <apr_strings.h>
 #include <apr_time.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/helpers/pool.h>
 #include <fstream>
 
 using namespace log4cxx;

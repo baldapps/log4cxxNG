@@ -16,14 +16,14 @@
  */
 
 #define LOG4CXX_TEST 1
-#include <log4cxx/private/log4cxx_private.h>
+#include <log4cxxNG/private/log4cxxNG_private.h>
 
 #include "../logunit.h"
 #include "xlogger.h"
-#include <log4cxx/xml/domconfigurator.h>
+#include <log4cxxNG/xml/domconfigurator.h>
 #include "../util/transformer.h"
 #include "../util/compare.h"
-#include <log4cxx/file.h>
+#include <log4cxxNG/file.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

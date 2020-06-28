@@ -20,9 +20,9 @@
 #endif
 
 
-#include <log4cxx/ndc.h>
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/helpers/threadspecificdata.h>
+#include <log4cxxNG/ndc.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/helpers/threadspecificdata.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

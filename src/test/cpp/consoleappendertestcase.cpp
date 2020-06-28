@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#include <log4cxx/consoleappender.h>
+#include <log4cxxNG/consoleappender.h>
 #include "logunit.h"
 #include "writerappendertestcase.h"
 

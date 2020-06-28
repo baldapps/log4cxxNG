@@ -15,23 +15,23 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/loader.h>
-#include <log4cxx/appender.h>
-#include <log4cxx/spi/filter.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/spi/loggerfactory.h>
-#include <log4cxx/spi/loggerrepository.h>
-#include <log4cxx/helpers/object.h>
-#include <log4cxx/spi/errorhandler.h>
-#include <log4cxx/filter/denyallfilter.h>
-#include <log4cxx/spi/repositoryselector.h>
-#include <log4cxx/spi/appenderattachable.h>
-#include <log4cxx/helpers/xml.h>
-#include <log4cxx/spi/triggeringeventevaluator.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/loader.h>
+#include <log4cxxNG/appender.h>
+#include <log4cxxNG/spi/filter.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/spi/loggerfactory.h>
+#include <log4cxxNG/spi/loggerrepository.h>
+#include <log4cxxNG/helpers/object.h>
+#include <log4cxxNG/spi/errorhandler.h>
+#include <log4cxxNG/filter/denyallfilter.h>
+#include <log4cxxNG/spi/repositoryselector.h>
+#include <log4cxxNG/spi/appenderattachable.h>
+#include <log4cxxNG/helpers/xml.h>
+#include <log4cxxNG/spi/triggeringeventevaluator.h>
 #include <fstream>
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/helpers/fileinputstream.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/helpers/fileinputstream.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

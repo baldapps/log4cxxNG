@@ -15,9 +15,9 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logger.h>
+#include <log4cxxNG/logger.h>
 #include "../xml/xlevel.h"
-#include <log4cxx/spi/loggerfactory.h>
+#include <log4cxxNG/spi/loggerfactory.h>
 
 
 namespace log4cxx

@@ -14,10 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/filter/levelmatchfilter.h>
-#include <log4cxx/logger.h>
-#include <log4cxx/spi/filter.h>
-#include <log4cxx/spi/loggingevent.h>
+#include <log4cxxNG/filter/levelmatchfilter.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/spi/filter.h>
+#include <log4cxxNG/spi/loggingevent.h>
 #include "../logunit.h"
 
 using namespace log4cxx;

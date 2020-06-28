@@ -15,9 +15,9 @@
  * limitations under the License.
  */
 
-#include <log4cxx/spi/location/locationinfo.h>
-#include <log4cxx/helpers/objectoutputstream.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/spi/location/locationinfo.h>
+#include <log4cxxNG/helpers/objectoutputstream.h>
+#include <log4cxxNG/helpers/pool.h>
 #include "apr_pools.h"
 #include "apr_strings.h"
 

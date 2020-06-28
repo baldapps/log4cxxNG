@@ -17,8 +17,8 @@
 
 #include "appenderskeletontestcase.h"
 #include "logunit.h"
-#include <log4cxx/helpers/objectptr.h>
-#include <log4cxx/appenderskeleton.h>
+#include <log4cxxNG/helpers/objectptr.h>
+#include <log4cxxNG/appenderskeleton.h>
 
 
 using namespace log4cxx;

@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 #include "../logunit.h"
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/absolutetimedateformat.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/absolutetimedateformat.h>
 #include "../insertwide.h"
 #include <apr.h>
 #include <apr_time.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/helpers/pool.h>
 
 //Define INT64_C for compilers that don't have it
 #if (!defined(INT64_C))

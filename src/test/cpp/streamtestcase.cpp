@@ -18,12 +18,12 @@
 #include <iomanip>
 
 #include "vectorappender.h"
-#include <log4cxx/logmanager.h>
-#include <log4cxx/simplelayout.h>
-#include <log4cxx/spi/loggingevent.h>
+#include <log4cxxNG/logmanager.h>
+#include <log4cxxNG/simplelayout.h>
+#include <log4cxxNG/spi/loggingevent.h>
 #include "insertwide.h"
 #include "logunit.h"
-#include <log4cxx/stream.h>
+#include <log4cxxNG/stream.h>
 
 #if LOG4CXX_CFSTRING_API
 	#include <CoreFoundation/CFString.h>

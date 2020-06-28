@@ -15,41 +15,41 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logger.h>
-#include <log4cxx/spi/loggingevent.h>
-#include <log4cxx/helpers/system.h>
-#include <log4cxx/level.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/spi/loggingevent.h>
+#include <log4cxxNG/helpers/system.h>
+#include <log4cxxNG/level.h>
 
 #include "num343patternconverter.h"
 #include "../testchar.h"
 #include "../insertwide.h"
 #include "../logunit.h"
-#include <log4cxx/spi/loggerrepository.h>
-#include <log4cxx/pattern/patternparser.h>
-#include <log4cxx/pattern/patternconverter.h>
-#include <log4cxx/helpers/relativetimedateformat.h>
-#include <log4cxx/helpers/simpledateformat.h>
+#include <log4cxxNG/spi/loggerrepository.h>
+#include <log4cxxNG/pattern/patternparser.h>
+#include <log4cxxNG/pattern/patternconverter.h>
+#include <log4cxxNG/helpers/relativetimedateformat.h>
+#include <log4cxxNG/helpers/simpledateformat.h>
 
 
-#include <log4cxx/pattern/loggerpatternconverter.h>
-#include <log4cxx/pattern/literalpatternconverter.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/pattern/classnamepatternconverter.h>
-#include <log4cxx/pattern/datepatternconverter.h>
-#include <log4cxx/pattern/filedatepatternconverter.h>
-#include <log4cxx/pattern/filelocationpatternconverter.h>
-#include <log4cxx/pattern/fulllocationpatternconverter.h>
-#include <log4cxx/pattern/integerpatternconverter.h>
-#include <log4cxx/pattern/linelocationpatternconverter.h>
-#include <log4cxx/pattern/messagepatternconverter.h>
-#include <log4cxx/pattern/lineseparatorpatternconverter.h>
-#include <log4cxx/pattern/methodlocationpatternconverter.h>
-#include <log4cxx/pattern/levelpatternconverter.h>
-#include <log4cxx/pattern/relativetimepatternconverter.h>
-#include <log4cxx/pattern/threadpatternconverter.h>
-#include <log4cxx/pattern/ndcpatternconverter.h>
-#include <log4cxx/pattern/propertiespatternconverter.h>
-#include <log4cxx/pattern/throwableinformationpatternconverter.h>
+#include <log4cxxNG/pattern/loggerpatternconverter.h>
+#include <log4cxxNG/pattern/literalpatternconverter.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/pattern/classnamepatternconverter.h>
+#include <log4cxxNG/pattern/datepatternconverter.h>
+#include <log4cxxNG/pattern/filedatepatternconverter.h>
+#include <log4cxxNG/pattern/filelocationpatternconverter.h>
+#include <log4cxxNG/pattern/fulllocationpatternconverter.h>
+#include <log4cxxNG/pattern/integerpatternconverter.h>
+#include <log4cxxNG/pattern/linelocationpatternconverter.h>
+#include <log4cxxNG/pattern/messagepatternconverter.h>
+#include <log4cxxNG/pattern/lineseparatorpatternconverter.h>
+#include <log4cxxNG/pattern/methodlocationpatternconverter.h>
+#include <log4cxxNG/pattern/levelpatternconverter.h>
+#include <log4cxxNG/pattern/relativetimepatternconverter.h>
+#include <log4cxxNG/pattern/threadpatternconverter.h>
+#include <log4cxxNG/pattern/ndcpatternconverter.h>
+#include <log4cxxNG/pattern/propertiespatternconverter.h>
+#include <log4cxxNG/pattern/throwableinformationpatternconverter.h>
 
 
 using namespace log4cxx;

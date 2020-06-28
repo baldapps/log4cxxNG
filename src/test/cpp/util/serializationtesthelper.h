@@ -18,7 +18,7 @@
 #ifndef _LOG4CXX_TESTS_UTIL_SERIALIZATIONTESTHELPER_H
 #define _LOG4CXX_TESTS_UTIL_SERIALIZATIONTESTHELPER_H
 
-#include <log4cxx/spi/loggingevent.h>
+#include <log4cxxNG/spi/loggingevent.h>
 
 namespace log4cxx
 {

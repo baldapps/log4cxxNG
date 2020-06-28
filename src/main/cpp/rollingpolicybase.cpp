@@ -19,15 +19,15 @@
 #endif
 
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/rolling/rollingpolicybase.h>
-#include <log4cxx/pattern/formattinginfo.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/pattern/patternparser.h>
-#include <log4cxx/pattern/integerpatternconverter.h>
-#include <log4cxx/pattern/datepatternconverter.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/rolling/rollingpolicybase.h>
+#include <log4cxxNG/pattern/formattinginfo.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/exception.h>
+#include <log4cxxNG/pattern/patternparser.h>
+#include <log4cxxNG/pattern/integerpatternconverter.h>
+#include <log4cxxNG/pattern/datepatternconverter.h>
 
 using namespace log4cxx;
 using namespace log4cxx::rolling;

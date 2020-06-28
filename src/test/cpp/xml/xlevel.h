@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#include <log4cxx/level.h>
+#include <log4cxxNG/level.h>
 
 namespace log4cxx
 {

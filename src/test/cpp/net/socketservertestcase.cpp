@@ -16,11 +16,11 @@
  */
 
 
-#include <log4cxx/logger.h>
-#include <log4cxx/net/socketappender.h>
-#include <log4cxx/ndc.h>
-#include <log4cxx/mdc.h>
-#include <log4cxx/asyncappender.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/net/socketappender.h>
+#include <log4cxxNG/ndc.h>
+#include <log4cxxNG/mdc.h>
+#include <log4cxxNG/asyncappender.h>
 
 #include "socketservertestcase.h"
 #include "../util/compare.h"
@@ -30,13 +30,13 @@
 #include "../util/threadfilter.h"
 #include "../util/filenamefilter.h"
 #include <apr_time.h>
-#include <log4cxx/file.h>
+#include <log4cxxNG/file.h>
 #include <iostream>
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/helpers/stringhelper.h>
 #include "../testchar.h"
 #include "../logunit.h"
-#include <log4cxx/spi/loggerrepository.h>
+#include <log4cxxNG/spi/loggerrepository.h>
 
 //Define INT64_C for compilers that don't have it
 #if (!defined(INT64_C))

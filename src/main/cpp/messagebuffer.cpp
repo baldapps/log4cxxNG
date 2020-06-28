@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#include <log4cxx/helpers/messagebuffer.h>
-#include <log4cxx/helpers/transcoder.h>
+#include <log4cxxNG/helpers/messagebuffer.h>
+#include <log4cxxNG/helpers/transcoder.h>
 
 using namespace log4cxx::helpers;
 

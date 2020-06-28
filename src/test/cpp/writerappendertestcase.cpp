@@ -16,8 +16,8 @@
  */
 
 #include "writerappendertestcase.h"
-#include <log4cxx/helpers/objectptr.h>
-#include <log4cxx/writerappender.h>
+#include <log4cxxNG/helpers/objectptr.h>
+#include <log4cxxNG/writerappender.h>
 
 
 using namespace log4cxx;

@@ -15,10 +15,10 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/bytearrayoutputstream.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/helpers/bytebuffer.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/bytearrayoutputstream.h>
+#include <log4cxxNG/helpers/exception.h>
+#include <log4cxxNG/helpers/bytebuffer.h>
 #include <string.h>
 
 using namespace log4cxx;

@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#include <log4cxx/helpers/datagramsocket.h>
-#include <log4cxx/net/syslogappender.h>
+#include <log4cxxNG/helpers/datagramsocket.h>
+#include <log4cxxNG/net/syslogappender.h>
 #include "../appenderskeletontestcase.h"
 
 using namespace log4cxx;

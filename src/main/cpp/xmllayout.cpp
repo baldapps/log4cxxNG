@@ -15,16 +15,16 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/xml/xmllayout.h>
-#include <log4cxx/spi/loggingevent.h>
-#include <log4cxx/helpers/optionconverter.h>
-#include <log4cxx/level.h>
-#include <log4cxx/helpers/transform.h>
-#include <log4cxx/helpers/iso8601dateformat.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/ndc.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/xml/xmllayout.h>
+#include <log4cxxNG/spi/loggingevent.h>
+#include <log4cxxNG/helpers/optionconverter.h>
+#include <log4cxxNG/level.h>
+#include <log4cxxNG/helpers/transform.h>
+#include <log4cxxNG/helpers/iso8601dateformat.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/ndc.h>
 
 
 using namespace log4cxx;

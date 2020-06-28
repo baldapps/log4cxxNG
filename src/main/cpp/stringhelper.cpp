@@ -16,17 +16,17 @@
  */
 
 #define __STDC_CONSTANT_MACROS
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/helpers/transcoder.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/transcoder.h>
 #include <algorithm>
 #include <vector>
 #include <apr_strings.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/helpers/pool.h>
 #if !defined(LOG4CXX)
 	#define LOG4CXX 1
 #endif
-#include <log4cxx/private/log4cxx_private.h>
+#include <log4cxxNG/private/log4cxxNG_private.h>
 #include <cctype>
 #include <iterator>
 #include <apr.h>

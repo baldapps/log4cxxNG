@@ -17,15 +17,15 @@
 
 #include <vector>
 
-#include <log4cxx/rolling/rollingfileappender.h>
-#include <log4cxx/logger.h>
-#include <log4cxx/consoleappender.h>
-#include <log4cxx/logmanager.h>
-#include <log4cxx/patternlayout.h>
-#include <log4cxx/rolling/timebasedrollingpolicy.h>
-#include <log4cxx/helpers/simpledateformat.h>
+#include <log4cxxNG/rolling/rollingfileappender.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/consoleappender.h>
+#include <log4cxxNG/logmanager.h>
+#include <log4cxxNG/patternlayout.h>
+#include <log4cxxNG/rolling/timebasedrollingpolicy.h>
+#include <log4cxxNG/helpers/simpledateformat.h>
 #include <iostream>
-#include <log4cxx/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/stringhelper.h>
 #include "../util/compare.h"
 #include "../logunit.h"
 

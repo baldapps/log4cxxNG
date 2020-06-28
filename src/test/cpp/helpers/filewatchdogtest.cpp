@@ -14,8 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/helpers/pool.h>
-#include <log4cxx/helpers/filewatchdog.h>
+#include <log4cxxNG/helpers/pool.h>
+#include <log4cxxNG/helpers/filewatchdog.h>
 #include "../logunit.h"
 #include "apr_time.h"
 

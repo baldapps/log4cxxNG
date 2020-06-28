@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/objectimpl.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/objectimpl.h>
 #include <apr_atomic.h>
 #if !defined(LOG4CXX)
 	#define LOG4CXX 1
 #endif
-#include <log4cxx/helpers/aprinitializer.h>
+#include <log4cxxNG/helpers/aprinitializer.h>
 
 using namespace log4cxx::helpers;
 

@@ -15,11 +15,11 @@
  * limitations under the License.
  */
 
-#include <log4cxx/rolling/zipcompressaction.h>
+#include <log4cxxNG/rolling/zipcompressaction.h>
 #include <apr_thread_proc.h>
 #include <apr_strings.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/helpers/transcoder.h>
+#include <log4cxxNG/helpers/exception.h>
+#include <log4cxxNG/helpers/transcoder.h>
 
 using namespace log4cxx;
 using namespace log4cxx::rolling;

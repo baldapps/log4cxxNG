@@ -14,9 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/classregistration.h>
-#include <log4cxx/helpers/class.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/classregistration.h>
+#include <log4cxxNG/helpers/class.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

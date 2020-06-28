@@ -16,11 +16,11 @@
  */
 
 #include "serializationtesthelper.h"
-#include <log4cxx/helpers/bytearrayoutputstream.h>
-#include <log4cxx/helpers/objectoutputstream.h>
-#include <log4cxx/helpers/fileinputstream.h>
-#include <log4cxx/helpers/bytebuffer.h>
-#include <log4cxx/file.h>
+#include <log4cxxNG/helpers/bytearrayoutputstream.h>
+#include <log4cxxNG/helpers/objectoutputstream.h>
+#include <log4cxxNG/helpers/fileinputstream.h>
+#include <log4cxxNG/helpers/bytebuffer.h>
+#include <log4cxxNG/file.h>
 #include "apr_pools.h"
 
 using namespace log4cxx;

@@ -18,9 +18,9 @@
 	#pragma warning ( disable: 4231 4251 4275 4786 )
 #endif
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/pattern/filedatepatternconverter.h>
-#include <log4cxx/pattern/datepatternconverter.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/pattern/filedatepatternconverter.h>
+#include <log4cxxNG/pattern/datepatternconverter.h>
 
 using namespace log4cxx;
 using namespace log4cxx::pattern;

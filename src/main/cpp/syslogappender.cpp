@@ -15,17 +15,17 @@
  * limitations under the License.
  */
 
-#include <log4cxx/net/syslogappender.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/helpers/datagramsocket.h>
-#include <log4cxx/spi/loggingevent.h>
-#include <log4cxx/level.h>
-#include <log4cxx/helpers/transcoder.h>
+#include <log4cxxNG/net/syslogappender.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/datagramsocket.h>
+#include <log4cxxNG/spi/loggingevent.h>
+#include <log4cxxNG/level.h>
+#include <log4cxxNG/helpers/transcoder.h>
 #if !defined(LOG4CXX)
 	#define LOG4CXX 1
 #endif
-#include <log4cxx/private/log4cxx_private.h>
+#include <log4cxxNG/private/log4cxxNG_private.h>
 
 #if LOG4CXX_HAVE_SYSLOG
 	#include <syslog.h>

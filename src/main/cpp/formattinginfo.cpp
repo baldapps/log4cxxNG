@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/pattern/formattinginfo.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/pattern/formattinginfo.h>
 #include <limits.h>
 
 using namespace log4cxx;

@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-#include <log4cxx/helpers/charsetencoder.h>
+#include <log4cxxNG/helpers/charsetencoder.h>
 #include "../logunit.h"
 #include "../insertwide.h"
-#include <log4cxx/helpers/bytebuffer.h>
-#include <log4cxx/helpers/thread.h>
-#include <log4cxx/helpers/mutex.h>
-#include <log4cxx/helpers/condition.h>
-#include <log4cxx/helpers/synchronized.h>
+#include <log4cxxNG/helpers/bytebuffer.h>
+#include <log4cxxNG/helpers/thread.h>
+#include <log4cxxNG/helpers/mutex.h>
+#include <log4cxxNG/helpers/condition.h>
+#include <log4cxxNG/helpers/synchronized.h>
 #include <apr.h>
 #include <apr_atomic.h>
 

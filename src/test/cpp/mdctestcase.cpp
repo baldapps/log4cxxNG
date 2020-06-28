@@ -16,10 +16,10 @@
  * limitations under the License.
  */
 
-#include <log4cxx/mdc.h>
-#include <log4cxx/file.h>
-#include <log4cxx/logger.h>
-#include <log4cxx/propertyconfigurator.h>
+#include <log4cxxNG/mdc.h>
+#include <log4cxxNG/file.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/propertyconfigurator.h>
 #include "insertwide.h"
 #include "logunit.h"
 #include "util/compare.h"

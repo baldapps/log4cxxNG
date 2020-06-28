@@ -14,16 +14,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/datelayout.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/spi/loggingevent.h>
-#include <log4cxx/helpers/dateformat.h>
-#include <log4cxx/helpers/relativetimedateformat.h>
-#include <log4cxx/helpers/absolutetimedateformat.h>
-#include <log4cxx/helpers/datetimedateformat.h>
-#include <log4cxx/helpers/iso8601dateformat.h>
-#include <log4cxx/helpers/timezone.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/datelayout.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/spi/loggingevent.h>
+#include <log4cxxNG/helpers/dateformat.h>
+#include <log4cxxNG/helpers/relativetimedateformat.h>
+#include <log4cxxNG/helpers/absolutetimedateformat.h>
+#include <log4cxxNG/helpers/datetimedateformat.h>
+#include <log4cxxNG/helpers/iso8601dateformat.h>
+#include <log4cxxNG/helpers/timezone.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

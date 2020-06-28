@@ -20,17 +20,17 @@
 
 
 #define __STDC_CONSTANT_MACROS
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/timezone.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/timezone.h>
 #include <stdlib.h>
 
 #include <apr_time.h>
 #include <apr_pools.h>
 #include <apr_strings.h>
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/helpers/pool.h>
-#include <log4cxx/logger.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/pool.h>
+#include <log4cxxNG/logger.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

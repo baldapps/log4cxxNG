@@ -15,11 +15,11 @@
  * limitations under the License.
  */
 
-#include <log4cxx/helpers/optionconverter.h>
-#include <log4cxx/helpers/properties.h>
-#include <log4cxx/helpers/system.h>
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/helpers/optionconverter.h>
+#include <log4cxxNG/helpers/properties.h>
+#include <log4cxxNG/helpers/system.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/helpers/pool.h>
 #include "../testchar.h"
 #include "../insertwide.h"
 #include "../logunit.h"

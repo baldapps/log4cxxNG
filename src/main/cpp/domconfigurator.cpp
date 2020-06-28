@@ -15,39 +15,39 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/xml/domconfigurator.h>
-#include <log4cxx/appender.h>
-#include <log4cxx/layout.h>
-#include <log4cxx/logger.h>
-#include <log4cxx/logmanager.h>
-#include <log4cxx/level.h>
-#include <log4cxx/spi/filter.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/helpers/loader.h>
-#include <log4cxx/helpers/optionconverter.h>
-#include <log4cxx/config/propertysetter.h>
-#include <log4cxx/spi/errorhandler.h>
-#include <log4cxx/spi/loggerfactory.h>
-#include <log4cxx/defaultloggerfactory.h>
-#include <log4cxx/helpers/filewatchdog.h>
-#include <log4cxx/helpers/synchronized.h>
-#include <log4cxx/spi/loggerrepository.h>
-#include <log4cxx/spi/loggingevent.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/xml/domconfigurator.h>
+#include <log4cxxNG/appender.h>
+#include <log4cxxNG/layout.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/logmanager.h>
+#include <log4cxxNG/level.h>
+#include <log4cxxNG/spi/filter.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/loader.h>
+#include <log4cxxNG/helpers/optionconverter.h>
+#include <log4cxxNG/config/propertysetter.h>
+#include <log4cxxNG/spi/errorhandler.h>
+#include <log4cxxNG/spi/loggerfactory.h>
+#include <log4cxxNG/defaultloggerfactory.h>
+#include <log4cxxNG/helpers/filewatchdog.h>
+#include <log4cxxNG/helpers/synchronized.h>
+#include <log4cxxNG/spi/loggerrepository.h>
+#include <log4cxxNG/spi/loggingevent.h>
+#include <log4cxxNG/helpers/pool.h>
 #include <sstream>
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/rolling/rollingfileappender.h>
-#include <log4cxx/rolling/filterbasedtriggeringpolicy.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/rolling/rollingfileappender.h>
+#include <log4cxxNG/rolling/filterbasedtriggeringpolicy.h>
 #include <apr_xml.h>
-#include <log4cxx/helpers/bytebuffer.h>
-#include <log4cxx/helpers/charsetdecoder.h>
-#include <log4cxx/net/smtpappender.h>
-#include <log4cxx/helpers/messagebuffer.h>
+#include <log4cxxNG/helpers/bytebuffer.h>
+#include <log4cxxNG/helpers/charsetdecoder.h>
+#include <log4cxxNG/net/smtpappender.h>
+#include <log4cxxNG/helpers/messagebuffer.h>
 
 #define LOG4CXX 1
-#include <log4cxx/helpers/aprinitializer.h>
+#include <log4cxxNG/helpers/aprinitializer.h>
 
 using namespace log4cxx;
 using namespace log4cxx::xml;

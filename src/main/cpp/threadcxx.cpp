@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/thread.h>
-#include <log4cxx/helpers/exception.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/thread.h>
+#include <log4cxxNG/helpers/exception.h>
 #include <apr_thread_proc.h>
 #include <apr_atomic.h>
-#include <log4cxx/helpers/pool.h>
-#include <log4cxx/helpers/threadlocal.h>
-#include <log4cxx/helpers/synchronized.h>
+#include <log4cxxNG/helpers/pool.h>
+#include <log4cxxNG/helpers/threadlocal.h>
+#include <log4cxxNG/helpers/synchronized.h>
 #include <apr_thread_cond.h>
 
 using namespace log4cxx::helpers;

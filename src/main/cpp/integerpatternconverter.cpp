@@ -19,10 +19,10 @@
 #endif
 
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/pattern/integerpatternconverter.h>
-#include <log4cxx/helpers/integer.h>
-#include <log4cxx/helpers/stringhelper.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/pattern/integerpatternconverter.h>
+#include <log4cxxNG/helpers/integer.h>
+#include <log4cxxNG/helpers/stringhelper.h>
 
 using namespace log4cxx;
 using namespace log4cxx::pattern;

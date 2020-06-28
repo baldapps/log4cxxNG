@@ -16,7 +16,7 @@
  */
 
 #include "xlevel.h"
-#include <log4cxx/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/stringhelper.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

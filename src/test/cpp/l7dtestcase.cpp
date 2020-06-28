@@ -15,10 +15,10 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logger.h>
-#include <log4cxx/propertyconfigurator.h>
-#include <log4cxx/helpers/propertyresourcebundle.h>
-#include <log4cxx/helpers/locale.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/propertyconfigurator.h>
+#include <log4cxxNG/helpers/propertyresourcebundle.h>
+#include <log4cxxNG/helpers/locale.h>
 
 #include "util/compare.h"
 
@@ -27,7 +27,7 @@
 
 #include "testchar.h"
 #include "logunit.h"
-#include <log4cxx/spi/loggerrepository.h>
+#include <log4cxxNG/spi/loggerrepository.h>
 
 
 typedef std::basic_ostringstream<testchar> StringBuffer;

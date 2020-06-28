@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
+#include <log4cxxNG/logstring.h>
 
 namespace log4cxx
 {

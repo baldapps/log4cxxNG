@@ -15,11 +15,11 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/system.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/system.h>
 
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/helpers/pool.h>
 #include <apr_file_io.h>
 #include <apr_user.h>
 #include <apr_env.h>

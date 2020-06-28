@@ -17,20 +17,20 @@
 
 #include "logunit.h"
 
-#include <log4cxx/logger.h>
-#include <log4cxx/logmanager.h>
-#include <log4cxx/simplelayout.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/logmanager.h>
+#include <log4cxxNG/simplelayout.h>
 #include "vectorappender.h"
-#include <log4cxx/asyncappender.h>
+#include <log4cxxNG/asyncappender.h>
 #include "appenderskeletontestcase.h"
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/helpers/pool.h>
 #include <apr_strings.h>
 #include "testchar.h"
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/helpers/synchronized.h>
-#include <log4cxx/spi/location/locationinfo.h>
-#include <log4cxx/xml/domconfigurator.h>
-#include <log4cxx/file.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/synchronized.h>
+#include <log4cxxNG/spi/location/locationinfo.h>
+#include <log4cxxNG/xml/domconfigurator.h>
+#include <log4cxxNG/file.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

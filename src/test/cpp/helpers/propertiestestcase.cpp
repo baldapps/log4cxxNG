@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#include <log4cxx/helpers/properties.h>
-#include <log4cxx/helpers/fileinputstream.h>
+#include <log4cxxNG/helpers/properties.h>
+#include <log4cxxNG/helpers/fileinputstream.h>
 #include "../insertwide.h"
 #include "../logunit.h"
 

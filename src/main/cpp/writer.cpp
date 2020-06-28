@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/writer.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/writer.h>
 #include <stdexcept>
 
 using namespace log4cxx::helpers;

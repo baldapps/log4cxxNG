@@ -15,9 +15,9 @@
  * limitations under the License.
  */
 
-#include <log4cxx/net/sockethubappender.h>
+#include <log4cxxNG/net/sockethubappender.h>
 #include "../appenderskeletontestcase.h"
-#include <log4cxx/helpers/thread.h>
+#include <log4cxxNG/helpers/thread.h>
 #include <apr.h>
 
 using namespace log4cxx;

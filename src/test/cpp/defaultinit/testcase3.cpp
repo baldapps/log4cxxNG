@@ -15,9 +15,9 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logmanager.h>
-#include <log4cxx/logger.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/logmanager.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/helpers/pool.h>
 #include <apr_file_io.h>
 #include "../insertwide.h"
 #include "../logunit.h"

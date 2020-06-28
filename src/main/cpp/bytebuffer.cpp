@@ -14,11 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/bytebuffer.h>
-#include <log4cxx/helpers/exception.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/bytebuffer.h>
+#include <log4cxxNG/helpers/exception.h>
 #include <apr_pools.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/helpers/pool.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

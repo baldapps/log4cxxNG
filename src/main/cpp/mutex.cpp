@@ -15,17 +15,17 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/helpers/mutex.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/exception.h>
+#include <log4cxxNG/helpers/mutex.h>
+#include <log4cxxNG/helpers/pool.h>
 #include <apr_thread_mutex.h>
 #include <apr_thread_rwlock.h>
 #include <assert.h>
 #if !defined(LOG4CXX)
 	#define LOG4CXX 1
 #endif
-#include <log4cxx/helpers/aprinitializer.h>
+#include <log4cxxNG/helpers/aprinitializer.h>
 
 #if defined(NON_BLOCKING)
 

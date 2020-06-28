@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/ttcclayout.h>
-#include <log4cxx/spi/loggingevent.h>
-#include <log4cxx/level.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/ndc.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/ttcclayout.h>
+#include <log4cxxNG/spi/loggingevent.h>
+#include <log4cxxNG/level.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/ndc.h>
 
 using namespace log4cxx;
 using namespace log4cxx::spi;

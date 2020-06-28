@@ -14,20 +14,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/simpledateformat.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/simpledateformat.h>
 
 #include <apr_time.h>
 #include <apr_strings.h>
 #include <sstream>
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/helpers/stringhelper.h>
 #include <assert.h>
 #if !defined(LOG4CXX)
 	#define LOG4CXX 1
 #endif
-#include <log4cxx/private/log4cxx_private.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/private/log4cxxNG_private.h>
+#include <log4cxxNG/helpers/pool.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

@@ -18,20 +18,20 @@
 #include "../insertwide.h"
 #include "../logunit.h"
 #include <apr_time.h>
-#include <log4cxx/logmanager.h>
-#include <log4cxx/xml/domconfigurator.h>
-#include <log4cxx/patternlayout.h>
-#include <log4cxx/rolling/fixedwindowrollingpolicy.h>
-#include <log4cxx/rolling/sizebasedtriggeringpolicy.h>
-#include <log4cxx/filter/levelrangefilter.h>
-#include <log4cxx/helpers/pool.h>
-#include <log4cxx/logger.h>
-#include <log4cxx/propertyconfigurator.h>
-#include <log4cxx/rolling/rollingfileappender.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/consoleappender.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/helpers/fileoutputstream.h>
+#include <log4cxxNG/logmanager.h>
+#include <log4cxxNG/xml/domconfigurator.h>
+#include <log4cxxNG/patternlayout.h>
+#include <log4cxxNG/rolling/fixedwindowrollingpolicy.h>
+#include <log4cxxNG/rolling/sizebasedtriggeringpolicy.h>
+#include <log4cxxNG/filter/levelrangefilter.h>
+#include <log4cxxNG/helpers/pool.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/propertyconfigurator.h>
+#include <log4cxxNG/rolling/rollingfileappender.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/consoleappender.h>
+#include <log4cxxNG/helpers/exception.h>
+#include <log4cxxNG/helpers/fileoutputstream.h>
 
 
 using namespace log4cxx;

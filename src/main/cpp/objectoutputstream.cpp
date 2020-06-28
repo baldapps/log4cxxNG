@@ -18,11 +18,11 @@
 	#pragma warning ( disable: 4231 4251 4275 4786 )
 #endif
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/objectoutputstream.h>
-#include <log4cxx/helpers/bytebuffer.h>
-#include <log4cxx/helpers/outputstream.h>
-#include <log4cxx/helpers/charsetencoder.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/objectoutputstream.h>
+#include <log4cxxNG/helpers/bytebuffer.h>
+#include <log4cxxNG/helpers/outputstream.h>
+#include <log4cxxNG/helpers/charsetencoder.h>
 #include "apr_pools.h"
 
 using namespace log4cxx;

@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-#include <log4cxx/helpers/cyclicbuffer.h>
+#include <log4cxxNG/helpers/cyclicbuffer.h>
 #include "../logunit.h"
 
-#include <log4cxx/logmanager.h>
-#include <log4cxx/logger.h>
-#include <log4cxx/spi/loggingevent.h>
-#include <log4cxx/spi/location/locationinfo.h>
+#include <log4cxxNG/logmanager.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/spi/loggingevent.h>
+#include <log4cxxNG/spi/location/locationinfo.h>
 #include "../testchar.h"
 
 using namespace log4cxx;

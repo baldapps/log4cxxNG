@@ -16,7 +16,7 @@
  */
 
 #include "filter.h"
-#include <log4cxx/helpers/transcoder.h>
+#include <log4cxxNG/helpers/transcoder.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

@@ -20,27 +20,27 @@
 	#pragma warning ( disable: 4231 4251 4275 4786 )
 #endif
 
-#include <log4cxx/logmanager.h>
-#include <log4cxx/spi/defaultrepositoryselector.h>
-#include <log4cxx/hierarchy.h>
-#include <log4cxx/spi/rootlogger.h>
-#include <log4cxx/spi/loggerfactory.h>
+#include <log4cxxNG/logmanager.h>
+#include <log4cxxNG/spi/defaultrepositoryselector.h>
+#include <log4cxxNG/hierarchy.h>
+#include <log4cxxNG/spi/rootlogger.h>
+#include <log4cxxNG/spi/loggerfactory.h>
 #include <stdexcept>
-#include <log4cxx/level.h>
-#include <log4cxx/spi/loggerrepository.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/helpers/optionconverter.h>
-#include <log4cxx/helpers/loglog.h>
+#include <log4cxxNG/level.h>
+#include <log4cxxNG/spi/loggerrepository.h>
+#include <log4cxxNG/helpers/exception.h>
+#include <log4cxxNG/helpers/optionconverter.h>
+#include <log4cxxNG/helpers/loglog.h>
 
 #include <apr_general.h>
 
-#include <log4cxx/spi/loggingevent.h>
-#include <log4cxx/file.h>
-#include <log4cxx/helpers/transcoder.h>
+#include <log4cxxNG/spi/loggingevent.h>
+#include <log4cxxNG/file.h>
+#include <log4cxxNG/helpers/transcoder.h>
 #if !defined(LOG4CXX)
 	#define LOG4CXX 1
 #endif
-#include <log4cxx/helpers/aprinitializer.h>
+#include <log4cxxNG/helpers/aprinitializer.h>
 
 using namespace log4cxx;
 using namespace log4cxx::spi;

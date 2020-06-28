@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-#include <log4cxx/level.h>
+#include <log4cxxNG/level.h>
 #include "testchar.h"
 #include "logunit.h"
 

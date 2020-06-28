@@ -16,15 +16,15 @@
  */
 
 #if defined(_WIN32) && !defined(_WIN32_WCE)
-#include <log4cxx/nt/nteventlogappender.h>
+#include <log4cxxNG/nt/nteventlogappender.h>
 #include "../appenderskeletontestcase.h"
 #include "windows.h"
-#include <log4cxx/logger.h>
-#include <log4cxx/spi/loggingevent.h>
-#include <log4cxx/patternlayout.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/spi/loggingevent.h>
+#include <log4cxxNG/patternlayout.h>
 #include "../insertwide.h"
 #include "../logunit.h"
-#include <log4cxx/helpers/date.h>
+#include <log4cxxNG/helpers/date.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

@@ -19,19 +19,19 @@
 #endif
 
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/rolling/fixedwindowrollingpolicy.h>
-#include <log4cxx/helpers/pool.h>
-#include <log4cxx/helpers/integer.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/helpers/optionconverter.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/rolling/rolloverdescription.h>
-#include <log4cxx/rolling/filerenameaction.h>
-#include <log4cxx/rolling/gzcompressaction.h>
-#include <log4cxx/rolling/zipcompressaction.h>
-#include <log4cxx/pattern/integerpatternconverter.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/rolling/fixedwindowrollingpolicy.h>
+#include <log4cxxNG/helpers/pool.h>
+#include <log4cxxNG/helpers/integer.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/optionconverter.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/exception.h>
+#include <log4cxxNG/rolling/rolloverdescription.h>
+#include <log4cxxNG/rolling/filerenameaction.h>
+#include <log4cxxNG/rolling/gzcompressaction.h>
+#include <log4cxxNG/rolling/zipcompressaction.h>
+#include <log4cxxNG/pattern/integerpatternconverter.h>
 
 using namespace log4cxx;
 using namespace log4cxx::rolling;

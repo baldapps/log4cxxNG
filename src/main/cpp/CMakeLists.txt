@@ -2,15 +2,15 @@
 # Options
 option(LOG4CXX_BLOCKING_ASYNC_APPENDER "Async appender behaviour" ON)
 
-# Build the log4cxx library
-add_library(log4cxx action.cpp)
+# Build the log4cxxNG library
+add_library(log4cxxNG action.cpp)
 if(BUILD_SHARED_LIBS)
-    target_compile_definitions(log4cxx PRIVATE LOG4CXX)
+    target_compile_definitions(log4cxxNG PRIVATE LOG4CXX)
 else()
-    target_compile_definitions(log4cxx PUBLIC LOG4CXX_STATIC)
+    target_compile_definitions(log4cxxNG PUBLIC LOG4CXX_STATIC)
 endif()
-add_dependencies(log4cxx configure_log4cxx)
-target_sources(log4cxx
+add_dependencies(log4cxxNG configure_log4cxxNG)
+target_sources(log4cxxNG
   PRIVATE
   andfilter.cpp
   appenderattachableimpl.cpp
@@ -164,7 +164,7 @@ target_sources(log4cxx
   xmlsocketappender.cpp
   zipcompressaction.cpp
 )
-set_target_properties(log4cxx PROPERTIES
-  VERSION ${log4cxx_VERSION_MAJOR}.${log4cxx_VERSION_MINOR}.${log4cxx_VERSION_PATCH}
-  SOVERSION ${log4cxx_VERSION_MAJOR}
+set_target_properties(log4cxxNG PROPERTIES
+	VERSION ${log4cxxNG_VERSION_MAJOR}.${log4cxxNG_VERSION_MINOR}.${log4cxxNG_VERSION_PATCH}
+	SOVERSION ${log4cxxNG_VERSION_MAJOR}
 )

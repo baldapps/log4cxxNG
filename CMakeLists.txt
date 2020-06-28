@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
 include(src/cmake/projectVersionDetails.cmake)
-project(log4cxx VERSION ${log4cxx_VER} LANGUAGES CXX)
+project(log4cxxNG VERSION ${log4cxxNG_VER} LANGUAGES CXX)
 include(CTest)
 
 # FindAPR and FindAPR-util are not provided by APR and APR-Util so source them locally
@@ -23,24 +23,24 @@ add_subdirectory(src)
 
 ## Installing
 include(GNUInstallDirs)
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/src/main/include/log4cxx
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/src/main/include/log4cxxNG
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
   FILES_MATCHING PATTERN "*.h"
 )
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/main/include/log4cxx
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/main/include/log4cxxNG
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
   FILES_MATCHING PATTERN "*.h"
 )
 
-install(TARGETS log4cxx EXPORT log4cxxTargets
-  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} 
+install(TARGETS log4cxxNG EXPORT log4cxxNGTargets
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
 IF(WIN32 AND BUILD_SHARED_LIBS AND LOG4CXX_INSTALL_PDB)
-  INSTALL(FILES $<TARGET_PDB_FILE:log4cxx>
+  INSTALL(FILES $<TARGET_PDB_FILE:log4cxxNG>
           DESTINATION ${CMAKE_INSTALL_BINDIR}
           CONFIGURATIONS RelWithDebInfo Debug
   )
@@ -52,30 +52,30 @@ if(UNIX)
   set(exec_prefix "${CMAKE_INSTALL_PREFIX}")
   set(libdir "\${prefix}/${CMAKE_INSTALL_LIBDIR}")
   set(includedir "\${prefix}/${CMAKE_INSTALL_INCLUDEDIR}")
-  set(VERSION "${log4cxx_VERSION_MAJOR}.${log4cxx_VERSION_MINOR}.${log4cxx_VERSION_PATCH}")
-  configure_file("${CMAKE_CURRENT_SOURCE_DIR}/liblog4cxx.pc.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/liblog4cxx.pc"
+  set(VERSION "${log4cxxNG_VERSION_MAJOR}.${log4cxxNG_VERSION_MINOR}.${log4cxxNG_VERSION_PATCH}")
+  configure_file("${CMAKE_CURRENT_SOURCE_DIR}/liblog4cxxNG.pc.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/liblog4cxxNG.pc"
   )
 
-  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/liblog4cxx.pc" 
+  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/liblog4cxxNG.pc"
     DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig)
 endif(UNIX)
 
-# Support for find_package(log4cxx) in consuming CMake projects using
-# target_include_directories(myApplication PRIVATE $<TARGET_PROPERTY:log4cxx,INTERFACE_INCLUDE_DIRECTORIES>)
-# target_link_libraries( myApplication PRIVATE log4cxx)
-install(EXPORT log4cxxTargets
-  FILE        log4cxxConfig.cmake
-  DESTINATION share/cmake/log4cxx
+# Support for find_package(log4cxxNG) in consuming CMake projects using
+# target_include_directories(myApplication PRIVATE $<TARGET_PROPERTY:log4cxxNG,INTERFACE_INCLUDE_DIRECTORIES>)
+# target_link_libraries( myApplication PRIVATE log4cxxNG)
+install(EXPORT log4cxxNGTargets
+  FILE        log4cxxNGConfig.cmake
+  DESTINATION share/cmake/log4cxxNG
 )
-# Support for find_package(log4cxx 0.11) in consuming CMake projects
+# Support for find_package(log4cxxNG) in consuming CMake projects
 include(CMakePackageConfigHelpers)
-write_basic_package_version_file("${CMAKE_CURRENT_BINARY_DIR}/log4cxxConfigVersion.cmake"
+write_basic_package_version_file("${CMAKE_CURRENT_BINARY_DIR}/log4cxxNGConfigVersion.cmake"
   VERSION       ${PROJECT_VERSION}
   COMPATIBILITY SameMinorVersion
 )
-install(FILES   "${CMAKE_CURRENT_BINARY_DIR}/log4cxxConfigVersion.cmake"
-  DESTINATION   share/cmake/log4cxx
+install(FILES   "${CMAKE_CURRENT_BINARY_DIR}/log4cxxNGConfigVersion.cmake"
+  DESTINATION   share/cmake/log4cxxNG
 )
 
 #
@@ -101,18 +101,18 @@ endforeach()
 #
 message(STATUS "")
 message(STATUS "")
-message(STATUS "log4cxx configuration summary:")
+message(STATUS "log4cxxNG configuration summary:")
 message(STATUS "")
 
 message(STATUS "  Build shared library ............ : ${BUILD_SHARED_LIBS}")
 message(STATUS "  Build tests ..................... : ${BUILD_TESTING}")
 message(STATUS "  Install prefix .................. : ${CMAKE_INSTALL_PREFIX}")
 message(STATUS "  C++ compiler .................... : ${CMAKE_CXX_COMPILER}")
-message(STATUS "  log4cxx char API ................ : ${LOG4CXX_CHAR}")
-message(STATUS "  log4cxx wchar API ............... : ${LOG4CXX_WCHAR_T}")
-message(STATUS "  log4cxx unichar API ............. : ${LOG4CXX_UNICHAR}")
+message(STATUS "  log4cxxNG char API ................ : ${LOG4CXX_CHAR}")
+message(STATUS "  log4cxxNG wchar API ............... : ${LOG4CXX_WCHAR_T}")
+message(STATUS "  log4cxxNG unichar API ............. : ${LOG4CXX_UNICHAR}")
 if(APPLE)
-message(STATUS "  log4cxx cfstring API ............ : ${LOG4CXX_CFSTRING}")
+message(STATUS "  log4cxxNG cfstring API ............ : ${LOG4CXX_CFSTRING}")
 endif()
 message(STATUS "  logchar type .................... : ${LOG4CXX_CHAR}")
 message(STATUS "  Using libESMTP .................. : ${HAS_LIBESMTP}")

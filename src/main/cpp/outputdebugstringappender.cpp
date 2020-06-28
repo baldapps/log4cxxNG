@@ -16,8 +16,8 @@
  */
 
 #if defined(_WIN32)
-#include <log4cxx/nt/outputdebugstringappender.h>
-#include <log4cxx/helpers/transcoder.h>
+#include <log4cxxNG/nt/outputdebugstringappender.h>
+#include <log4cxxNG/helpers/transcoder.h>
 
 #include "windows.h"
 

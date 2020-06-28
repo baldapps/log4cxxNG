@@ -15,10 +15,10 @@
  * limitations under the License.
  */
 
-#include <log4cxx/helpers/charsetdecoder.h>
+#include <log4cxxNG/helpers/charsetdecoder.h>
 #include "../logunit.h"
 #include "../insertwide.h"
-#include <log4cxx/helpers/bytebuffer.h>
+#include <log4cxxNG/helpers/bytebuffer.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

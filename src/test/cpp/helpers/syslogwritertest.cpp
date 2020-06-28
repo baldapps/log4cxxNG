@@ -16,7 +16,7 @@
  */
 
 #include "../logunit.h"
-#include <log4cxx/helpers/syslogwriter.h>
+#include <log4cxxNG/helpers/syslogwriter.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

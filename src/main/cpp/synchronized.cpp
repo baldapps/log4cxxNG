@@ -15,10 +15,10 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/synchronized.h>
-#include <log4cxx/helpers/mutex.h>
-#include <log4cxx/helpers/exception.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/synchronized.h>
+#include <log4cxxNG/helpers/mutex.h>
+#include <log4cxxNG/helpers/exception.h>
 
 #include <apr_thread_mutex.h>
 

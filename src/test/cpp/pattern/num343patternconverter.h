@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#include <log4cxx/pattern/loggingeventpatternconverter.h>
+#include <log4cxxNG/pattern/loggingeventpatternconverter.h>
 #include <vector>
 
 namespace log4cxx

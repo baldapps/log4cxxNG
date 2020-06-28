@@ -16,12 +16,12 @@
  */
 
 #include "compare.h"
-#include <log4cxx/helpers/pool.h>
-#include <log4cxx/file.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/helpers/fileinputstream.h>
-#include <log4cxx/helpers/inputstreamreader.h>
-#include <log4cxx/helpers/systemoutwriter.h>
+#include <log4cxxNG/helpers/pool.h>
+#include <log4cxxNG/file.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/fileinputstream.h>
+#include <log4cxxNG/helpers/inputstreamreader.h>
+#include <log4cxxNG/helpers/systemoutwriter.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

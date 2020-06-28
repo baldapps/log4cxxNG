@@ -1,25 +1,25 @@
 # Configure
 if(WIN32)
-add_custom_target(configure_log4cxx
+add_custom_target(configure_log4cxxNG
   COMMAND "${CMAKE_COMMAND}" -E copy_if_different
-    ${CMAKE_CURRENT_SOURCE_DIR}/log4cxx/log4cxx.hw
-    ${CMAKE_CURRENT_BINARY_DIR}/log4cxx/log4cxx.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/log4cxxNG/log4cxxNG.hw
+    ${CMAKE_CURRENT_BINARY_DIR}/log4cxxNG/log4cxxNG.h
   COMMAND "${CMAKE_COMMAND}" -E copy_if_different
-    ${CMAKE_CURRENT_SOURCE_DIR}/log4cxx/private/log4cxx_private.hw
-    ${CMAKE_CURRENT_BINARY_DIR}/log4cxx/private/log4cxx_private.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/log4cxxNG/private/log4cxxNG_private.hw
+    ${CMAKE_CURRENT_BINARY_DIR}/log4cxxNG/private/log4cxxNG_private.h
   DEPENDS
-    ${CMAKE_CURRENT_SOURCE_DIR}/log4cxx/log4cxx.hw
-    ${CMAKE_CURRENT_SOURCE_DIR}/log4cxx/private/log4cxx_private.hw
+    ${CMAKE_CURRENT_SOURCE_DIR}/log4cxxNG/log4cxxNG.hw
+    ${CMAKE_CURRENT_SOURCE_DIR}/log4cxxNG/private/log4cxxNG_private.hw
   BYPRODUCTS
-    ${CMAKE_CURRENT_BINARY_DIR}/log4cxx/log4cxx.h
-    ${CMAKE_CURRENT_BINARY_DIR}/log4cxx/private/log4cxx_private.h
+    ${CMAKE_CURRENT_BINARY_DIR}/log4cxxNG/log4cxxNG.h
+    ${CMAKE_CURRENT_BINARY_DIR}/log4cxxNG/private/log4cxxNG_private.h
 )
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/log4cxx/version_info.h.in
-               ${CMAKE_CURRENT_BINARY_DIR}/log4cxx/version_info.h
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/log4cxxNG/version_info.h.in
+               ${CMAKE_CURRENT_BINARY_DIR}/log4cxxNG/version_info.h
                @ONLY
 )
 else()
-# Configure log4cxx.h
+# Configure log4cxxNG.h
 set(LOG4CXX_CHAR "utf-8" CACHE STRING "Interal character representation, choice of utf-8 (default), wchar_t, unichar")
 set_property(CACHE LOG4CXX_CHAR PROPERTY STRINGS "utf-8" "wchar_t" "unichar")
 set(LOGCHAR_IS_UNICHAR 0)
@@ -45,12 +45,12 @@ foreach(varName WCHAR_T  UNICHAR  CFSTRING )
     set("${varName}_API" 0)
   endif()
 endforeach()
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/log4cxx/log4cxx.h.in
-               ${CMAKE_CURRENT_BINARY_DIR}/log4cxx/log4cxx.h
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/log4cxxNG/log4cxxNG.h.in
+               ${CMAKE_CURRENT_BINARY_DIR}/log4cxxNG/log4cxxNG.h
                @ONLY
 )
 
-# Configure log4cxx_private.h
+# Configure log4cxxNG_private.h
 set(LOG4CXX_CHARSET "locale" CACHE STRING "LogString characters, choice of locale (default), utf-8, ISO-8859-1, US-ASCII, EBCDIC")
 set_property(CACHE LOG4CXX_CHARSET PROPERTY STRINGS "locale" "utf-8" "ISO-8859-1" "US-ASCII" "EBCDIC")
 set(CHARSET_EBCDIC 0)
@@ -99,19 +99,19 @@ foreach(varName HAS_STD_LOCALE  HAS_ODBC  HAS_MBSRTOWCS  HAS_WCSTOMBS  HAS_FWIDE
 endforeach()
 
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/log4cxx/private/log4cxx_private.h.in
-               ${CMAKE_CURRENT_BINARY_DIR}/log4cxx/private/log4cxx_private.h
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/log4cxxNG/private/log4cxxNG_private.h.in
+               ${CMAKE_CURRENT_BINARY_DIR}/log4cxxNG/private/log4cxxNG_private.h
                @ONLY
 )
 
 # Provide the dependencies
-add_custom_target(configure_log4cxx
+add_custom_target(configure_log4cxxNG
   COMMAND "${CMAKE_COMMAND}" -E echo "Checking configuration"
   DEPENDS
-    ${CMAKE_CURRENT_SOURCE_DIR}/log4cxx/log4cxx.h.in
-    ${CMAKE_CURRENT_SOURCE_DIR}/log4cxx/private/log4cxx_private.h.in
+    ${CMAKE_CURRENT_SOURCE_DIR}/log4cxxNG/log4cxxNG.h.in
+    ${CMAKE_CURRENT_SOURCE_DIR}/log4cxxNG/private/log4cxxNG_private.h.in
   BYPRODUCTS
-    ${CMAKE_CURRENT_BINARY_DIR}/log4cxx/log4cxx.h
-    ${CMAKE_CURRENT_BINARY_DIR}/log4cxx/private/log4cxx_private.h
+    ${CMAKE_CURRENT_BINARY_DIR}/log4cxxNG/log4cxxNG.h
+    ${CMAKE_CURRENT_BINARY_DIR}/log4cxxNG/private/log4cxxNG_private.h
 )
 endif()

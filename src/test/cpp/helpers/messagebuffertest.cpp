@@ -15,11 +15,11 @@
  * limitations under the License.
  */
 
-#include <log4cxx/helpers/messagebuffer.h>
+#include <log4cxxNG/helpers/messagebuffer.h>
 #include <iomanip>
 #include "../insertwide.h"
 #include "../logunit.h"
-#include <log4cxx/logstring.h>
+#include <log4cxxNG/logstring.h>
 
 #if LOG4CXX_CFSTRING_API
 	#include <CoreFoundation/CFString.h>

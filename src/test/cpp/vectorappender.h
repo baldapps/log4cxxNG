@@ -15,9 +15,9 @@
  * limitations under the License.
  */
 
-#include <log4cxx/appenderskeleton.h>
+#include <log4cxxNG/appenderskeleton.h>
 #include <vector>
-#include <log4cxx/spi/loggingevent.h>
+#include <log4cxxNG/spi/loggingevent.h>
 
 namespace log4cxx
 {

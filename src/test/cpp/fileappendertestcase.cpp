@@ -16,8 +16,8 @@
  */
 
 #include "fileappendertestcase.h"
-#include <log4cxx/helpers/objectptr.h>
-#include <log4cxx/fileappender.h>
+#include <log4cxxNG/helpers/objectptr.h>
+#include <log4cxxNG/fileappender.h>
 #include "insertwide.h"
 
 using namespace log4cxx;

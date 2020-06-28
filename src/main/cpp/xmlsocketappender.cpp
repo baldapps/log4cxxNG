@@ -15,19 +15,19 @@
  * limitations under the License.
  */
 
-#include <log4cxx/net/xmlsocketappender.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/outputstreamwriter.h>
-#include <log4cxx/helpers/charsetencoder.h>
-#include <log4cxx/helpers/optionconverter.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/xml/xmllayout.h>
-#include <log4cxx/level.h>
-#include <log4cxx/helpers/transform.h>
+#include <log4cxxNG/net/xmlsocketappender.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/outputstreamwriter.h>
+#include <log4cxxNG/helpers/charsetencoder.h>
+#include <log4cxxNG/helpers/optionconverter.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/xml/xmllayout.h>
+#include <log4cxxNG/level.h>
+#include <log4cxxNG/helpers/transform.h>
 #include <apr_time.h>
-#include <log4cxx/helpers/synchronized.h>
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/helpers/socketoutputstream.h>
+#include <log4cxxNG/helpers/synchronized.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/helpers/socketoutputstream.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

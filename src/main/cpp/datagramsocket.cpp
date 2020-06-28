@@ -14,11 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/datagramsocket.h>
-#include <log4cxx/helpers/datagrampacket.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/transcoder.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/datagramsocket.h>
+#include <log4cxxNG/helpers/datagrampacket.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/transcoder.h>
 
 #include "apr_network_io.h"
 #include "apr_lib.h"

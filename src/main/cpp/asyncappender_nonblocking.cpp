@@ -19,19 +19,19 @@
 	#pragma warning ( disable: 4231 4251 4275 4786 )
 #endif
 
-#include <log4cxx/asyncappender.h>
+#include <log4cxxNG/asyncappender.h>
 
 
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/spi/loggingevent.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/spi/loggingevent.h>
 #include <apr_thread_proc.h>
 #include <apr_thread_mutex.h>
 #include <apr_thread_cond.h>
-#include <log4cxx/helpers/condition.h>
-#include <log4cxx/helpers/synchronized.h>
-#include <log4cxx/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/condition.h>
+#include <log4cxxNG/helpers/synchronized.h>
+#include <log4cxxNG/helpers/stringhelper.h>
 #include <apr_atomic.h>
-#include <log4cxx/helpers/optionconverter.h>
+#include <log4cxxNG/helpers/optionconverter.h>
 
 
 using namespace log4cxx;

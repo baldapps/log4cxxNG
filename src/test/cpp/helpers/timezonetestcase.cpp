@@ -14,8 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/timezone.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/timezone.h>
 #include "../insertwide.h"
 #include "../logunit.h"
 #include <apr_time.h>

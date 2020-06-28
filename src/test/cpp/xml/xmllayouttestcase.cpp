@@ -17,10 +17,10 @@
 
 #include "../logunit.h"
 
-#include <log4cxx/logger.h>
-#include <log4cxx/xml/xmllayout.h>
-#include <log4cxx/fileappender.h>
-#include <log4cxx/mdc.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/xml/xmllayout.h>
+#include <log4cxxNG/fileappender.h>
+#include <log4cxxNG/mdc.h>
 
 #include "../util/transformer.h"
 #include "../util/compare.h"
@@ -29,9 +29,9 @@
 #include "../util/xmlthreadfilter.h"
 #include "../util/filenamefilter.h"
 #include <iostream>
-#include <log4cxx/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/stringhelper.h>
 #include "../testchar.h"
-#include <log4cxx/spi/loggerrepository.h>
+#include <log4cxxNG/spi/loggerrepository.h>
 
 
 using namespace log4cxx;

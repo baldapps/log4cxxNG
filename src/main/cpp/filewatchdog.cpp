@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 #define __STDC_CONSTANT_MACROS
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/filewatchdog.h>
-#include <log4cxx/helpers/loglog.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/filewatchdog.h>
+#include <log4cxxNG/helpers/loglog.h>
 #include <apr_time.h>
 #include <apr_thread_proc.h>
 #include <apr_atomic.h>
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/helpers/exception.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/helpers/exception.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

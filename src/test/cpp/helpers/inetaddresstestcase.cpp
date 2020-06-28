@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#include <log4cxx/helpers/inetaddress.h>
+#include <log4cxxNG/helpers/inetaddress.h>
 #include "../logunit.h"
 
 using namespace log4cxx;

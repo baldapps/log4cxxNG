@@ -14,18 +14,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/db/odbcappender.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/optionconverter.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/patternlayout.h>
+#include <log4cxxNG/db/odbcappender.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/optionconverter.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/patternlayout.h>
 #include <apr_strings.h>
 
 #if !defined(LOG4CXX)
 	#define LOG4CXX 1
 #endif
-#include <log4cxx/private/log4cxx_private.h>
+#include <log4cxxNG/private/log4cxxNG_private.h>
 #if LOG4CXX_HAVE_ODBC
 	#if defined(WIN32) || defined(_WIN32)
 		#include <windows.h>

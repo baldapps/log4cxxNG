@@ -14,12 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/appenderattachableimpl.h>
-#include <log4cxx/appender.h>
-#include <log4cxx/spi/loggingevent.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/appenderattachableimpl.h>
+#include <log4cxxNG/appender.h>
+#include <log4cxxNG/spi/loggingevent.h>
 #include <algorithm>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/helpers/pool.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

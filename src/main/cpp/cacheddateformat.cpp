@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 #define __STDC_CONSTANT_MACROS
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/cacheddateformat.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/cacheddateformat.h>
 
 
 #include <apr_time.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/helpers/pool.h>
 #include <limits>
-#include <log4cxx/helpers/exception.h>
+#include <log4cxxNG/helpers/exception.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

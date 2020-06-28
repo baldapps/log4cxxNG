@@ -16,10 +16,10 @@
  */
 
 #define __STDC_CONSTANT_MACROS
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/datetimedateformat.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/datetimedateformat.h>
 #include "../logunit.h"
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/helpers/pool.h>
 #include "../insertwide.h"
 #include <apr.h>
 #include <apr_time.h>
@@ -37,7 +37,7 @@ using namespace std;
 #endif
 
 #define LOG4CXX_TEST 1
-#include <log4cxx/private/log4cxx_private.h>
+#include <log4cxxNG/private/log4cxxNG_private.h>
 
 
 #if LOG4CXX_HAS_STD_LOCALE

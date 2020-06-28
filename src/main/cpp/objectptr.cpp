@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#include <log4cxx/helpers/objectptr.h>
-#include <log4cxx/helpers/exception.h>
+#include <log4cxxNG/helpers/objectptr.h>
+#include <log4cxxNG/helpers/exception.h>
 #include <apr_atomic.h>
 
 using namespace log4cxx::helpers;

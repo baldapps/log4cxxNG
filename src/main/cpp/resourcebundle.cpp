@@ -14,13 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/resourcebundle.h>
-#include <log4cxx/helpers/propertyresourcebundle.h>
-#include <log4cxx/helpers/loader.h>
-#include <log4cxx/helpers/pool.h>
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/helpers/locale.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/resourcebundle.h>
+#include <log4cxxNG/helpers/propertyresourcebundle.h>
+#include <log4cxxNG/helpers/loader.h>
+#include <log4cxxNG/helpers/pool.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/helpers/locale.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

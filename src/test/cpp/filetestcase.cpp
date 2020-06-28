@@ -15,18 +15,18 @@
  * limitations under the License.
  */
 
-#include <log4cxx/file.h>
+#include <log4cxxNG/file.h>
 #include "logunit.h"
 #include "insertwide.h"
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/helpers/pool.h>
 #include <apr_errno.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/helpers/fileinputstream.h>
+#include <log4cxxNG/helpers/exception.h>
+#include <log4cxxNG/helpers/fileinputstream.h>
 
-#include <log4cxx/helpers/outputstreamwriter.h>
-#include <log4cxx/helpers/fileoutputstream.h>
-#include <log4cxx/helpers/inputstreamreader.h>
-#include <log4cxx/helpers/fileinputstream.h>
+#include <log4cxxNG/helpers/outputstreamwriter.h>
+#include <log4cxxNG/helpers/fileoutputstream.h>
+#include <log4cxxNG/helpers/inputstreamreader.h>
+#include <log4cxxNG/helpers/fileinputstream.h>
 
 #if LOG4CXX_CFSTRING_API
 	#include <CoreFoundation/CFString.h>

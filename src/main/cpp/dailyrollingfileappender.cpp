@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/dailyrollingfileappender.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/optionconverter.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/rolling/rollingfileappender.h>
-#include <log4cxx/rolling/timebasedrollingpolicy.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/dailyrollingfileappender.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/optionconverter.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/rolling/rollingfileappender.h>
+#include <log4cxxNG/rolling/timebasedrollingpolicy.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

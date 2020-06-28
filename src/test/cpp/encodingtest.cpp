@@ -16,7 +16,7 @@
  */
 
 
-#include <log4cxx/logger.h>
+#include <log4cxxNG/logger.h>
 #include "logunit.h"
 //
 //  If there is no support for wchar_t logging then
@@ -25,13 +25,13 @@
 #if LOG4CXX_WCHAR_T_API
 
 
-#include <log4cxx/patternlayout.h>
-#include <log4cxx/fileappender.h>
-#include <log4cxx/level.h>
+#include <log4cxxNG/patternlayout.h>
+#include <log4cxxNG/fileappender.h>
+#include <log4cxxNG/level.h>
 
 #include "util/binarycompare.h"
-#include <log4cxx/file.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/file.h>
+#include <log4cxxNG/helpers/pool.h>
 
 using namespace log4cxx;
 using namespace log4cxx::util;

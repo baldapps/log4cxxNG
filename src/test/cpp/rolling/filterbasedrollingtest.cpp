@@ -18,15 +18,15 @@
 #include "../util/compare.h"
 #include "../logunit.h"
 #include "../insertwide.h"
-#include <log4cxx/logmanager.h>
-#include <log4cxx/xml/domconfigurator.h>
-#include <log4cxx/patternlayout.h>
-#include <log4cxx/rolling/rollingfileappender.h>
-#include <log4cxx/rolling/fixedwindowrollingpolicy.h>
-#include <log4cxx/rolling/filterbasedtriggeringpolicy.h>
-#include <log4cxx/filter/levelrangefilter.h>
-#include <log4cxx/helpers/pool.h>
-#include <log4cxx/logger.h>
+#include <log4cxxNG/logmanager.h>
+#include <log4cxxNG/xml/domconfigurator.h>
+#include <log4cxxNG/patternlayout.h>
+#include <log4cxxNG/rolling/rollingfileappender.h>
+#include <log4cxxNG/rolling/fixedwindowrollingpolicy.h>
+#include <log4cxxNG/rolling/filterbasedtriggeringpolicy.h>
+#include <log4cxxNG/filter/levelrangefilter.h>
+#include <log4cxxNG/helpers/pool.h>
+#include <log4cxxNG/logger.h>
 
 using namespace log4cxx;
 using namespace log4cxx::rolling;

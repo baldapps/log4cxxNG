@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#include <log4cxx/helpers/cacheddateformat.h>
+#include <log4cxxNG/helpers/cacheddateformat.h>
 #include "../logunit.h"
-#include <log4cxx/helpers/absolutetimedateformat.h>
-#include <log4cxx/helpers/iso8601dateformat.h>
-#include <log4cxx/helpers/relativetimedateformat.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/helpers/absolutetimedateformat.h>
+#include <log4cxxNG/helpers/iso8601dateformat.h>
+#include <log4cxxNG/helpers/relativetimedateformat.h>
+#include <log4cxxNG/helpers/pool.h>
 #include <locale>
 #include "../insertwide.h"
 #include <apr.h>
@@ -45,7 +45,7 @@ using namespace log4cxx::pattern;
 #endif
 
 #define LOG4CXX_TEST 1
-#include <log4cxx/private/log4cxx_private.h>
+#include <log4cxxNG/private/log4cxxNG_private.h>
 
 
 /**

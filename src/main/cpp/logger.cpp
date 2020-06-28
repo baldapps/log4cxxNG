@@ -15,25 +15,25 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/logger.h>
-#include <log4cxx/spi/loggingevent.h>
-#include <log4cxx/logmanager.h>
-#include <log4cxx/spi/loggerfactory.h>
-#include <log4cxx/appender.h>
-#include <log4cxx/level.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/spi/loggerrepository.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/helpers/synchronized.h>
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/helpers/appenderattachableimpl.h>
-#include <log4cxx/helpers/exception.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/spi/loggingevent.h>
+#include <log4cxxNG/logmanager.h>
+#include <log4cxxNG/spi/loggerfactory.h>
+#include <log4cxxNG/appender.h>
+#include <log4cxxNG/level.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/spi/loggerrepository.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/synchronized.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/helpers/appenderattachableimpl.h>
+#include <log4cxxNG/helpers/exception.h>
 #if !defined(LOG4CXX)
 	#define LOG4CXX 1
 #endif
-#include <log4cxx/private/log4cxx_private.h>
-#include <log4cxx/helpers/aprinitializer.h>
+#include <log4cxxNG/private/log4cxxNG_private.h>
+#include <log4cxxNG/helpers/aprinitializer.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

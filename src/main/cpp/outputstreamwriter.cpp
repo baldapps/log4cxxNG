@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/outputstreamwriter.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/helpers/charsetencoder.h>
-#include <log4cxx/helpers/bytebuffer.h>
-#include <log4cxx/helpers/stringhelper.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/outputstreamwriter.h>
+#include <log4cxxNG/helpers/exception.h>
+#include <log4cxxNG/helpers/charsetencoder.h>
+#include <log4cxxNG/helpers/bytebuffer.h>
+#include <log4cxxNG/helpers/stringhelper.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

@@ -14,11 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/spi/loggingevent.h>
+#include <log4cxxNG/spi/loggingevent.h>
 #include "../util/serializationtesthelper.h"
-#include <log4cxx/logmanager.h>
-#include <log4cxx/ndc.h>
-#include <log4cxx/mdc.h>
+#include <log4cxxNG/logmanager.h>
+#include <log4cxxNG/ndc.h>
+#include <log4cxxNG/mdc.h>
 #include "../logunit.h"
 
 using namespace log4cxx;

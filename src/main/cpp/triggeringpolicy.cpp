@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#include <log4cxx/rolling/triggeringpolicy.h>
+#include <log4cxxNG/rolling/triggeringpolicy.h>
 
 using namespace log4cxx;
 using namespace log4cxx::rolling;

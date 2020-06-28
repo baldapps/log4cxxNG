@@ -18,11 +18,11 @@
 	#pragma warning ( disable: 4231 4251 4275 4786 )
 #endif
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/inetaddress.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/inetaddress.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/helpers/pool.h>
 
 #include "apr_network_io.h"
 

@@ -15,16 +15,16 @@
  * limitations under the License.
  */
 
-#include <log4cxx/net/telnetappender.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/optionconverter.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/helpers/synchronized.h>
+#include <log4cxxNG/net/telnetappender.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/optionconverter.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/synchronized.h>
 #include <apr_thread_proc.h>
 #include <apr_atomic.h>
 #include <apr_strings.h>
-#include <log4cxx/helpers/charsetencoder.h>
-#include <log4cxx/helpers/bytebuffer.h>
+#include <log4cxxNG/helpers/charsetencoder.h>
+#include <log4cxxNG/helpers/bytebuffer.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

@@ -15,11 +15,11 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/properties.h>
-#include <log4cxx/helpers/inputstreamreader.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/properties.h>
+#include <log4cxxNG/helpers/inputstreamreader.h>
+#include <log4cxxNG/helpers/exception.h>
+#include <log4cxxNG/helpers/pool.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

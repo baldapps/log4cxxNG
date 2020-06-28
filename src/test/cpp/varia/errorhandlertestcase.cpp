@@ -15,10 +15,10 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logger.h>
-#include <log4cxx/xml/domconfigurator.h>
-#include <log4cxx/fileappender.h>
-#include <log4cxx/varia/fallbackerrorhandler.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/xml/domconfigurator.h>
+#include <log4cxxNG/fileappender.h>
+#include <log4cxxNG/varia/fallbackerrorhandler.h>
 #include "../logunit.h"
 #include "../util/transformer.h"
 #include "../util/compare.h"

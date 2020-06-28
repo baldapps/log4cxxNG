@@ -14,9 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/helpers/pool.h>
-#include <log4cxx/fileappender.h>
-#include <log4cxx/patternlayout.h>
+#include <log4cxxNG/helpers/pool.h>
+#include <log4cxxNG/fileappender.h>
+#include <log4cxxNG/patternlayout.h>
 #include "logunit.h"
 
 using namespace log4cxx;

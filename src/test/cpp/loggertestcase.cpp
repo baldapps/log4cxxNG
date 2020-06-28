@@ -16,19 +16,19 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logger.h>
-#include <log4cxx/fileappender.h>
-#include <log4cxx/appenderskeleton.h>
-#include <log4cxx/basicconfigurator.h>
-#include <log4cxx/logmanager.h>
-#include <log4cxx/level.h>
-#include <log4cxx/hierarchy.h>
-#include <log4cxx/spi/rootlogger.h>
-#include <log4cxx/helpers/propertyresourcebundle.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/fileappender.h>
+#include <log4cxxNG/appenderskeleton.h>
+#include <log4cxxNG/basicconfigurator.h>
+#include <log4cxxNG/logmanager.h>
+#include <log4cxxNG/level.h>
+#include <log4cxxNG/hierarchy.h>
+#include <log4cxxNG/spi/rootlogger.h>
+#include <log4cxxNG/helpers/propertyresourcebundle.h>
 #include "insertwide.h"
 #include "testchar.h"
 #include "logunit.h"
-#include <log4cxx/helpers/locale.h>
+#include <log4cxxNG/helpers/locale.h>
 #include "vectorappender.h"
 
 using namespace log4cxx;

@@ -15,11 +15,11 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/strftimedateformat.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/strftimedateformat.h>
 
 #include <apr_time.h>
-#include <log4cxx/helpers/transcoder.h>
+#include <log4cxxNG/helpers/transcoder.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

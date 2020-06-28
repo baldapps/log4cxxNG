@@ -16,8 +16,8 @@
  */
 
 
-#include <log4cxx/logger.h>
-#include <log4cxx/hierarchy.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/hierarchy.h>
 #include "logunit.h"
 #include "insertwide.h"
 

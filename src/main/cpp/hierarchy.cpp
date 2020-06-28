@@ -19,25 +19,25 @@
 	#pragma warning ( disable: 4231 4251 4275 4786 )
 #endif
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/spi/loggerfactory.h>
-#include <log4cxx/hierarchy.h>
-#include <log4cxx/defaultloggerfactory.h>
-#include <log4cxx/logger.h>
-#include <log4cxx/spi/hierarchyeventlistener.h>
-#include <log4cxx/level.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/spi/loggerfactory.h>
+#include <log4cxxNG/hierarchy.h>
+#include <log4cxxNG/defaultloggerfactory.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/spi/hierarchyeventlistener.h>
+#include <log4cxxNG/level.h>
 #include <algorithm>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/appender.h>
-#include <log4cxx/helpers/synchronized.h>
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/appender.h>
+#include <log4cxxNG/helpers/synchronized.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/stringhelper.h>
 #if !defined(LOG4CXX)
 	#define LOG4CXX 1
 #endif
-#include <log4cxx/helpers/aprinitializer.h>
-#include <log4cxx/defaultconfigurator.h>
-#include <log4cxx/spi/rootlogger.h>
+#include <log4cxxNG/helpers/aprinitializer.h>
+#include <log4cxxNG/defaultconfigurator.h>
+#include <log4cxxNG/spi/rootlogger.h>
 #include <apr_atomic.h>
 #include "assert.h"
 

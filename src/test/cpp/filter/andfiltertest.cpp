@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-#include <log4cxx/filter/andfilter.h>
-#include <log4cxx/logger.h>
-#include <log4cxx/spi/filter.h>
-#include <log4cxx/spi/loggingevent.h>
-#include <log4cxx/filter/levelmatchfilter.h>
-#include <log4cxx/filter/denyallfilter.h>
-#include <log4cxx/filter/stringmatchfilter.h>
+#include <log4cxxNG/filter/andfilter.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/spi/filter.h>
+#include <log4cxxNG/spi/loggingevent.h>
+#include <log4cxxNG/filter/levelmatchfilter.h>
+#include <log4cxxNG/filter/denyallfilter.h>
+#include <log4cxxNG/filter/stringmatchfilter.h>
 #include "../logunit.h"
 
 using namespace log4cxx;

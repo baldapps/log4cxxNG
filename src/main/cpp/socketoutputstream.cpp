@@ -15,10 +15,10 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/socketoutputstream.h>
-#include <log4cxx/helpers/socket.h>
-#include <log4cxx/helpers/bytebuffer.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/socketoutputstream.h>
+#include <log4cxxNG/helpers/socket.h>
+#include <log4cxxNG/helpers/bytebuffer.h>
 
 #include <cstdio>
 #include <cstring>

@@ -15,20 +15,20 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logger.h>
-#include <log4cxx/simplelayout.h>
-#include <log4cxx/fileappender.h>
-#include <log4cxx/level.h>
-#include <log4cxx/filter/levelrangefilter.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/simplelayout.h>
+#include <log4cxxNG/fileappender.h>
+#include <log4cxxNG/level.h>
+#include <log4cxxNG/filter/levelrangefilter.h>
 
 #include "../util/compare.h"
 
-#include <log4cxx/helpers/pool.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/helpers/transcoder.h>
+#include <log4cxxNG/helpers/pool.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/transcoder.h>
 #include "../testchar.h"
 #include "../logunit.h"
-#include <log4cxx/spi/loggerrepository.h>
+#include <log4cxxNG/spi/loggerrepository.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

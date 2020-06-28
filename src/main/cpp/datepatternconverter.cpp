@@ -19,18 +19,18 @@
 	#pragma warning ( disable: 4231 4251 4275 4786 )
 #endif
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/pattern/datepatternconverter.h>
-#include <log4cxx/spi/loggingevent.h>
-#include <log4cxx/spi/location/locationinfo.h>
-#include <log4cxx/helpers/absolutetimedateformat.h>
-#include <log4cxx/helpers/datetimedateformat.h>
-#include <log4cxx/helpers/iso8601dateformat.h>
-#include <log4cxx/helpers/strftimedateformat.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/date.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/pattern/datepatternconverter.h>
+#include <log4cxxNG/spi/loggingevent.h>
+#include <log4cxxNG/spi/location/locationinfo.h>
+#include <log4cxxNG/helpers/absolutetimedateformat.h>
+#include <log4cxxNG/helpers/datetimedateformat.h>
+#include <log4cxxNG/helpers/iso8601dateformat.h>
+#include <log4cxxNG/helpers/strftimedateformat.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/exception.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/date.h>
 
 using namespace log4cxx;
 using namespace log4cxx::pattern;

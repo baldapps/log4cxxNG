@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#include <log4cxx/db/odbcappender.h>
+#include <log4cxxNG/db/odbcappender.h>
 #include "../appenderskeletontestcase.h"
 #include "../logunit.h"
 
 #define LOG4CXX_TEST 1
-#include <log4cxx/private/log4cxx_private.h>
+#include <log4cxxNG/private/log4cxx_private.h>
 
 #ifdef LOG4CXX_HAVE_ODBC
 

@@ -18,9 +18,9 @@
 	#pragma warning ( disable: 4231 4251 4275 4786 )
 #endif
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/pattern/loggingeventpatternconverter.h>
-#include <log4cxx/spi/loggingevent.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/pattern/loggingeventpatternconverter.h>
+#include <log4cxxNG/spi/loggingevent.h>
 
 using namespace log4cxx;
 using namespace log4cxx::pattern;

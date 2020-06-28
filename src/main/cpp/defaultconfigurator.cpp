@@ -14,13 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/logstring.h>
-#include <log4cxx/defaultconfigurator.h>
-#include <log4cxx/helpers/pool.h>
-#include <log4cxx/spi/loggerrepository.h>
-#include <log4cxx/file.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/optionconverter.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/defaultconfigurator.h>
+#include <log4cxxNG/helpers/pool.h>
+#include <log4cxxNG/spi/loggerrepository.h>
+#include <log4cxxNG/file.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/optionconverter.h>
 
 
 using namespace log4cxx;

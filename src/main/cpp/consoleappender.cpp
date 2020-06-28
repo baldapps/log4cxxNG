@@ -14,13 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/logstring.h>
-#include <log4cxx/consoleappender.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/systemoutwriter.h>
-#include <log4cxx/helpers/systemerrwriter.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/layout.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/consoleappender.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/systemoutwriter.h>
+#include <log4cxxNG/helpers/systemerrwriter.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/layout.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

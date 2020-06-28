@@ -15,10 +15,10 @@
  * limitations under the License.
  */
 
-#include <log4cxx/appender.h>
-#include <log4cxx/logger.h>
-#include <log4cxx/helpers/onlyonceerrorhandler.h>
-#include <log4cxx/helpers/loglog.h>
+#include <log4cxxNG/appender.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/helpers/onlyonceerrorhandler.h>
+#include <log4cxxNG/helpers/loglog.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

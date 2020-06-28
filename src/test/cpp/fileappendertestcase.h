@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#include <log4cxx/fileappender.h>
+#include <log4cxxNG/fileappender.h>
 #include "writerappendertestcase.h"
 
 

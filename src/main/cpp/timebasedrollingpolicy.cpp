@@ -22,16 +22,16 @@
 	#include <libgen.h>
 #endif
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/rolling/timebasedrollingpolicy.h>
-#include <log4cxx/pattern/filedatepatternconverter.h>
-#include <log4cxx/helpers/date.h>
-#include <log4cxx/rolling/filerenameaction.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/rolling/gzcompressaction.h>
-#include <log4cxx/rolling/zipcompressaction.h>
-#include <log4cxx/rolling/rollingfileappenderskeleton.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/rolling/timebasedrollingpolicy.h>
+#include <log4cxxNG/pattern/filedatepatternconverter.h>
+#include <log4cxxNG/helpers/date.h>
+#include <log4cxxNG/rolling/filerenameaction.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/helpers/exception.h>
+#include <log4cxxNG/rolling/gzcompressaction.h>
+#include <log4cxxNG/rolling/zipcompressaction.h>
+#include <log4cxxNG/rolling/rollingfileappenderskeleton.h>
 #include<iostream>
 
 #ifndef INT64_C

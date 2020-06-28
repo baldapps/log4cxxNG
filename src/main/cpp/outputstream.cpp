@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/outputstream.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/outputstream.h>
 #include <stdexcept>
 
 using namespace log4cxx;

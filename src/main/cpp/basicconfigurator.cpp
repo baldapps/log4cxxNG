@@ -14,12 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/logstring.h>
-#include <log4cxx/basicconfigurator.h>
-#include <log4cxx/patternlayout.h>
-#include <log4cxx/consoleappender.h>
-#include <log4cxx/logmanager.h>
-#include <log4cxx/logger.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/basicconfigurator.h>
+#include <log4cxxNG/patternlayout.h>
+#include <log4cxxNG/consoleappender.h>
+#include <log4cxxNG/logmanager.h>
+#include <log4cxxNG/logger.h>
 
 using namespace log4cxx;
 

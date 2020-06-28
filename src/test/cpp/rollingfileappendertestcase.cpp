@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#include <log4cxx/rolling/rollingfileappender.h>
+#include <log4cxxNG/rolling/rollingfileappender.h>
 #include "fileappendertestcase.h"
 
 using namespace log4cxx;

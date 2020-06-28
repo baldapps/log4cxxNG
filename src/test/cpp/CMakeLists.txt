@@ -1,7 +1,7 @@
 # Components required by all tests
 add_library(testingFramework STATIC abts.cpp appenderskeletontestcase.cpp logunit.cpp vectorappender.cpp writerappendertestcase.cpp )
 target_compile_definitions(testingFramework PRIVATE ${LOG4CXX_COMPILE_DEFINITIONS} ${APR_COMPILE_DEFINITIONS} ${APR_UTIL_COMPILE_DEFINITIONS} )
-target_include_directories(testingFramework PRIVATE ${CMAKE_CURRENT_LIST_DIR} $<TARGET_PROPERTY:log4cxx,INCLUDE_DIRECTORIES>)
+target_include_directories(testingFramework PRIVATE ${CMAKE_CURRENT_LIST_DIR} $<TARGET_PROPERTY:log4cxxNG,INCLUDE_DIRECTORIES>)
 add_subdirectory(util)
 target_sources(testingUtilities PRIVATE xml/xlevel.cpp)
 
@@ -52,8 +52,8 @@ add_subdirectory(xml)
 
 foreach(testName IN LISTS ALL_LOG4CXX_TESTS)
     target_compile_definitions(${testName} PRIVATE ${LOG4CXX_COMPILE_DEFINITIONS} ${APR_COMPILE_DEFINITIONS} ${APR_UTIL_COMPILE_DEFINITIONS} )
-    target_include_directories(${testName} PRIVATE ${CMAKE_CURRENT_LIST_DIR} $<TARGET_PROPERTY:log4cxx,INCLUDE_DIRECTORIES>)
-    target_link_libraries(${testName} PRIVATE testingFramework testingUtilities log4cxx ${APR_LIBRARIES} ${APR_SYSTEM_LIBS})
+    target_include_directories(${testName} PRIVATE ${CMAKE_CURRENT_LIST_DIR} $<TARGET_PROPERTY:log4cxxNG,INCLUDE_DIRECTORIES>)
+    target_link_libraries(${testName} PRIVATE testingFramework testingUtilities log4cxxNG ${APR_LIBRARIES} ${APR_SYSTEM_LIBS})
     add_test(NAME ${testName}
         COMMAND ${testName} -v
         WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/../resources
@@ -63,7 +63,7 @@ foreach(testName IN LISTS ALL_LOG4CXX_TESTS)
         get_filename_component(APR_DLL_DIR "${APR_DLL}" DIRECTORY)
         get_filename_component(APR_UTIL_DLL_DIR "${APR_UTIL_DLL}" DIRECTORY)
         get_filename_component(XMLLIB_DLL_DIR "${XMLLIB_DLL}" DIRECTORY)
-        set(PATH_FOR_TESTS $<SHELL_PATH:$<TARGET_FILE_DIR:log4cxx>> ${APR_DLL_DIR} ${APR_UTIL_DLL_DIR} ${XMLLIB_DLL_DIR})
+        set(PATH_FOR_TESTS $<SHELL_PATH:$<TARGET_FILE_DIR:log4cxxNG>> ${APR_DLL_DIR} ${APR_UTIL_DLL_DIR} ${XMLLIB_DLL_DIR})
         list(REMOVE_DUPLICATES PATH_FOR_TESTS)
         if(${testName} STREQUAL socketservertestcase)
             set_tests_properties(socketservertestcase PROPERTIES

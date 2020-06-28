@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/spi/filter.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/spi/filter.h>
 
 using namespace log4cxx;
 using namespace log4cxx::spi;

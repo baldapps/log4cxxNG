@@ -15,9 +15,9 @@
  * limitations under the License.
  */
 
-#include <log4cxx/helpers/properties.h>
-#include <log4cxx/propertyconfigurator.h>
-#include <log4cxx/logmanager.h>
+#include <log4cxxNG/helpers/properties.h>
+#include <log4cxxNG/propertyconfigurator.h>
+#include <log4cxxNG/logmanager.h>
 #include "vectorappender.h"
 #include "logunit.h"
 

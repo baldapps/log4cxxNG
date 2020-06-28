@@ -16,12 +16,12 @@
  */
 
 
-#include <log4cxx/pattern/filedatepatternconverter.h>
-#include <log4cxx/pattern/integerpatternconverter.h>
-#include <log4cxx/pattern/patternparser.h>
-#include <log4cxx/helpers/pool.h>
-#include <log4cxx/helpers/date.h>
-#include <log4cxx/helpers/integer.h>
+#include <log4cxxNG/pattern/filedatepatternconverter.h>
+#include <log4cxxNG/pattern/integerpatternconverter.h>
+#include <log4cxxNG/pattern/patternparser.h>
+#include <log4cxxNG/helpers/pool.h>
+#include <log4cxxNG/helpers/date.h>
+#include <log4cxxNG/helpers/integer.h>
 #include "../util/compare.h"
 #include "../logunit.h"
 #include "../insertwide.h"

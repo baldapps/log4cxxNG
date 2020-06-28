@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/systemerrwriter.h>
-#include <log4cxx/helpers/transcoder.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/systemerrwriter.h>
+#include <log4cxxNG/helpers/transcoder.h>
 #include <stdio.h>
 #if !defined(LOG4CXX)
 	#define LOG4CXX 1
 #endif
-#include <log4cxx/private/log4cxx_private.h>
+#include <log4cxxNG/private/log4cxxNG_private.h>
 
 using namespace log4cxx;
 using namespace log4cxx::helpers;

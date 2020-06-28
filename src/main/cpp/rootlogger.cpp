@@ -14,11 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/logstring.h>
-#include <log4cxx/spi/rootlogger.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/level.h>
-#include <log4cxx/appender.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/spi/rootlogger.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/level.h>
+#include <log4cxxNG/appender.h>
 
 using namespace log4cxx;
 using namespace log4cxx::spi;

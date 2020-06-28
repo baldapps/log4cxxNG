@@ -15,21 +15,21 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/helpers/pool.h>
 #include <stdlib.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/helpers/bytebuffer.h>
-#include <log4cxx/helpers/charsetdecoder.h>
-#include <log4cxx/helpers/charsetencoder.h>
+#include <log4cxxNG/helpers/exception.h>
+#include <log4cxxNG/helpers/bytebuffer.h>
+#include <log4cxxNG/helpers/charsetdecoder.h>
+#include <log4cxxNG/helpers/charsetencoder.h>
 #include <vector>
 #include <apr.h>
 #include <apr_strings.h>
 #if !defined(LOG4CXX)
 	#define LOG4CXX 1
 #endif
-#include <log4cxx/private/log4cxx_private.h>
+#include <log4cxxNG/private/log4cxxNG_private.h>
 
 #if LOG4CXX_LOGCHAR_IS_UNICHAR || LOG4CXX_CFSTRING_API || LOG4CXX_UNICHAR_API
 	#include <CoreFoundation/CFString.h>

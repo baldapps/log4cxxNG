@@ -16,7 +16,7 @@
 
 #include "binarycompare.h"
 #include <apr_file_io.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/helpers/pool.h>
 #include "../logunit.h"
 #include <apr_pools.h>
 #include <apr_strings.h>

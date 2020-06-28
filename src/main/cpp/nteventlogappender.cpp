@@ -19,13 +19,13 @@
 
 #include <apr_strings.h>
 
-#include <log4cxx/nt/nteventlogappender.h>
-#include <log4cxx/spi/loggingevent.h>
-#include <log4cxx/helpers/loglog.h>
-#include <log4cxx/level.h>
-#include <log4cxx/helpers/stringhelper.h>
-#include <log4cxx/helpers/transcoder.h>
-#include <log4cxx/helpers/pool.h>
+#include <log4cxxNG/nt/nteventlogappender.h>
+#include <log4cxxNG/spi/loggingevent.h>
+#include <log4cxxNG/helpers/loglog.h>
+#include <log4cxxNG/level.h>
+#include <log4cxxNG/helpers/stringhelper.h>
+#include <log4cxxNG/helpers/transcoder.h>
+#include <log4cxxNG/helpers/pool.h>
 
 using namespace log4cxx;
 using namespace log4cxx::spi;
