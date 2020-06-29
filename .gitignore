@@ -5,7 +5,6 @@
 *.o
 *.swp
 
-config**
 liblog4cxxNG.pc
 
 src/main/cpp/.libs/
