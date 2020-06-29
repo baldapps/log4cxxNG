@@ -18,8 +18,8 @@
 #ifndef _LOG4CXX_CONFIG_PROPERTYSETTER_H
 #define _LOG4CXX_CONFIG_PROPERTYSETTER_H
 
-#include <log4cxx/logstring.h>
-#include <log4cxx/helpers/objectptr.h>
+#include <log4cxxNG/logstring.h>
+#include <log4cxxNG/helpers/objectptr.h>
 
 namespace log4cxx
 {

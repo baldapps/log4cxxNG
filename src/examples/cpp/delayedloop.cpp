@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-#include <log4cxx/logger.h>
-#include <log4cxx/xml/domconfigurator.h>
-#include <log4cxx/propertyconfigurator.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/xml/domconfigurator.h>
+#include <log4cxxNG/propertyconfigurator.h>
 #include <apr_general.h>
 #include <apr_time.h>
 #include <iostream>
-#include <log4cxx/stream.h>
+#include <log4cxxNG/stream.h>
 #include <exception>
 #include <stdlib.h>
 

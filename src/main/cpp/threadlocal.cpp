@@ -15,9 +15,9 @@
  * limitations under the License.
  */
 
-#include "log4cxx/helpers/threadlocal.h"
+#include "log4cxxNG/helpers/threadlocal.h"
 #include "apr_thread_proc.h"
-#include "log4cxx/helpers/exception.h"
+#include "log4cxxNG/helpers/exception.h"
 
 using namespace log4cxx::helpers;
 using namespace log4cxx;
