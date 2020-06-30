@@ -18,10 +18,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <log4cxx/logger.h>
-#include <log4cxx/consoleappender.h>
-#include <log4cxx/simplelayout.h>
-#include <log4cxx/logmanager.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/consoleappender.h>
+#include <log4cxxNG/simplelayout.h>
+#include <log4cxxNG/logmanager.h>
 #include <iostream>
 #include <locale.h>
 #include <cstring>

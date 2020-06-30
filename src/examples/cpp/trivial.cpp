@@ -14,12 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <log4cxx/logstring.h>
+#include <log4cxxNG/logstring.h>
 #include <stdlib.h>
-#include <log4cxx/logger.h>
-#include <log4cxx/basicconfigurator.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/ndc.h>
+#include <log4cxxNG/logger.h>
+#include <log4cxxNG/basicconfigurator.h>
+#include <log4cxxNG/helpers/exception.h>
+#include <log4cxxNG/ndc.h>
 #include <locale.h>
 
 using namespace log4cxx;

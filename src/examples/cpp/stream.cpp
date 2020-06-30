@@ -16,10 +16,10 @@
  */
 
 #include <stdlib.h>
-#include <log4cxx/stream.h>
-#include <log4cxx/basicconfigurator.h>
-#include <log4cxx/helpers/exception.h>
-#include <log4cxx/ndc.h>
+#include <log4cxxNG/stream.h>
+#include <log4cxxNG/basicconfigurator.h>
+#include <log4cxxNG/helpers/exception.h>
+#include <log4cxxNG/ndc.h>
 #include <locale.h>
 
 using namespace log4cxx;
