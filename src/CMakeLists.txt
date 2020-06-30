@@ -8,6 +8,12 @@ target_link_libraries(log4cxxNG PRIVATE odbc32.lib)
 option(LOG4CXX_INSTALL_PDB "Install .pdb files (if generated)"  ON)
 endif()
 
+if(UNIX)
+   if(${HAS_ODBC})
+      target_link_libraries(log4cxxNG PRIVATE -lodbc)
+   endif()
+endif()
+
 if(BUILD_TESTING)
    add_subdirectory(test)
    add_subdirectory(examples/cpp)
