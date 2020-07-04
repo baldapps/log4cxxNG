@@ -34,12 +34,12 @@
 #include <log4cxxNG/helpers/optionconverter.h>
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::spi;
 
 
-IMPLEMENT_LOG4CXX_OBJECT(AsyncAppender)
+IMPLEMENT_LOG4CXXNG_OBJECT(AsyncAppender)
 
 
 AsyncAppender::AsyncAppender()
@@ -86,17 +86,17 @@ void AsyncAppender::addAppender(const AppenderPtr& newAppender)
 void AsyncAppender::setOption(const LogString& option,
 	const LogString& value)
 {
-	if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("LOCATIONINFO"), LOG4CXX_STR("locationinfo")))
+	if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("LOCATIONINFO"), LOG4CXXNG_STR("locationinfo")))
 	{
 		setLocationInfo(OptionConverter::toBoolean(value, false));
 	}
 
-	if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("BUFFERSIZE"), LOG4CXX_STR("buffersize")))
+	if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("BUFFERSIZE"), LOG4CXXNG_STR("buffersize")))
 	{
 		setBufferSize(OptionConverter::toInt(value, DEFAULT_BUFFER_SIZE));
 	}
 
-	if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("BLOCKING"), LOG4CXX_STR("blocking")))
+	if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("BLOCKING"), LOG4CXXNG_STR("blocking")))
 	{
 		setBlocking(OptionConverter::toBoolean(value, true));
 	}
@@ -233,7 +233,7 @@ void AsyncAppender::close()
 	catch (InterruptedException& e)
 	{
 		Thread::currentThreadInterrupt();
-		LogLog::error(LOG4CXX_STR("Got an InterruptedException while waiting for the dispatcher to finish,"), e);
+		LogLog::error(LOG4CXXNG_STR("Got an InterruptedException while waiting for the dispatcher to finish,"), e);
 	}
 
 #endif
@@ -307,7 +307,7 @@ void AsyncAppender::setBufferSize(int size)
 {
 	if (size < 0)
 	{
-		throw IllegalArgumentException(LOG4CXX_STR("size argument must be non-negative"));
+		throw IllegalArgumentException(LOG4CXXNG_STR("size argument must be non-negative"));
 	}
 
 	synchronized sync(bufferMutex);
@@ -361,9 +361,9 @@ void AsyncAppender::DiscardSummary::add(const LoggingEventPtr& event)
 
 LoggingEventPtr AsyncAppender::DiscardSummary::createEvent(Pool& p)
 {
-	LogString msg(LOG4CXX_STR("Discarded "));
+	LogString msg(LOG4CXXNG_STR("Discarded "));
 	StringHelper::toString(count, p, msg);
-	msg.append(LOG4CXX_STR(" messages due to a full event buffer including: "));
+	msg.append(LOG4CXXNG_STR(" messages due to a full event buffer including: "));
 	msg.append(maxEvent->getMessage());
 	return new LoggingEvent(
 			maxEvent->getLoggerName(),
@@ -372,23 +372,23 @@ LoggingEventPtr AsyncAppender::DiscardSummary::createEvent(Pool& p)
 			LocationInfo::getLocationUnavailable());
 }
 
-::log4cxx::spi::LoggingEventPtr
-AsyncAppender::DiscardSummary::createEvent(::log4cxx::helpers::Pool& p,
+::log4cxxng::spi::LoggingEventPtr
+AsyncAppender::DiscardSummary::createEvent(::log4cxxng::helpers::Pool& p,
 	size_t discardedCount)
 {
-	LogString msg(LOG4CXX_STR("Discarded "));
+	LogString msg(LOG4CXXNG_STR("Discarded "));
 	StringHelper::toString(discardedCount, p, msg);
-	msg.append(LOG4CXX_STR(" messages due to a full event buffer"));
+	msg.append(LOG4CXXNG_STR(" messages due to a full event buffer"));
 
 	return new LoggingEvent(
-			LOG4CXX_STR(""),
-			log4cxx::Level::getError(),
+			LOG4CXXNG_STR(""),
+			log4cxxng::Level::getError(),
 			msg,
 			LocationInfo::getLocationUnavailable());
 }
 
 #if APR_HAS_THREADS
-void* LOG4CXX_THREAD_FUNC AsyncAppender::dispatch(apr_thread_t* /*thread*/, void* data)
+void* LOG4CXXNG_THREAD_FUNC AsyncAppender::dispatch(apr_thread_t* /*thread*/, void* data)
 {
 	AsyncAppender* pThis = (AsyncAppender*) data;
 	bool isActive = true;

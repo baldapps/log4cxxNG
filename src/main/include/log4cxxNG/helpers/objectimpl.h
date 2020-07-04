@@ -15,17 +15,17 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_OBJECT_IMPL_H
-#define _LOG4CXX_HELPERS_OBJECT_IMPL_H
+#ifndef _LOG4CXXNG_HELPERS_OBJECT_IMPL_H
+#define _LOG4CXXNG_HELPERS_OBJECT_IMPL_H
 
 #include <log4cxxNG/helpers/object.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
 /** Implementation class for Object.*/
-class LOG4CXX_EXPORT ObjectImpl : public virtual Object
+class LOG4CXXNG_EXPORT ObjectImpl : public virtual Object
 {
 	public:
 		ObjectImpl();
@@ -46,4 +46,4 @@ class LOG4CXX_EXPORT ObjectImpl : public virtual Object
 }
 }
 
-#endif //_LOG4CXX_HELPERS_OBJECT_IMPL_H
+#endif //_LOG4CXXNG_HELPERS_OBJECT_IMPL_H

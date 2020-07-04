@@ -27,9 +27,9 @@
 #include "../insertwide.h"
 #include <apr_time.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::pattern;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::pattern;
 
 
 /**
@@ -69,8 +69,8 @@ public:
 		std::vector<PatternConverterPtr> converters;
 		std::vector<FormattingInfoPtr> fields;
 		PatternMap rules;
-		rules.insert(PatternMap::value_type(LOG4CXX_STR("d"), (PatternConstructor) FileDatePatternConverter::newInstance));
-		rules.insert(PatternMap::value_type(LOG4CXX_STR("i"), (PatternConstructor) IntegerPatternConverter::newInstance));
+		rules.insert(PatternMap::value_type(LOG4CXXNG_STR("d"), (PatternConstructor) FileDatePatternConverter::newInstance));
+		rules.insert(PatternMap::value_type(LOG4CXXNG_STR("i"), (PatternConstructor) IntegerPatternConverter::newInstance));
 		PatternParser::parse(pattern, converters, fields, rules);
 		LogString result;
 		Pool pool;
@@ -119,87 +119,87 @@ public:
 
 	void testFormatInteger1()
 	{
-		assertIntegerPattern(LOG4CXX_STR("t"),  3, LOG4CXX_STR("t"));
+		assertIntegerPattern(LOG4CXXNG_STR("t"),  3, LOG4CXXNG_STR("t"));
 	}
 
 	void testFormatInteger2()
 	{
-		assertIntegerPattern(LOG4CXX_STR("foo"),  3, LOG4CXX_STR("foo"));
+		assertIntegerPattern(LOG4CXXNG_STR("foo"),  3, LOG4CXXNG_STR("foo"));
 	}
 
 	void testFormatInteger3()
 	{
-		assertIntegerPattern(LOG4CXX_STR("foo%"),  3, LOG4CXX_STR("foo%"));
+		assertIntegerPattern(LOG4CXXNG_STR("foo%"),  3, LOG4CXXNG_STR("foo%"));
 	}
 
 	void testFormatInteger4()
 	{
-		assertIntegerPattern(LOG4CXX_STR("%ifoo"),  3, LOG4CXX_STR("3foo"));
+		assertIntegerPattern(LOG4CXXNG_STR("%ifoo"),  3, LOG4CXXNG_STR("3foo"));
 	}
 
 	void testFormatInteger5()
 	{
-		assertIntegerPattern(LOG4CXX_STR("foo%ixixo"),  3, LOG4CXX_STR("foo3xixo"));
+		assertIntegerPattern(LOG4CXXNG_STR("foo%ixixo"),  3, LOG4CXXNG_STR("foo3xixo"));
 	}
 
 	void testFormatInteger6()
 	{
-		assertIntegerPattern(LOG4CXX_STR("foo%i.log"),  3, LOG4CXX_STR("foo3.log"));
+		assertIntegerPattern(LOG4CXXNG_STR("foo%i.log"),  3, LOG4CXXNG_STR("foo3.log"));
 	}
 
 	void testFormatInteger7()
 	{
-		assertIntegerPattern(LOG4CXX_STR("foo.%i.log"),  3, LOG4CXX_STR("foo.3.log"));
+		assertIntegerPattern(LOG4CXXNG_STR("foo.%i.log"),  3, LOG4CXXNG_STR("foo.3.log"));
 	}
 
 	void testFormatInteger8()
 	{
-		assertIntegerPattern(LOG4CXX_STR("%ifoo%"),  3, LOG4CXX_STR("3foo%"));
+		assertIntegerPattern(LOG4CXXNG_STR("%ifoo%"),  3, LOG4CXXNG_STR("3foo%"));
 	}
 
 	void testFormatInteger9()
 	{
-		assertIntegerPattern(LOG4CXX_STR("%ifoo%%"),  3, LOG4CXX_STR("3foo%"));
+		assertIntegerPattern(LOG4CXXNG_STR("%ifoo%%"),  3, LOG4CXXNG_STR("3foo%"));
 	}
 
 	void testFormatInteger10()
 	{
-		assertIntegerPattern(LOG4CXX_STR("%%foo"),  3, LOG4CXX_STR("%foo"));
+		assertIntegerPattern(LOG4CXXNG_STR("%%foo"),  3, LOG4CXXNG_STR("%foo"));
 	}
 
 	void testFormatInteger11()
 	{
-		assertIntegerPattern(LOG4CXX_STR("foo%ibar%i"),  3, LOG4CXX_STR("foo3bar3"));
+		assertIntegerPattern(LOG4CXXNG_STR("foo%ibar%i"),  3, LOG4CXXNG_STR("foo3bar3"));
 	}
 
 	void testFormatDate1()
 	{
-		assertDatePattern(LOG4CXX_STR("foo%d{yyyy.MM.dd}"),  2003, 4, 20, 17, 55,
-			LOG4CXX_STR("foo2003.05.20"));
+		assertDatePattern(LOG4CXXNG_STR("foo%d{yyyy.MM.dd}"),  2003, 4, 20, 17, 55,
+			LOG4CXXNG_STR("foo2003.05.20"));
 	}
 
 	void testFormatDate2()
 	{
-		assertDatePattern(LOG4CXX_STR("foo%d{yyyy.MM.dd HH:mm}"),  2003, 4, 20, 17, 55,
-			LOG4CXX_STR("foo2003.05.20 17:55"));
+		assertDatePattern(LOG4CXXNG_STR("foo%d{yyyy.MM.dd HH:mm}"),  2003, 4, 20, 17, 55,
+			LOG4CXXNG_STR("foo2003.05.20 17:55"));
 	}
 
 	void testFormatDate3()
 	{
-		assertDatePattern(LOG4CXX_STR("%d{yyyy.MM.dd HH:mm} foo"),  2003, 4, 20, 17, 55,
-			LOG4CXX_STR("2003.05.20 17:55 foo"));
+		assertDatePattern(LOG4CXXNG_STR("%d{yyyy.MM.dd HH:mm} foo"),  2003, 4, 20, 17, 55,
+			LOG4CXXNG_STR("2003.05.20 17:55 foo"));
 	}
 
 	void testFormatDate4()
 	{
-		assertDatePattern(LOG4CXX_STR("foo%dyyyy.MM.dd}"),  2003, 4, 20, 17, 55,
-			LOG4CXX_STR("foo2003-05-20yyyy.MM.dd}"));
+		assertDatePattern(LOG4CXXNG_STR("foo%dyyyy.MM.dd}"),  2003, 4, 20, 17, 55,
+			LOG4CXXNG_STR("foo2003-05-20yyyy.MM.dd}"));
 	}
 
 	void testFormatDate5()
 	{
-		assertDatePattern(LOG4CXX_STR("foo%d{yyyy.MM.dd"),  2003, 4, 20, 17, 55,
-			LOG4CXX_STR("foo2003-05-20{yyyy.MM.dd"));
+		assertDatePattern(LOG4CXXNG_STR("foo%d{yyyy.MM.dd"),  2003, 4, 20, 17, 55,
+			LOG4CXXNG_STR("foo2003-05-20{yyyy.MM.dd"));
 	}
 
 };

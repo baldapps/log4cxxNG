@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_XML_LAYOUT_H
-#define _LOG4CXX_XML_LAYOUT_H
+#ifndef _LOG4CXXNG_XML_LAYOUT_H
+#define _LOG4CXXNG_XML_LAYOUT_H
 
 #include <log4cxxNG/layout.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace xml
 {
@@ -50,7 +50,7 @@ the XMLLayout ouput goes, then a well-formed XML file would be:
 <p>This approach enforces the independence of the XMLLayout and the
 appender where it is embedded.
 */
-class LOG4CXX_EXPORT XMLLayout : public Layout
+class LOG4CXXNG_EXPORT XMLLayout : public Layout
 {
 	private:
 
@@ -59,11 +59,11 @@ class LOG4CXX_EXPORT XMLLayout : public Layout
 		bool properties; // = false
 
 	public:
-		DECLARE_LOG4CXX_OBJECT(XMLLayout)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(XMLLayout)
-		LOG4CXX_CAST_ENTRY_CHAIN(Layout)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(XMLLayout)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(XMLLayout)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(Layout)
+		END_LOG4CXXNG_CAST_MAP()
 
 		XMLLayout();
 
@@ -113,7 +113,7 @@ class LOG4CXX_EXPORT XMLLayout : public Layout
 
 
 		/** No options to activate. */
-		void activateOptions(log4cxx::helpers::Pool& /* p */) { }
+		void activateOptions(log4cxxng::helpers::Pool& /* p */) { }
 
 		/**
 		Set options
@@ -127,7 +127,7 @@ class LOG4CXX_EXPORT XMLLayout : public Layout
 		**/
 		virtual void format(LogString& output,
 			const spi::LoggingEventPtr& event,
-			log4cxx::helpers::Pool& p) const;
+			log4cxxng::helpers::Pool& p) const;
 
 		/**
 		The XMLLayout prints and does not ignore exceptions. Hence the
@@ -139,8 +139,8 @@ class LOG4CXX_EXPORT XMLLayout : public Layout
 		}
 
 };  // class XMLLayout
-LOG4CXX_PTR_DEF(XMLLayout);
+LOG4CXXNG_PTR_DEF(XMLLayout);
 }  // namespace xml
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif // _LOG4CXX_XML_LAYOUT_H
+#endif // _LOG4CXXNG_XML_LAYOUT_H

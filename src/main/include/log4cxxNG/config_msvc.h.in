@@ -20,19 +20,19 @@
 #define VERSION "@VERSION@"
 
 /* Define to 1 if you have the `ftime' function. */
-#define LOG4CXX_HAVE_FTIME 1
+#define LOG4CXXNG_HAVE_FTIME 1
 
 /* ODBC support through Microsoft ODBC. */
-#define LOG4CXX_HAVE_MS_ODBC 1
+#define LOG4CXXNG_HAVE_MS_ODBC 1
 
 /* thread support through Microsoft threads. */
-#define LOG4CXX_HAVE_MS_THREAD 1
+#define LOG4CXXNG_HAVE_MS_THREAD 1
 
 /* ODBC support */
-#define LOG4CXX_HAVE_ODBC 1
+#define LOG4CXXNG_HAVE_ODBC 1
 
 /* thread support */
-#define LOG4CXX_HAVE_THREAD 1
+#define LOG4CXXNG_HAVE_THREAD 1
 
 typedef __int64 int64_t;
 
@@ -40,27 +40,27 @@ typedef __int64 int64_t;
 #pragma warning(disable : 4250 4251 4786 4290)
 #endif
 
-#ifdef LOG4CXX_STATIC
-#define LOG4CXX_EXPORT
+#ifdef LOG4CXXNG_STATIC
+#define LOG4CXXNG_EXPORT
 // cf. file msvc/static/static.cpp
 #pragma comment(linker, "/include:?ForceSymbolReferences@@YAXXZ")
 #else // DLL
-#ifdef LOG4CXX
-	#define LOG4CXX_EXPORT __declspec(dllexport)
+#ifdef LOG4CXXNG
+	#define LOG4CXXNG_EXPORT __declspec(dllexport)
 #else
-	#define LOG4CXX_EXPORT __declspec(dllimport)
+	#define LOG4CXXNG_EXPORT __declspec(dllimport)
 #endif
 #endif
 
-#if !defined(LOG4CXX_HAVE_OLD_WIN32_INTERLOCKS)
+#if !defined(LOG4CXXNG_HAVE_OLD_WIN32_INTERLOCKS)
 #if defined(_MSC_VER)
 #if _MSC_VER <= 1200
-#define LOG4CXX_HAVE_OLD_WIN32_INTERLOCKS 1
+#define LOG4CXXNG_HAVE_OLD_WIN32_INTERLOCKS 1
 #else
-#define LOG4CXX_HAVE_OLD_WIN32_INTERLOCKS 0
+#define LOG4CXXNG_HAVE_OLD_WIN32_INTERLOCKS 0
 #endif
 #else
-#define LOG4CXX_HAVE_OLD_WIN32_INTERLOCKS 0
+#define LOG4CXXNG_HAVE_OLD_WIN32_INTERLOCKS 0
 #endif
 #endif
 

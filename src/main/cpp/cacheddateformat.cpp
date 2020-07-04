@@ -24,9 +24,9 @@
 #include <limits>
 #include <log4cxxNG/helpers/exception.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::pattern;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::pattern;
 
 
 
@@ -85,19 +85,19 @@ CachedDateFormat::CachedDateFormat(const DateFormatPtr& dateFormat,
 	int expiration1) :
 	formatter(dateFormat),
 	millisecondStart(0),
-	slotBegin(std::numeric_limits<log4cxx_time_t>::min()),
+	slotBegin(std::numeric_limits<log4cxxng_time_t>::min()),
 	cache(50, 0x20),
 	expiration(expiration1),
-	previousTime(std::numeric_limits<log4cxx_time_t>::min())
+	previousTime(std::numeric_limits<log4cxxng_time_t>::min())
 {
 	if (dateFormat == NULL)
 	{
-		throw IllegalArgumentException(LOG4CXX_STR("dateFormat cannot be null"));
+		throw IllegalArgumentException(LOG4CXXNG_STR("dateFormat cannot be null"));
 	}
 
 	if (expiration1 < 0)
 	{
-		throw IllegalArgumentException(LOG4CXX_STR("expiration must be non-negative"));
+		throw IllegalArgumentException(LOG4CXXNG_STR("expiration must be non-negative"));
 	}
 }
 
@@ -112,7 +112,7 @@ CachedDateFormat::CachedDateFormat(const DateFormatPtr& dateFormat,
  *    field (likely RelativeTimeDateFormat)
  */
 int CachedDateFormat::findMillisecondStart(
-	log4cxx_time_t time, const LogString& formatted,
+	log4cxxng_time_t time, const LogString& formatted,
 	const DateFormatPtr& formatter,
 	Pool& pool)
 {
@@ -202,7 +202,7 @@ int CachedDateFormat::findMillisecondStart(
  *  @param now Number of milliseconds after midnight 1 Jan 1970 GMT.
  *  @param sbuf the string buffer to write to
  */
-void CachedDateFormat::format(LogString& buf, log4cxx_time_t now, Pool& p) const
+void CachedDateFormat::format(LogString& buf, log4cxxng_time_t now, Pool& p) const
 {
 
 	//
@@ -296,8 +296,8 @@ void CachedDateFormat::millisecondFormat(int millis,
 void CachedDateFormat::setTimeZone(const TimeZonePtr& timeZone)
 {
 	formatter->setTimeZone(timeZone);
-	previousTime = std::numeric_limits<log4cxx_time_t>::min();
-	slotBegin = std::numeric_limits<log4cxx_time_t>::min();
+	previousTime = std::numeric_limits<log4cxxng_time_t>::min();
+	slotBegin = std::numeric_limits<log4cxxng_time_t>::min();
 }
 
 

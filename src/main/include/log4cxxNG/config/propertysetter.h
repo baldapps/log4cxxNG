@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_CONFIG_PROPERTYSETTER_H
-#define _LOG4CXX_CONFIG_PROPERTYSETTER_H
+#ifndef _LOG4CXXNG_CONFIG_PROPERTYSETTER_H
+#define _LOG4CXXNG_CONFIG_PROPERTYSETTER_H
 
 #include <log4cxxNG/logstring.h>
 #include <log4cxxNG/helpers/objectptr.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -50,7 +50,7 @@ will cause the invocations anObject->setOption("name", "Joe"),
 anObject->setOption("age", "32") and anObject->setOption("isMale", "true")
 if the spi::OptionHandler interface is supported by anObject.
 */
-class LOG4CXX_EXPORT PropertySetter
+class LOG4CXXNG_EXPORT PropertySetter
 {
 	protected:
 		helpers::ObjectPtr obj;
@@ -77,7 +77,7 @@ class LOG4CXX_EXPORT PropertySetter
 		static void setProperties(const helpers::ObjectPtr& obj,
 			helpers::Properties& properties,
 			const LogString& prefix,
-			log4cxx::helpers::Pool& p);
+			log4cxxng::helpers::Pool& p);
 
 		/**
 		Set the properites for the object that match the
@@ -85,7 +85,7 @@ class LOG4CXX_EXPORT PropertySetter
 		*/
 		void setProperties(helpers::Properties& properties,
 			const LogString& prefix,
-			log4cxx::helpers::Pool& p);
+			log4cxxng::helpers::Pool& p);
 
 		/**
 		Set a property on this PropertySetter's Object. If the underlying
@@ -98,12 +98,12 @@ class LOG4CXX_EXPORT PropertySetter
 		*/
 		void setProperty(const LogString& option,
 			const LogString& value,
-			log4cxx::helpers::Pool& p);
+			log4cxxng::helpers::Pool& p);
 
-		void activate(log4cxx::helpers::Pool& p);
+		void activate(log4cxxng::helpers::Pool& p);
 }; // class PropertySetter
 }  // namespace config;
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif //_LOG4CXX_CONFIG_PROPERTYSETTER_H
+#endif //_LOG4CXXNG_CONFIG_PROPERTYSETTER_H
  

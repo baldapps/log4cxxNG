@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#if !defined(_LOG4CXX_ROLLING_MANUAL_TRIGGERING_POLICY_H)
-#define _LOG4CXX_ROLLING_MANUAL_TRIGGERING_POLICY_H
+#if !defined(_LOG4CXXNG_ROLLING_MANUAL_TRIGGERING_POLICY_H)
+#define _LOG4CXXNG_ROLLING_MANUAL_TRIGGERING_POLICY_H
 
 #include <log4cxxNG/rolling/triggeringpolicy.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 class File;
@@ -40,13 +40,13 @@ namespace rolling
  *
  *
  */
-class LOG4CXX_EXPORT ManualTriggeringPolicy : public TriggeringPolicy
+class LOG4CXXNG_EXPORT ManualTriggeringPolicy : public TriggeringPolicy
 {
-		DECLARE_LOG4CXX_OBJECT(ManualTriggeringPolicy)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(ManualTriggeringPolicy)
-		LOG4CXX_CAST_ENTRY_CHAIN(TriggeringPolicy)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(ManualTriggeringPolicy)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(ManualTriggeringPolicy)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(TriggeringPolicy)
+		END_LOG4CXXNG_CAST_MAP()
 
 	public:
 		ManualTriggeringPolicy();
@@ -63,11 +63,11 @@ class LOG4CXX_EXPORT ManualTriggeringPolicy : public TriggeringPolicy
 		 */
 		virtual bool isTriggeringEvent(
 			Appender* appender,
-			const log4cxx::spi::LoggingEventPtr& event,
+			const log4cxxng::spi::LoggingEventPtr& event,
 			const LogString& filename,
 			size_t fileLength);
 
-		void activateOptions(log4cxx::helpers::Pool&);
+		void activateOptions(log4cxxng::helpers::Pool&);
 		void setOption(const LogString& option, const LogString& value);
 };
 }

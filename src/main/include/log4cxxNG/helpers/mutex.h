@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_MUTEX_H
-#define _LOG4CXX_HELPERS_MUTEX_H
+#ifndef _LOG4CXXNG_HELPERS_MUTEX_H
+#define _LOG4CXXNG_HELPERS_MUTEX_H
 
 #include <log4cxxNG/log4cxxNG.h>
 
@@ -32,16 +32,16 @@ extern "C" {
 }
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
 class Pool;
 
-class LOG4CXX_EXPORT Mutex
+class LOG4CXXNG_EXPORT Mutex
 {
 	public:
-		Mutex(log4cxx::helpers::Pool& p);
+		Mutex(log4cxxng::helpers::Pool& p);
 		Mutex(apr_pool_t* p);
 		~Mutex();
 		apr_thread_mutex_t* getAPRMutex() const;
@@ -52,21 +52,21 @@ class LOG4CXX_EXPORT Mutex
 		apr_thread_mutex_t* mutex;
 };
 } // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
 
 #if defined(RW_MUTEX)
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
 class Pool;
 
-class LOG4CXX_EXPORT RWMutex
+class LOG4CXXNG_EXPORT RWMutex
 {
 	public:
-		RWMutex(log4cxx::helpers::Pool& p);
+		RWMutex(log4cxxng::helpers::Pool& p);
 		RWMutex(apr_pool_t* p);
 		~RWMutex();
 
@@ -84,13 +84,13 @@ class LOG4CXX_EXPORT RWMutex
 		apr_thread_rwlock_t* mutex;
 };
 } // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#define SHARED_MUTEX log4cxx::helpers::RWMutex
+#define SHARED_MUTEX log4cxxng::helpers::RWMutex
 
 #else // no RW_MUTEX
 
-#define SHARED_MUTEX log4cxx::helpers::Mutex
+#define SHARED_MUTEX log4cxxng::helpers::Mutex
 
 #endif // RW_MUTEX
 
@@ -98,16 +98,16 @@ class LOG4CXX_EXPORT RWMutex
 
 #if defined(NON_BLOCKING)
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
 struct SemaphoreImpl;
 
-class LOG4CXX_EXPORT Semaphore
+class LOG4CXXNG_EXPORT Semaphore
 {
 	public:
-		Semaphore(log4cxx::helpers::Pool& p);
+		Semaphore(log4cxxng::helpers::Pool& p);
 		~Semaphore();
 
 		void await() const;
@@ -120,8 +120,8 @@ class LOG4CXX_EXPORT Semaphore
 		SemaphoreImpl* impl;
 };
 } // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #endif // NON_BLOCKING
 
-#endif //_LOG4CXX_HELPERS_MUTEX_H
+#endif //_LOG4CXXNG_HELPERS_MUTEX_H

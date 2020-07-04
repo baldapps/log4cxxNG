@@ -18,11 +18,11 @@
 #include <log4cxxNG/rolling/rollingfileappender.h>
 #include "fileappendertestcase.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 /**
-   Unit tests of log4cxx::RollingFileAppender
+   Unit tests of log4cxxng::RollingFileAppender
  */
 class RollingFileAppenderTestCase : public FileAppenderAbstractTestCase
 {
@@ -40,7 +40,7 @@ class RollingFileAppenderTestCase : public FileAppenderAbstractTestCase
 
 		FileAppender* createFileAppender() const
 		{
-			return new log4cxx::rolling::RollingFileAppender();
+			return new log4cxxng::rolling::RollingFileAppender();
 		}
 };
 

@@ -23,18 +23,18 @@
 #include <log4cxxNG/helpers/transcoder.h>
 #include <log4cxxNG/helpers/stringhelper.h>
 #include <assert.h>
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 #include <log4cxxNG/private/log4cxxNG_private.h>
 #include <log4cxxNG/helpers/pool.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 using namespace std;
 
-#if LOG4CXX_HAS_STD_LOCALE
+#if LOG4CXXNG_HAS_STD_LOCALE
 	#include <locale>
 #endif
 
@@ -53,7 +53,7 @@ using namespace std;
 	#define PUT_FACET(facet, os, time, spec) facet.put(os, os, os.fill(), time, spec)
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -92,7 +92,7 @@ class PatternToken
 		 */
 		virtual void format(LogString& s,
 			const apr_time_exp_t& date,
-			log4cxx::helpers::Pool& p) const = 0;
+			log4cxxng::helpers::Pool& p) const = 0;
 
 	protected:
 
@@ -126,11 +126,11 @@ class PatternToken
 			memset(&time, 0, sizeof(time));
 			apr_time_exp_t aprtime;
 			memset(&aprtime, 0, sizeof(aprtime));
-#if LOG4CXX_HAS_STD_LOCALE
+#if LOG4CXXNG_HAS_STD_LOCALE
 
 			if (locale != NULL)
 			{
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 
 				if (HAS_FACET(*locale, std::time_put<wchar_t>))
 				{
@@ -600,7 +600,7 @@ class RFC822TimeZoneToken : public PatternToken
 			{
 				apr_int32_t off = tm.tm_gmtoff;
 				size_t basePos = s.length();
-				s.append( LOG4CXX_STR( "+0000" ) );
+				s.append( LOG4CXXNG_STR( "+0000" ) );
 
 				if ( off < 0 )
 				{
@@ -643,7 +643,7 @@ class RFC822TimeZoneToken : public PatternToken
 }
 
 
-using namespace log4cxx::helpers::SimpleDateFormatImpl;
+using namespace log4cxxng::helpers::SimpleDateFormatImpl;
 
 void SimpleDateFormat::addToken(const logchar spec, const int repeat, const std::locale* locale,
 	std::vector < PatternToken* >& pattern )
@@ -798,7 +798,7 @@ void SimpleDateFormat::parsePattern( const LogString& fmt, const std::locale* lo
 
 SimpleDateFormat::SimpleDateFormat( const LogString& fmt ) : timeZone( TimeZone::getDefault() )
 {
-#if LOG4CXX_HAS_STD_LOCALE
+#if LOG4CXXNG_HAS_STD_LOCALE
 	std::locale defaultLocale;
 	parsePattern( fmt, & defaultLocale, pattern );
 #else
@@ -831,7 +831,7 @@ SimpleDateFormat::~SimpleDateFormat()
 }
 
 
-void SimpleDateFormat::format( LogString& s, log4cxx_time_t time, Pool& p ) const
+void SimpleDateFormat::format( LogString& s, log4cxxng_time_t time, Pool& p ) const
 {
 	apr_time_exp_t exploded;
 	apr_status_t stat = timeZone->explode( & exploded, time );

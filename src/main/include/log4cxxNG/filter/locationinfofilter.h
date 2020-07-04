@@ -14,12 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef _LOG4CXX_FILTER_LOCATIONINFOFILTER_H
-#define _LOG4CXX_FILTER_LOCATIONINFOFILTER_H
+#ifndef _LOG4CXXNG_FILTER_LOCATIONINFOFILTER_H
+#define _LOG4CXXNG_FILTER_LOCATIONINFOFILTER_H
 
 #include <log4cxxNG/spi/filter.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace rule
 {
@@ -43,24 +43,24 @@ namespace filter
  *
  *
  */
-class LOG4CXX_EXPORT LocationInfoFilter: public log4cxx::spi::Filter
+class LOG4CXXNG_EXPORT LocationInfoFilter: public log4cxxng::spi::Filter
 {
 		bool convertInFixToPostFix;
 		LogString expression;
-		log4cxx::rule::RulePtr expressionRule;
+		log4cxxng::rule::RulePtr expressionRule;
 		//HACK: Category is the last of the internal layers - pass this in as the class name
 		//in order for parsing to work correctly
 		LogString className;
 
 	public:
-		DECLARE_LOG4CXX_OBJECT(LocationInfoFilter)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(log4cxx::spi::Filter)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(LocationInfoFilter)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(log4cxxng::spi::Filter)
+		END_LOG4CXXNG_CAST_MAP()
 
 		LocationInfoFilter();
 
-		void activateOptions(log4cxx::helpers::Pool&);
+		void activateOptions(log4cxxng::helpers::Pool&);
 
 		void setExpression(const LogString& expression);
 
@@ -77,7 +77,7 @@ class LOG4CXX_EXPORT LocationInfoFilter: public log4cxx::spi::Filter
 		 * If the expression evaluates to true, generate a LocationInfo instance
 		 * by creating an exception and set this LocationInfo on the event.
 		 *
-		 * Returns {@link log4cxx::spi::Filter#NEUTRAL}
+		 * Returns {@link log4cxxng::spi::Filter#NEUTRAL}
 		 */
 		FilterDecision decide(const spi::LoggingEventPtr& event) const;
 

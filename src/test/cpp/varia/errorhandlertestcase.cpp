@@ -26,9 +26,9 @@
 #include "../util/linenumberfilter.h"
 #include <iostream>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::xml;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::xml;
 
 LOGUNIT_CLASS(ErrorHandlerTestCase)
 {
@@ -56,8 +56,8 @@ public:
 	void test1()
 	{
 		DOMConfigurator::configure("input/xml/fallback1.xml");
-		FileAppenderPtr primary(root->getAppender(LOG4CXX_STR("PRIMARY")));
-		log4cxx::varia::FallbackErrorHandlerPtr eh(primary->getErrorHandler());
+		FileAppenderPtr primary(root->getAppender(LOG4CXXNG_STR("PRIMARY")));
+		log4cxxng::varia::FallbackErrorHandlerPtr eh(primary->getErrorHandler());
 		LOGUNIT_ASSERT(eh != 0);
 
 		common();
@@ -92,26 +92,26 @@ public:
 	{
 		int i = -1;
 
-		LOG4CXX_DEBUG(logger, "Message " << ++i);
-		LOG4CXX_DEBUG(root, "Message " << i);
+		LOG4CXXNG_DEBUG(logger, "Message " << ++i);
+		LOG4CXXNG_DEBUG(root, "Message " << i);
 
-		LOG4CXX_INFO(logger, "Message " << ++i);
-		LOG4CXX_INFO(root, "Message " << i);
+		LOG4CXXNG_INFO(logger, "Message " << ++i);
+		LOG4CXXNG_INFO(root, "Message " << i);
 
-		LOG4CXX_WARN(logger, "Message " << ++i);
-		LOG4CXX_WARN(root, "Message " << i);
+		LOG4CXXNG_WARN(logger, "Message " << ++i);
+		LOG4CXXNG_WARN(root, "Message " << i);
 
-		LOG4CXX_ERROR(logger, "Message " << ++i);
-		LOG4CXX_ERROR(root, "Message " << i);
+		LOG4CXXNG_ERROR(logger, "Message " << ++i);
+		LOG4CXXNG_ERROR(root, "Message " << i);
 
-		LOG4CXX_FATAL(logger, "Message " << ++i);
-		LOG4CXX_FATAL(root, "Message " << i);
+		LOG4CXXNG_FATAL(logger, "Message " << ++i);
+		LOG4CXXNG_FATAL(root, "Message " << i);
 
-		LOG4CXX_DEBUG(logger, "Message " << ++i);
-		LOG4CXX_DEBUG(root, "Message " << i);
+		LOG4CXXNG_DEBUG(logger, "Message " << ++i);
+		LOG4CXXNG_DEBUG(root, "Message " << i);
 
-		LOG4CXX_ERROR(logger, "Message " << ++i);
-		LOG4CXX_ERROR(root, "Message " << i);
+		LOG4CXXNG_ERROR(logger, "Message " << ++i);
+		LOG4CXXNG_ERROR(root, "Message " << i);
 	}
 };
 

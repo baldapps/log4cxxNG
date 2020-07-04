@@ -19,8 +19,8 @@
 #include "logunit.h"
 #include "writerappendertestcase.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 /**
    Unit tests of ConsoleAppender.
@@ -41,7 +41,7 @@ class ConsoleAppenderTestCase : public WriterAppenderTestCase
 
 		WriterAppender* createWriterAppender() const
 		{
-			return new log4cxx::ConsoleAppender();
+			return new log4cxxng::ConsoleAppender();
 		}
 
 		void testNoLayout()
@@ -51,7 +51,7 @@ class ConsoleAppenderTestCase : public WriterAppenderTestCase
 			appender->activateOptions(p);
 			LoggerPtr logger(Logger::getRootLogger());
 			logger->addAppender(appender);
-			LOG4CXX_INFO(logger, "No layout specified for ConsoleAppender");
+			LOG4CXXNG_INFO(logger, "No layout specified for ConsoleAppender");
 			logger->removeAppender(appender);
 		}
 };

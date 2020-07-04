@@ -20,13 +20,13 @@
 #include <log4cxxNG/helpers/thread.h>
 #include <apr.h>
 
-using namespace log4cxx;
-using namespace log4cxx::net;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::net;
+using namespace log4cxxng::helpers;
 
 #if APR_HAS_THREADS
 /**
-   Unit tests of log4cxx::SocketHubAppender
+   Unit tests of log4cxxng::SocketHubAppender
  */
 class SocketHubAppenderTestCase : public AppenderSkeletonTestCase
 {
@@ -46,7 +46,7 @@ class SocketHubAppenderTestCase : public AppenderSkeletonTestCase
 
 		AppenderSkeleton* createAppenderSkeleton() const
 		{
-			return new log4cxx::net::SocketHubAppender();
+			return new log4cxxng::net::SocketHubAppender();
 		}
 
 		void testActivateClose()
@@ -77,7 +77,7 @@ class SocketHubAppenderTestCase : public AppenderSkeletonTestCase
 
 			for (int i = 0; i < 50; i++)
 			{
-				LOG4CXX_INFO(root, "Hello, World " << i);
+				LOG4CXXNG_INFO(root, "Hello, World " << i);
 			}
 
 			hubAppender->close();

@@ -18,10 +18,10 @@
 #include "vectorappender.h"
 #include <log4cxxNG/helpers/thread.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(VectorAppender)
+IMPLEMENT_LOG4CXXNG_OBJECT(VectorAppender)
 
 void VectorAppender::append(const spi::LoggingEventPtr& event, Pool& /*p*/)
 {

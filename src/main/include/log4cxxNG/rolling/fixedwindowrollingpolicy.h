@@ -15,15 +15,15 @@
  * limitations under the License.
  */
 
-#if !defined(_LOG4CXX_ROLLING_FIXED_WINDOW_ROLLING_POLICY_H)
-#define _LOG4CXX_ROLLING_FIXED_WINDOW_ROLLING_POLICY_H
+#if !defined(_LOG4CXXNG_ROLLING_FIXED_WINDOW_ROLLING_POLICY_H)
+#define _LOG4CXXNG_ROLLING_FIXED_WINDOW_ROLLING_POLICY_H
 
 #include <log4cxxNG/rolling/rollingpolicybase.h>
 
 
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 namespace helpers
@@ -68,13 +68,13 @@ namespace rolling
  *
  *
  * */
-class LOG4CXX_EXPORT FixedWindowRollingPolicy : public RollingPolicyBase
+class LOG4CXXNG_EXPORT FixedWindowRollingPolicy : public RollingPolicyBase
 {
-		DECLARE_LOG4CXX_OBJECT(FixedWindowRollingPolicy)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(FixedWindowRollingPolicy)
-		LOG4CXX_CAST_ENTRY_CHAIN(RollingPolicyBase)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(FixedWindowRollingPolicy)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(FixedWindowRollingPolicy)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(RollingPolicyBase)
+		END_LOG4CXXNG_CAST_MAP()
 
 		int minIndex;
 		int maxIndex;
@@ -85,13 +85,13 @@ class LOG4CXX_EXPORT FixedWindowRollingPolicy : public RollingPolicyBase
 		 */
 		enum { MAX_WINDOW_SIZE = 12 };
 
-		bool purge(int purgeStart, int maxIndex, log4cxx::helpers::Pool& p) const;
+		bool purge(int purgeStart, int maxIndex, log4cxxng::helpers::Pool& p) const;
 
 	public:
 
 		FixedWindowRollingPolicy();
 
-		void activateOptions(log4cxx::helpers::Pool& p);
+		void activateOptions(log4cxxng::helpers::Pool& p);
 		void setOption(const LogString& option,
 			const LogString& value);
 
@@ -110,7 +110,7 @@ class LOG4CXX_EXPORT FixedWindowRollingPolicy : public RollingPolicyBase
 		RolloverDescriptionPtr initialize(
 			const   LogString&              currentActiveFile,
 			const   bool                    append,
-			log4cxx::helpers::Pool& pool);
+			log4cxxng::helpers::Pool& pool);
 
 		/**
 		 * {@inheritDoc}
@@ -118,14 +118,14 @@ class LOG4CXX_EXPORT FixedWindowRollingPolicy : public RollingPolicyBase
 		RolloverDescriptionPtr rollover(
 			const   LogString&              currentActiveFile,
 			const   bool                    append,
-			log4cxx::helpers::Pool& pool);
+			log4cxxng::helpers::Pool& pool);
 
 	protected:
-		log4cxx::pattern::PatternMap getFormatSpecifiers() const;
+		log4cxxng::pattern::PatternMap getFormatSpecifiers() const;
 
 };
 
-LOG4CXX_PTR_DEF(FixedWindowRollingPolicy);
+LOG4CXXNG_PTR_DEF(FixedWindowRollingPolicy);
 
 }
 }

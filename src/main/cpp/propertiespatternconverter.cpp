@@ -26,16 +26,16 @@
 
 #include <iterator>
 
-using namespace log4cxx;
-using namespace log4cxx::pattern;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::pattern;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(PropertiesPatternConverter)
+IMPLEMENT_LOG4CXXNG_OBJECT(PropertiesPatternConverter)
 
 PropertiesPatternConverter::PropertiesPatternConverter(const LogString& name1,
 	const LogString& propertyName) :
-	LoggingEventPatternConverter(name1, LOG4CXX_STR("property")),
+	LoggingEventPatternConverter(name1, LOG4CXXNG_STR("property")),
 	option(propertyName)
 {
 }
@@ -46,13 +46,13 @@ PatternConverterPtr PropertiesPatternConverter::newInstance(
 	if (options.size() == 0)
 	{
 		static PatternConverterPtr def(new PropertiesPatternConverter(
-				LOG4CXX_STR("Properties"), LOG4CXX_STR("")));
+				LOG4CXXNG_STR("Properties"), LOG4CXXNG_STR("")));
 		return def;
 	}
 
-	LogString converterName(LOG4CXX_STR("Property{"));
+	LogString converterName(LOG4CXXNG_STR("Property{"));
 	converterName.append(options[0]);
-	converterName.append(LOG4CXX_STR("}"));
+	converterName.append(LOG4CXXNG_STR("}"));
 	PatternConverterPtr converter(new PropertiesPatternConverter(
 			converterName, options[0]));
 	return converter;

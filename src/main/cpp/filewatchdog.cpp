@@ -24,8 +24,8 @@
 #include <log4cxxNG/helpers/transcoder.h>
 #include <log4cxxNG/helpers/exception.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 long FileWatchdog::DEFAULT_DELAY = 60000;
 
@@ -59,9 +59,9 @@ void FileWatchdog::checkAndConfigure()
 	{
 		if (!warnedAlready)
 		{
-			LogLog::debug(((LogString) LOG4CXX_STR("["))
+			LogLog::debug(((LogString) LOG4CXXNG_STR("["))
 				+ file.getPath()
-				+ LOG4CXX_STR("] does not exist."));
+				+ LOG4CXXNG_STR("] does not exist."));
 			warnedAlready = true;
 		}
 	}

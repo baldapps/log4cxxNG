@@ -31,9 +31,9 @@
 #include <log4cxxNG/helpers/locale.h>
 #include "vectorappender.h"
 
-using namespace log4cxx;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
 class CountingAppender;
 typedef helpers::ObjectPtrT<CountingAppender> CountingAppenderPtr;
@@ -96,9 +96,9 @@ public:
 	*/
 	void testAppender1()
 	{
-		logger = Logger::getLogger(LOG4CXX_TEST_STR("test"));
+		logger = Logger::getLogger(LOG4CXXNG_TEST_STR("test"));
 		a1 = new FileAppender();
-		a1->setName(LOG4CXX_STR("testAppender1"));
+		a1->setName(LOG4CXXNG_STR("testAppender1"));
 		logger->addAppender(a1);
 
 		AppenderList list = logger->getAllAppenders();
@@ -113,14 +113,14 @@ public:
 	void testAppender2()
 	{
 		a1 = new FileAppender();
-		a1->setName(LOG4CXX_STR("testAppender2.1"));
+		a1->setName(LOG4CXXNG_STR("testAppender2.1"));
 		a2 = new FileAppender();
-		a2->setName(LOG4CXX_STR("testAppender2.2"));
+		a2->setName(LOG4CXXNG_STR("testAppender2.2"));
 
-		logger = Logger::getLogger(LOG4CXX_TEST_STR("test"));
+		logger = Logger::getLogger(LOG4CXXNG_TEST_STR("test"));
 		logger->addAppender(a1);
 		logger->addAppender(a2);
-		logger->removeAppender((LogString) LOG4CXX_STR("testAppender2.1"));
+		logger->removeAppender((LogString) LOG4CXXNG_STR("testAppender2.1"));
 
 		AppenderList list = logger->getAllAppenders();
 		AppenderPtr aHat = list.front();
@@ -133,8 +133,8 @@ public:
 	*/
 	void testAdditivity1()
 	{
-		LoggerPtr a = Logger::getLogger(LOG4CXX_TEST_STR("a"));
-		LoggerPtr ab = Logger::getLogger(LOG4CXX_TEST_STR("a.b"));
+		LoggerPtr a = Logger::getLogger(LOG4CXXNG_TEST_STR("a"));
+		LoggerPtr ab = Logger::getLogger(LOG4CXXNG_TEST_STR("a.b"));
 		CountingAppenderPtr ca = new CountingAppender();
 		a->addAppender(ca);
 
@@ -154,10 +154,10 @@ public:
 	*/
 	void testAdditivity2()
 	{
-		LoggerPtr a = Logger::getLogger(LOG4CXX_TEST_STR("a"));
-		LoggerPtr ab = Logger::getLogger(LOG4CXX_TEST_STR("a.b"));
-		LoggerPtr abc = Logger::getLogger(LOG4CXX_TEST_STR("a.b.c"));
-		LoggerPtr x = Logger::getLogger(LOG4CXX_TEST_STR("x"));
+		LoggerPtr a = Logger::getLogger(LOG4CXXNG_TEST_STR("a"));
+		LoggerPtr ab = Logger::getLogger(LOG4CXXNG_TEST_STR("a.b"));
+		LoggerPtr abc = Logger::getLogger(LOG4CXXNG_TEST_STR("a.b.c"));
+		LoggerPtr x = Logger::getLogger(LOG4CXXNG_TEST_STR("x"));
 
 		CountingAppenderPtr ca1 = new CountingAppender();
 		CountingAppenderPtr ca2 = new CountingAppender();
@@ -187,10 +187,10 @@ public:
 	void testAdditivity3()
 	{
 		LoggerPtr root = Logger::getRootLogger();
-		LoggerPtr a = Logger::getLogger(LOG4CXX_TEST_STR("a"));
-		LoggerPtr ab = Logger::getLogger(LOG4CXX_TEST_STR("a.b"));
-		LoggerPtr abc = Logger::getLogger(LOG4CXX_TEST_STR("a.b.c"));
-		LoggerPtr x = Logger::getLogger(LOG4CXX_TEST_STR("x"));
+		LoggerPtr a = Logger::getLogger(LOG4CXXNG_TEST_STR("a"));
+		LoggerPtr ab = Logger::getLogger(LOG4CXXNG_TEST_STR("a.b"));
+		LoggerPtr abc = Logger::getLogger(LOG4CXXNG_TEST_STR("a.b.c"));
+		LoggerPtr x = Logger::getLogger(LOG4CXXNG_TEST_STR("x"));
 
 		CountingAppenderPtr caRoot = new CountingAppender();
 		CountingAppenderPtr caA = new CountingAppender();
@@ -292,16 +292,16 @@ public:
 	{
 		Locale l(lang, region);
 		ResourceBundlePtr bundle(
-			PropertyResourceBundle::getBundle(LOG4CXX_STR("L7D"), l));
+			PropertyResourceBundle::getBundle(LOG4CXXNG_STR("L7D"), l));
 		LOGUNIT_ASSERT(bundle != 0);
 		return bundle;
 	}
 
 	void testRB1()
 	{
-		ResourceBundlePtr rbUS(getBundle(LOG4CXX_STR("en"), LOG4CXX_STR("US")));
-		ResourceBundlePtr rbFR(getBundle(LOG4CXX_STR("fr"), LOG4CXX_STR("FR")));
-		ResourceBundlePtr rbCH(getBundle(LOG4CXX_STR("fr"), LOG4CXX_STR("CH")));
+		ResourceBundlePtr rbUS(getBundle(LOG4CXXNG_STR("en"), LOG4CXXNG_STR("US")));
+		ResourceBundlePtr rbFR(getBundle(LOG4CXXNG_STR("fr"), LOG4CXXNG_STR("FR")));
+		ResourceBundlePtr rbCH(getBundle(LOG4CXXNG_STR("fr"), LOG4CXXNG_STR("CH")));
 
 		LoggerPtr root = Logger::getRootLogger();
 		root->setResourceBundle(rbUS);
@@ -309,9 +309,9 @@ public:
 		ResourceBundlePtr t = root->getResourceBundle();
 		LOGUNIT_ASSERT(t == rbUS);
 
-		LoggerPtr x = Logger::getLogger(LOG4CXX_TEST_STR("x"));
-		LoggerPtr x_y = Logger::getLogger(LOG4CXX_TEST_STR("x.y"));
-		LoggerPtr x_y_z = Logger::getLogger(LOG4CXX_TEST_STR("x.y.z"));
+		LoggerPtr x = Logger::getLogger(LOG4CXXNG_TEST_STR("x"));
+		LoggerPtr x_y = Logger::getLogger(LOG4CXXNG_TEST_STR("x.y"));
+		LoggerPtr x_y_z = Logger::getLogger(LOG4CXXNG_TEST_STR("x.y.z"));
 
 		t = x->getResourceBundle();
 		LOGUNIT_ASSERT(t == rbUS);
@@ -324,18 +324,18 @@ public:
 	void testRB2()
 	{
 		LoggerPtr root = Logger::getRootLogger();
-		ResourceBundlePtr rbUS(getBundle(LOG4CXX_STR("en"), LOG4CXX_STR("US")));
-		ResourceBundlePtr rbFR(getBundle(LOG4CXX_STR("fr"), LOG4CXX_STR("FR")));
-		ResourceBundlePtr rbCH(getBundle(LOG4CXX_STR("fr"), LOG4CXX_STR("CH")));
+		ResourceBundlePtr rbUS(getBundle(LOG4CXXNG_STR("en"), LOG4CXXNG_STR("US")));
+		ResourceBundlePtr rbFR(getBundle(LOG4CXXNG_STR("fr"), LOG4CXXNG_STR("FR")));
+		ResourceBundlePtr rbCH(getBundle(LOG4CXXNG_STR("fr"), LOG4CXXNG_STR("CH")));
 
 		root->setResourceBundle(rbUS);
 
 		ResourceBundlePtr t = root->getResourceBundle();
 		LOGUNIT_ASSERT(t == rbUS);
 
-		LoggerPtr x = Logger::getLogger(LOG4CXX_TEST_STR("x"));
-		LoggerPtr x_y = Logger::getLogger(LOG4CXX_TEST_STR("x.y"));
-		LoggerPtr x_y_z = Logger::getLogger(LOG4CXX_TEST_STR("x.y.z"));
+		LoggerPtr x = Logger::getLogger(LOG4CXXNG_TEST_STR("x"));
+		LoggerPtr x_y = Logger::getLogger(LOG4CXXNG_TEST_STR("x.y"));
+		LoggerPtr x_y_z = Logger::getLogger(LOG4CXXNG_TEST_STR("x.y.z"));
 
 		x_y->setResourceBundle(rbFR);
 		t = x->getResourceBundle();
@@ -348,9 +348,9 @@ public:
 
 	void testRB3()
 	{
-		ResourceBundlePtr rbUS(getBundle(LOG4CXX_STR("en"), LOG4CXX_STR("US")));
-		ResourceBundlePtr rbFR(getBundle(LOG4CXX_STR("fr"), LOG4CXX_STR("FR")));
-		ResourceBundlePtr rbCH(getBundle(LOG4CXX_STR("fr"), LOG4CXX_STR("CH")));
+		ResourceBundlePtr rbUS(getBundle(LOG4CXXNG_STR("en"), LOG4CXXNG_STR("US")));
+		ResourceBundlePtr rbFR(getBundle(LOG4CXXNG_STR("fr"), LOG4CXXNG_STR("FR")));
+		ResourceBundlePtr rbCH(getBundle(LOG4CXXNG_STR("fr"), LOG4CXXNG_STR("CH")));
 
 		LoggerPtr root = Logger::getRootLogger();
 		root->setResourceBundle(rbUS);
@@ -358,9 +358,9 @@ public:
 		ResourceBundlePtr t = root->getResourceBundle();
 		LOGUNIT_ASSERT(t == rbUS);
 
-		LoggerPtr x = Logger::getLogger(LOG4CXX_TEST_STR("x"));
-		LoggerPtr x_y = Logger::getLogger(LOG4CXX_TEST_STR("x.y"));
-		LoggerPtr x_y_z = Logger::getLogger(LOG4CXX_TEST_STR("x.y.z"));
+		LoggerPtr x = Logger::getLogger(LOG4CXXNG_TEST_STR("x"));
+		LoggerPtr x_y = Logger::getLogger(LOG4CXXNG_TEST_STR("x.y"));
+		LoggerPtr x_y_z = Logger::getLogger(LOG4CXXNG_TEST_STR("x.y.z"));
 
 		x_y->setResourceBundle(rbFR);
 		x_y_z->setResourceBundle(rbCH);
@@ -374,18 +374,18 @@ public:
 
 	void testExists()
 	{
-		LoggerPtr a = Logger::getLogger(LOG4CXX_TEST_STR("a"));
-		LoggerPtr a_b = Logger::getLogger(LOG4CXX_TEST_STR("a.b"));
-		LoggerPtr a_b_c = Logger::getLogger(LOG4CXX_TEST_STR("a.b.c"));
+		LoggerPtr a = Logger::getLogger(LOG4CXXNG_TEST_STR("a"));
+		LoggerPtr a_b = Logger::getLogger(LOG4CXXNG_TEST_STR("a.b"));
+		LoggerPtr a_b_c = Logger::getLogger(LOG4CXXNG_TEST_STR("a.b.c"));
 
 		LoggerPtr t;
-		t = LogManager::exists(LOG4CXX_TEST_STR("xx"));
+		t = LogManager::exists(LOG4CXXNG_TEST_STR("xx"));
 		LOGUNIT_ASSERT(t == 0);
-		t = LogManager::exists(LOG4CXX_TEST_STR("a"));
+		t = LogManager::exists(LOG4CXXNG_TEST_STR("a"));
 		LOGUNIT_ASSERT_EQUAL(a, t);
-		t = LogManager::exists(LOG4CXX_TEST_STR("a.b"));
+		t = LogManager::exists(LOG4CXXNG_TEST_STR("a.b"));
 		LOGUNIT_ASSERT_EQUAL(a_b, t);
-		t = LogManager::exists(LOG4CXX_TEST_STR("a.b.c"));
+		t = LogManager::exists(LOG4CXXNG_TEST_STR("a.b.c"));
 		LOGUNIT_ASSERT_EQUAL(a_b_c, t);
 	}
 
@@ -394,12 +394,12 @@ public:
 		LoggerRepositoryPtr h = new Hierarchy();
 		LoggerPtr root(h->getRootLogger());
 		root->setLevel(Level::getError());
-		LoggerPtr a0 = h->getLogger(LOG4CXX_STR("a"));
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("a"), a0->getName());
+		LoggerPtr a0 = h->getLogger(LOG4CXXNG_STR("a"));
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("a"), a0->getName());
 		LOGUNIT_ASSERT(a0->getLevel() == 0);
 		LOGUNIT_ASSERT(Level::getError() == a0->getEffectiveLevel());
 
-		LoggerPtr a11 = h->getLogger(LOG4CXX_STR("a"));
+		LoggerPtr a11 = h->getLogger(LOG4CXXNG_STR("a"));
 		LOGUNIT_ASSERT_EQUAL(a0, a11);
 	}
 
@@ -431,15 +431,15 @@ public:
 		LoggerPtr tracer = Logger::getLogger("com.example.Tracer");
 		tracer->setLevel(Level::getTrace());
 
-		LOG4CXX_TRACE(tracer, "Message 1");
-		LOG4CXX_TRACE(root, "Discarded Message");
-		LOG4CXX_TRACE(root, "Discarded Message");
+		LOG4CXXNG_TRACE(tracer, "Message 1");
+		LOG4CXXNG_TRACE(root, "Discarded Message");
+		LOG4CXXNG_TRACE(root, "Discarded Message");
 
 		std::vector<LoggingEventPtr> msgs(appender->vector);
 		LOGUNIT_ASSERT_EQUAL((size_t) 1, msgs.size());
 		LoggingEventPtr event = msgs[0];
 		LOGUNIT_ASSERT_EQUAL((int) Level::TRACE_INT, event->getLevel()->toInt());
-		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXX_STR("Message 1")), event->getMessage());
+		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXXNG_STR("Message 1")), event->getMessage());
 	}
 
 	/**
@@ -467,6 +467,6 @@ protected:
 	AppenderPtr a2;
 };
 
-LogString LoggerTestCase::MSG(LOG4CXX_STR("M"));
+LogString LoggerTestCase::MSG(LOG4CXXNG_STR("M"));
 
 LOGUNIT_TEST_SUITE_REGISTRATION(LoggerTestCase);

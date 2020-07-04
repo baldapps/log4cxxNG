@@ -21,11 +21,11 @@
 #include <algorithm>
 #include <log4cxxNG/helpers/pool.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::spi;
 
-IMPLEMENT_LOG4CXX_OBJECT(AppenderAttachableImpl)
+IMPLEMENT_LOG4CXXNG_OBJECT(AppenderAttachableImpl)
 
 
 AppenderAttachableImpl::AppenderAttachableImpl(Pool& pool)

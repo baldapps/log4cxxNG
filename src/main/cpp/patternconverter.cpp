@@ -22,10 +22,10 @@
 #include <log4cxxNG/pattern/patternconverter.h>
 #include <log4cxxNG/helpers/transcoder.h>
 
-using namespace log4cxx;
-using namespace log4cxx::pattern;
+using namespace log4cxxng;
+using namespace log4cxxng::pattern;
 
-IMPLEMENT_LOG4CXX_OBJECT(PatternConverter)
+IMPLEMENT_LOG4CXXNG_OBJECT(PatternConverter)
 
 PatternConverter::PatternConverter(
 	const LogString& name1, const LogString& style1) :
@@ -42,14 +42,14 @@ LogString PatternConverter::getName() const
 	return name;
 }
 
-LogString PatternConverter::getStyleClass(const log4cxx::helpers::ObjectPtr& /* e */) const
+LogString PatternConverter::getStyleClass(const log4cxxng::helpers::ObjectPtr& /* e */) const
 {
 	return style;
 }
 
 void PatternConverter::append(LogString& toAppendTo, const std::string& src)
 {
-	LOG4CXX_DECODE_CHAR(decoded, src);
+	LOG4CXXNG_DECODE_CHAR(decoded, src);
 	toAppendTo.append(decoded);
 }
 

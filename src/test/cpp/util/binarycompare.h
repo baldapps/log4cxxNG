@@ -17,7 +17,7 @@
 
 #include <log4cxxNG/logstring.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace util
 {

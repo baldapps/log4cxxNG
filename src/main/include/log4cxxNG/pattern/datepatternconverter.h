@@ -15,15 +15,15 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_PATTERN_DATE_PATTERN_CONVERTER
-#define _LOG4CXX_PATTERN_DATE_PATTERN_CONVERTER
+#ifndef _LOG4CXXNG_PATTERN_DATE_PATTERN_CONVERTER
+#define _LOG4CXXNG_PATTERN_DATE_PATTERN_CONVERTER
 
 #include <log4cxxNG/pattern/loggingeventpatternconverter.h>
 #include <log4cxxNG/helpers/cacheddateformat.h>
 #include <log4cxxNG/helpers/date.h>
 #include <vector>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace pattern
 {
@@ -35,12 +35,12 @@ namespace pattern
  *
  *
  */
-class LOG4CXX_EXPORT DatePatternConverter : public LoggingEventPatternConverter
+class LOG4CXXNG_EXPORT DatePatternConverter : public LoggingEventPatternConverter
 {
 		/**
 		 * Date format.
 		 */
-		log4cxx::helpers::DateFormatPtr df;
+		log4cxxng::helpers::DateFormatPtr df;
 
 		/**
 		 * Private constructor.
@@ -54,13 +54,13 @@ class LOG4CXX_EXPORT DatePatternConverter : public LoggingEventPatternConverter
 		 * @param options options, may be null.
 		 * @return instance of pattern converter.
 		 */
-		static log4cxx::helpers::DateFormatPtr getDateFormat(const OptionsList& options);
+		static log4cxxng::helpers::DateFormatPtr getDateFormat(const OptionsList& options);
 	public:
-		DECLARE_LOG4CXX_PATTERN(DatePatternConverter)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(DatePatternConverter)
-		LOG4CXX_CAST_ENTRY_CHAIN(LoggingEventPatternConverter)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_PATTERN(DatePatternConverter)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(DatePatternConverter)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(LoggingEventPatternConverter)
+		END_LOG4CXXNG_CAST_MAP()
 
 
 		static PatternConverterPtr newInstance(
@@ -70,19 +70,19 @@ class LOG4CXX_EXPORT DatePatternConverter : public LoggingEventPatternConverter
 		using LoggingEventPatternConverter::format;
 
 
-		void format(const log4cxx::spi::LoggingEventPtr& event,
+		void format(const log4cxxng::spi::LoggingEventPtr& event,
 			LogString& output,
-			log4cxx::helpers::Pool& p) const;
-		void format(const log4cxx::helpers::ObjectPtr& obj,
+			log4cxxng::helpers::Pool& p) const;
+		void format(const log4cxxng::helpers::ObjectPtr& obj,
 			LogString& output,
-			log4cxx::helpers::Pool& p) const;
+			log4cxxng::helpers::Pool& p) const;
 
-		void format(const log4cxx::helpers::DatePtr& date,
+		void format(const log4cxxng::helpers::DatePtr& date,
 			LogString& toAppendTo,
-			log4cxx::helpers::Pool& p) const;
+			log4cxxng::helpers::Pool& p) const;
 };
 
-LOG4CXX_PTR_DEF(DatePatternConverter);
+LOG4CXXNG_PTR_DEF(DatePatternConverter);
 
 }
 }

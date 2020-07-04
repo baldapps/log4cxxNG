@@ -18,9 +18,9 @@
 #include <log4cxxNG/logstring.h>
 #include <log4cxxNG/spi/filter.h>
 
-using namespace log4cxx;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
 Filter::Filter() : next()
 {

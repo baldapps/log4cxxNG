@@ -24,11 +24,11 @@
 #include <log4cxxNG/pattern/nameabbreviator.h>
 #include <log4cxxNG/spi/loggingevent.h>
 
-using namespace log4cxx;
-using namespace log4cxx::pattern;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::pattern;
+using namespace log4cxxng::spi;
 
-IMPLEMENT_LOG4CXX_OBJECT(NamePatternConverter)
+IMPLEMENT_LOG4CXXNG_OBJECT(NamePatternConverter)
 
 NamePatternConverter::NamePatternConverter(
 	const LogString& name1,

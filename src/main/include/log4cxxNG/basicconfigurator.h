@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_BASIC_CONFIGURATOR_H
-#define _LOG4CXX_BASIC_CONFIGURATOR_H
+#ifndef _LOG4CXXNG_BASIC_CONFIGURATOR_H
+#define _LOG4CXXNG_BASIC_CONFIGURATOR_H
 
 #include <log4cxxNG/helpers/objectptr.h>
 #include <log4cxxNG/helpers/objectimpl.h>
@@ -24,7 +24,7 @@
 #include <log4cxxNG/logstring.h>
 #include <log4cxxNG/spi/configurator.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 class Appender;
 typedef helpers::ObjectPtrT<Appender> AppenderPtr;
@@ -35,7 +35,7 @@ Use this class to quickly configure the package.
 PropertyConfigurator. For XML based configuration see
 DOMConfigurator.
 */
-class LOG4CXX_EXPORT BasicConfigurator
+class LOG4CXXNG_EXPORT BasicConfigurator
 {
 	protected:
 		BasicConfigurator() {}
@@ -60,6 +60,6 @@ class LOG4CXX_EXPORT BasicConfigurator
 		See Hierarchy#resetConfiguration() for more details.  */
 		static void resetConfiguration();
 }; // class BasicConfigurator
-}  // namespace log4cxx
+}  // namespace log4cxxng
 
-#endif //_LOG4CXX_BASIC_CONFIGURATOR_H
+#endif //_LOG4CXXNG_BASIC_CONFIGURATOR_H

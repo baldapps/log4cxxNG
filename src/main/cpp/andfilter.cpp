@@ -20,12 +20,12 @@
 #include <log4cxxNG/helpers/stringhelper.h>
 #include <log4cxxNG/helpers/optionconverter.h>
 
-using namespace log4cxx;
-using namespace log4cxx::filter;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::filter;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(AndFilter)
+IMPLEMENT_LOG4CXXNG_OBJECT(AndFilter)
 
 
 AndFilter::AndFilter()

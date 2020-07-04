@@ -28,8 +28,8 @@
 #endif
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 
 
@@ -85,7 +85,7 @@ public:
 		//   02 Jan 2004 00:00 GMT
 		//
 		apr_time_t jan2 = MICROSECONDS_PER_DAY * 12419;
-		assertFormattedTime(jan2, TimeZone::getGMT(), LOG4CXX_STR("00:00:00,000"));
+		assertFormattedTime(jan2, TimeZone::getGMT(), LOG4CXXNG_STR("00:00:00,000"));
 	}
 
 	/**
@@ -98,7 +98,7 @@ public:
 		//       (asking for the same time at a different timezone
 		//          will ignore the change of timezone)
 		apr_time_t jan2 = MICROSECONDS_PER_DAY * 12420;
-		assertFormattedTime(jan2, TimeZone::getTimeZone(LOG4CXX_STR("GMT-6")), LOG4CXX_STR("18:00:00,000"));
+		assertFormattedTime(jan2, TimeZone::getTimeZone(LOG4CXXNG_STR("GMT-6")), LOG4CXXNG_STR("18:00:00,000"));
 	}
 
 	/**
@@ -107,7 +107,7 @@ public:
 	void test3()
 	{
 		apr_time_t jun29 = MICROSECONDS_PER_DAY * 12599;
-		assertFormattedTime(jun29, TimeZone::getGMT(), LOG4CXX_STR("00:00:00,000"));
+		assertFormattedTime(jun29, TimeZone::getGMT(), LOG4CXXNG_STR("00:00:00,000"));
 	}
 
 	/**
@@ -120,7 +120,7 @@ public:
 		//   log4cxx doesn't support non-fixed timezones at this time
 		//      passing the fixed equivalent to Chicago's Daylight Savings Time
 		//
-		assertFormattedTime(jun30, TimeZone::getTimeZone(LOG4CXX_STR("GMT-5")), LOG4CXX_STR("19:00:00,000"));
+		assertFormattedTime(jun30, TimeZone::getTimeZone(LOG4CXXNG_STR("GMT-5")), LOG4CXXNG_STR("19:00:00,000"));
 	}
 
 	/**
@@ -132,11 +132,11 @@ public:
 		//     are optimized to reuse previous formatted value
 		//     make a couple of nearly spaced calls
 		apr_time_t ticks = MICROSECONDS_PER_DAY * 12601;
-		assertFormattedTime(ticks, TimeZone::getGMT(), LOG4CXX_STR("00:00:00,000"));
-		assertFormattedTime(ticks + 8000, TimeZone::getGMT(), LOG4CXX_STR("00:00:00,008"));
-		assertFormattedTime(ticks + 17000, TimeZone::getGMT(), LOG4CXX_STR("00:00:00,017"));
-		assertFormattedTime(ticks + 237000, TimeZone::getGMT(), LOG4CXX_STR("00:00:00,237"));
-		assertFormattedTime(ticks + 1415000, TimeZone::getGMT(), LOG4CXX_STR("00:00:01,415"));
+		assertFormattedTime(ticks, TimeZone::getGMT(), LOG4CXXNG_STR("00:00:00,000"));
+		assertFormattedTime(ticks + 8000, TimeZone::getGMT(), LOG4CXXNG_STR("00:00:00,008"));
+		assertFormattedTime(ticks + 17000, TimeZone::getGMT(), LOG4CXXNG_STR("00:00:00,017"));
+		assertFormattedTime(ticks + 237000, TimeZone::getGMT(), LOG4CXXNG_STR("00:00:00,237"));
+		assertFormattedTime(ticks + 1415000, TimeZone::getGMT(), LOG4CXXNG_STR("00:00:01,415"));
 	}
 
 	/**
@@ -146,8 +146,8 @@ public:
 	void test6()
 	{
 		apr_time_t jul2 = MICROSECONDS_PER_DAY * 12602;
-		assertFormattedTime(jul2, TimeZone::getGMT(), LOG4CXX_STR("00:00:00,000"));
-		assertFormattedTime(jul2, TimeZone::getTimeZone(LOG4CXX_STR("GMT-5")), LOG4CXX_STR("19:00:00,000"));
+		assertFormattedTime(jul2, TimeZone::getGMT(), LOG4CXXNG_STR("00:00:00,000"));
+		assertFormattedTime(jul2, TimeZone::getTimeZone(LOG4CXXNG_STR("GMT-5")), LOG4CXXNG_STR("19:00:00,000"));
 	}
 
 	/**
@@ -159,15 +159,15 @@ public:
 		//     are optimized to reuse previous formatted value
 		//     make a couple of nearly spaced calls
 		apr_time_t ticks = MICROSECONDS_PER_DAY * -7;
-		assertFormattedTime(ticks, TimeZone::getGMT(), LOG4CXX_STR("00:00:00,000"));
+		assertFormattedTime(ticks, TimeZone::getGMT(), LOG4CXXNG_STR("00:00:00,000"));
 #if defined(_WIN32)
 		//
 		//   These tests fail on Unix due to bug in APR's explode_time
 		//
-		//    assertFormattedTime(ticks + 8000, TimeZone::getGMT(), LOG4CXX_STR("00:00:00,008"));
-		//    assertFormattedTime(ticks + 17000, TimeZone::getGMT(), LOG4CXX_STR("00:00:00,017"));
-		//    assertFormattedTime(ticks + 237000, TimeZone::getGMT(), LOG4CXX_STR("00:00:00,237"));
-		//    assertFormattedTime(ticks + 1415000, TimeZone::getGMT(), LOG4CXX_STR("00:00:01,415"));
+		//    assertFormattedTime(ticks + 8000, TimeZone::getGMT(), LOG4CXXNG_STR("00:00:00,008"));
+		//    assertFormattedTime(ticks + 17000, TimeZone::getGMT(), LOG4CXXNG_STR("00:00:00,017"));
+		//    assertFormattedTime(ticks + 237000, TimeZone::getGMT(), LOG4CXXNG_STR("00:00:00,237"));
+		//    assertFormattedTime(ticks + 1415000, TimeZone::getGMT(), LOG4CXXNG_STR("00:00:01,415"));
 #endif
 	}
 
@@ -180,7 +180,7 @@ public:
 		LogString numb;
 		AbsoluteTimeDateFormat formatter;
 		formatter.numberFormat(numb, 87, p);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("87"), numb);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("87"), numb);
 	}
 
 };

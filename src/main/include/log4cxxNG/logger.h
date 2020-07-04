@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_LOGGER_H
-#define _LOG4CXX_LOGGER_H
+#ifndef _LOG4CXXNG_LOGGER_H
+#define _LOG4CXXNG_LOGGER_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -32,7 +32,7 @@
 #include <log4cxxNG/helpers/messagebuffer.h>
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 namespace helpers
@@ -43,31 +43,31 @@ class synchronized;
 namespace spi
 {
 class LoggerRepository;
-LOG4CXX_PTR_DEF(LoggerRepository);
+LOG4CXXNG_PTR_DEF(LoggerRepository);
 class LoggerFactory;
-LOG4CXX_PTR_DEF(LoggerFactory);
+LOG4CXXNG_PTR_DEF(LoggerFactory);
 }
 
 class Logger;
 /** smart pointer to a Logger class */
-LOG4CXX_PTR_DEF(Logger);
-LOG4CXX_LIST_DEF(LoggerList, LoggerPtr);
+LOG4CXXNG_PTR_DEF(Logger);
+LOG4CXXNG_LIST_DEF(LoggerList, LoggerPtr);
 
 
 /**
 This is the central class in the log4cxx package. Most logging
 operations, except configuration, are done through this class.
 */
-class LOG4CXX_EXPORT Logger :
-	public virtual log4cxx::spi::AppenderAttachable,
+class LOG4CXXNG_EXPORT Logger :
+	public virtual log4cxxng::spi::AppenderAttachable,
 	public virtual helpers::ObjectImpl
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(Logger)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(Logger)
-		LOG4CXX_CAST_ENTRY(spi::AppenderAttachable)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(Logger)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(Logger)
+		LOG4CXXNG_CAST_ENTRY(spi::AppenderAttachable)
+		END_LOG4CXXNG_CAST_MAP()
 
 	private:
 		/**
@@ -100,7 +100,7 @@ class LOG4CXX_EXPORT Logger :
 
 
 		// Loggers need to know what Hierarchy they are in
-		log4cxx::spi::LoggerRepository* repository;
+		log4cxxng::spi::LoggerRepository* repository;
 
 		helpers::AppenderAttachableImplPtr aai;
 
@@ -126,7 +126,7 @@ class LOG4CXX_EXPORT Logger :
 		@param pool lifetime of pool must be longer than logger.
 		@param name The name of the logger.
 		*/
-		Logger(log4cxx::helpers::Pool& pool, const LogString& name);
+		Logger(log4cxxng::helpers::Pool& pool, const LogString& name);
 
 	public:
 		~Logger();
@@ -157,7 +157,7 @@ class LOG4CXX_EXPORT Logger :
 		@param event the event to log.
 		@param p memory pool for any allocations needed to process request.
 		*/
-		void callAppenders(const log4cxx::spi::LoggingEventPtr& event, log4cxx::helpers::Pool& p) const;
+		void callAppenders(const log4cxxng::spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& p) const;
 
 		/**
 		Close all attached appenders implementing the AppenderAttachable
@@ -178,7 +178,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void debug(const std::string& msg, const log4cxx::spi::LocationInfo& location) const;
+		void debug(const std::string& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the DEBUG level.
 
@@ -192,7 +192,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		*/
 		void debug(const std::string& msg) const;
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 		/**
 		Log a message string with the DEBUG level.
 
@@ -206,7 +206,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void debug(const std::wstring& msg, const log4cxx::spi::LocationInfo& location) const;
+		void debug(const std::wstring& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the DEBUG level.
 
@@ -221,7 +221,7 @@ class LOG4CXX_EXPORT Logger :
 		*/
 		void debug(const std::wstring& msg) const;
 #endif
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 		/**
 		Log a message string with the DEBUG level.
 
@@ -235,7 +235,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void debug(const std::basic_string<UniChar>& msg, const log4cxx::spi::LocationInfo& location) const;
+		void debug(const std::basic_string<UniChar>& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the DEBUG level.
 
@@ -250,7 +250,7 @@ class LOG4CXX_EXPORT Logger :
 		*/
 		void debug(const std::basic_string<UniChar>& msg) const;
 #endif
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		/**
 		Log a message string with the DEBUG level.
 
@@ -264,7 +264,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void debug(const CFStringRef& msg, const log4cxx::spi::LocationInfo& location) const;
+		void debug(const CFStringRef& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the DEBUG level.
 
@@ -293,7 +293,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void error(const std::string& msg, const log4cxx::spi::LocationInfo& location) const;
+		void error(const std::string& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the ERROR level.
 
@@ -307,7 +307,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		*/
 		void error(const std::string& msg) const;
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 		/**
 		Log a message string with the ERROR level.
 
@@ -334,9 +334,9 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void error(const std::wstring& msg, const log4cxx::spi::LocationInfo& location) const;
+		void error(const std::wstring& msg, const log4cxxng::spi::LocationInfo& location) const;
 #endif
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 		/**
 		Log a message string with the ERROR level.
 
@@ -350,7 +350,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void error(const std::basic_string<UniChar>& msg, const log4cxx::spi::LocationInfo& location) const;
+		void error(const std::basic_string<UniChar>& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the ERROR level.
 
@@ -365,7 +365,7 @@ class LOG4CXX_EXPORT Logger :
 		*/
 		void error(const std::basic_string<UniChar>& msg) const;
 #endif
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		/**
 		Log a message string with the ERROR level.
 
@@ -379,7 +379,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void error(const CFStringRef& msg, const log4cxx::spi::LocationInfo& location) const;
+		void error(const CFStringRef& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the ERROR level.
 
@@ -408,7 +408,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void fatal(const std::string& msg, const log4cxx::spi::LocationInfo& location) const;
+		void fatal(const std::string& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the ERROR level.
 
@@ -422,7 +422,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		*/
 		void fatal(const std::string& msg) const;
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 		/**
 		Log a message string with the ERROR level.
 
@@ -436,7 +436,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void fatal(const std::wstring& msg, const log4cxx::spi::LocationInfo& location) const;
+		void fatal(const std::wstring& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the ERROR level.
 
@@ -451,7 +451,7 @@ class LOG4CXX_EXPORT Logger :
 		*/
 		void fatal(const std::wstring& msg) const;
 #endif
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 		/**
 		Log a message string with the ERROR level.
 
@@ -465,7 +465,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void fatal(const std::basic_string<UniChar>& msg, const log4cxx::spi::LocationInfo& location) const;
+		void fatal(const std::basic_string<UniChar>& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the ERROR level.
 
@@ -480,7 +480,7 @@ class LOG4CXX_EXPORT Logger :
 		*/
 		void fatal(const std::basic_string<UniChar>& msg) const;
 #endif
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		/**
 		Log a message string with the ERROR level.
 
@@ -494,7 +494,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void fatal(const CFStringRef& msg, const log4cxx::spi::LocationInfo& location) const;
+		void fatal(const CFStringRef& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the ERROR level.
 
@@ -518,7 +518,7 @@ class LOG4CXX_EXPORT Logger :
 		@param location location of source of logging request.
 		*/
 		void forcedLog(const LevelPtr& level, const std::string& message,
-			const log4cxx::spi::LocationInfo& location) const;
+			const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		This method creates a new logging event and logs the event
 		without further checks.
@@ -527,7 +527,7 @@ class LOG4CXX_EXPORT Logger :
 		*/
 		void forcedLog(const LevelPtr& level, const std::string& message) const;
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 		/**
 		This method creates a new logging event and logs the event
 		without further checks.
@@ -536,7 +536,7 @@ class LOG4CXX_EXPORT Logger :
 		@param location location of source of logging request.
 		*/
 		void forcedLog(const LevelPtr& level, const std::wstring& message,
-			const log4cxx::spi::LocationInfo& location) const;
+			const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		This method creates a new logging event and logs the event
 		without further checks.
@@ -545,7 +545,7 @@ class LOG4CXX_EXPORT Logger :
 		*/
 		void forcedLog(const LevelPtr& level, const std::wstring& message) const;
 #endif
-#if LOG4CXX_UNICHAR_API || LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_UNICHAR_API || LOG4CXXNG_CFSTRING_API
 		/**
 		This method creates a new logging event and logs the event
 		without further checks.
@@ -554,7 +554,7 @@ class LOG4CXX_EXPORT Logger :
 		@param location location of source of logging request.
 		*/
 		void forcedLog(const LevelPtr& level, const std::basic_string<UniChar>& message,
-			const log4cxx::spi::LocationInfo& location) const;
+			const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		This method creates a new logging event and logs the event
 		without further checks.
@@ -563,7 +563,7 @@ class LOG4CXX_EXPORT Logger :
 		*/
 		void forcedLog(const LevelPtr& level, const std::basic_string<UniChar>& message) const;
 #endif
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		/**
 		This method creates a new logging event and logs the event
 		without further checks.
@@ -572,7 +572,7 @@ class LOG4CXX_EXPORT Logger :
 		@param location location of source of logging request.
 		*/
 		void forcedLog(const LevelPtr& level, const CFStringRef& message,
-			const log4cxx::spi::LocationInfo& location) const;
+			const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		This method creates a new logging event and logs the event
 		without further checks.
@@ -589,7 +589,7 @@ class LOG4CXX_EXPORT Logger :
 		@param location location of the logging statement.
 		*/
 		void forcedLogLS(const LevelPtr& level, const LogString& message,
-			const log4cxx::spi::LocationInfo& location) const;
+			const log4cxxng::spi::LocationInfo& location) const;
 
 		/**
 		Get the additivity flag for this Logger instance.
@@ -624,7 +624,7 @@ class LOG4CXX_EXPORT Logger :
 		Return the the LoggerRepository where this
 		<code>Logger</code> is attached.
 		*/
-		log4cxx::spi::LoggerRepositoryPtr getLoggerRepository() const;
+		log4cxxng::spi::LoggerRepositoryPtr getLoggerRepository() const;
 
 
 		/**
@@ -640,21 +640,21 @@ class LOG4CXX_EXPORT Logger :
 		* @param name buffer to which name is appended.
 		*/
 		void getName(std::string& name) const;
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 		/**
 		* Get logger name.
 		* @param name buffer to which name is appended.
 		*/
 		void getName(std::wstring& name) const;
 #endif
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 		/**
 		* Get logger name.
 		* @param name buffer to which name is appended.
 		*/
 		void getName(std::basic_string<UniChar>& name) const;
 #endif
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		/**
 		* Get logger name.
 		* @param name buffer to which name is appended.
@@ -688,7 +688,7 @@ class LOG4CXX_EXPORT Logger :
 		* @param name logger name.
 		*/
 		static LoggerPtr getLogger(const char* const name);
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 		/**
 		* Retrieve a logger by name.
 		* @param name logger name.
@@ -700,14 +700,14 @@ class LOG4CXX_EXPORT Logger :
 		*/
 		static LoggerPtr getLogger(const wchar_t* const name);
 #endif
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 		/**
 		* Retrieve a logger by name.
 		* @param name logger name.
 		*/
 		static LoggerPtr getLogger(const std::basic_string<UniChar>& name);
 #endif
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		/**
 		* Retrieve a logger by name.
 		* @param name logger name.
@@ -739,7 +739,7 @@ class LOG4CXX_EXPORT Logger :
 		actually create a new Instance.
 		*/
 		static LoggerPtr getLoggerLS(const LogString& name,
-			const log4cxx::spi::LoggerFactoryPtr& factory);
+			const log4cxxng::spi::LoggerFactoryPtr& factory);
 		/**
 		Like #getLogger except that the type of logger
 		instantiated depends on the type returned by the
@@ -754,8 +754,8 @@ class LOG4CXX_EXPORT Logger :
 		actually create a new Instance.
 		*/
 		static LoggerPtr getLogger(const std::string& name,
-			const log4cxx::spi::LoggerFactoryPtr& factory);
-#if LOG4CXX_WCHAR_T_API
+			const log4cxxng::spi::LoggerFactoryPtr& factory);
+#if LOG4CXXNG_WCHAR_T_API
 		/**
 		Like #getLogger except that the type of logger
 		instantiated depends on the type returned by the
@@ -770,9 +770,9 @@ class LOG4CXX_EXPORT Logger :
 		actually create a new Instance.
 		*/
 		static LoggerPtr getLogger(const std::wstring& name,
-			const log4cxx::spi::LoggerFactoryPtr& factory);
+			const log4cxxng::spi::LoggerFactoryPtr& factory);
 #endif
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 		/**
 		Like #getLogger except that the type of logger
 		instantiated depends on the type returned by the
@@ -787,9 +787,9 @@ class LOG4CXX_EXPORT Logger :
 		actually create a new Instance.
 		*/
 		static LoggerPtr getLogger(const std::basic_string<UniChar>& name,
-			const log4cxx::spi::LoggerFactoryPtr& factory);
+			const log4cxxng::spi::LoggerFactoryPtr& factory);
 #endif
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		/**
 		Like #getLogger except that the type of logger
 		instantiated depends on the type returned by the
@@ -804,7 +804,7 @@ class LOG4CXX_EXPORT Logger :
 		actually create a new Instance.
 		*/
 		static LoggerPtr getLogger(const CFStringRef& name,
-			const log4cxx::spi::LoggerFactoryPtr& factory);
+			const log4cxxng::spi::LoggerFactoryPtr& factory);
 #endif
 
 		/**
@@ -844,9 +844,9 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		        */
-		void info(const std::string& msg, const log4cxx::spi::LocationInfo& location) const;
+		void info(const std::string& msg, const log4cxxng::spi::LocationInfo& location) const;
 		void info(const std::string& msg) const;
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 		/**
 		Log a message string with the INFO level.
 
@@ -860,7 +860,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		        */
-		void info(const std::wstring& msg, const log4cxx::spi::LocationInfo& location) const;
+		void info(const std::wstring& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the INFO level.
 
@@ -875,7 +875,7 @@ class LOG4CXX_EXPORT Logger :
 		        */
 		void info(const std::wstring& msg) const;
 #endif
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 		/**
 		Log a message string with the INFO level.
 
@@ -889,7 +889,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		        */
-		void info(const std::basic_string<UniChar>& msg, const log4cxx::spi::LocationInfo& location) const;
+		void info(const std::basic_string<UniChar>& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the INFO level.
 
@@ -904,7 +904,7 @@ class LOG4CXX_EXPORT Logger :
 		        */
 		void info(const std::basic_string<UniChar>& msg) const;
 #endif
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		/**
 		Log a message string with the INFO level.
 
@@ -918,7 +918,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		        */
-		void info(const CFStringRef& msg, const log4cxx::spi::LocationInfo& location) const;
+		void info(const CFStringRef& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the INFO level.
 
@@ -1048,7 +1048,7 @@ class LOG4CXX_EXPORT Logger :
 		@see #setResourceBundle
 		*/
 		void l7dlog(const LevelPtr& level, const LogString& key,
-			const log4cxx::spi::LocationInfo& locationInfo,
+			const log4cxxng::spi::LocationInfo& locationInfo,
 			const std::vector<LogString>& values) const;
 		/**
 		Log a localized and parameterized message.
@@ -1065,7 +1065,7 @@ class LOG4CXX_EXPORT Logger :
 		@see #setResourceBundle
 		*/
 		void l7dlog(const LevelPtr& level, const std::string& key,
-			const log4cxx::spi::LocationInfo& locationInfo) const;
+			const log4cxxng::spi::LocationInfo& locationInfo) const;
 		/**
 		Log a localized and parameterized message.
 
@@ -1082,7 +1082,7 @@ class LOG4CXX_EXPORT Logger :
 		@see #setResourceBundle
 		*/
 		void l7dlog(const LevelPtr& level, const std::string& key,
-			const log4cxx::spi::LocationInfo& locationInfo,
+			const log4cxxng::spi::LocationInfo& locationInfo,
 			const std::string& val1) const;
 		/**
 		Log a localized and parameterized message.
@@ -1101,7 +1101,7 @@ class LOG4CXX_EXPORT Logger :
 		@see #setResourceBundle
 		*/
 		void l7dlog(const LevelPtr& level, const std::string& key,
-			const log4cxx::spi::LocationInfo& locationInfo,
+			const log4cxxng::spi::LocationInfo& locationInfo,
 			const std::string& val1, const std::string& val2) const;
 		/**
 		Log a localized and parameterized message.
@@ -1121,10 +1121,10 @@ class LOG4CXX_EXPORT Logger :
 		@see #setResourceBundle
 		*/
 		void l7dlog(const LevelPtr& level, const std::string& key,
-			const log4cxx::spi::LocationInfo& locationInfo,
+			const log4cxxng::spi::LocationInfo& locationInfo,
 			const std::string& val1, const std::string& val2, const std::string& val3) const;
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 		/**
 		Log a localized and parameterized message.
 
@@ -1140,7 +1140,7 @@ class LOG4CXX_EXPORT Logger :
 		@see #setResourceBundle
 		*/
 		void l7dlog(const LevelPtr& level, const std::wstring& key,
-			const log4cxx::spi::LocationInfo& locationInfo) const;
+			const log4cxxng::spi::LocationInfo& locationInfo) const;
 		/**
 		Log a localized and parameterized message.
 
@@ -1157,7 +1157,7 @@ class LOG4CXX_EXPORT Logger :
 		@see #setResourceBundle
 		*/
 		void l7dlog(const LevelPtr& level, const std::wstring& key,
-			const log4cxx::spi::LocationInfo& locationInfo,
+			const log4cxxng::spi::LocationInfo& locationInfo,
 			const std::wstring& val1) const;
 		/**
 		Log a localized and parameterized message.
@@ -1176,7 +1176,7 @@ class LOG4CXX_EXPORT Logger :
 		@see #setResourceBundle
 		*/
 		void l7dlog(const LevelPtr& level, const std::wstring& key,
-			const log4cxx::spi::LocationInfo& locationInfo,
+			const log4cxxng::spi::LocationInfo& locationInfo,
 			const std::wstring& val1, const std::wstring& val2) const;
 		/**
 		Log a localized and parameterized message.
@@ -1196,10 +1196,10 @@ class LOG4CXX_EXPORT Logger :
 		@see #setResourceBundle
 		*/
 		void l7dlog(const LevelPtr& level, const std::wstring& key,
-			const log4cxx::spi::LocationInfo& locationInfo,
+			const log4cxxng::spi::LocationInfo& locationInfo,
 			const std::wstring& val1, const std::wstring& val2, const std::wstring& val3) const;
 #endif
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 		/**
 		Log a localized and parameterized message.
 
@@ -1215,7 +1215,7 @@ class LOG4CXX_EXPORT Logger :
 		@see #setResourceBundle
 		*/
 		void l7dlog(const LevelPtr& level, const std::basic_string<UniChar>& key,
-			const log4cxx::spi::LocationInfo& locationInfo) const;
+			const log4cxxng::spi::LocationInfo& locationInfo) const;
 		/**
 		Log a localized and parameterized message.
 
@@ -1232,7 +1232,7 @@ class LOG4CXX_EXPORT Logger :
 		@see #setResourceBundle
 		*/
 		void l7dlog(const LevelPtr& level, const std::basic_string<UniChar>& key,
-			const log4cxx::spi::LocationInfo& locationInfo,
+			const log4cxxng::spi::LocationInfo& locationInfo,
 			const std::basic_string<UniChar>& val1) const;
 		/**
 		Log a localized and parameterized message.
@@ -1251,7 +1251,7 @@ class LOG4CXX_EXPORT Logger :
 		@see #setResourceBundle
 		*/
 		void l7dlog(const LevelPtr& level, const std::basic_string<UniChar>& key,
-			const log4cxx::spi::LocationInfo& locationInfo,
+			const log4cxxng::spi::LocationInfo& locationInfo,
 			const std::basic_string<UniChar>& val1, const std::basic_string<UniChar>& val2) const;
 		/**
 		Log a localized and parameterized message.
@@ -1271,11 +1271,11 @@ class LOG4CXX_EXPORT Logger :
 		@see #setResourceBundle
 		*/
 		void l7dlog(const LevelPtr& level, const std::basic_string<UniChar>& key,
-			const log4cxx::spi::LocationInfo& locationInfo,
+			const log4cxxng::spi::LocationInfo& locationInfo,
 			const std::basic_string<UniChar>& val1, const std::basic_string<UniChar>& val2,
 			const std::basic_string<UniChar>& val3) const;
 #endif
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		/**
 		Log a localized and parameterized message.
 
@@ -1291,7 +1291,7 @@ class LOG4CXX_EXPORT Logger :
 		@see #setResourceBundle
 		*/
 		void l7dlog(const LevelPtr& level, const CFStringRef& key,
-			const log4cxx::spi::LocationInfo& locationInfo) const;
+			const log4cxxng::spi::LocationInfo& locationInfo) const;
 		/**
 		Log a localized and parameterized message.
 
@@ -1308,7 +1308,7 @@ class LOG4CXX_EXPORT Logger :
 		@see #setResourceBundle
 		*/
 		void l7dlog(const LevelPtr& level, const CFStringRef& key,
-			const log4cxx::spi::LocationInfo& locationInfo,
+			const log4cxxng::spi::LocationInfo& locationInfo,
 			const CFStringRef& val1) const;
 		/**
 		Log a localized and parameterized message.
@@ -1327,7 +1327,7 @@ class LOG4CXX_EXPORT Logger :
 		@see #setResourceBundle
 		*/
 		void l7dlog(const LevelPtr& level, const CFStringRef& key,
-			const log4cxx::spi::LocationInfo& locationInfo,
+			const log4cxxng::spi::LocationInfo& locationInfo,
 			const CFStringRef& val1, const CFStringRef& val2) const;
 		/**
 		Log a localized and parameterized message.
@@ -1347,7 +1347,7 @@ class LOG4CXX_EXPORT Logger :
 		@see #setResourceBundle
 		*/
 		void l7dlog(const LevelPtr& level, const CFStringRef& key,
-			const log4cxx::spi::LocationInfo& locationInfo,
+			const log4cxxng::spi::LocationInfo& locationInfo,
 			const CFStringRef& val1, const CFStringRef& val2,
 			const CFStringRef& val3) const;
 #endif
@@ -1360,7 +1360,7 @@ class LOG4CXX_EXPORT Logger :
 		@param message The message of the logging request.
 		@param location The source file of the logging request, may be null. */
 		void log(const LevelPtr& level, const std::string& message,
-			const log4cxx::spi::LocationInfo& location) const;
+			const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		This is the most generic printing method. It is intended to be
 		invoked by <b>wrapper</b> classes.
@@ -1369,7 +1369,7 @@ class LOG4CXX_EXPORT Logger :
 		@param message The message of the logging request.
 		*/
 		void log(const LevelPtr& level, const std::string& message) const;
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 		/**
 		This is the most generic printing method. It is intended to be
 		invoked by <b>wrapper</b> classes.
@@ -1378,7 +1378,7 @@ class LOG4CXX_EXPORT Logger :
 		@param message The message of the logging request.
 		@param location The source file of the logging request, may be null. */
 		void log(const LevelPtr& level, const std::wstring& message,
-			const log4cxx::spi::LocationInfo& location) const;
+			const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		This is the most generic printing method. It is intended to be
 		invoked by <b>wrapper</b> classes.
@@ -1388,7 +1388,7 @@ class LOG4CXX_EXPORT Logger :
 		*/
 		void log(const LevelPtr& level, const std::wstring& message) const;
 #endif
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 		/**
 		This is the most generic printing method. It is intended to be
 		invoked by <b>wrapper</b> classes.
@@ -1397,7 +1397,7 @@ class LOG4CXX_EXPORT Logger :
 		@param message The message of the logging request.
 		@param location The source file of the logging request, may be null. */
 		void log(const LevelPtr& level, const std::basic_string<UniChar>& message,
-			const log4cxx::spi::LocationInfo& location) const;
+			const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		This is the most generic printing method. It is intended to be
 		invoked by <b>wrapper</b> classes.
@@ -1407,7 +1407,7 @@ class LOG4CXX_EXPORT Logger :
 		*/
 		void log(const LevelPtr& level, const std::basic_string<UniChar>& message) const;
 #endif
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		/**
 		This is the most generic printing method. It is intended to be
 		invoked by <b>wrapper</b> classes.
@@ -1416,7 +1416,7 @@ class LOG4CXX_EXPORT Logger :
 		@param message The message of the logging request.
 		@param location The source file of the logging request, may be null. */
 		void log(const LevelPtr& level, const CFStringRef& message,
-			const log4cxx::spi::LocationInfo& location) const;
+			const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		This is the most generic printing method. It is intended to be
 		invoked by <b>wrapper</b> classes.
@@ -1434,7 +1434,7 @@ class LOG4CXX_EXPORT Logger :
 		@param message The message of the logging request.
 		@param location The source file of the logging request, may be null. */
 		void logLS(const LevelPtr& level, const LogString& message,
-			const log4cxx::spi::LocationInfo& location) const;
+			const log4cxxng::spi::LocationInfo& location) const;
 
 
 
@@ -1484,7 +1484,7 @@ class LOG4CXX_EXPORT Logger :
 			resourceBundle = bundle;
 		}
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 		/**
 		Log a message string with the WARN level.
 
@@ -1498,7 +1498,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void warn(const std::wstring& msg, const log4cxx::spi::LocationInfo& location) const;
+		void warn(const std::wstring& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the WARN level.
 
@@ -1513,7 +1513,7 @@ class LOG4CXX_EXPORT Logger :
 		*/
 		void warn(const std::wstring& msg) const;
 #endif
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 		/**
 		Log a message string with the WARN level.
 
@@ -1527,7 +1527,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void warn(const std::basic_string<UniChar>& msg, const log4cxx::spi::LocationInfo& location) const;
+		void warn(const std::basic_string<UniChar>& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the WARN level.
 
@@ -1542,7 +1542,7 @@ class LOG4CXX_EXPORT Logger :
 		*/
 		void warn(const std::basic_string<UniChar>& msg) const;
 #endif
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		/**
 		Log a message string with the WARN level.
 
@@ -1556,7 +1556,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void warn(const CFStringRef& msg, const log4cxx::spi::LocationInfo& location) const;
+		void warn(const CFStringRef& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the WARN level.
 
@@ -1584,7 +1584,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void warn(const std::string& msg, const log4cxx::spi::LocationInfo& location) const;
+		void warn(const std::string& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the WARN level.
 
@@ -1599,7 +1599,7 @@ class LOG4CXX_EXPORT Logger :
 		*/
 		void warn(const std::string& msg) const;
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 		/**
 		Log a message string with the TRACE level.
 
@@ -1613,7 +1613,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void trace(const std::wstring& msg, const log4cxx::spi::LocationInfo& location) const;
+		void trace(const std::wstring& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the TRACE level.
 
@@ -1628,7 +1628,7 @@ class LOG4CXX_EXPORT Logger :
 		*/
 		void trace(const std::wstring& msg) const;
 #endif
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 		/**
 		Log a message string with the TRACE level.
 
@@ -1642,7 +1642,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void trace(const std::basic_string<UniChar>& msg, const log4cxx::spi::LocationInfo& location) const;
+		void trace(const std::basic_string<UniChar>& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the TRACE level.
 
@@ -1657,7 +1657,7 @@ class LOG4CXX_EXPORT Logger :
 		*/
 		void trace(const std::basic_string<UniChar>& msg) const;
 #endif
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		/**
 		Log a message string with the TRACE level.
 
@@ -1671,7 +1671,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void trace(const CFStringRef& msg, const log4cxx::spi::LocationInfo& location) const;
+		void trace(const CFStringRef& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the TRACE level.
 
@@ -1699,7 +1699,7 @@ class LOG4CXX_EXPORT Logger :
 		@param msg the message string to log.
 		@param location location of source of logging request.
 		*/
-		void trace(const std::string& msg, const log4cxx::spi::LocationInfo& location) const;
+		void trace(const std::string& msg, const log4cxxng::spi::LocationInfo& location) const;
 		/**
 		Log a message string with the TRACE level.
 
@@ -1725,9 +1725,9 @@ class LOG4CXX_EXPORT Logger :
 		Logger(const Logger&);
 		Logger& operator=(const Logger&);
 		mutable SHARED_MUTEX mutex;
-		friend class log4cxx::helpers::synchronized;
+		friend class log4cxxng::helpers::synchronized;
 };
-LOG4CXX_LIST_DEF(LoggerList, LoggerPtr);
+LOG4CXXNG_LIST_DEF(LoggerList, LoggerPtr);
 
 }
 
@@ -1735,7 +1735,7 @@ LOG4CXX_LIST_DEF(LoggerList, LoggerPtr);
 @{
 */
 
-#if !defined(LOG4CXX_UNLIKELY)
+#if !defined(LOG4CXXNG_UNLIKELY)
 	#if __GNUC__ >= 3
 		/**
 		Provides optimization hint to the compiler
@@ -1743,7 +1743,7 @@ LOG4CXX_LIST_DEF(LoggerList, LoggerPtr);
 		@param expr boolean expression.
 		@returns value of expression.
 		*/
-		#define LOG4CXX_UNLIKELY(expr) __builtin_expect(expr, 0)
+		#define LOG4CXXNG_UNLIKELY(expr) __builtin_expect(expr, 0)
 	#else
 		/**
 		Provides optimization hint to the compiler
@@ -1751,7 +1751,7 @@ LOG4CXX_LIST_DEF(LoggerList, LoggerPtr);
 		@param expr boolean expression.
 		@returns value of expression.
 		**/
-		#define LOG4CXX_UNLIKELY(expr) expr
+		#define LOG4CXXNG_UNLIKELY(expr) expr
 	#endif
 #endif
 
@@ -1763,10 +1763,10 @@ Logs a message to a specified logger with a specified level.
 @param level the level to log.
 @param message the message string to log.
 */
-#define LOG4CXX_LOG(logger, level, message) do { \
+#define LOG4CXXNG_LOG(logger, level, message) do { \
 		if (logger->isEnabledFor(level)) {\
-			::log4cxx::helpers::MessageBuffer oss_; \
-			logger->forcedLog(level, oss_.str(oss_ << message), LOG4CXX_LOCATION); }} while (0)
+			::log4cxxng::helpers::MessageBuffer oss_; \
+			logger->forcedLog(level, oss_.str(oss_ << message), LOG4CXXNG_LOCATION); }} while (0)
 
 /**
 Logs a message to a specified logger with a specified level.
@@ -1775,82 +1775,82 @@ Logs a message to a specified logger with a specified level.
 @param level the level to log.
 @param message the message string to log in the internal encoding.
 */
-#define LOG4CXX_LOGLS(logger, level, message) do { \
+#define LOG4CXXNG_LOGLS(logger, level, message) do { \
 		if (logger->isEnabledFor(level)) {\
-			::log4cxx::helpers::LogCharMessageBuffer oss_; \
-			logger->forcedLog(level, oss_.str(oss_ << message), LOG4CXX_LOCATION); }} while (0)
+			::log4cxxng::helpers::LogCharMessageBuffer oss_; \
+			logger->forcedLog(level, oss_.str(oss_ << message), LOG4CXXNG_LOCATION); }} while (0)
 
-#if !defined(LOG4CXX_THRESHOLD) || LOG4CXX_THRESHOLD <= 10000
+#if !defined(LOG4CXXNG_THRESHOLD) || LOG4CXXNG_THRESHOLD <= 10000
 /**
 Logs a message to a specified logger with the DEBUG level.
 
 @param logger the logger to be used.
 @param message the message string to log.
 */
-#define LOG4CXX_DEBUG(logger, message) do { \
-		if (LOG4CXX_UNLIKELY(logger->isDebugEnabled())) {\
-			::log4cxx::helpers::MessageBuffer oss_; \
-			logger->forcedLog(::log4cxx::Level::getDebug(), oss_.str(oss_ << message), LOG4CXX_LOCATION); }} while (0)
+#define LOG4CXXNG_DEBUG(logger, message) do { \
+		if (LOG4CXXNG_UNLIKELY(logger->isDebugEnabled())) {\
+			::log4cxxng::helpers::MessageBuffer oss_; \
+			logger->forcedLog(::log4cxxng::Level::getDebug(), oss_.str(oss_ << message), LOG4CXXNG_LOCATION); }} while (0)
 #else
-#define LOG4CXX_DEBUG(logger, message)
+#define LOG4CXXNG_DEBUG(logger, message)
 #endif
 
-#if !defined(LOG4CXX_THRESHOLD) || LOG4CXX_THRESHOLD <= 5000
+#if !defined(LOG4CXXNG_THRESHOLD) || LOG4CXXNG_THRESHOLD <= 5000
 /**
 Logs a message to a specified logger with the TRACE level.
 
 @param logger the logger to be used.
 @param message the message string to log.
 */
-#define LOG4CXX_TRACE(logger, message) do { \
-		if (LOG4CXX_UNLIKELY(logger->isTraceEnabled())) {\
-			::log4cxx::helpers::MessageBuffer oss_; \
-			logger->forcedLog(::log4cxx::Level::getTrace(), oss_.str(oss_ << message), LOG4CXX_LOCATION); }} while (0)
+#define LOG4CXXNG_TRACE(logger, message) do { \
+		if (LOG4CXXNG_UNLIKELY(logger->isTraceEnabled())) {\
+			::log4cxxng::helpers::MessageBuffer oss_; \
+			logger->forcedLog(::log4cxxng::Level::getTrace(), oss_.str(oss_ << message), LOG4CXXNG_LOCATION); }} while (0)
 #else
-#define LOG4CXX_TRACE(logger, message)
+#define LOG4CXXNG_TRACE(logger, message)
 #endif
 
-#if !defined(LOG4CXX_THRESHOLD) || LOG4CXX_THRESHOLD <= 20000
+#if !defined(LOG4CXXNG_THRESHOLD) || LOG4CXXNG_THRESHOLD <= 20000
 /**
 Logs a message to a specified logger with the INFO level.
 
 @param logger the logger to be used.
 @param message the message string to log.
 */
-#define LOG4CXX_INFO(logger, message) do { \
+#define LOG4CXXNG_INFO(logger, message) do { \
 		if (logger->isInfoEnabled()) {\
-			::log4cxx::helpers::MessageBuffer oss_; \
-			logger->forcedLog(::log4cxx::Level::getInfo(), oss_.str(oss_ << message), LOG4CXX_LOCATION); }} while (0)
+			::log4cxxng::helpers::MessageBuffer oss_; \
+			logger->forcedLog(::log4cxxng::Level::getInfo(), oss_.str(oss_ << message), LOG4CXXNG_LOCATION); }} while (0)
 #else
-#define LOG4CXX_INFO(logger, message)
+#define LOG4CXXNG_INFO(logger, message)
 #endif
 
-#if !defined(LOG4CXX_THRESHOLD) || LOG4CXX_THRESHOLD <= 30000
+#if !defined(LOG4CXXNG_THRESHOLD) || LOG4CXXNG_THRESHOLD <= 30000
 /**
 Logs a message to a specified logger with the WARN level.
 
 @param logger the logger to be used.
 @param message the message string to log.
 */
-#define LOG4CXX_WARN(logger, message) do { \
+#define LOG4CXXNG_WARN(logger, message) do { \
 		if (logger->isWarnEnabled()) {\
-			::log4cxx::helpers::MessageBuffer oss_; \
-			logger->forcedLog(::log4cxx::Level::getWarn(), oss_.str(oss_ << message), LOG4CXX_LOCATION); }} while (0)
+			::log4cxxng::helpers::MessageBuffer oss_; \
+			logger->forcedLog(::log4cxxng::Level::getWarn(), oss_.str(oss_ << message), LOG4CXXNG_LOCATION); }} while (0)
 #else
-#define LOG4CXX_WARN(logger, message)
+#define LOG4CXXNG_WARN(logger, message)
 #endif
 
-#if !defined(LOG4CXX_THRESHOLD) || LOG4CXX_THRESHOLD <= 40000
+#if !defined(LOG4CXXNG_THRESHOLD) || LOG4CXXNG_THRESHOLD <= 40000
 /**
 Logs a message to a specified logger with the ERROR level.
 
 @param logger the logger to be used.
 @param message the message string to log.
 */
-#define LOG4CXX_ERROR(logger, message) do { \
+#define LOG4CXXNG_ERROR(logger, message) do { \
 		if (logger->isErrorEnabled()) {\
-			::log4cxx::helpers::MessageBuffer oss_; \
-			logger->forcedLog(::log4cxx::Level::getError(), oss_.str(oss_ << message), LOG4CXX_LOCATION); }} while (0)
+			::log4cxxng::helpers::MessageBuffer oss_; \
+			logger->forcedLog(::log4cxxng::Level::getError(), oss_.str(oss_ << message), LOG4CXXNG_LOCATION); }} while (0)
 
 /**
 Logs a error if the condition is not true.
@@ -1859,29 +1859,29 @@ Logs a error if the condition is not true.
 @param condition condition
 @param message the message string to log.
 */
-#define LOG4CXX_ASSERT(logger, condition, message) do { \
+#define LOG4CXXNG_ASSERT(logger, condition, message) do { \
 		if (!(condition) && logger->isErrorEnabled()) {\
-			::log4cxx::helpers::MessageBuffer oss_; \
-			logger->forcedLog(::log4cxx::Level::getError(), oss_.str(oss_ << message), LOG4CXX_LOCATION); }} while (0)
+			::log4cxxng::helpers::MessageBuffer oss_; \
+			logger->forcedLog(::log4cxxng::Level::getError(), oss_.str(oss_ << message), LOG4CXXNG_LOCATION); }} while (0)
 
 #else
-#define LOG4CXX_ERROR(logger, message)
-#define LOG4CXX_ASSERT(logger, condition, message)
+#define LOG4CXXNG_ERROR(logger, message)
+#define LOG4CXXNG_ASSERT(logger, condition, message)
 #endif
 
-#if !defined(LOG4CXX_THRESHOLD) || LOG4CXX_THRESHOLD <= 50000
+#if !defined(LOG4CXXNG_THRESHOLD) || LOG4CXXNG_THRESHOLD <= 50000
 /**
 Logs a message to a specified logger with the FATAL level.
 
 @param logger the logger to be used.
 @param message the message string to log.
 */
-#define LOG4CXX_FATAL(logger, message) do { \
+#define LOG4CXXNG_FATAL(logger, message) do { \
 		if (logger->isFatalEnabled()) {\
-			::log4cxx::helpers::MessageBuffer oss_; \
-			logger->forcedLog(::log4cxx::Level::getFatal(), oss_.str(oss_ << message), LOG4CXX_LOCATION); }} while (0)
+			::log4cxxng::helpers::MessageBuffer oss_; \
+			logger->forcedLog(::log4cxxng::Level::getFatal(), oss_.str(oss_ << message), LOG4CXXNG_LOCATION); }} while (0)
 #else
-#define LOG4CXX_FATAL(logger, message)
+#define LOG4CXXNG_FATAL(logger, message)
 #endif
 
 /**
@@ -1891,9 +1891,9 @@ Logs a localized message with no parameter.
 @param level the level to log.
 @param key the key to be searched in the resourceBundle of the logger.
 */
-#define LOG4CXX_L7DLOG(logger, level, key) do { \
+#define LOG4CXXNG_L7DLOG(logger, level, key) do { \
 		if (logger->isEnabledFor(level)) {\
-			logger->l7dlog(level, key, LOG4CXX_LOCATION); }} while (0)
+			logger->l7dlog(level, key, LOG4CXXNG_LOCATION); }} while (0)
 
 /**
 Logs a localized message with one parameter.
@@ -1903,9 +1903,9 @@ Logs a localized message with one parameter.
 @param key the key to be searched in the resourceBundle of the logger.
 @param p1 the unique parameter.
 */
-#define LOG4CXX_L7DLOG1(logger, level, key, p1) do { \
+#define LOG4CXXNG_L7DLOG1(logger, level, key, p1) do { \
 		if (logger->isEnabledFor(level)) {\
-			logger->l7dlog(level, key, LOG4CXX_LOCATION, p1); }} while (0)
+			logger->l7dlog(level, key, LOG4CXXNG_LOCATION, p1); }} while (0)
 
 /**
 Logs a localized message with two parameters.
@@ -1916,9 +1916,9 @@ Logs a localized message with two parameters.
 @param p1 the first parameter.
 @param p2 the second parameter.
 */
-#define LOG4CXX_L7DLOG2(logger, level, key, p1, p2) do { \
+#define LOG4CXXNG_L7DLOG2(logger, level, key, p1, p2) do { \
 		if (logger->isEnabledFor(level)) {\
-			logger->l7dlog(level, key, LOG4CXX_LOCATION, p1, p2); }} while (0)
+			logger->l7dlog(level, key, LOG4CXXNG_LOCATION, p1, p2); }} while (0)
 
 /**
 Logs a localized message with three parameters.
@@ -1930,9 +1930,9 @@ Logs a localized message with three parameters.
 @param p2 the second parameter.
 @param p3 the third parameter.
 */
-#define LOG4CXX_L7DLOG3(logger, level, key, p1, p2, p3) do { \
+#define LOG4CXXNG_L7DLOG3(logger, level, key, p1, p2, p3) do { \
 		if (logger->isEnabledFor(level)) {\
-			logger->l7dlog(level, key, LOG4CXX_LOCATION, p1, p2, p3); }} while (0)
+			logger->l7dlog(level, key, LOG4CXXNG_LOCATION, p1, p2, p3); }} while (0)
 
 /**@}*/
 
@@ -1942,4 +1942,4 @@ Logs a localized message with three parameters.
 
 #include <log4cxxNG/spi/loggerrepository.h>
 
-#endif //_LOG4CXX_LOGGER_H
+#endif //_LOG4CXXNG_LOGGER_H

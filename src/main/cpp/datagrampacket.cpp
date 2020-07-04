@@ -18,9 +18,9 @@
 #include <log4cxxNG/logstring.h>
 #include <log4cxxNG/helpers/datagrampacket.h>
 
-using namespace log4cxx::helpers;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(DatagramPacket)
+IMPLEMENT_LOG4CXXNG_OBJECT(DatagramPacket)
 
 /** Constructs a DatagramPacket for receiving packets of length
 <code>length</code>. */

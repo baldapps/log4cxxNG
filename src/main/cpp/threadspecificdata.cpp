@@ -19,13 +19,13 @@
 #include <log4cxxNG/helpers/threadspecificdata.h>
 #include <log4cxxNG/helpers/exception.h>
 #include <apr_thread_proc.h>
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 #include <log4cxxNG/helpers/aprinitializer.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 
 ThreadSpecificData::ThreadSpecificData()
@@ -38,12 +38,12 @@ ThreadSpecificData::~ThreadSpecificData()
 }
 
 
-log4cxx::NDC::Stack& ThreadSpecificData::getStack()
+log4cxxng::NDC::Stack& ThreadSpecificData::getStack()
 {
 	return ndcStack;
 }
 
-log4cxx::MDC::Map& ThreadSpecificData::getMap()
+log4cxxng::MDC::Map& ThreadSpecificData::getMap()
 {
 	return mdcMap;
 }

@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_DATAGRAM_PACKET
-#define _LOG4CXX_HELPERS_DATAGRAM_PACKET
+#ifndef _LOG4CXXNG_HELPERS_DATAGRAM_PACKET
+#define _LOG4CXXNG_HELPERS_DATAGRAM_PACKET
 
 #include <log4cxxNG/helpers/objectimpl.h>
 #include <log4cxxNG/helpers/objectptr.h>
 #include <log4cxxNG/helpers/inetaddress.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -34,7 +34,7 @@ based solely on information contained within that packet. Multiple
 packets sent from one machine to another might be routed differently,
 and might arrive in any order.
 */
-class LOG4CXX_EXPORT DatagramPacket : public helpers::ObjectImpl
+class LOG4CXXNG_EXPORT DatagramPacket : public helpers::ObjectImpl
 {
 	protected:
 		/** the data for this packet. */
@@ -53,10 +53,10 @@ class LOG4CXX_EXPORT DatagramPacket : public helpers::ObjectImpl
 		int port;
 
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(DatagramPacket)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(DatagramPacket)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(DatagramPacket)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(DatagramPacket)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/** Constructs a DatagramPacket for receiving packets of length
 		<code>length</code>. */
@@ -150,8 +150,8 @@ class LOG4CXX_EXPORT DatagramPacket : public helpers::ObjectImpl
 		DatagramPacket& operator=(const DatagramPacket&);
 
 }; // class DatagramPacket
-LOG4CXX_PTR_DEF(DatagramPacket);
+LOG4CXXNG_PTR_DEF(DatagramPacket);
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif // _LOG4CXX_HELPERS_DATAGRAM_PACKET
+#endif // _LOG4CXXNG_HELPERS_DATAGRAM_PACKET

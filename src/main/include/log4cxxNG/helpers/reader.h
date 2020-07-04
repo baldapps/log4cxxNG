@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_READER_H
-#define _LOG4CXX_HELPERS_READER_H
+#ifndef _LOG4CXXNG_HELPERS_READER_H
+#define _LOG4CXXNG_HELPERS_READER_H
 
 #include <log4cxxNG/helpers/objectimpl.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 namespace helpers
@@ -30,13 +30,13 @@ namespace helpers
  * Abstract class for reading from character streams.
  *
  */
-class LOG4CXX_EXPORT Reader : public ObjectImpl
+class LOG4CXXNG_EXPORT Reader : public ObjectImpl
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(Reader)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(Reader)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(Reader)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(Reader)
+		END_LOG4CXXNG_CAST_MAP()
 
 	protected:
 		/**
@@ -65,9 +65,9 @@ class LOG4CXX_EXPORT Reader : public ObjectImpl
 		Reader& operator=(const Reader&);
 };
 
-LOG4CXX_PTR_DEF(Reader);
+LOG4CXXNG_PTR_DEF(Reader);
 } // namespace helpers
 
-}  //namespace log4cxx
+}  //namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_READER_H
+#endif //_LOG4CXXNG_HELPERS_READER_H

@@ -15,28 +15,28 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_OBJECTOUTPUTSTREAM_H
-#define _LOG4CXX_HELPERS_OBJECTOUTPUTSTREAM_H
+#ifndef _LOG4CXXNG_HELPERS_OBJECTOUTPUTSTREAM_H
+#define _LOG4CXXNG_HELPERS_OBJECTOUTPUTSTREAM_H
 
 #include <log4cxxNG/helpers/objectimpl.h>
 #include <log4cxxNG/mdc.h>
 #include <log4cxxNG/helpers/outputstream.h>
 #include <log4cxxNG/helpers/charsetencoder.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
 /**
  *  Emulates java serialization.
  */
-class LOG4CXX_EXPORT ObjectOutputStream : public ObjectImpl
+class LOG4CXXNG_EXPORT ObjectOutputStream : public ObjectImpl
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(ObjectOutputStream)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(ObjectOutputStream)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(ObjectOutputStream)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(ObjectOutputStream)
+		END_LOG4CXXNG_CAST_MAP()
 
 		ObjectOutputStream(OutputStreamPtr os, Pool& p);
 		virtual ~ObjectOutputStream();
@@ -49,7 +49,7 @@ class LOG4CXX_EXPORT ObjectOutputStream : public ObjectImpl
 		void writeUTFString(const std::string&, Pool& p);
 		void writeObject(const MDC::Map& mdc, Pool& p);
 		void writeInt(int val, Pool& p);
-		void writeLong(log4cxx_time_t val, Pool& p);
+		void writeLong(log4cxxng_time_t val, Pool& p);
 		void writeProlog(const  char*   className,
 			int        classDescIncrement,
 			char*  bytes,
@@ -86,17 +86,17 @@ class LOG4CXX_EXPORT ObjectOutputStream : public ObjectImpl
 		ObjectOutputStream& operator=(const ObjectOutputStream&);
 
 		OutputStreamPtr                     os;
-		log4cxx::helpers::CharsetEncoderPtr utf8Encoder;
+		log4cxxng::helpers::CharsetEncoderPtr utf8Encoder;
 		const   unsigned int                        objectHandleDefault;
 		unsigned int                        objectHandle;
 		typedef std::map<std::string, unsigned int> ClassDescriptionMap;
 		ClassDescriptionMap*                classDescriptions;
 };
 
-LOG4CXX_PTR_DEF(ObjectOutputStream);
+LOG4CXXNG_PTR_DEF(ObjectOutputStream);
 } // namespace helpers
 
-} //namespace log4cxx
+} //namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_OUTPUTSTREAM_H
+#endif //_LOG4CXXNG_HELPERS_OUTPUTSTREAM_H
 

@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_TESTS_UTIL_FILTER_H
-#define _LOG4CXX_TESTS_UTIL_FILTER_H
+#ifndef _LOG4CXXNG_TESTS_UTIL_FILTER_H
+#define _LOG4CXXNG_TESTS_UTIL_FILTER_H
 
 #if defined(_MSC_VER)
 	#pragma warning (push)
@@ -35,7 +35,7 @@
 #define ABSOLUTE_TIME_PAT "[0-2][0-9]:[0-9][0-9]:[0-9][0-9],[0-9][0-9][0-9]"
 #define RELATIVE_TIME_PAT "^[0-9]+"
 
-namespace log4cxx
+namespace log4cxxng
 {
 class UnexpectedFormatException : public std::exception
 {
@@ -67,4 +67,4 @@ class Filter
 	#pragma warning (pop)
 #endif
 
-#endif //_LOG4CXX_TESTS_UTIL_FILTER_H
+#endif //_LOG4CXXNG_TESTS_UTIL_FILTER_H

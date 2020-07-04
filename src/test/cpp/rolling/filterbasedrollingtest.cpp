@@ -28,11 +28,11 @@
 #include <log4cxxNG/helpers/pool.h>
 #include <log4cxxNG/logger.h>
 
-using namespace log4cxx;
-using namespace log4cxx::rolling;
-using namespace log4cxx::xml;
-using namespace log4cxx::filter;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::rolling;
+using namespace log4cxxng::xml;
+using namespace log4cxxng::filter;
+using namespace log4cxxng::helpers;
 
 /**
  *
@@ -63,7 +63,7 @@ public:
 		DOMConfigurator::configure(
 			"./input/rolling/filter1.xml" /*, LogManager::getLoggerRepository() */);
 
-		common(LOG4CXX_STR("output/filterBased-test1"));
+		common(LOG4CXXNG_STR("output/filterBased-test1"));
 	}
 
 	/**
@@ -72,9 +72,9 @@ public:
 	 */
 	void test2()
 	{
-		LayoutPtr layout(new PatternLayout(LOG4CXX_STR("%m\n")));
+		LayoutPtr layout(new PatternLayout(LOG4CXXNG_STR("%m\n")));
 		RollingFileAppenderPtr rfa(new RollingFileAppender());
-		rfa->setName(LOG4CXX_STR("ROLLING"));
+		rfa->setName(LOG4CXXNG_STR("ROLLING"));
 		rfa->setLayout(layout);
 
 		FixedWindowRollingPolicyPtr swrp(new FixedWindowRollingPolicy());
@@ -88,10 +88,10 @@ public:
 		fbtp->activateOptions(p);
 
 		swrp->setMinIndex(0);
-		rfa->setFile(LOG4CXX_STR("output/filterBased-test2.log"));
+		rfa->setFile(LOG4CXXNG_STR("output/filterBased-test2.log"));
 		rfa->setAppend(false);
 
-		swrp->setFileNamePattern(LOG4CXX_STR("output/filterBased-test2.%i"));
+		swrp->setFileNamePattern(LOG4CXXNG_STR("output/filterBased-test2.%i"));
 		swrp->activateOptions(p);
 
 		rfa->setRollingPolicy(swrp);
@@ -100,7 +100,7 @@ public:
 		Logger::getRootLogger()->addAppender(rfa);
 		Logger::getRootLogger()->setLevel(Level::getDebug());
 
-		common(LOG4CXX_STR("output/filterBased-test2"));
+		common(LOG4CXXNG_STR("output/filterBased-test2"));
 	}
 
 private:
@@ -124,7 +124,7 @@ private:
 			if (i < 10)
 			{
 				msg[8] = (char) ('0' + i);
-				LOG4CXX_DEBUG(logger, msg);
+				LOG4CXXNG_DEBUG(logger, msg);
 			}
 			else if (i < 100)
 			{
@@ -133,11 +133,11 @@ private:
 
 				if ((i % 10) == 0)
 				{
-					LOG4CXX_WARN(logger, msg);
+					LOG4CXXNG_WARN(logger, msg);
 				}
 				else
 				{
-					LOG4CXX_DEBUG(logger, msg);
+					LOG4CXXNG_DEBUG(logger, msg);
 				}
 			}
 		}
@@ -146,11 +146,11 @@ private:
 		//  test was constructed to mimic SizeBasedRollingTest.test2
 		//
 		LOGUNIT_ASSERT_EQUAL(true,
-			Compare::compare(baseName + LOG4CXX_STR(".log"), LogString(LOG4CXX_STR("witness/rolling/sbr-test2.log"))));
+			Compare::compare(baseName + LOG4CXXNG_STR(".log"), LogString(LOG4CXXNG_STR("witness/rolling/sbr-test2.log"))));
 		LOGUNIT_ASSERT_EQUAL(true,
-			Compare::compare(baseName + LOG4CXX_STR(".0"), LogString(LOG4CXX_STR("witness/rolling/sbr-test2.0"))));
+			Compare::compare(baseName + LOG4CXXNG_STR(".0"), LogString(LOG4CXXNG_STR("witness/rolling/sbr-test2.0"))));
 		LOGUNIT_ASSERT_EQUAL(true,
-			Compare::compare(baseName + LOG4CXX_STR(".1"), LogString(LOG4CXX_STR("witness/rolling/sbr-test2.1"))));
+			Compare::compare(baseName + LOG4CXXNG_STR(".1"), LogString(LOG4CXXNG_STR("witness/rolling/sbr-test2.1"))));
 	}
 };
 

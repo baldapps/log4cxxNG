@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_SPI_OPTION_HANDLER_H
-#define _LOG4CXX_SPI_OPTION_HANDLER_H
+#ifndef _LOG4CXXNG_SPI_OPTION_HANDLER_H
+#define _LOG4CXXNG_SPI_OPTION_HANDLER_H
 
 #include <log4cxxNG/logstring.h>
 #include <log4cxxNG/helpers/object.h>
 #include <log4cxxNG/helpers/objectptr.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace spi
 {
@@ -32,10 +32,10 @@ typedef helpers::ObjectPtrT<OptionHandler> OptionHandlerPtr;
 /**
 A string based interface to configure package components.
 */
-class LOG4CXX_EXPORT OptionHandler : public virtual helpers::Object
+class LOG4CXXNG_EXPORT OptionHandler : public virtual helpers::Object
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(OptionHandler)
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(OptionHandler)
 		virtual ~OptionHandler() {}
 
 		/**
@@ -50,7 +50,7 @@ class LOG4CXX_EXPORT OptionHandler : public virtual helpers::Object
 		FileAppender#setFile File} and {@link
 		FileAppender#setAppend Append} options both of
 		which are ambigous until the other is also set.  */
-		virtual void activateOptions(log4cxx::helpers::Pool& p) = 0;
+		virtual void activateOptions(log4cxxng::helpers::Pool& p) = 0;
 
 
 		/**
@@ -66,7 +66,7 @@ class LOG4CXX_EXPORT OptionHandler : public virtual helpers::Object
 
 }; // class OptionConverter
 }  // namespace spi
-} // namespace log4cxx
+} // namespace log4cxxng
 
 
-#endif //_LOG4CXX_SPI_OPTION_HANDLER_H
+#endif //_LOG4CXXNG_SPI_OPTION_HANDLER_H

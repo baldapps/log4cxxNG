@@ -21,8 +21,8 @@
 #include "apr_pools.h"
 #include "apr_strings.h"
 
-using namespace ::log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace ::log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
 /**
   When location information is not available the constant
@@ -39,7 +39,7 @@ const LocationInfo& LocationInfo::getLocationUnavailable()
 
 /**
 *   Constructor.
-*   @remarks Used by LOG4CXX_LOCATION to generate
+*   @remarks Used by LOG4CXXNG_LOCATION to generate
 *       location info for current code site
 */
 LocationInfo::LocationInfo( const char* const fileName1,

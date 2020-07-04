@@ -21,9 +21,9 @@
 #include <apr_pools.h>
 #include <apr_strings.h>
 
-using namespace log4cxx;
-using namespace log4cxx::util;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::util;
+using namespace log4cxxng::helpers;
 
 void BinaryCompare::compare(const char* filename1,
 	const char* filename2)

@@ -24,16 +24,16 @@
 #include <log4cxxNG/spi/loggingevent.h>
 #include <log4cxxNG/spi/location/locationinfo.h>
 
-using namespace log4cxx;
-using namespace log4cxx::pattern;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::pattern;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(LineSeparatorPatternConverter)
+IMPLEMENT_LOG4CXXNG_OBJECT(LineSeparatorPatternConverter)
 
 LineSeparatorPatternConverter::LineSeparatorPatternConverter() :
-	LoggingEventPatternConverter(LOG4CXX_STR("Line Sep"),
-		LOG4CXX_STR("lineSep"))
+	LoggingEventPatternConverter(LOG4CXXNG_STR("Line Sep"),
+		LOG4CXXNG_STR("lineSep"))
 {
 }
 
@@ -49,7 +49,7 @@ void LineSeparatorPatternConverter::format(
 	LogString& toAppendTo,
 	Pool& /* p */) const
 {
-	toAppendTo.append(LOG4CXX_EOL);
+	toAppendTo.append(LOG4CXXNG_EOL);
 }
 
 void LineSeparatorPatternConverter::format(
@@ -57,5 +57,5 @@ void LineSeparatorPatternConverter::format(
 	LogString& toAppendTo,
 	Pool& /* p */) const
 {
-	toAppendTo.append(LOG4CXX_EOL);
+	toAppendTo.append(LOG4CXXNG_EOL);
 }

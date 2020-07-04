@@ -22,8 +22,8 @@
 #include <log4cxxNG/ndc.h>
 #include <locale.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 int main()
 {
@@ -36,13 +36,13 @@ int main()
 
                 NDC::push("trivial context");
 
-                log4cxx::logstream logstream(rootLogger, Level::getDebug());
-                logstream << "debug message " << 1 << LOG4CXX_ENDMSG;
+                log4cxxng::logstream logstream(rootLogger, Level::getDebug());
+                logstream << "debug message " << 1 << LOG4CXXNG_ENDMSG;
                 logstream.setLevel(Level::getInfo());
-                logstream << "info message" << LOG4CXX_ENDMSG;
-                logstream << Level::getWarn() << "warn message" << LOG4CXX_ENDMSG;
-                logstream << Level::getError() << "error message" << LOG4CXX_ENDMSG;
-                logstream << Level::getFatal() << "fatal message" << LOG4CXX_ENDMSG;
+                logstream << "info message" << LOG4CXXNG_ENDMSG;
+                logstream << Level::getWarn() << "warn message" << LOG4CXXNG_ENDMSG;
+                logstream << Level::getError() << "error message" << LOG4CXXNG_ENDMSG;
+                logstream << Level::getFatal() << "fatal message" << LOG4CXXNG_ENDMSG;
 
 
                 NDC::pop();

@@ -17,7 +17,7 @@
 
 #include "threadfilter.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 ThreadFilter::ThreadFilter() : Filter("\\[[0-9A-Fa-fXx]*]", "\\[main]") {}

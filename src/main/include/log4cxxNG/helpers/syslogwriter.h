@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_SYSLOG_WRITER_H
-#define _LOG4CXX_SYSLOG_WRITER_H
+#ifndef _LOG4CXXNG_SYSLOG_WRITER_H
+#define _LOG4CXXNG_SYSLOG_WRITER_H
 
 
 #include <log4cxxNG/helpers/objectptr.h>
@@ -28,7 +28,7 @@
 	#pragma warning ( disable: 4251 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -36,7 +36,7 @@ namespace helpers
 SyslogWriter is a wrapper around the DatagramSocket class
 it writes text to the specified host on the port 514 (UNIX syslog)
 */
-class LOG4CXX_EXPORT SyslogWriter
+class LOG4CXXNG_EXPORT SyslogWriter
 {
 	public:
 #define SYSLOG_PORT 514
@@ -50,7 +50,7 @@ class LOG4CXX_EXPORT SyslogWriter
 		DatagramSocketPtr ds;
 };
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)

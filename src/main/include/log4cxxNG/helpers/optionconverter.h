@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPER_OPTION_CONVERTER_H
-#define _LOG4CXX_HELPER_OPTION_CONVERTER_H
+#ifndef _LOG4CXXNG_HELPER_OPTION_CONVERTER_H
+#define _LOG4CXXNG_HELPER_OPTION_CONVERTER_H
 
 #include <log4cxxNG/logstring.h>
 #include <log4cxxNG/helpers/objectptr.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 class Level;
 class File;
@@ -43,7 +43,7 @@ typedef ObjectPtrT<Object> ObjectPtr;
 class Class;
 
 /** A convenience class to convert property values to specific types.*/
-class LOG4CXX_EXPORT OptionConverter
+class LOG4CXXNG_EXPORT OptionConverter
 {
 		/** OptionConverter is a static class. */
 	private:
@@ -158,7 +158,7 @@ class LOG4CXX_EXPORT OptionConverter
 			const LogString& clazz, spi::LoggerRepositoryPtr& hierarchy);
 };
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif //_LOG4CXX_HELPER_OPTION_CONVERTER_H
+#endif //_LOG4CXXNG_HELPER_OPTION_CONVERTER_H
 

@@ -32,12 +32,12 @@
 #include <log4cxxNG/helpers/pool.h>
 #include <log4cxxNG/logger.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT( TimeZone )
+IMPLEMENT_LOG4CXXNG_OBJECT( TimeZone )
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -55,13 +55,13 @@ class GMTTimeZone : public TimeZone
 		}
 
 		/** Explode time to human readable form. */
-		log4cxx_status_t explode( apr_time_exp_t* result, log4cxx_time_t input ) const
+		log4cxxng_status_t explode( apr_time_exp_t* result, log4cxxng_time_t input ) const
 		{
 			apr_status_t stat;
 
 			//  APR 1.1 and early mishandles microseconds on dates
 			//   before 1970, APR bug 32520
-			if (LOG4CXX_UNLIKELY(input < 0 && apr_time_usec(input) < 0))
+			if (LOG4CXXNG_UNLIKELY(input < 0 && apr_time_usec(input) < 0))
 			{
 				apr_time_t floorTime = (apr_time_sec(input) - 1) * APR_USEC_PER_SEC;
 				stat = apr_time_exp_gmt(result, floorTime);
@@ -76,7 +76,7 @@ class GMTTimeZone : public TimeZone
 		}
 
 	private:
-		GMTTimeZone() : TimeZone( LOG4CXX_STR("GMT") )
+		GMTTimeZone() : TimeZone( LOG4CXXNG_STR("GMT") )
 		{
 		}
 };
@@ -95,13 +95,13 @@ class LocalTimeZone : public TimeZone
 		}
 
 		/** Explode time to human readable form. */
-		log4cxx_status_t explode( apr_time_exp_t* result, log4cxx_time_t input ) const
+		log4cxxng_status_t explode( apr_time_exp_t* result, log4cxxng_time_t input ) const
 		{
 			apr_status_t stat;
 
 			//  APR 1.1 and early mishandles microseconds on dates
 			//   before 1970, APR bug 32520
-			if (LOG4CXX_UNLIKELY(input < 0 && apr_time_usec(input) < 0))
+			if (LOG4CXXNG_UNLIKELY(input < 0 && apr_time_usec(input) < 0))
 			{
 				apr_time_t floorTime = (apr_time_sec(input) - 1) * APR_USEC_PER_SEC;
 				stat = apr_time_exp_lt(result, floorTime);
@@ -137,7 +137,7 @@ class LocalTimeZone : public TimeZone
 
 			tzName[tzLength] = 0;
 			LogString retval;
-			log4cxx::helpers::Transcoder::decode(tzName, retval);
+			log4cxxng::helpers::Transcoder::decode(tzName, retval);
 			return retval;
 		}
 
@@ -154,13 +154,13 @@ class FixedTimeZone : public TimeZone
 		}
 
 		/** Explode time to human readable form. */
-		log4cxx_status_t explode( apr_time_exp_t* result, log4cxx_time_t input ) const
+		log4cxxng_status_t explode( apr_time_exp_t* result, log4cxxng_time_t input ) const
 		{
 			apr_status_t stat;
 
 			//  APR 1.1 and early mishandles microseconds on dates
 			//   before 1970, APR bug 32520
-			if (LOG4CXX_UNLIKELY(input < 0 && apr_time_usec(input) < 0))
+			if (LOG4CXXNG_UNLIKELY(input < 0 && apr_time_usec(input) < 0))
 			{
 				apr_time_t floorTime = (apr_time_sec(input) - 1) * APR_USEC_PER_SEC;
 				stat = apr_time_exp_tz(result, floorTime, offset);
@@ -195,12 +195,12 @@ TimeZone::~TimeZone()
 
 const TimeZonePtr& TimeZone::getDefault()
 {
-	return log4cxx::helpers::TimeZoneImpl::LocalTimeZone::getInstance();
+	return log4cxxng::helpers::TimeZoneImpl::LocalTimeZone::getInstance();
 }
 
 const TimeZonePtr& TimeZone::getGMT()
 {
-	return log4cxx::helpers::TimeZoneImpl::GMTTimeZone::getInstance();
+	return log4cxxng::helpers::TimeZoneImpl::GMTTimeZone::getInstance();
 }
 
 const TimeZonePtr TimeZone::getTimeZone( const LogString& id )
@@ -209,7 +209,7 @@ const TimeZonePtr TimeZone::getTimeZone( const LogString& id )
 
 	if ( id == gmt )
 	{
-		return log4cxx::helpers::TimeZoneImpl::GMTTimeZone::getInstance();
+		return log4cxxng::helpers::TimeZoneImpl::GMTTimeZone::getInstance();
 	}
 
 	if ( id.length() >= 5 && id.substr( 0, 3 ) == gmt )
@@ -276,7 +276,7 @@ const TimeZonePtr TimeZone::getTimeZone( const LogString& id )
 
 		s.append(mm);
 		apr_int32_t offset = sign * (hours * 3600 + minutes * 60);
-		return new log4cxx::helpers::TimeZoneImpl::FixedTimeZone( s, offset );
+		return new log4cxxng::helpers::TimeZoneImpl::FixedTimeZone( s, offset );
 	}
 
 	const TimeZonePtr& ltz = getDefault();

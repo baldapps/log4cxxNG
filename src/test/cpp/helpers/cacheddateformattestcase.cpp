@@ -27,9 +27,9 @@
 #include <apr_time.h>
 #include "localechanger.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::pattern;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::pattern;
 
 #define LOCALE_US "C"
 #if defined(_WIN32)
@@ -44,7 +44,7 @@ using namespace log4cxx::pattern;
 	#define INT64_C(value)  value ##LL
 #endif
 
-#define LOG4CXX_TEST 1
+#define LOG4CXXNG_TEST 1
 #include <log4cxxNG/private/log4cxxNG_private.h>
 
 
@@ -58,7 +58,7 @@ LOGUNIT_CLASS(CachedDateFormatTestCase)
 	LOGUNIT_TEST(test2);
 	LOGUNIT_TEST(test3);
 	LOGUNIT_TEST(test4);
-#if LOG4CXX_HAS_STD_LOCALE
+#if LOG4CXXNG_HAS_STD_LOCALE
 	LOGUNIT_TEST(test5);
 #endif
 	LOGUNIT_TEST(test6);
@@ -102,23 +102,23 @@ public:
 		LogString actual;
 
 		gmtFormat.format(actual, jul1, p);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("00:00:00,000"), actual);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("00:00:00,000"), actual);
 		actual.erase(actual.begin(), actual.end());
 
 		gmtFormat.format(actual, jul1 + 8000, p);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("00:00:00,008"), actual);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("00:00:00,008"), actual);
 		actual.erase(actual.begin(), actual.end());
 
 		gmtFormat.format(actual, jul1 + 17000, p);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("00:00:00,017"), actual);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("00:00:00,017"), actual);
 		actual.erase(actual.begin(), actual.end());
 
 		gmtFormat.format(actual, jul1 + 237000, p);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("00:00:00,237"), actual);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("00:00:00,237"), actual);
 		actual.erase(actual.begin(), actual.end());
 
 		gmtFormat.format(actual, jul1 + 1415000, p);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("00:00:01,415"), actual);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("00:00:01,415"), actual);
 		actual.erase(actual.begin(), actual.end());
 
 	}
@@ -136,20 +136,20 @@ public:
 
 		DateFormatPtr chicagoBase(new AbsoluteTimeDateFormat());
 		CachedDateFormat chicagoFormat(chicagoBase, 1000000);
-		chicagoFormat.setTimeZone(TimeZone::getTimeZone(LOG4CXX_STR("GMT-5")));
+		chicagoFormat.setTimeZone(TimeZone::getTimeZone(LOG4CXXNG_STR("GMT-5")));
 
 		Pool p;
 		LogString actual;
 		gmtFormat.format(actual, jul2, p);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("00:00:00,000"), actual);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("00:00:00,000"), actual);
 
 		actual.erase(actual.begin(), actual.end());
 		chicagoFormat.format(actual, jul2, p);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("19:00:00,000"), actual);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("19:00:00,000"), actual);
 
 		actual.erase(actual.begin(), actual.end());
 		gmtFormat.format(actual, jul2, p);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("00:00:00,000"), actual);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("00:00:00,000"), actual);
 	}
 
 	/**
@@ -172,26 +172,26 @@ public:
 
 
 		gmtFormat.format(actual, ticks, p);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("00:00:00,000"), actual);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("00:00:00,000"), actual);
 		actual.erase(actual.begin(), actual.end());
 
 		//
 		//   APR's explode_time method does not properly calculate tm_usec
 		//     prior to 1 Jan 1970 on Unix
 		gmtFormat.format(actual, ticks + 8000, p);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("00:00:00,008"), actual);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("00:00:00,008"), actual);
 		actual.erase(actual.begin(), actual.end());
 
 		gmtFormat.format(actual, ticks + 17000, p);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("00:00:00,017"), actual);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("00:00:00,017"), actual);
 		actual.erase(actual.begin(), actual.end());
 
 		gmtFormat.format(actual, ticks + 237000, p);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("00:00:00,237"), actual);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("00:00:00,237"), actual);
 		actual.erase(actual.begin(), actual.end());
 
 		gmtFormat.format(actual, ticks + 1423000, p);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("00:00:01,423"), actual);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("00:00:01,423"), actual);
 	}
 
 	void assertFormattedEquals(
@@ -215,14 +215,14 @@ public:
 		//   subsequent calls within one minute
 		//     are optimized to reuse previous formatted value
 		//     make a couple of nearly spaced calls
-#if LOG4CXX_HAS_STD_LOCALE
+#if LOG4CXXNG_HAS_STD_LOCALE
 		std::locale loco(LOCALE_US);
 		std::locale* localeEN = &loco;
 #else
 		std::locale* localeEN = NULL;
 #endif
 		DateFormatPtr baseFormat(
-			new SimpleDateFormat(LOG4CXX_STR("EEE, MMM dd, HH:mm:ss.SSS Z"), localeEN));
+			new SimpleDateFormat(LOG4CXXNG_STR("EEE, MMM dd, HH:mm:ss.SSS Z"), localeEN));
 		CachedDateFormat cachedFormat(baseFormat, 1000000);
 		//
 		//   use a date in 2000 to attempt to confuse the millisecond locator
@@ -238,7 +238,7 @@ public:
 	}
 
 
-#if LOG4CXX_HAS_STD_LOCALE
+#if LOG4CXXNG_HAS_STD_LOCALE
 	void test5()
 	{
 		//   subsequent calls within one minute
@@ -249,7 +249,7 @@ public:
 		if (localeChange.isEffective())
 		{
 			DateFormatPtr baseFormat(new SimpleDateFormat(
-					LOG4CXX_STR("EEE, MMM dd, HH:mm:ss.SSS Z")));
+					LOG4CXXNG_STR("EEE, MMM dd, HH:mm:ss.SSS Z")));
 			CachedDateFormat cachedFormat(baseFormat, 1000000);
 			//
 			//   use a date in 2000 to attempt to confuse the millisecond locator
@@ -275,7 +275,7 @@ public:
 		Pool p;
 		AbsoluteTimeDateFormat formatter;
 		formatter.numberFormat(numb, 87, p);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("87"), numb);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("87"), numb);
 	}
 
 
@@ -284,7 +284,7 @@ public:
 	 */
 	void test8()
 	{
-		DateFormatPtr baseFormat(new SimpleDateFormat(LOG4CXX_STR("yyyy-MM-dd HH:mm:ss,SSS")));
+		DateFormatPtr baseFormat(new SimpleDateFormat(LOG4CXXNG_STR("yyyy-MM-dd HH:mm:ss,SSS")));
 		baseFormat->setTimeZone(TimeZone::getGMT());
 		CachedDateFormat cachedFormat(baseFormat, 1000000);
 		apr_time_t jul4 = MICROSECONDS_PER_DAY * 12603;
@@ -293,13 +293,13 @@ public:
 
 		LogString actual;
 		cachedFormat.format(actual, jul4, p);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("2004-07-04 00:00:00,000"), actual);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("2004-07-04 00:00:00,000"), actual);
 
-		cachedFormat.setTimeZone(TimeZone::getTimeZone(LOG4CXX_STR("GMT-6")));
+		cachedFormat.setTimeZone(TimeZone::getTimeZone(LOG4CXXNG_STR("GMT-6")));
 		actual.erase(actual.begin(), actual.end());
 		cachedFormat.format(actual, jul4, p);
 
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("2004-07-03 18:00:00,000"), actual);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("2004-07-03 18:00:00,000"), actual);
 	}
 
 
@@ -311,9 +311,9 @@ public:
 		std::locale localeUS(LOCALE_US);
 
 		DateFormatPtr baseFormat = new SimpleDateFormat(
-			LOG4CXX_STR("yyyy-MMMM-dd HH:mm:ss,SS Z"), &localeUS);
+			LOG4CXXNG_STR("yyyy-MMMM-dd HH:mm:ss,SS Z"), &localeUS);
 		DateFormatPtr cachedFormat = new CachedDateFormat(baseFormat, 1000000);
-		TimeZonePtr cet = TimeZone::getTimeZone(LOG4CXX_STR("GMT+1"));
+		TimeZonePtr cet = TimeZone::getTimeZone(LOG4CXXNG_STR("GMT+1"));
 		cachedFormat->setTimeZone(cet);
 
 
@@ -337,7 +337,7 @@ public:
 		cachedFormat->format(s, dec12, p);
 
 		LOGUNIT_ASSERT_EQUAL(
-			(LogString) LOG4CXX_STR("2004-December-12 20:00:37,23 +0100"), s);
+			(LogString) LOG4CXXNG_STR("2004-December-12 20:00:37,23 +0100"), s);
 
 		memset(&c, 0, sizeof(c));
 		c.tm_year = 104;
@@ -355,7 +355,7 @@ public:
 		cachedFormat->format(s, jan1, p);
 
 		LOGUNIT_ASSERT_EQUAL(
-			(LogString) LOG4CXX_STR("2005-January-01 00:00:13,905 +0100"), s);
+			(LogString) LOG4CXXNG_STR("2005-January-01 00:00:13,905 +0100"), s);
 	}
 
 
@@ -364,16 +364,16 @@ public:
 	 */
 	void test10()
 	{
-#if LOG4CXX_HAS_STD_LOCALE
+#if LOG4CXXNG_HAS_STD_LOCALE
 		std::locale loco("C");
 		std::locale* localeUS = &loco;
 #else
 		std::locale* localeUS = NULL;
 #endif
 		DateFormatPtr baseFormat = new SimpleDateFormat(
-			LOG4CXX_STR("MMMM SSS EEEEEE"), localeUS);
+			LOG4CXXNG_STR("MMMM SSS EEEEEE"), localeUS);
 		DateFormatPtr cachedFormat = new CachedDateFormat(baseFormat, 1000000);
-		TimeZonePtr cet = TimeZone::getTimeZone(LOG4CXX_STR("GMT+1"));
+		TimeZonePtr cet = TimeZone::getTimeZone(LOG4CXXNG_STR("GMT+1"));
 		cachedFormat->setTimeZone(cet);
 
 		apr_time_exp_t c;
@@ -396,7 +396,7 @@ public:
 		cachedFormat->format(s, oct5, p);
 
 		LOGUNIT_ASSERT_EQUAL(
-			(LogString) LOG4CXX_STR("October 023 Tuesday"), s);
+			(LogString) LOG4CXXNG_STR("October 023 Tuesday"), s);
 
 		memset(&c, 0, sizeof(c));
 		c.tm_year = 104;
@@ -412,14 +412,14 @@ public:
 		cachedFormat->format(s, nov1, p);
 
 		LOGUNIT_ASSERT_EQUAL(
-			(LogString) LOG4CXX_STR("November 023 Monday"), s);
+			(LogString) LOG4CXXNG_STR("November 023 Monday"), s);
 
 		nov1 += 961000;
 		s.erase(s.begin(), s.end());
 		cachedFormat->format(s, nov1, p);
 
 		LOGUNIT_ASSERT_EQUAL(
-			(LogString) LOG4CXX_STR("November 984 Monday"), s);
+			(LogString) LOG4CXXNG_STR("November 984 Monday"), s);
 	}
 
 	/**
@@ -431,7 +431,7 @@ public:
 		//
 		//   Earlier versions could be tricked by "SS0" patterns.
 		//
-		LogString badPattern(LOG4CXX_STR("ss,SS0"));
+		LogString badPattern(LOG4CXXNG_STR("ss,SS0"));
 		DateFormatPtr simpleFormat = new SimpleDateFormat(badPattern);
 		DateFormatPtr gmtFormat = new CachedDateFormat(simpleFormat, 1000000);
 		gmtFormat->setTimeZone(TimeZone::getGMT());
@@ -448,7 +448,7 @@ public:
 		gmtFormat->format(s, jul2, p);
 
 		LOGUNIT_ASSERT_EQUAL(
-			(LogString) LOG4CXX_STR("00,1200"), s);
+			(LogString) LOG4CXXNG_STR("00,1200"), s);
 
 		jul2 = ticks + 87000;
 
@@ -456,7 +456,7 @@ public:
 		gmtFormat->format(s, jul2, p);
 
 		LOGUNIT_ASSERT_EQUAL(
-			(LogString) LOG4CXX_STR("00,870"), s);
+			(LogString) LOG4CXXNG_STR("00,870"), s);
 	}
 
 	/**
@@ -464,7 +464,7 @@ public:
 	 */
 	void test12()
 	{
-		DateFormatPtr df    = new SimpleDateFormat(LOG4CXX_STR("yyyy-MM-dd HH:mm:ss,SSS"));
+		DateFormatPtr df    = new SimpleDateFormat(LOG4CXXNG_STR("yyyy-MM-dd HH:mm:ss,SSS"));
 		apr_time_t    ticks = 11142L * MICROSECONDS_PER_DAY;
 		Pool p;
 		LogString formatted;
@@ -505,7 +505,7 @@ public:
 	 */
 	void test13()
 	{
-		DateFormatPtr df = new SimpleDateFormat(LOG4CXX_STR("yyyy-MM-dd"));
+		DateFormatPtr df = new SimpleDateFormat(LOG4CXXNG_STR("yyyy-MM-dd"));
 		apr_time_t ticks = 11142L * MICROSECONDS_PER_DAY;
 
 		Pool p;
@@ -523,7 +523,7 @@ public:
 	 */
 	void test14()
 	{
-		DateFormatPtr df = new SimpleDateFormat(LOG4CXX_STR("HH:mm:ss,SSS"));
+		DateFormatPtr df = new SimpleDateFormat(LOG4CXXNG_STR("HH:mm:ss,SSS"));
 		apr_time_t ticks = 11142L * MICROSECONDS_PER_DAY;
 
 		Pool p;
@@ -540,7 +540,7 @@ public:
 	 */
 	void test15()
 	{
-		DateFormatPtr df = new SimpleDateFormat(LOG4CXX_STR("HH:mm:ss,S"));
+		DateFormatPtr df = new SimpleDateFormat(LOG4CXXNG_STR("HH:mm:ss,S"));
 		apr_time_t ticks = 11142L * MICROSECONDS_PER_DAY;
 
 		Pool p;
@@ -557,7 +557,7 @@ public:
 	 */
 	void test16()
 	{
-		DateFormatPtr df = new SimpleDateFormat(LOG4CXX_STR("HH:mm:ss,SS"));
+		DateFormatPtr df = new SimpleDateFormat(LOG4CXXNG_STR("HH:mm:ss,SS"));
 		apr_time_t ticks = 11142L * MICROSECONDS_PER_DAY;
 
 		Pool p;
@@ -575,7 +575,7 @@ public:
 	void test17()
 	{
 		apr_time_t jul2 = 12602L * MICROSECONDS_PER_DAY;
-		LogString badPattern(LOG4CXX_STR("HH:mm:ss,SSS HH:mm:ss,SSS"));
+		LogString badPattern(LOG4CXXNG_STR("HH:mm:ss,SSS HH:mm:ss,SSS"));
 		DateFormatPtr simpleFormat = new SimpleDateFormat(badPattern);
 		simpleFormat->setTimeZone(TimeZone::getGMT());
 		DateFormatPtr cachedFormat = new CachedDateFormat(simpleFormat, 1000000);
@@ -584,19 +584,19 @@ public:
 		LogString s;
 		cachedFormat->format(s, jul2, p);
 
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("00:00:00,000 00:00:00,000"), s);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("00:00:00,000 00:00:00,000"), s);
 		jul2 += 120000;
 
 		s.erase(s.begin(), s.end());
 		simpleFormat->format(s, jul2, p);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("00:00:00,120 00:00:00,120"), s);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("00:00:00,120 00:00:00,120"), s);
 
 		s.erase(s.begin(), s.end());
 		int msStart = CachedDateFormat::findMillisecondStart(jul2, s, simpleFormat, p);
 		LOGUNIT_ASSERT_EQUAL((int) CachedDateFormat::UNRECOGNIZED_MILLISECONDS, msStart);
 
 		cachedFormat->format(s, jul2, p);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("00:00:00,120 00:00:00,120"), s) ;
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("00:00:00,120 00:00:00,120"), s) ;
 
 		int maxValid = CachedDateFormat::getMaximumCacheValidity(badPattern);
 		LOGUNIT_ASSERT_EQUAL(1000, maxValid);
@@ -624,7 +624,7 @@ public:
 
 		int maxValid =
 			CachedDateFormat::getMaximumCacheValidity(
-				LOG4CXX_STR("yyyy-MM-dd"));
+				LOG4CXXNG_STR("yyyy-MM-dd"));
 		LOGUNIT_ASSERT_EQUAL(1000000, maxValid);
 	}
 
@@ -637,7 +637,7 @@ public:
 
 		int maxValid =
 			CachedDateFormat::getMaximumCacheValidity(
-				LOG4CXX_STR("yyyy-MM-dd SSS"));
+				LOG4CXXNG_STR("yyyy-MM-dd SSS"));
 		LOGUNIT_ASSERT_EQUAL(1000000, maxValid);
 	}
 
@@ -650,7 +650,7 @@ public:
 
 		int maxValid =
 			CachedDateFormat::getMaximumCacheValidity(
-				LOG4CXX_STR("yyyy-MM-dd SS"));
+				LOG4CXXNG_STR("yyyy-MM-dd SS"));
 		LOGUNIT_ASSERT_EQUAL(1000, maxValid);
 	}
 
@@ -663,7 +663,7 @@ public:
 
 		int maxValid =
 			CachedDateFormat::getMaximumCacheValidity(
-				LOG4CXX_STR("yyyy-MM-dd SSS SSS"));
+				LOG4CXXNG_STR("yyyy-MM-dd SSS SSS"));
 		LOGUNIT_ASSERT_EQUAL(1000, maxValid);
 	}
 
@@ -681,19 +681,19 @@ public:
 		LogString formatted;
 
 		isoFormat.format(formatted, 654000, p);
-		LOGUNIT_ASSERT_EQUAL(LOG4CXX_STR("1970-01-01 00:00:00,654"), formatted);
+		LOGUNIT_ASSERT_EQUAL(LOG4CXXNG_STR("1970-01-01 00:00:00,654"), formatted);
 
 		formatted.clear();
 		isoFormat.format(formatted, 999000, p);
-		LOGUNIT_ASSERT_EQUAL(LOG4CXX_STR("1970-01-01 00:00:00,999"), formatted);
+		LOGUNIT_ASSERT_EQUAL(LOG4CXXNG_STR("1970-01-01 00:00:00,999"), formatted);
 
 		formatted.clear();
 		isoFormat.format(formatted, 1654010, p);
-		LOGUNIT_ASSERT_EQUAL(LOG4CXX_STR("1970-01-01 00:00:01,654"), formatted);
+		LOGUNIT_ASSERT_EQUAL(LOG4CXXNG_STR("1970-01-01 00:00:01,654"), formatted);
 
 		formatted.clear();
 		isoFormat.format(formatted, 1999010, p);
-		LOGUNIT_ASSERT_EQUAL(LOG4CXX_STR("1970-01-01 00:00:01,999"), formatted);
+		LOGUNIT_ASSERT_EQUAL(LOG4CXXNG_STR("1970-01-01 00:00:01,999"), formatted);
 	}
 
 };

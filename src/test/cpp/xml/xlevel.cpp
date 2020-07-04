@@ -18,10 +18,10 @@
 #include "xlevel.h"
 #include <log4cxxNG/helpers/stringhelper.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_LEVEL(XLevel)
+IMPLEMENT_LOG4CXXNG_LEVEL(XLevel)
 
 
 XLevel::XLevel(int level1, const LogString& name1, int syslogEquivalent1)
@@ -31,13 +31,13 @@ XLevel::XLevel(int level1, const LogString& name1, int syslogEquivalent1)
 
 LevelPtr XLevel::getTrace()
 {
-	static const LevelPtr trace(new XLevel(XLevel::TRACE_INT, LOG4CXX_STR("TRACE"), 7));
+	static const LevelPtr trace(new XLevel(XLevel::TRACE_INT, LOG4CXXNG_STR("TRACE"), 7));
 	return trace;
 }
 
 LevelPtr XLevel::getLethal()
 {
-	static const LevelPtr lethal(new XLevel(XLevel::LETHAL_INT, LOG4CXX_STR("LETHAL"), 0));
+	static const LevelPtr lethal(new XLevel(XLevel::LETHAL_INT, LOG4CXXNG_STR("LETHAL"), 0));
 	return lethal;
 }
 
@@ -75,13 +75,13 @@ LevelPtr XLevel::toLevelLS(const LogString& sArg, const LevelPtr& defaultLevel)
 	}
 
 	if (StringHelper::equalsIgnoreCase(sArg,
-			LOG4CXX_STR("TRACE"), LOG4CXX_STR("trace")))
+			LOG4CXXNG_STR("TRACE"), LOG4CXXNG_STR("trace")))
 	{
 		return getTrace();
 	}
 
 	if (StringHelper::equalsIgnoreCase(sArg,
-			LOG4CXX_STR("LETHAL"), LOG4CXX_STR("lethal")))
+			LOG4CXXNG_STR("LETHAL"), LOG4CXXNG_STR("lethal")))
 	{
 		return getLethal();
 	}

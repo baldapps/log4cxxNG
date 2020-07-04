@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_PROPERTY_RESOURCE_BUNDLE_H
-#define _LOG4CXX_HELPERS_PROPERTY_RESOURCE_BUNDLE_H
+#ifndef _LOG4CXXNG_HELPERS_PROPERTY_RESOURCE_BUNDLE_H
+#define _LOG4CXXNG_HELPERS_PROPERTY_RESOURCE_BUNDLE_H
 
 #include <log4cxxNG/helpers/resourcebundle.h>
 #include <log4cxxNG/helpers/properties.h>
 #include <log4cxxNG/helpers/inputstream.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -32,14 +32,14 @@ PropertyResourceBundle is a concrete subclass of ResourceBundle that
 manages resources for a locale using a set of static strings from a
 property file.
 */
-class LOG4CXX_EXPORT PropertyResourceBundle : public ResourceBundle
+class LOG4CXXNG_EXPORT PropertyResourceBundle : public ResourceBundle
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(PropertyResourceBundle)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(PropertyResourceBundle)
-		LOG4CXX_CAST_ENTRY_CHAIN(ResourceBundle)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(PropertyResourceBundle)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(PropertyResourceBundle)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(ResourceBundle)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		Creates a property resource bundle.
@@ -54,9 +54,9 @@ class LOG4CXX_EXPORT PropertyResourceBundle : public ResourceBundle
 	protected:
 		Properties properties;
 }; // class PropertyResourceBundle
-LOG4CXX_PTR_DEF(PropertyResourceBundle);
+LOG4CXXNG_PTR_DEF(PropertyResourceBundle);
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif // _LOG4CXX_HELPERS_PROPERTY_RESOURCE_BUNDLE_H
+#endif // _LOG4CXXNG_HELPERS_PROPERTY_RESOURCE_BUNDLE_H
 

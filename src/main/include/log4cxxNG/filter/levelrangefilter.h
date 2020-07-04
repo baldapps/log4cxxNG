@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_FILTER_LEVEL_RANGE_FILTER_H
-#define _LOG4CXX_FILTER_LEVEL_RANGE_FILTER_H
+#ifndef _LOG4CXXNG_FILTER_LEVEL_RANGE_FILTER_H
+#define _LOG4CXXNG_FILTER_LEVEL_RANGE_FILTER_H
 
 #include <log4cxxNG/spi/filter.h>
 #include <log4cxxNG/level.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace filter
 {
@@ -54,7 +54,7 @@ AppenderSkeleton for a more convenient way to
 filter out events by level.
 */
 
-class LOG4CXX_EXPORT LevelRangeFilter : public spi::Filter
+class LOG4CXXNG_EXPORT LevelRangeFilter : public spi::Filter
 {
 	private:
 		/**
@@ -67,11 +67,11 @@ class LOG4CXX_EXPORT LevelRangeFilter : public spi::Filter
 
 	public:
 		typedef spi::Filter BASE_CLASS;
-		DECLARE_LOG4CXX_OBJECT(LevelRangeFilter)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(LevelRangeFilter)
-		LOG4CXX_CAST_ENTRY_CHAIN(BASE_CLASS)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(LevelRangeFilter)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(LevelRangeFilter)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(BASE_CLASS)
+		END_LOG4CXXNG_CAST_MAP()
 
 		LevelRangeFilter();
 
@@ -142,8 +142,8 @@ class LOG4CXX_EXPORT LevelRangeFilter : public spi::Filter
 		*/
 		FilterDecision decide(const spi::LoggingEventPtr& event) const;
 }; // class LevelRangeFilter
-LOG4CXX_PTR_DEF(LevelRangeFilter);
+LOG4CXXNG_PTR_DEF(LevelRangeFilter);
 }  // namespace filter
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif // _LOG4CXX_FILTER_LEVEL_RANGE_FILTER_H
+#endif // _LOG4CXXNG_FILTER_LEVEL_RANGE_FILTER_H

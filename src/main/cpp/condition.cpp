@@ -23,8 +23,8 @@
 #include <log4cxxNG/helpers/pool.h>
 #include <log4cxxNG/helpers/thread.h>
 
-using namespace log4cxx::helpers;
-using namespace log4cxx;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng;
 
 
 Condition::Condition(Pool& p)
@@ -47,7 +47,7 @@ Condition::~Condition()
 #endif
 }
 
-log4cxx_status_t Condition::signalAll()
+log4cxxng_status_t Condition::signalAll()
 {
 #if APR_HAS_THREADS
 	return apr_thread_cond_broadcast(condition);

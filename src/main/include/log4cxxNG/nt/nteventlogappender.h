@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_NT_EVENT_LOG_APPENDER_HEADER_
-#define _LOG4CXX_NT_EVENT_LOG_APPENDER_HEADER_
+#ifndef _LOG4CXXNG_NT_EVENT_LOG_APPENDER_HEADER_
+#define _LOG4CXXNG_NT_EVENT_LOG_APPENDER_HEADER_
 
 #include <log4cxxNG/appenderskeleton.h>
 
@@ -26,21 +26,21 @@
 #endif
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace nt
 {
 /**
  * Appends log events to NT EventLog.
  */
-class LOG4CXX_EXPORT NTEventLogAppender : public AppenderSkeleton
+class LOG4CXXNG_EXPORT NTEventLogAppender : public AppenderSkeleton
 {
 	public:
-		DECLARE_LOG4CXX_OBJECT(NTEventLogAppender)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(NTEventLogAppender)
-		LOG4CXX_CAST_ENTRY_CHAIN(AppenderSkeleton)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(NTEventLogAppender)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(NTEventLogAppender)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(AppenderSkeleton)
+		END_LOG4CXXNG_CAST_MAP()
 
 		NTEventLogAppender();
 		NTEventLogAppender(const LogString& server, const LogString& log,
@@ -48,7 +48,7 @@ class LOG4CXX_EXPORT NTEventLogAppender : public AppenderSkeleton
 
 		virtual ~NTEventLogAppender();
 
-		virtual void activateOptions(log4cxx::helpers::Pool& p);
+		virtual void activateOptions(log4cxxng::helpers::Pool& p);
 		virtual void close();
 		virtual void setOption(const LogString& option, const LogString& value);
 
@@ -101,7 +101,7 @@ class LOG4CXX_EXPORT NTEventLogAppender : public AppenderSkeleton
 		typedef void SID;
 		typedef void* HANDLE;
 
-		virtual void append(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& p);
+		virtual void append(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& p);
 		static unsigned short getEventType(const spi::LoggingEventPtr& event);
 		static unsigned short getEventCategory(const spi::LoggingEventPtr& event);
 		/*
@@ -122,12 +122,12 @@ class LOG4CXX_EXPORT NTEventLogAppender : public AppenderSkeleton
 		NTEventLogAppender& operator=(const NTEventLogAppender&);
 }; // class NTEventLogAppender
 
-LOG4CXX_PTR_DEF(NTEventLogAppender);
+LOG4CXXNG_PTR_DEF(NTEventLogAppender);
 
 }  // namespace nt
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
-#endif //_LOG4CXX_NT_EVENT_LOG_APPENDER_HEADER_
+#endif //_LOG4CXXNG_NT_EVENT_LOG_APPENDER_HEADER_

@@ -15,15 +15,15 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_OUTPUTSTREAM_H
-#define _LOG4CXX_HELPERS_OUTPUTSTREAM_H
+#ifndef _LOG4CXXNG_HELPERS_OUTPUTSTREAM_H
+#define _LOG4CXXNG_HELPERS_OUTPUTSTREAM_H
 
 #include <log4cxxNG/helpers/objectimpl.h>
-#ifdef LOG4CXX_MULTI_PROCESS
+#ifdef LOG4CXXNG_MULTI_PROCESS
 	#include <apr_file_io.h>
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 namespace helpers
@@ -33,13 +33,13 @@ class ByteBuffer;
 /**
 *   Abstract class for writing to character streams.
 */
-class LOG4CXX_EXPORT OutputStream : public ObjectImpl
+class LOG4CXXNG_EXPORT OutputStream : public ObjectImpl
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(OutputStream)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(OutputStream)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(OutputStream)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(OutputStream)
+		END_LOG4CXXNG_CAST_MAP()
 
 	protected:
 		OutputStream();
@@ -49,7 +49,7 @@ class LOG4CXX_EXPORT OutputStream : public ObjectImpl
 		virtual void close(Pool& p) = 0;
 		virtual void flush(Pool& p) = 0;
 		virtual void write(ByteBuffer& buf, Pool& p) = 0;
-#ifdef LOG4CXX_MULTI_PROCESS
+#ifdef LOG4CXXNG_MULTI_PROCESS
 		virtual apr_file_t* getFilePtr();
 		virtual OutputStream& getFileOutPutStreamPtr();
 #endif
@@ -59,9 +59,9 @@ class LOG4CXX_EXPORT OutputStream : public ObjectImpl
 		OutputStream& operator=(const OutputStream&);
 };
 
-LOG4CXX_PTR_DEF(OutputStream);
+LOG4CXXNG_PTR_DEF(OutputStream);
 } // namespace helpers
 
-}  //namespace log4cxx
+}  //namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_OUTPUTSTREAM_H
+#endif //_LOG4CXXNG_HELPERS_OUTPUTSTREAM_H

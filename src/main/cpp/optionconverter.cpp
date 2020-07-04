@@ -37,9 +37,9 @@
 #include <log4cxxNG/file.h>
 #include <log4cxxNG/xml/domconfigurator.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::spi;
 
 
 LogString OptionConverter::convertSpecialChars(const LogString& s)
@@ -92,7 +92,7 @@ bool OptionConverter::toBoolean(const LogString& value, bool dEfault)
 	if (value.length() >= 4)
 	{
 		if (StringHelper::equalsIgnoreCase(value.substr(0, 4),
-				LOG4CXX_STR("TRUE"), LOG4CXX_STR("true")))
+				LOG4CXXNG_STR("TRUE"), LOG4CXXNG_STR("true")))
 		{
 			return true;
 		}
@@ -101,7 +101,7 @@ bool OptionConverter::toBoolean(const LogString& value, bool dEfault)
 	if (dEfault && value.length() >= 5)
 	{
 		if (StringHelper::equalsIgnoreCase(value.substr(0, 5),
-				LOG4CXX_STR("FALSE"), LOG4CXX_STR("false")))
+				LOG4CXXNG_STR("FALSE"), LOG4CXXNG_STR("false")))
 		{
 			return false;
 		}
@@ -119,7 +119,7 @@ int OptionConverter::toInt(const LogString& value, int dEfault)
 		return dEfault;
 	}
 
-	LOG4CXX_ENCODE_CHAR(cvalue, trimmed);
+	LOG4CXXNG_ENCODE_CHAR(cvalue, trimmed);
 
 	return (int) atol(cvalue.c_str());
 }
@@ -131,7 +131,7 @@ long OptionConverter::toFileSize(const LogString& s, long dEfault)
 		return dEfault;
 	}
 
-	size_t index = s.find_first_of(LOG4CXX_STR("bB"));
+	size_t index = s.find_first_of(LOG4CXXNG_STR("bB"));
 
 	if (index != LogString::npos && index > 0)
 	{
@@ -172,8 +172,8 @@ LogString OptionConverter::findAndSubst(const LogString& key, Properties& props)
 	}
 	catch (IllegalArgumentException& e)
 	{
-		LogLog::error(((LogString) LOG4CXX_STR("Bad option value ["))
-			+ value + LOG4CXX_STR("]."), e);
+		LogLog::error(((LogString) LOG4CXXNG_STR("Bad option value ["))
+			+ value + LOG4CXXNG_STR("]."), e);
 		return value;
 	}
 }
@@ -217,7 +217,7 @@ LogString OptionConverter::substVars(const LogString& val, Properties& props)
 			{
 				LogString msg(1, (logchar) 0x22 /* '\"' */);
 				msg.append(val);
-				msg.append(LOG4CXX_STR("\" has no closing brace. Opening brace at position "));
+				msg.append(LOG4CXXNG_STR("\" has no closing brace. Opening brace at position "));
 				Pool p;
 				StringHelper::toString(j, p, msg);
 				msg.append(1, (logchar) 0x2E /* '.' */);
@@ -271,7 +271,7 @@ LogString OptionConverter::getSystemProperty(const LogString& key, const LogStri
 LevelPtr OptionConverter::toLevel(const LogString& value,
 	const LevelPtr& defaultValue)
 {
-	size_t hashIndex = value.find(LOG4CXX_STR("#"));
+	size_t hashIndex = value.find(LOG4CXXNG_STR("#"));
 
 	if (hashIndex == LogString::npos)
 	{
@@ -282,9 +282,9 @@ LevelPtr OptionConverter::toLevel(const LogString& value,
 		else
 		{
 			LogLog::debug(
-				((LogString) LOG4CXX_STR("OptionConverter::toLevel: no class name specified, level=["))
+				((LogString) LOG4CXXNG_STR("OptionConverter::toLevel: no class name specified, level=["))
 				+ value
-				+ LOG4CXX_STR("]"));
+				+ LOG4CXXNG_STR("]"));
 			// no class name specified : use standard Level class
 			return Level::toLevelLS(value, defaultValue);
 		}
@@ -292,8 +292,8 @@ LevelPtr OptionConverter::toLevel(const LogString& value,
 
 	LogString clazz = value.substr(hashIndex + 1);
 	LogString levelName = value.substr(0, hashIndex);
-	LogLog::debug(((LogString) LOG4CXX_STR("OptionConverter::toLevel: class=["))
-		+ clazz + LOG4CXX_STR("], level=[") + levelName + LOG4CXX_STR("]"));
+	LogLog::debug(((LogString) LOG4CXXNG_STR("OptionConverter::toLevel: class=["))
+		+ clazz + LOG4CXXNG_STR("], level=[") + levelName + LOG4CXXNG_STR("]"));
 
 	// This is degenerate case but you never know.
 	if (levelName.empty())
@@ -309,20 +309,20 @@ LevelPtr OptionConverter::toLevel(const LogString& value,
 	}
 	catch (ClassNotFoundException&)
 	{
-		LogLog::warn(((LogString) LOG4CXX_STR("custom level class ["))
-			+ clazz + LOG4CXX_STR("] not found."));
+		LogLog::warn(((LogString) LOG4CXXNG_STR("custom level class ["))
+			+ clazz + LOG4CXXNG_STR("] not found."));
 	}
 	catch (Exception& oops)
 	{
 		LogLog::warn(
-			LOG4CXX_STR("class [") + clazz + LOG4CXX_STR("], level [") + levelName +
-			LOG4CXX_STR("] conversion) failed."), oops);
+			LOG4CXXNG_STR("class [") + clazz + LOG4CXXNG_STR("], level [") + levelName +
+			LOG4CXXNG_STR("] conversion) failed."), oops);
 	}
 	catch (...)
 	{
 		LogLog::warn(
-			LOG4CXX_STR("class [") + clazz + LOG4CXX_STR("], level [") + levelName +
-			LOG4CXX_STR("] conversion) failed."));
+			LOG4CXXNG_STR("class [") + clazz + LOG4CXXNG_STR("], level [") + levelName +
+			LOG4CXXNG_STR("] conversion) failed."));
 	}
 
 	return defaultValue;
@@ -338,7 +338,7 @@ ObjectPtr OptionConverter::instantiateByKey(Properties& props, const LogString& 
 	if (className.empty())
 	{
 		LogLog::error(
-			((LogString) LOG4CXX_STR("Could not find value for key ")) + key);
+			((LogString) LOG4CXXNG_STR("Could not find value for key ")) + key);
 		return defaultValue;
 	}
 
@@ -366,8 +366,8 @@ ObjectPtr OptionConverter::instantiateByClassName(const LogString& className,
 		}
 		catch (Exception& e)
 		{
-			LogLog::error(LOG4CXX_STR("Could not instantiate class [") +
-				className + LOG4CXX_STR("]."), e);
+			LogLog::error(LOG4CXXNG_STR("Could not instantiate class [") +
+				className + LOG4CXXNG_STR("]."), e);
 		}
 	}
 
@@ -386,22 +386,22 @@ void OptionConverter::selectAndConfigure(const File& configFileName,
 		&& filename.length() > 4
 		&& StringHelper::equalsIgnoreCase(
 			filename.substr(filename.length() - 4),
-			LOG4CXX_STR(".XML"), LOG4CXX_STR(".xml")))
+			LOG4CXXNG_STR(".XML"), LOG4CXXNG_STR(".xml")))
 	{
-		clazz = log4cxx::xml::DOMConfigurator::getStaticClass().toString();
+		clazz = log4cxxng::xml::DOMConfigurator::getStaticClass().toString();
 	}
 
 	if (!clazz.empty())
 	{
-		LogLog::debug(LOG4CXX_STR("Preferred configurator class: ") + clazz);
+		LogLog::debug(LOG4CXXNG_STR("Preferred configurator class: ") + clazz);
 		configurator = instantiateByClassName(clazz,
 				Configurator::getStaticClass(),
 				0);
 
 		if (configurator == 0)
 		{
-			LogLog::error(LOG4CXX_STR("Could not instantiate configurator [")
-				+ clazz + LOG4CXX_STR("]."));
+			LogLog::error(LOG4CXXNG_STR("Could not instantiate configurator [")
+				+ clazz + LOG4CXXNG_STR("]."));
 			return;
 		}
 	}

@@ -25,9 +25,9 @@
 #include <log4cxxNG/helpers/iso8601dateformat.h>
 #include <log4cxxNG/helpers/timezone.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::spi;
 
 DateLayout::DateLayout(const LogString& dateFormatOption1) :
 	timeZoneID(), dateFormatOption(dateFormatOption1), dateFormat(0)
@@ -43,12 +43,12 @@ void DateLayout::setOption(const LogString& option, const LogString& value)
 {
 
 	if (StringHelper::equalsIgnoreCase(option,
-			LOG4CXX_STR("DATEFORMAT"), LOG4CXX_STR("dateformat")))
+			LOG4CXXNG_STR("DATEFORMAT"), LOG4CXXNG_STR("dateformat")))
 	{
 		dateFormatOption = value;
 	}
 	else if (StringHelper::equalsIgnoreCase(option,
-			LOG4CXX_STR("TIMEZONE"), LOG4CXX_STR("timezone")))
+			LOG4CXXNG_STR("TIMEZONE"), LOG4CXXNG_STR("timezone")))
 	{
 		timeZoneID = value;
 	}
@@ -64,34 +64,34 @@ void DateLayout::activateOptions(Pool&)
 			dateFormat = 0;
 		}
 		else if (StringHelper::equalsIgnoreCase(dateFormatOption,
-				LOG4CXX_STR("NULL"), LOG4CXX_STR("null")))
+				LOG4CXXNG_STR("NULL"), LOG4CXXNG_STR("null")))
 		{
 			dateFormat = 0;
-			dateFormatOption = LOG4CXX_STR("NULL");
+			dateFormatOption = LOG4CXXNG_STR("NULL");
 		}
 		else if (StringHelper::equalsIgnoreCase(dateFormatOption,
-				LOG4CXX_STR("RELATIVE"), LOG4CXX_STR("relative")))
+				LOG4CXXNG_STR("RELATIVE"), LOG4CXXNG_STR("relative")))
 		{
 			dateFormat =  new RelativeTimeDateFormat();
-			dateFormatOption = LOG4CXX_STR("RELATIVE");
+			dateFormatOption = LOG4CXXNG_STR("RELATIVE");
 		}
 		else if (StringHelper::equalsIgnoreCase(dateFormatOption,
-				LOG4CXX_STR("ABSOLUTE"),  LOG4CXX_STR("absolute")))
+				LOG4CXXNG_STR("ABSOLUTE"),  LOG4CXXNG_STR("absolute")))
 		{
 			dateFormat =  new AbsoluteTimeDateFormat();
-			dateFormatOption = LOG4CXX_STR("ABSOLUTE");
+			dateFormatOption = LOG4CXXNG_STR("ABSOLUTE");
 		}
 		else if (StringHelper::equalsIgnoreCase(dateFormatOption,
-				LOG4CXX_STR("DATE"), LOG4CXX_STR("date")))
+				LOG4CXXNG_STR("DATE"), LOG4CXXNG_STR("date")))
 		{
 			dateFormat =  new DateTimeDateFormat();
-			dateFormatOption = LOG4CXX_STR("DATE");
+			dateFormatOption = LOG4CXXNG_STR("DATE");
 		}
 		else if (StringHelper::equalsIgnoreCase(dateFormatOption,
-				LOG4CXX_STR("ISO8601"), LOG4CXX_STR("iso8601")))
+				LOG4CXXNG_STR("ISO8601"), LOG4CXXNG_STR("iso8601")))
 		{
 			dateFormat =  new ISO8601DateFormat();
-			dateFormatOption = LOG4CXX_STR("iso8601");
+			dateFormatOption = LOG4CXXNG_STR("iso8601");
 		}
 		else
 		{

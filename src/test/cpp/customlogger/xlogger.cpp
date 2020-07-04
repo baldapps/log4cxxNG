@@ -22,11 +22,11 @@
 #include <log4cxxNG/spi/loggerrepository.h>
 
 
-using namespace log4cxx;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::spi;
 
-IMPLEMENT_LOG4CXX_OBJECT(XLogger)
-IMPLEMENT_LOG4CXX_OBJECT(XFactory)
+IMPLEMENT_LOG4CXXNG_OBJECT(XLogger)
+IMPLEMENT_LOG4CXXNG_OBJECT(XFactory)
 
 XFactoryPtr XLogger::factory = new XFactory();
 
@@ -96,7 +96,7 @@ XFactory::XFactory()
 {
 }
 
-LoggerPtr XFactory::makeNewLoggerInstance(log4cxx::helpers::Pool& pool,
+LoggerPtr XFactory::makeNewLoggerInstance(log4cxxng::helpers::Pool& pool,
 	const LogString& name) const
 {
 	return new XLogger(pool, name);

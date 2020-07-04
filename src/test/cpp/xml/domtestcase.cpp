@@ -31,9 +31,9 @@
 #include <apr_file_io.h>
 #include "../testchar.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::xml;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::xml;
 
 #define TEST1_1A_PAT \
 	"(DEBUG|INFO |WARN |ERROR|FATAL) \\w*\\.\\w* - Message [0-9]"
@@ -70,7 +70,7 @@ public:
 	void setUp()
 	{
 		root = Logger::getRootLogger();
-		logger = Logger::getLogger(LOG4CXX_TEST_STR("org.apache.log4j.xml.DOMTestCase"));
+		logger = Logger::getLogger(LOG4CXXNG_TEST_STR("org.apache.log4j.xml.DOMTestCase"));
 	}
 
 	void tearDown()
@@ -80,7 +80,7 @@ public:
 
 	void test1()
 	{
-		DOMConfigurator::configure(LOG4CXX_TEST_STR("input/xml/DOMTestCase1.xml"));
+		DOMConfigurator::configure(LOG4CXXNG_TEST_STR("input/xml/DOMTestCase1.xml"));
 		common();
 
 		ControlFilter cf1;
@@ -111,8 +111,8 @@ public:
 			throw;
 		}
 
-		const File witness1(LOG4CXX_TEST_STR("witness/dom.A1.1"));
-		const File witness2(LOG4CXX_TEST_STR("witness/dom.A2.1"));
+		const File witness1(LOG4CXXNG_TEST_STR("witness/dom.A1.1"));
+		const File witness2(LOG4CXXNG_TEST_STR("witness/dom.A2.1"));
 		// TODO: A1 doesn't contain duplicate entries
 		//
 		// LOGUNIT_ASSERT(Compare::compare(FILTERED_A1, witness1));
@@ -124,7 +124,7 @@ public:
 	//
 	void test2()
 	{
-		DOMConfigurator::configure(LOG4CXX_TEST_STR("input\\xml\\DOMTestCase2.xml"));
+		DOMConfigurator::configure(LOG4CXXNG_TEST_STR("input\\xml\\DOMTestCase2.xml"));
 		common();
 
 		ThreadFilter threadFilter;
@@ -147,8 +147,8 @@ public:
 			throw;
 		}
 
-		const File witness1(LOG4CXX_TEST_STR("witness/dom.A1.2"));
-		const File witness2(LOG4CXX_TEST_STR("witness/dom.A2.2"));
+		const File witness1(LOG4CXXNG_TEST_STR("witness/dom.A1.2"));
+		const File witness2(LOG4CXXNG_TEST_STR("witness/dom.A2.2"));
 		// TODO: A1 doesn't contain duplicate entries
 		//
 		// LOGUNIT_ASSERT(Compare::compare(FILTERED_A1, witness1));
@@ -160,24 +160,24 @@ public:
 	{
 		int i = 0;
 
-		LOG4CXX_DEBUG(logger, "Message " << i);
-		LOG4CXX_DEBUG(root, "Message " << i);
+		LOG4CXXNG_DEBUG(logger, "Message " << i);
+		LOG4CXXNG_DEBUG(root, "Message " << i);
 
 		i++;
-		LOG4CXX_INFO(logger, "Message " << i);
-		LOG4CXX_INFO(root, "Message " << i);
+		LOG4CXXNG_INFO(logger, "Message " << i);
+		LOG4CXXNG_INFO(root, "Message " << i);
 
 		i++;
-		LOG4CXX_WARN(logger, "Message " << i);
-		LOG4CXX_WARN(root, "Message " << i);
+		LOG4CXXNG_WARN(logger, "Message " << i);
+		LOG4CXXNG_WARN(root, "Message " << i);
 
 		i++;
-		LOG4CXX_ERROR(logger, "Message " << i);
-		LOG4CXX_ERROR(root, "Message " << i);
+		LOG4CXXNG_ERROR(logger, "Message " << i);
+		LOG4CXXNG_ERROR(root, "Message " << i);
 
 		i++;
-		LOG4CXX_FATAL(logger, "Message " << i);
-		LOG4CXX_FATAL(root, "Message " << i);
+		LOG4CXXNG_FATAL(logger, "Message " << i);
+		LOG4CXXNG_FATAL(root, "Message " << i);
 	}
 
 	/**
@@ -186,9 +186,9 @@ public:
 	 */
 	void test3()
 	{
-		DOMConfigurator::configure(LOG4CXX_TEST_STR("input/xml/DOMTestCase3.xml"));
-		LOG4CXX_INFO(logger, "File name is expected to end with a superscript 3");
-#if LOG4CXX_LOGCHAR_IS_UTF8
+		DOMConfigurator::configure(LOG4CXXNG_TEST_STR("input/xml/DOMTestCase3.xml"));
+		LOG4CXXNG_INFO(logger, "File name is expected to end with a superscript 3");
+#if LOG4CXXNG_LOGCHAR_IS_UTF8
 		const logchar fname[] = { 0x6F, 0x75, 0x74, 0x70, 0x75, 0x74, 0x2F, 0x64, 0x6F, 0x6D, static_cast<logchar>(0xC2), static_cast<logchar>(0xB3), 0 };
 #else
 		const logchar fname[] = { 0x6F, 0x75, 0x74, 0x70, 0x75, 0x74, 0x2F, 0x64, 0x6F, 0x6D, static_cast<logchar>(0xB3), 0 };
@@ -206,9 +206,9 @@ public:
 	 */
 	void test4()
 	{
-		DOMConfigurator::configure(LOG4CXX_TEST_STR("input/xml/DOMTestCase4.xml"));
-		LOG4CXX_INFO(logger, "File name is expected to end with an ideographic 4");
-#if LOG4CXX_LOGCHAR_IS_UTF8
+		DOMConfigurator::configure(LOG4CXXNG_TEST_STR("input/xml/DOMTestCase4.xml"));
+		LOG4CXXNG_INFO(logger, "File name is expected to end with an ideographic 4");
+#if LOG4CXXNG_LOGCHAR_IS_UTF8
 		const logchar fname[] = { 0x6F, 0x75, 0x74, 0x70, 0x75, 0x74, 0x2F, 0x64, 0x6F, 0x6D, static_cast<logchar>(0xE3), static_cast<logchar>(0x86), static_cast<logchar>(0x95), 0 };
 #else
 		const logchar fname[] = { 0x6F, 0x75, 0x74, 0x70, 0x75, 0x74, 0x2F, 0x64, 0x6F, 0x6D, static_cast<logchar>(0x3195), 0 };
@@ -223,13 +223,13 @@ public:
 
 LOGUNIT_TEST_SUITE_REGISTRATION(DOMTestCase);
 
-const File DOMTestCase::TEMP_A1(LOG4CXX_TEST_STR("output/temp.A1"));
-const File DOMTestCase::TEMP_A2(LOG4CXX_TEST_STR("output/temp.A2"));
-const File DOMTestCase::FILTERED_A1(LOG4CXX_TEST_STR("output/filtered.A1"));
-const File DOMTestCase::FILTERED_A2(LOG4CXX_TEST_STR("output/filtered.A2"));
+const File DOMTestCase::TEMP_A1(LOG4CXXNG_TEST_STR("output/temp.A1"));
+const File DOMTestCase::TEMP_A2(LOG4CXXNG_TEST_STR("output/temp.A2"));
+const File DOMTestCase::FILTERED_A1(LOG4CXXNG_TEST_STR("output/filtered.A1"));
+const File DOMTestCase::FILTERED_A2(LOG4CXXNG_TEST_STR("output/filtered.A2"));
 
-const File DOMTestCase::TEMP_A1_2(LOG4CXX_TEST_STR("output/temp.A1.2"));
-const File DOMTestCase::TEMP_A2_2(LOG4CXX_TEST_STR("output/temp.A2.2"));
-const File DOMTestCase::FILTERED_A1_2(LOG4CXX_TEST_STR("output/filtered.A1.2"));
-const File DOMTestCase::FILTERED_A2_2(LOG4CXX_TEST_STR("output/filtered.A2.2"));
+const File DOMTestCase::TEMP_A1_2(LOG4CXXNG_TEST_STR("output/temp.A1.2"));
+const File DOMTestCase::TEMP_A2_2(LOG4CXXNG_TEST_STR("output/temp.A2.2"));
+const File DOMTestCase::FILTERED_A1_2(LOG4CXXNG_TEST_STR("output/filtered.A1.2"));
+const File DOMTestCase::FILTERED_A2_2(LOG4CXXNG_TEST_STR("output/filtered.A2.2"));
 

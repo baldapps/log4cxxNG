@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_SPI_REPOSITORY_SELECTOR_H
-#define _LOG4CXX_SPI_REPOSITORY_SELECTOR_H
+#ifndef _LOG4CXXNG_SPI_REPOSITORY_SELECTOR_H
+#define _LOG4CXXNG_SPI_REPOSITORY_SELECTOR_H
 
 #include <log4cxxNG/helpers/objectptr.h>
 #include <log4cxxNG/helpers/object.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace spi
 {
@@ -31,7 +31,7 @@ typedef helpers::ObjectPtrT<LoggerRepository> LoggerRepositoryPtr;
 /**
 The <code>LogManager</code> uses one (and only one)
 <code>RepositorySelector</code> implementation to select the
-{@link log4cxx::spi::LoggerRepository LoggerRepository}
+{@link log4cxxng::spi::LoggerRepository LoggerRepository}
     for a particular application context.
 
 <p>It is the responsability of the <code>RepositorySelector</code>
@@ -40,15 +40,15 @@ assumptions about the application context or on its management.
 
 <p>See also LogManager.
 */
-class LOG4CXX_EXPORT RepositorySelector : public virtual helpers::Object
+class LOG4CXXNG_EXPORT RepositorySelector : public virtual helpers::Object
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(RepositorySelector)
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(RepositorySelector)
 		virtual ~RepositorySelector() {}
 		virtual LoggerRepositoryPtr& getLoggerRepository() = 0;
 };
-LOG4CXX_PTR_DEF(RepositorySelector);
+LOG4CXXNG_PTR_DEF(RepositorySelector);
 }  //namespace spi
-} //namespace log4cxx
+} //namespace log4cxxng
 
-#endif //_LOG4CXX_SPI_REPOSITORY_SELECTOR_H
+#endif //_LOG4CXXNG_SPI_REPOSITORY_SELECTOR_H

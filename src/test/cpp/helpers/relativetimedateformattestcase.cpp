@@ -26,9 +26,9 @@
 
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::spi;
 
 
 /**
@@ -51,8 +51,8 @@ public:
 	*/
 	void test1()
 	{
-		log4cxx_time_t jan2 = Date::getMicrosecondsPerDay() * 12419;
-		log4cxx_time_t preStartTime = LoggingEvent::getStartTime();
+		log4cxxng_time_t jan2 = Date::getMicrosecondsPerDay() * 12419;
+		log4cxxng_time_t preStartTime = LoggingEvent::getStartTime();
 
 		RelativeTimeDateFormat formatter;
 
@@ -62,7 +62,7 @@ public:
 
 		formatter.format(actual, jan2, p);
 
-		log4cxx_time_t elapsed = log4cxx::helpers::StringHelper::toInt64(actual);
+		log4cxxng_time_t elapsed = log4cxxng::helpers::StringHelper::toInt64(actual);
 
 
 		LOGUNIT_ASSERT(preStartTime + elapsed * 1000 > jan2 - 2000);
@@ -79,7 +79,7 @@ public:
 		Pool p;
 		RelativeTimeDateFormat formatter;
 		formatter.numberFormat(numb, 87, p);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("87"), numb);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("87"), numb);
 	}
 
 

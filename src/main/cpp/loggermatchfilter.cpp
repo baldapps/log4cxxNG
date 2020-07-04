@@ -21,16 +21,16 @@
 #include <log4cxxNG/helpers/stringhelper.h>
 #include <log4cxxNG/helpers/optionconverter.h>
 
-using namespace log4cxx;
-using namespace log4cxx::filter;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::filter;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(LoggerMatchFilter)
+IMPLEMENT_LOG4CXXNG_OBJECT(LoggerMatchFilter)
 
 
 LoggerMatchFilter::LoggerMatchFilter()
-	: acceptOnMatch(true), loggerToMatch(LOG4CXX_STR("root"))
+	: acceptOnMatch(true), loggerToMatch(LOG4CXXNG_STR("root"))
 {
 }
 
@@ -49,12 +49,12 @@ void LoggerMatchFilter::setOption(const LogString& option,
 {
 
 	if (StringHelper::equalsIgnoreCase(option,
-			LOG4CXX_STR("LOGGERTOMATCH"), LOG4CXX_STR("loggertomatch")))
+			LOG4CXXNG_STR("LOGGERTOMATCH"), LOG4CXXNG_STR("loggertomatch")))
 	{
 		setLoggerToMatch(value);
 	}
 	else if (StringHelper::equalsIgnoreCase(option,
-			LOG4CXX_STR("ACCEPTONMATCH"), LOG4CXX_STR("acceptonmatch")))
+			LOG4CXXNG_STR("ACCEPTONMATCH"), LOG4CXXNG_STR("acceptonmatch")))
 	{
 		acceptOnMatch = OptionConverter::toBoolean(value, acceptOnMatch);
 	}

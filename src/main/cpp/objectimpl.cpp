@@ -18,16 +18,16 @@
 #include <log4cxxNG/logstring.h>
 #include <log4cxxNG/helpers/objectimpl.h>
 #include <apr_atomic.h>
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 #include <log4cxxNG/helpers/aprinitializer.h>
 
-using namespace log4cxx::helpers;
+using namespace log4cxxng::helpers;
 
 ObjectImpl::ObjectImpl() : ref( 0 )
 {
-	log4cxx::helpers::APRInitializer::initialize();
+	log4cxxng::helpers::APRInitializer::initialize();
 }
 
 ObjectImpl::~ObjectImpl()

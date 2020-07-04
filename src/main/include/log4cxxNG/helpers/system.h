@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_SYSTEM_H
-#define _LOG4CXX_HELPERS_SYSTEM_H
+#ifndef _LOG4CXXNG_HELPERS_SYSTEM_H
+#define _LOG4CXXNG_HELPERS_SYSTEM_H
 
 #include <log4cxxNG/logstring.h>
 #include <log4cxxNG/helpers/exception.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -30,7 +30,7 @@ class Properties;
 /** The System class contains several useful class fields and methods.
 It cannot be instantiated.
 */
-class LOG4CXX_EXPORT System
+class LOG4CXXNG_EXPORT System
 {
 	public:
 
@@ -48,6 +48,6 @@ class LOG4CXX_EXPORT System
 
 };
 } // namespace helpers
-} //  namespace log4cxx
+} //  namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_SYSTEM_H
+#endif //_LOG4CXXNG_HELPERS_SYSTEM_H

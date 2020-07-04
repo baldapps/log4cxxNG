@@ -20,8 +20,8 @@
 #include "../logunit.h"
 #include <apr_time.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 //Define INT64_C for compilers that don't have it
 #if (!defined(INT64_C))
@@ -56,7 +56,7 @@ public:
 	void test1()
 	{
 		TimeZonePtr tz(TimeZone::getGMT());
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("GMT"), tz->getID());
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("GMT"), tz->getID());
 	}
 
 	/**
@@ -64,8 +64,8 @@ public:
 	 */
 	void test2()
 	{
-		TimeZonePtr tz(TimeZone::getTimeZone(LOG4CXX_STR("GMT-6")));
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("GMT-06:00"), tz->getID());
+		TimeZonePtr tz(TimeZone::getTimeZone(LOG4CXXNG_STR("GMT-6")));
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("GMT-06:00"), tz->getID());
 
 		apr_time_t jan2 = MICROSECONDS_PER_DAY * 12420;
 		apr_time_exp_t exploded;
@@ -90,8 +90,8 @@ public:
 	 */
 	void test4()
 	{
-		TimeZonePtr tz(TimeZone::getTimeZone(LOG4CXX_STR("GMT+0010")));
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("GMT+00:10"), tz->getID());
+		TimeZonePtr tz(TimeZone::getTimeZone(LOG4CXXNG_STR("GMT+0010")));
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("GMT+00:10"), tz->getID());
 
 		apr_time_t jan2 = MICROSECONDS_PER_DAY * 12420;
 		apr_time_exp_t exploded;
@@ -107,8 +107,8 @@ public:
 	 */
 	void test5()
 	{
-		TimeZonePtr tz(TimeZone::getTimeZone(LOG4CXX_STR("GMT+6")));
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("GMT+06:00"), tz->getID());
+		TimeZonePtr tz(TimeZone::getTimeZone(LOG4CXXNG_STR("GMT+6")));
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("GMT+06:00"), tz->getID());
 
 		apr_time_t jan2 = MICROSECONDS_PER_DAY * 12420;
 		apr_time_exp_t exploded;
@@ -122,8 +122,8 @@ public:
 	 */
 	void test6()
 	{
-		TimeZonePtr tz(TimeZone::getTimeZone(LOG4CXX_STR("GMT")));
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("GMT"), tz->getID());
+		TimeZonePtr tz(TimeZone::getTimeZone(LOG4CXXNG_STR("GMT")));
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("GMT"), tz->getID());
 	}
 
 

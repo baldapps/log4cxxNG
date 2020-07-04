@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPER_FORMATTING_INFO_H
-#define _LOG4CXX_HELPER_FORMATTING_INFO_H
+#ifndef _LOG4CXXNG_HELPER_FORMATTING_INFO_H
+#define _LOG4CXXNG_HELPER_FORMATTING_INFO_H
 
 
 #include <log4cxxNG/helpers/objectimpl.h>
 #include <log4cxxNG/logstring.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace pattern
 {
@@ -40,7 +40,7 @@ typedef helpers::ObjectPtrT<FormattingInfo> FormattingInfoPtr;
  *
  *
  */
-class LOG4CXX_EXPORT FormattingInfo : public virtual log4cxx::helpers::ObjectImpl
+class LOG4CXXNG_EXPORT FormattingInfo : public virtual log4cxxng::helpers::ObjectImpl
 {
 
 		/**
@@ -59,10 +59,10 @@ class LOG4CXX_EXPORT FormattingInfo : public virtual log4cxx::helpers::ObjectImp
 		const bool leftAlign;
 
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(FormattingInfo)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(FormattingInfo)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(FormattingInfo)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(FormattingInfo)
+		END_LOG4CXXNG_CAST_MAP()
 
 
 		/**
@@ -115,7 +115,7 @@ class LOG4CXX_EXPORT FormattingInfo : public virtual log4cxx::helpers::ObjectImp
 		 */
 		void format(const int fieldStart, LogString& buffer) const;
 };
-LOG4CXX_PTR_DEF(FormattingInfo);
+LOG4CXXNG_PTR_DEF(FormattingInfo);
 }
 }
 

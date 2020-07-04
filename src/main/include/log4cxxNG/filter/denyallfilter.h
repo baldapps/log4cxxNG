@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_FILTER_DENY_ALL_FILTER_H
-#define _LOG4CXX_FILTER_DENY_ALL_FILTER_H
+#ifndef _LOG4CXXNG_FILTER_DENY_ALL_FILTER_H
+#define _LOG4CXXNG_FILTER_DENY_ALL_FILTER_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -26,7 +26,7 @@
 
 #include <log4cxxNG/spi/filter.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace filter
 {
@@ -38,7 +38,7 @@ filtering behaviour to a "deny all unless instructed otherwise"
 behaviour.
 */
 
-class LOG4CXX_EXPORT DenyAllFilter : public spi::Filter
+class LOG4CXXNG_EXPORT DenyAllFilter : public spi::Filter
 {
 	public:
 		DenyAllFilter() : spi::Filter()
@@ -46,11 +46,11 @@ class LOG4CXX_EXPORT DenyAllFilter : public spi::Filter
 		}
 
 		typedef spi::Filter BASE_CLASS;
-		DECLARE_LOG4CXX_OBJECT(DenyAllFilter)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(DenyAllFilter)
-		LOG4CXX_CAST_ENTRY_CHAIN(BASE_CLASS)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(DenyAllFilter)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(DenyAllFilter)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(BASE_CLASS)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		Always returns the integer constant {@link spi::Filter#DENY DENY}
@@ -64,13 +64,13 @@ class LOG4CXX_EXPORT DenyAllFilter : public spi::Filter
 		}
 }; // class DenyAllFilter
 
-LOG4CXX_PTR_DEF(DenyAllFilter);
+LOG4CXXNG_PTR_DEF(DenyAllFilter);
 }  // namespace filter
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
 #endif
 
 
-#endif // _LOG4CXX_FILTER_DENY_ALL_FILTER_H
+#endif // _LOG4CXXNG_FILTER_DENY_ALL_FILTER_H

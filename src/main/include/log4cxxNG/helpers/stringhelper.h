@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_STRING_HELPER_H
-#define _LOG4CXX_HELPERS_STRING_HELPER_H
+#ifndef _LOG4CXXNG_HELPERS_STRING_HELPER_H
+#define _LOG4CXXNG_HELPERS_STRING_HELPER_H
 
 #include <log4cxxNG/logstring.h>
 #include <vector>
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -30,7 +30,7 @@ class Pool;
 /**
 String manipulation routines
 */
-class LOG4CXX_EXPORT StringHelper
+class LOG4CXXNG_EXPORT StringHelper
 {
 	public:
 		static LogString trim(const LogString& s);
@@ -43,11 +43,11 @@ class LOG4CXX_EXPORT StringHelper
 
 
 		static int toInt(const LogString& s);
-		static log4cxx_int64_t toInt64(const LogString& s);
+		static log4cxxng_int64_t toInt64(const LogString& s);
 
-		static void toString(int i, log4cxx::helpers::Pool& pool, LogString& dst);
-		static void toString(log4cxx_int64_t i, log4cxx::helpers::Pool& pool, LogString& dst);
-		static void toString(size_t i, log4cxx::helpers::Pool& pool, LogString& dst);
+		static void toString(int i, log4cxxng::helpers::Pool& pool, LogString& dst);
+		static void toString(log4cxxng_int64_t i, log4cxxng::helpers::Pool& pool, LogString& dst);
+		static void toString(size_t i, log4cxxng::helpers::Pool& pool, LogString& dst);
 
 		static void toString(bool val, LogString& dst);
 
@@ -58,4 +58,4 @@ class LOG4CXX_EXPORT StringHelper
 }
 }
 
-#endif //_LOG4CXX_HELPERS_STRING_HELPER_H
+#endif //_LOG4CXXNG_HELPERS_STRING_HELPER_H

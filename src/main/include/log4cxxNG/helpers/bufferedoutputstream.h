@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_BUFFEREDOUTPUTSTREAM_H
-#define _LOG4CXX_HELPERS_BUFFEREDOUTPUTSTREAM_H
+#ifndef _LOG4CXXNG_HELPERS_BUFFEREDOUTPUTSTREAM_H
+#define _LOG4CXXNG_HELPERS_BUFFEREDOUTPUTSTREAM_H
 
 #include <log4cxxNG/helpers/outputstream.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 namespace helpers
@@ -29,18 +29,18 @@ namespace helpers
 /**
 *   Abstract class for writing to character streams.
 */
-class LOG4CXX_EXPORT BufferedOutputStream : public OutputStream
+class LOG4CXXNG_EXPORT BufferedOutputStream : public OutputStream
 {
 	private:
 		size_t count;
 		LogString buf;
 
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(BufferedOutputStream)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(BufferedOutputStream)
-		LOG4CXX_CAST_ENTRY_CHAIN(OutputStream)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(BufferedOutputStream)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(BufferedOutputStream)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(OutputStream)
+		END_LOG4CXXNG_CAST_MAP()
 
 	protected:
 		BufferedOutputStream(OutputStreamPtr& out, size_t size = 4096);
@@ -56,9 +56,9 @@ class LOG4CXX_EXPORT BufferedOutputStream : public OutputStream
 		BufferedOutputStream& operator=(const BufferedOutputStream&);
 };
 
-LOG4CXX_PTR_DEF(BufferedOutputStream);
+LOG4CXXNG_PTR_DEF(BufferedOutputStream);
 } // namespace helpers
 
-}  //namespace log4cxx
+}  //namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_BUFFEREDOUTPUTSTREAM_H
+#endif //_LOG4CXXNG_HELPERS_BUFFEREDOUTPUTSTREAM_H

@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_SIMPLE_LAYOUT_H
-#define _LOG4CXX_SIMPLE_LAYOUT_H
+#ifndef _LOG4CXXNG_SIMPLE_LAYOUT_H
+#define _LOG4CXXNG_SIMPLE_LAYOUT_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -26,7 +26,7 @@
 
 #include <log4cxxNG/layout.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 /**
 SimpleLayout consists of the level of the log statement,
@@ -40,14 +40,14 @@ followed by " - " and then the log message itself. For example,
 
 <p>PatternLayout offers a much more powerful alternative.
 */
-class LOG4CXX_EXPORT SimpleLayout : public Layout
+class LOG4CXXNG_EXPORT SimpleLayout : public Layout
 {
 	public:
-		DECLARE_LOG4CXX_OBJECT(SimpleLayout)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(SimpleLayout)
-		LOG4CXX_CAST_ENTRY_CHAIN(Layout)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(SimpleLayout)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(SimpleLayout)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(Layout)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		Returns the log statement in a format consisting of the
@@ -59,7 +59,7 @@ class LOG4CXX_EXPORT SimpleLayout : public Layout
 		*/
 		virtual void format(LogString& output,
 			const spi::LoggingEventPtr& event,
-			log4cxx::helpers::Pool& pool) const;
+			log4cxxng::helpers::Pool& pool) const;
 
 		/**
 		The SimpleLayout does not handle the throwable contained within
@@ -71,16 +71,16 @@ class LOG4CXX_EXPORT SimpleLayout : public Layout
 			return true;
 		}
 
-		virtual void activateOptions(log4cxx::helpers::Pool& /* p */) {}
+		virtual void activateOptions(log4cxxng::helpers::Pool& /* p */) {}
 		virtual void setOption(const LogString& /* option */,
 			const LogString& /* value */) {}
 };
-LOG4CXX_PTR_DEF(SimpleLayout);
-}  // namespace log4cxx
+LOG4CXXNG_PTR_DEF(SimpleLayout);
+}  // namespace log4cxxng
 
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
 #endif
 
-#endif //_LOG4CXX_SIMPLE_LAYOUT_H
+#endif //_LOG4CXXNG_SIMPLE_LAYOUT_H

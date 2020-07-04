@@ -25,16 +25,16 @@
 #include <log4cxxNG/spi/location/locationinfo.h>
 #include <log4cxxNG/helpers/stringhelper.h>
 
-using namespace log4cxx;
-using namespace log4cxx::pattern;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::pattern;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(RelativeTimePatternConverter)
+IMPLEMENT_LOG4CXXNG_OBJECT(RelativeTimePatternConverter)
 
 RelativeTimePatternConverter::RelativeTimePatternConverter() :
-	LoggingEventPatternConverter(LOG4CXX_STR("Time"),
-		LOG4CXX_STR("time"))
+	LoggingEventPatternConverter(LOG4CXXNG_STR("Time"),
+		LOG4CXXNG_STR("time"))
 {
 }
 
@@ -50,7 +50,7 @@ void RelativeTimePatternConverter::format(
 	LogString& toAppendTo,
 	Pool& p) const
 {
-	log4cxx_time_t delta = (event->getTimeStamp() - LoggingEvent::getStartTime()) / 1000;
+	log4cxxng_time_t delta = (event->getTimeStamp() - LoggingEvent::getStartTime()) / 1000;
 	StringHelper::toString(delta, p, toAppendTo);
 }
 

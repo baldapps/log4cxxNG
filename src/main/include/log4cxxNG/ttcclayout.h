@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_TTCC_LAYOUT_H
-#define _LOG4CXX_TTCC_LAYOUT_H
+#ifndef _LOG4CXXNG_TTCC_LAYOUT_H
+#define _LOG4CXXNG_TTCC_LAYOUT_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -25,7 +25,7 @@
 
 #include <log4cxxNG/helpers/datelayout.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 /**
@@ -70,7 +70,7 @@ instance from just one appender.
 
 <p>PatternLayout offers a much more flexible alternative.
 */
-class LOG4CXX_EXPORT TTCCLayout : public helpers::DateLayout
+class LOG4CXXNG_EXPORT TTCCLayout : public helpers::DateLayout
 {
 	private:
 		// Internal representation of options
@@ -80,11 +80,11 @@ class LOG4CXX_EXPORT TTCCLayout : public helpers::DateLayout
 		bool filePrinting;
 
 	public:
-		DECLARE_LOG4CXX_OBJECT(TTCCLayout)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(TTCCLayout)
-		LOG4CXX_CAST_ENTRY_CHAIN(Layout)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(TTCCLayout)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(TTCCLayout)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(Layout)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		Instantiate a TTCCLayout object with {@link
@@ -183,7 +183,7 @@ class LOG4CXX_EXPORT TTCCLayout : public helpers::DateLayout
 		@param pool pool used to allocate memory needed during formatting.
 		*/
 		virtual void format(LogString& output,
-			const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& pool) const;
+			const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& pool) const;
 
 		/**
 		The TTCCLayout does not handle the throwable contained within
@@ -195,7 +195,7 @@ class LOG4CXX_EXPORT TTCCLayout : public helpers::DateLayout
 			return true;
 		}
 };
-LOG4CXX_PTR_DEF(TTCCLayout);
+LOG4CXXNG_PTR_DEF(TTCCLayout);
 }
 
 

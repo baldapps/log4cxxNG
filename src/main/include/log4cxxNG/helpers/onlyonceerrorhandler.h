@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_ONLY_ONCE_ERROR_HANDLER_H
-#define _LOG4CXX_HELPERS_ONLY_ONCE_ERROR_HANDLER_H
+#ifndef _LOG4CXXNG_HELPERS_ONLY_ONCE_ERROR_HANDLER_H
+#define _LOG4CXXNG_HELPERS_ONLY_ONCE_ERROR_HANDLER_H
 
 #include <log4cxxNG/spi/errorhandler.h>
 #include <log4cxxNG/helpers/objectimpl.h>
@@ -26,7 +26,7 @@
 	#pragma warning (disable : 4251) // ::std::exception needs to have dll-interface
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -40,7 +40,7 @@ first error in an appender and ignoring all following errors.
 <p>This policy aims at protecting an otherwise working application
 from being flooded with error messages when logging fails
 */
-class LOG4CXX_EXPORT OnlyOnceErrorHandler :
+class LOG4CXXNG_EXPORT OnlyOnceErrorHandler :
 	public virtual spi::ErrorHandler,
 	public virtual ObjectImpl
 {
@@ -50,11 +50,11 @@ class LOG4CXX_EXPORT OnlyOnceErrorHandler :
 		mutable bool firstTime;
 
 	public:
-		DECLARE_LOG4CXX_OBJECT(OnlyOnceErrorHandler)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(spi::OptionHandler)
-		LOG4CXX_CAST_ENTRY(spi::ErrorHandler)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(OnlyOnceErrorHandler)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(spi::OptionHandler)
+		LOG4CXXNG_CAST_ENTRY(spi::ErrorHandler)
+		END_LOG4CXXNG_CAST_MAP()
 
 		OnlyOnceErrorHandler();
 		void addRef() const;
@@ -69,7 +69,7 @@ class LOG4CXX_EXPORT OnlyOnceErrorHandler :
 		/**
 		No options to activate.
 		*/
-		void activateOptions(log4cxx::helpers::Pool& p);
+		void activateOptions(log4cxxng::helpers::Pool& p);
 		void setOption(const LogString& option, const LogString& value);
 
 
@@ -102,11 +102,11 @@ class LOG4CXX_EXPORT OnlyOnceErrorHandler :
 		void setBackupAppender(const AppenderPtr& appender);
 };
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
-#endif //_LOG4CXX_HELPERS_ONLY_ONCE_ERROR_HANDLER_H
+#endif //_LOG4CXXNG_HELPERS_ONLY_ONCE_ERROR_HANDLER_H
 

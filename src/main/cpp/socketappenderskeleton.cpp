@@ -28,9 +28,9 @@
 #include <log4cxxNG/helpers/transcoder.h>
 #include <log4cxxNG/helpers/bytearrayoutputstream.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::net;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::net;
 
 SocketAppenderSkeleton::SocketAppenderSkeleton(int defaultPort, int reconnectionDelay1)
 	:  remoteHost(),
@@ -74,7 +74,7 @@ SocketAppenderSkeleton::~SocketAppenderSkeleton()
 	}
 	catch (ThreadException& ex)
 	{
-		LogLog::error(LOG4CXX_STR("Error closing socket appender connection thread"), ex);
+		LogLog::error(LOG4CXXNG_STR("Error closing socket appender connection thread"), ex);
 	}
 }
 
@@ -102,8 +102,8 @@ void SocketAppenderSkeleton::connect(Pool& p)
 {
 	if (address == 0)
 	{
-		LogLog::error(LogString(LOG4CXX_STR("No remote host is set for Appender named \"")) +
-			name + LOG4CXX_STR("\"."));
+		LogLog::error(LogString(LOG4CXXNG_STR("No remote host is set for Appender named \"")) +
+			name + LOG4CXXNG_STR("\"."));
 	}
 	else
 	{
@@ -116,12 +116,12 @@ void SocketAppenderSkeleton::connect(Pool& p)
 		}
 		catch (SocketException& e)
 		{
-			LogString msg = LOG4CXX_STR("Could not connect to remote log4cxx server at [")
-				+ address->getHostName() + LOG4CXX_STR("].");
+			LogString msg = LOG4CXXNG_STR("Could not connect to remote log4cxx server at [")
+				+ address->getHostName() + LOG4CXXNG_STR("].");
 
 			if (reconnectionDelay > 0)
 			{
-				msg += LOG4CXX_STR(" We will try again later. ");
+				msg += LOG4CXXNG_STR(" We will try again later. ");
 			}
 
 			fireConnector(); // fire the connector thread
@@ -132,19 +132,19 @@ void SocketAppenderSkeleton::connect(Pool& p)
 
 void SocketAppenderSkeleton::setOption(const LogString& option, const LogString& value)
 {
-	if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("REMOTEHOST"), LOG4CXX_STR("remotehost")))
+	if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("REMOTEHOST"), LOG4CXXNG_STR("remotehost")))
 	{
 		setRemoteHost(value);
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("PORT"), LOG4CXX_STR("port")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("PORT"), LOG4CXXNG_STR("port")))
 	{
 		setPort(OptionConverter::toInt(value, getDefaultPort()));
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("LOCATIONINFO"), LOG4CXX_STR("locationinfo")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("LOCATIONINFO"), LOG4CXXNG_STR("locationinfo")))
 	{
 		setLocationInfo(OptionConverter::toBoolean(value, false));
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("RECONNECTIONDELAY"), LOG4CXX_STR("reconnectiondelay")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("RECONNECTIONDELAY"), LOG4CXXNG_STR("reconnectiondelay")))
 	{
 		setReconnectionDelay(OptionConverter::toInt(value, getDefaultDelay()));
 	}
@@ -160,7 +160,7 @@ void SocketAppenderSkeleton::fireConnector()
 
 	if ( !thread.isAlive() )
 	{
-		LogLog::debug(LOG4CXX_STR("Connector thread not alive: starting monitor."));
+		LogLog::debug(LOG4CXXNG_STR("Connector thread not alive: starting monitor."));
 
 		try
 		{
@@ -168,12 +168,12 @@ void SocketAppenderSkeleton::fireConnector()
 		}
 		catch ( ThreadException& te )
 		{
-			LogLog::error(LOG4CXX_STR("Monitor not started: "), te);
+			LogLog::error(LOG4CXXNG_STR("Monitor not started: "), te);
 		}
 	}
 }
 
-void* LOG4CXX_THREAD_FUNC SocketAppenderSkeleton::monitor(apr_thread_t* /* thread */, void* data)
+void* LOG4CXXNG_THREAD_FUNC SocketAppenderSkeleton::monitor(apr_thread_t* /* thread */, void* data)
 {
 	SocketAppenderSkeleton* socketAppender = (SocketAppenderSkeleton*) data;
 	SocketPtr socket;
@@ -187,41 +187,41 @@ void* LOG4CXX_THREAD_FUNC SocketAppenderSkeleton::monitor(apr_thread_t* /* threa
 
 			if (!socketAppender->closed)
 			{
-				LogLog::debug(LogString(LOG4CXX_STR("Attempting connection to "))
+				LogLog::debug(LogString(LOG4CXXNG_STR("Attempting connection to "))
 					+ socketAppender->address->getHostName());
 				socket = new Socket(socketAppender->address, socketAppender->port);
 				Pool p;
 				socketAppender->setSocket(socket, p);
-				LogLog::debug(LOG4CXX_STR("Connection established. Exiting connector thread."));
+				LogLog::debug(LOG4CXXNG_STR("Connection established. Exiting connector thread."));
 			}
 
 			return NULL;
 		}
 		catch (InterruptedException&)
 		{
-			LogLog::debug(LOG4CXX_STR("Connector interrupted.  Leaving loop."));
+			LogLog::debug(LOG4CXXNG_STR("Connector interrupted.  Leaving loop."));
 			return NULL;
 		}
 		catch (ConnectException&)
 		{
-			LogLog::debug(LOG4CXX_STR("Remote host ")
+			LogLog::debug(LOG4CXXNG_STR("Remote host ")
 				+ socketAppender->address->getHostName()
-				+ LOG4CXX_STR(" refused connection."));
+				+ LOG4CXXNG_STR(" refused connection."));
 		}
 		catch (IOException& e)
 		{
 			LogString exmsg;
-			log4cxx::helpers::Transcoder::decode(e.what(), exmsg);
+			log4cxxng::helpers::Transcoder::decode(e.what(), exmsg);
 
-			LogLog::debug(((LogString) LOG4CXX_STR("Could not connect to "))
+			LogLog::debug(((LogString) LOG4CXXNG_STR("Could not connect to "))
 				+ socketAppender->address->getHostName()
-				+ LOG4CXX_STR(". Exception is ")
+				+ LOG4CXXNG_STR(". Exception is ")
 				+ exmsg);
 		}
 
 		isClosed = socketAppender->closed;
 	}
 
-	LogLog::debug(LOG4CXX_STR("Exiting Connector.run() method."));
+	LogLog::debug(LOG4CXXNG_STR("Exiting Connector.run() method."));
 	return NULL;
 }

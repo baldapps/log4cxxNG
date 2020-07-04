@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_LOCALE_H
-#define _LOG4CXX_HELPERS_LOCALE_H
+#ifndef _LOG4CXXNG_HELPERS_LOCALE_H
+#define _LOG4CXXNG_HELPERS_LOCALE_H
 
 #include <log4cxxNG/logstring.h>
 
@@ -25,11 +25,11 @@
 	#pragma warning ( disable: 4251 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
-class LOG4CXX_EXPORT Locale
+class LOG4CXXNG_EXPORT Locale
 {
 	public:
 		Locale(const LogString& language);
@@ -49,10 +49,10 @@ class LOG4CXX_EXPORT Locale
 		const LogString variant;
 }; // class Locale
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
-#endif // _LOG4CXX_HELPERS_LOCALE_H
+#endif // _LOG4CXXNG_HELPERS_LOCALE_H

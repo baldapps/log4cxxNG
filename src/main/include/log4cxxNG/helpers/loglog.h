@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_LOG_LOG_H
-#define _LOG4CXX_HELPERS_LOG_LOG_H
+#ifndef _LOG4CXXNG_HELPERS_LOG_LOG_H
+#define _LOG4CXXNG_HELPERS_LOG_LOG_H
 
 #include <log4cxxNG/logstring.h>
 #include <log4cxxNG/helpers/mutex.h>
 #include <exception>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -39,7 +39,7 @@ where as internal error messages are sent to
 standard error output. All internal messages are prepended with
 the string "log4cxx: ".
 */
-class LOG4CXX_EXPORT LogLog
+class LOG4CXXNG_EXPORT LogLog
 {
 	private:
 		bool debugEnabled;
@@ -99,15 +99,15 @@ class LOG4CXX_EXPORT LogLog
 		static void emit(const std::exception& ex);
 };
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #define LOGLOG_DEBUG(log) { \
-		log4cxx::helpers::LogLog::debug(log) ; }
+		log4cxxng::helpers::LogLog::debug(log) ; }
 
 #define LOGLOG_WARN(log) { \
-		log4cxx::helpers::LogLog::warn(log) ; }
+		log4cxxng::helpers::LogLog::warn(log) ; }
 
 #define LOGLOG_ERROR(log) { \
-		log4cxx::helpers::LogLog::warn(log); }
+		log4cxxng::helpers::LogLog::warn(log); }
 
-#endif //_LOG4CXX_HELPERS_LOG_LOG_H
+#endif //_LOG4CXXNG_HELPERS_LOG_LOG_H

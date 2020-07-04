@@ -19,7 +19,7 @@
 #include <vector>
 #include <log4cxxNG/spi/loggingevent.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 
@@ -29,11 +29,11 @@ An appender that appends logging events to a vector.
 class VectorAppender : public AppenderSkeleton
 {
 	public:
-		DECLARE_LOG4CXX_OBJECT(VectorAppender)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(VectorAppender)
-		LOG4CXX_CAST_ENTRY_CHAIN(AppenderSkeleton)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(VectorAppender)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(VectorAppender)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(AppenderSkeleton)
+		END_LOG4CXXNG_CAST_MAP()
 
 		std::vector<spi::LoggingEventPtr> vector;
 
@@ -42,7 +42,7 @@ class VectorAppender : public AppenderSkeleton
 		This method is called by the AppenderSkeleton#doAppend
 		method.
 		*/
-		void append(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& p);
+		void append(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& p);
 
 		const std::vector<spi::LoggingEventPtr>& getVector() const
 		{

@@ -21,11 +21,11 @@
 
 #include "windows.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::nt;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::nt;
 
-IMPLEMENT_LOG4CXX_OBJECT(OutputDebugStringAppender)
+IMPLEMENT_LOG4CXXNG_OBJECT(OutputDebugStringAppender)
 
 OutputDebugStringAppender::OutputDebugStringAppender()
 {
@@ -35,11 +35,11 @@ void OutputDebugStringAppender::append(const spi::LoggingEventPtr& event, Pool& 
 {
 	LogString buf;
 	layout->format(buf, event, p);
-#if LOG4CXX_WCHAR_T_API
-	LOG4CXX_ENCODE_WCHAR(wstr, buf);
+#if LOG4CXXNG_WCHAR_T_API
+	LOG4CXXNG_ENCODE_WCHAR(wstr, buf);
 	::OutputDebugStringW(wstr.c_str());
 #else
-	LOG4CXX_ENCODE_CHAR(str, buf);
+	LOG4CXXNG_ENCODE_CHAR(str, buf);
 	::OutputDebugStringA(str.c_str());
 #endif
 }

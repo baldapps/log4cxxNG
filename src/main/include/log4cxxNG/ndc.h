@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_NDC_H
-#define _LOG4CXX_NDC_H
+#ifndef _LOG4CXXNG_NDC_H
+#define _LOG4CXXNG_NDC_H
 
 #include <log4cxxNG/log4cxxNG.h>
 #include <log4cxxNG/logstring.h>
@@ -27,7 +27,7 @@
 	#pragma warning ( disable: 4231 4251 4275 4786 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 /**
@@ -92,7 +92,7 @@ and sometimes forget to call #remove before exiting a
 thread.
 
 */
-class LOG4CXX_EXPORT NDC
+class LOG4CXXNG_EXPORT NDC
 {
 	public:
 		/**
@@ -235,7 +235,7 @@ class LOG4CXX_EXPORT NDC
 		*/
 		static void remove();
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 		/**
 		  Creates a nested diagnostic context.
 		  Since java performs no automatic cleanup of objects when a
@@ -269,7 +269,7 @@ class LOG4CXX_EXPORT NDC
 		 */
 		static bool pop(std::wstring& dst);
 #endif
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 		/**
 		  Creates a nested diagnostic context.
 		  Since java performs no automatic cleanup of objects when a
@@ -303,7 +303,7 @@ class LOG4CXX_EXPORT NDC
 		 */
 		static bool pop(std::basic_string<UniChar>& dst);
 #endif
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		/**
 		  Creates a nested diagnostic context.
 		  Since java performs no automatic cleanup of objects when a
@@ -344,11 +344,11 @@ class LOG4CXX_EXPORT NDC
 		static LogString& getMessage(DiagnosticContext& ctx);
 		static LogString& getFullMessage(DiagnosticContext& ctx);
 }; // class NDC;
-}  // namespace log4cxx
+}  // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
 
-#endif // _LOG4CXX_NDC_H
+#endif // _LOG4CXXNG_NDC_H

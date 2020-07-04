@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPER_INETADDRESS_H
-#define _LOG4CXX_HELPER_INETADDRESS_H
+#ifndef _LOG4CXXNG_HELPER_INETADDRESS_H
+#define _LOG4CXXNG_HELPER_INETADDRESS_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -31,11 +31,11 @@
 #include <vector>
 #include <log4cxxNG/helpers/exception.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
-class LOG4CXX_EXPORT UnknownHostException : public Exception
+class LOG4CXXNG_EXPORT UnknownHostException : public Exception
 {
 	public:
 		UnknownHostException(const LogString& msg);
@@ -45,16 +45,16 @@ class LOG4CXX_EXPORT UnknownHostException : public Exception
 
 
 class InetAddress;
-LOG4CXX_PTR_DEF(InetAddress);
-LOG4CXX_LIST_DEF(InetAddressList, InetAddressPtr);
+LOG4CXXNG_PTR_DEF(InetAddress);
+LOG4CXXNG_LIST_DEF(InetAddressList, InetAddressPtr);
 
-class LOG4CXX_EXPORT InetAddress : public ObjectImpl
+class LOG4CXXNG_EXPORT InetAddress : public ObjectImpl
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(InetAddress)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(InetAddress)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(InetAddress)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(InetAddress)
+		END_LOG4CXXNG_CAST_MAP()
 
 		InetAddress(const LogString& hostName, const LogString& hostAddr);
 
@@ -95,12 +95,12 @@ class LOG4CXX_EXPORT InetAddress : public ObjectImpl
 
 }; // class InetAddress
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
 #endif
 
 
-#endif // _LOG4CXX_HELPER_INETADDRESS_H
+#endif // _LOG4CXXNG_HELPER_INETADDRESS_H
 

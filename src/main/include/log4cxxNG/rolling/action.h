@@ -15,15 +15,15 @@
  * limitations under the License.
  */
 
-#if !defined(_LOG4CXX_ROLLING_ACTION_H)
-#define _LOG4CXX_ROLLING_ACTION_H
+#if !defined(_LOG4CXXNG_ROLLING_ACTION_H)
+#define _LOG4CXXNG_ROLLING_ACTION_H
 
 #include <log4cxxNG/portability.h>
 #include <log4cxxNG/helpers/objectimpl.h>
 #include <log4cxxNG/helpers/mutex.h>
 #include <log4cxxNG/helpers/pool.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace rolling
 {
@@ -32,12 +32,12 @@ namespace rolling
 /**
  *  A file system action performed as part of a rollover event.
  */
-class Action : public virtual log4cxx::helpers::ObjectImpl
+class Action : public virtual log4cxxng::helpers::ObjectImpl
 {
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(Action)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(Action)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(Action)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(Action)
+		END_LOG4CXXNG_CAST_MAP()
 		/**
 		 * Is action complete.
 		 */
@@ -48,8 +48,8 @@ class Action : public virtual log4cxx::helpers::ObjectImpl
 		 */
 		bool interrupted;
 
-		log4cxx::helpers::Pool pool;
-		log4cxx::helpers::Mutex mutex;
+		log4cxxng::helpers::Pool pool;
+		log4cxxng::helpers::Mutex mutex;
 
 
 	protected:
@@ -65,9 +65,9 @@ class Action : public virtual log4cxx::helpers::ObjectImpl
 		 *
 		 * @return true if successful.
 		 */
-		virtual bool execute(log4cxx::helpers::Pool& pool) const = 0;
+		virtual bool execute(log4cxxng::helpers::Pool& pool) const = 0;
 
-		void run(log4cxx::helpers::Pool& pool);
+		void run(log4cxxng::helpers::Pool& pool);
 
 		void close();
 
@@ -82,7 +82,7 @@ class Action : public virtual log4cxx::helpers::ObjectImpl
 
 };
 
-LOG4CXX_PTR_DEF(Action);
+LOG4CXXNG_PTR_DEF(Action);
 
 }
 }

@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_LEVEL_H
-#define _LOG4CXX_LEVEL_H
+#ifndef _LOG4CXXNG_LEVEL_H
+#define _LOG4CXXNG_LEVEL_H
 
 
 #include <log4cxxNG/logstring.h>
@@ -29,10 +29,10 @@
 	#pragma warning ( disable: 4251 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 /**
- * LOG4CXX_PTR_DEF can't be used to get a smart pointer for Level because we need to override
+ * LOG4CXXNG_PTR_DEF can't be used to get a smart pointer for Level because we need to override
  * the comparison operator and this doesn't work if the template has alread been initialized,
  * which is what the macro does on some platforms. The overriding takes place underneath the
  * definition of Level because we need one of it's methods.
@@ -40,7 +40,7 @@ namespace log4cxx
  * https://issues.apache.org/jira/browse/LOGCXX-394
  */
 class Level;
-typedef log4cxx::helpers::ObjectPtrT<Level> LevelPtr;
+typedef log4cxxng::helpers::ObjectPtrT<Level> LevelPtr;
 
 /**
 Defines the minimum set of levels recognized by the system, that is
@@ -50,17 +50,17 @@ Defines the minimum set of levels recognized by the system, that is
 <p>The <code>Level</code> class may be subclassed to define a larger
 level set.
 */
-class LOG4CXX_EXPORT Level : public helpers::ObjectImpl
+class LOG4CXXNG_EXPORT Level : public helpers::ObjectImpl
 {
 	public:
-		class LOG4CXX_EXPORT LevelClass : public helpers::Class
+		class LOG4CXXNG_EXPORT LevelClass : public helpers::Class
 		{
 			public:
 				LevelClass() : helpers::Class() {}
 
 				virtual LogString getName() const
 				{
-					return LOG4CXX_STR("Level");
+					return LOG4CXXNG_STR("Level");
 				}
 
 				virtual LevelPtr toLevel(const LogString& sArg) const
@@ -74,10 +74,10 @@ class LOG4CXX_EXPORT Level : public helpers::ObjectImpl
 				}
 		};
 
-		DECLARE_LOG4CXX_OBJECT_WITH_CUSTOM_CLASS(Level, LevelClass)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(Level)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT_WITH_CUSTOM_CLASS(Level, LevelClass)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(Level)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		Instantiate a Level object.
@@ -108,7 +108,7 @@ class LOG4CXX_EXPORT Level : public helpers::ObjectImpl
 		 */
 		void toString(std::string& name) const;
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 		/**
 		Convert the string passed as argument to a level. If the
 		conversion fails, then this method returns DEBUG.
@@ -131,7 +131,7 @@ class LOG4CXX_EXPORT Level : public helpers::ObjectImpl
 		 */
 		void toString(std::wstring& name) const;
 #endif
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 		/**
 		Convert the string passed as argument to a level. If the
 		conversion fails, then this method returns DEBUG.
@@ -154,7 +154,7 @@ class LOG4CXX_EXPORT Level : public helpers::ObjectImpl
 		 */
 		void toString(std::basic_string<UniChar>& name) const;
 #endif
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		/**
 		Convert the string passed as argument to a level. If the
 		conversion fails, then this method returns DEBUG.
@@ -287,7 +287,7 @@ class LOG4CXX_EXPORT Level : public helpers::ObjectImpl
 };
 
 /**
- * We need to double some logic from LOG4CXX_PTR_DEF or else we are unable to override the
+ * We need to double some logic from LOG4CXXNG_PTR_DEF or else we are unable to override the
  * comparison operator, which we need to properly fix LOGCXX-394.
  *
  * https://issues.apache.org/jira/browse/LOGCXX-394
@@ -295,7 +295,7 @@ class LOG4CXX_EXPORT Level : public helpers::ObjectImpl
 namespace helpers
 {
 
-/** @class log4cxx::helpers::ObjectPtr */
+/** @class log4cxxng::helpers::ObjectPtr */
 template<> inline bool LevelPtr::operator==(const LevelPtr& rhs) const
 {
 	return (*this)->equals(rhs);
@@ -304,12 +304,12 @@ template<> inline bool LevelPtr::operator!=(const LevelPtr& rhs) const
 {
 	return !(*this == rhs);
 }
-#if defined(_MSC_VER) && !defined(LOG4CXX_STATIC) && defined(LOG4CXX)
-	template class LOG4CXX_EXPORT log4cxx::helpers::ObjectPtrT<Level>;
-#elif defined(_MSC_VER) && !defined(LOG4CXX_STATIC)
+#if defined(_MSC_VER) && !defined(LOG4CXXNG_STATIC) && defined(LOG4CXXNG)
+	template class LOG4CXXNG_EXPORT log4cxxng::helpers::ObjectPtrT<Level>;
+#elif defined(_MSC_VER) && !defined(LOG4CXXNG_STATIC)
 	#pragma warning(push)
 	#pragma warning(disable: 4231)
-	extern template class LOG4CXX_EXPORT log4cxx::helpers::ObjectPtrT<Level>;
+	extern template class LOG4CXXNG_EXPORT log4cxxng::helpers::ObjectPtrT<Level>;
 	#pragma warning(pop)
 #endif
 
@@ -317,25 +317,25 @@ template<> inline bool LevelPtr::operator!=(const LevelPtr& rhs) const
 
 }
 
-#define DECLARE_LOG4CXX_LEVEL(level)\
+#define DECLARE_LOG4CXXNG_LEVEL(level)\
 	public:\
 	class Class##level : public Level::LevelClass\
 	{\
 		public:\
 			Class##level() : Level::LevelClass() {}\
-			virtual LogString getName() const { return LOG4CXX_STR(#level); } \
+			virtual LogString getName() const { return LOG4CXXNG_STR(#level); } \
 			virtual LevelPtr toLevel(const LogString& sArg) const\
 			{ return level::toLevelLS(sArg); }\
 			virtual LevelPtr toLevel(int val) const\
 			{ return level::toLevel(val); }\
 	};\
-	DECLARE_LOG4CXX_OBJECT_WITH_CUSTOM_CLASS(level, Class##level)
+	DECLARE_LOG4CXXNG_OBJECT_WITH_CUSTOM_CLASS(level, Class##level)
 
-#define IMPLEMENT_LOG4CXX_LEVEL(level) \
-	IMPLEMENT_LOG4CXX_OBJECT_WITH_CUSTOM_CLASS(level, Class##level)
+#define IMPLEMENT_LOG4CXXNG_LEVEL(level) \
+	IMPLEMENT_LOG4CXXNG_OBJECT_WITH_CUSTOM_CLASS(level, Class##level)
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
-#endif //_LOG4CXX_LEVEL_H
+#endif //_LOG4CXXNG_LEVEL_H

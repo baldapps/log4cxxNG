@@ -18,8 +18,8 @@
 #include "../logunit.h"
 #include <log4cxxNG/helpers/syslogwriter.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 
 LOGUNIT_CLASS(SyslogWriterTest)
@@ -34,8 +34,8 @@ public:
 	 */
 	void testUnknownHost()
 	{
-		SyslogWriter writer(LOG4CXX_STR("unknown.invalid"));
-		writer.write(LOG4CXX_STR("Hello, Unknown World."));
+		SyslogWriter writer(LOG4CXXNG_STR("unknown.invalid"));
+		writer.write(LOG4CXXNG_STR("Hello, Unknown World."));
 	}
 
 };

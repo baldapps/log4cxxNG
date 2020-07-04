@@ -29,12 +29,12 @@
 #include <log4cxxNG/pattern/integerpatternconverter.h>
 #include <log4cxxNG/pattern/datepatternconverter.h>
 
-using namespace log4cxx;
-using namespace log4cxx::rolling;
-using namespace log4cxx::helpers;
-using namespace log4cxx::pattern;
+using namespace log4cxxng;
+using namespace log4cxxng::rolling;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::pattern;
 
-IMPLEMENT_LOG4CXX_OBJECT(RollingPolicyBase)
+IMPLEMENT_LOG4CXXNG_OBJECT(RollingPolicyBase)
 
 RollingPolicyBase::RollingPolicyBase()
 {
@@ -54,7 +54,7 @@ void RollingPolicyBase::releaseRef() const
 	ObjectImpl::releaseRef();
 }
 
-void RollingPolicyBase::activateOptions(log4cxx::helpers::Pool& /* pool */)
+void RollingPolicyBase::activateOptions(log4cxxng::helpers::Pool& /* pool */)
 {
 	if (fileNamePatternStr.length() > 0)
 	{
@@ -62,8 +62,8 @@ void RollingPolicyBase::activateOptions(log4cxx::helpers::Pool& /* pool */)
 	}
 	else
 	{
-		LogString msg(LOG4CXX_STR("The FileNamePattern option must be set before using FixedWindowRollingPolicy."));
-		LogString ref1(LOG4CXX_STR("See also http://logging.apache.org/log4j/codes.html#tbr_fnp_not_set"));
+		LogString msg(LOG4CXXNG_STR("The FileNamePattern option must be set before using FixedWindowRollingPolicy."));
+		LogString ref1(LOG4CXXNG_STR("See also http://logging.apache.org/log4j/codes.html#tbr_fnp_not_set"));
 		LogLog::warn(msg);
 		LogLog::warn(ref1);
 		throw IllegalStateException();
@@ -74,8 +74,8 @@ void RollingPolicyBase::activateOptions(log4cxx::helpers::Pool& /* pool */)
 void RollingPolicyBase::setOption(const LogString& option, const LogString& value)
 {
 	if (StringHelper::equalsIgnoreCase(option,
-			LOG4CXX_STR("FILENAMEPATTERN"),
-			LOG4CXX_STR("filenamepattern")))
+			LOG4CXXNG_STR("FILENAMEPATTERN"),
+			LOG4CXXNG_STR("filenamepattern")))
 	{
 		fileNamePatternStr = value;
 	}

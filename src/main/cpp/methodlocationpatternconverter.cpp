@@ -25,16 +25,16 @@
 #include <log4cxxNG/spi/loggingevent.h>
 #include <log4cxxNG/spi/location/locationinfo.h>
 
-using namespace log4cxx;
-using namespace log4cxx::pattern;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::pattern;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(MethodLocationPatternConverter)
+IMPLEMENT_LOG4CXXNG_OBJECT(MethodLocationPatternConverter)
 
 MethodLocationPatternConverter::MethodLocationPatternConverter() :
-	LoggingEventPatternConverter(LOG4CXX_STR("Method"),
-		LOG4CXX_STR("method"))
+	LoggingEventPatternConverter(LOG4CXXNG_STR("Method"),
+		LOG4CXXNG_STR("method"))
 {
 }
 

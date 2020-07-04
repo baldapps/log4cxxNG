@@ -17,7 +17,7 @@
 
 #include <log4cxxNG/logstring.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 class File;
 namespace helpers
@@ -35,7 +35,7 @@ class Compare
 		/// Prints file on the console.
 		static void outputFile(const File& file,
 			const LogString& contents,
-			log4cxx::helpers::Pool& pool);
+			log4cxxng::helpers::Pool& pool);
 
 		static void emit(const LogString& line);
 		static bool getline(LogString& buf, LogString& line);

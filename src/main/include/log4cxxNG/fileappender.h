@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_FILE_APPENDER_H
-#define _LOG4CXX_FILE_APPENDER_H
+#ifndef _LOG4CXXNG_FILE_APPENDER_H
+#define _LOG4CXXNG_FILE_APPENDER_H
 
 #include <log4cxxNG/logger.h>
 #include <log4cxxNG/logstring.h>
@@ -29,7 +29,7 @@
 	#pragma warning ( disable: 4251 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -43,7 +43,7 @@ class Pool;
 *  has been deprecated and then removed. See the replacement
 *  solutions: WriterAppender and ConsoleAppender.
 */
-class LOG4CXX_EXPORT FileAppender : public WriterAppender
+class LOG4CXXNG_EXPORT FileAppender : public WriterAppender
 {
 	protected:
 		/** Append to or truncate the file? The default value for this
@@ -68,11 +68,11 @@ class LOG4CXX_EXPORT FileAppender : public WriterAppender
 		int bufferSize;
 
 	public:
-		DECLARE_LOG4CXX_OBJECT(FileAppender)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(FileAppender)
-		LOG4CXX_CAST_ENTRY_CHAIN(WriterAppender)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(FileAppender)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(FileAppender)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(WriterAppender)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		The default constructor does not do anything.
@@ -147,7 +147,7 @@ class LOG4CXX_EXPORT FileAppender : public WriterAppender
 		*/
 		virtual void setFile(const LogString& file, bool append,
 			bool bufferedIO, size_t bufferSize,
-			log4cxx::helpers::Pool& p);
+			log4cxxng::helpers::Pool& p);
 
 		/**
 		Returns the value of the <b>Append</b> option.
@@ -169,7 +169,7 @@ class LOG4CXX_EXPORT FileAppender : public WriterAppender
 
 		<p>If there was already an opened file, then the previous file
 		is closed first.*/
-		void activateOptions(log4cxx::helpers::Pool& p);
+		void activateOptions(log4cxxng::helpers::Pool& p);
 		void setOption(const LogString& option,
 			const LogString& value);
 
@@ -237,9 +237,9 @@ class LOG4CXX_EXPORT FileAppender : public WriterAppender
 		FileAppender& operator=(const FileAppender&);
 
 }; // class FileAppender
-LOG4CXX_PTR_DEF(FileAppender);
+LOG4CXXNG_PTR_DEF(FileAppender);
 
-}  // namespace log4cxx
+}  // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)

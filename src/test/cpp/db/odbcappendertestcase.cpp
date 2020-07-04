@@ -19,16 +19,16 @@
 #include "../appenderskeletontestcase.h"
 #include "../logunit.h"
 
-#define LOG4CXX_TEST 1
-#include <log4cxxNG/private/log4cxx_private.h>
+#define LOG4CXXNG_TEST 1
+#include <log4cxxNG/private/log4cxxng_private.h>
 
-#ifdef LOG4CXX_HAVE_ODBC
+#ifdef LOG4CXXNG_HAVE_ODBC
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 /**
-   Unit tests of log4cxx::SocketAppender
+   Unit tests of log4cxxng::SocketAppender
  */
 class ODBCAppenderTestCase : public AppenderSkeletonTestCase
 {
@@ -46,7 +46,7 @@ class ODBCAppenderTestCase : public AppenderSkeletonTestCase
 
 		AppenderSkeleton* createAppenderSkeleton() const
 		{
-			return new log4cxx::db::ODBCAppender();
+			return new log4cxxng::db::ODBCAppender();
 		}
 };
 

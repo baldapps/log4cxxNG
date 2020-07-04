@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_LOG_MANAGER_H
-#define _LOG4CXX_LOG_MANAGER_H
+#ifndef _LOG4CXXNG_LOG_MANAGER_H
+#define _LOG4CXXNG_LOG_MANAGER_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -27,7 +27,7 @@
 #include <vector>
 #include <log4cxxNG/spi/repositoryselector.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 class Logger;
 typedef helpers::ObjectPtrT<Logger> LoggerPtr;
@@ -42,11 +42,11 @@ typedef helpers::ObjectPtrT<LoggerFactory> LoggerFactoryPtr;
 /**
 * Use the <code>LogManager</code> class to retreive Logger
 * instances or to operate on the current
-* {@link log4cxx::spi::LoggerRepository LoggerRepository}.
+* {@link log4cxxng::spi::LoggerRepository LoggerRepository}.
 * When the <code>LogManager</code> class is loaded
 * into memory the default initialization procedure is inititated.
     */
-class LOG4CXX_EXPORT LogManager
+class LOG4CXXNG_EXPORT LogManager
 {
 	private:
 		static void* guard;
@@ -99,7 +99,7 @@ class LOG4CXX_EXPORT LogManager
 		 * @return true if logger exists.
 		 */
 		static LoggerPtr exists(const std::string& name);
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 		/**
 		Retrieve the appropriate Logger instance.
 		* @param name logger name.
@@ -121,7 +121,7 @@ class LOG4CXX_EXPORT LogManager
 		 */
 		static LoggerPtr exists(const std::wstring& name);
 #endif
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 		/**
 		Retrieve the appropriate Logger instance.
 		* @param name logger name.
@@ -143,7 +143,7 @@ class LOG4CXX_EXPORT LogManager
 		 */
 		static LoggerPtr exists(const std::basic_string<UniChar>& name);
 #endif
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		/**
 		Retrieve the appropriate Logger instance.
 		* @param name logger name.
@@ -203,11 +203,11 @@ class LOG4CXX_EXPORT LogManager
 		*/
 		static void resetConfiguration();
 }; // class LogManager
-}  // namespace log4cxx
+}  // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
 #endif
 
 
-#endif //_LOG4CXX_LOG_MANAGER_H
+#endif //_LOG4CXXNG_LOG_MANAGER_H

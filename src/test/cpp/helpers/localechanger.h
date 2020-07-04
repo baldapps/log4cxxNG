@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_LOCALE_CHANGER_H
-#define _LOG4CXX_HELPERS_LOCALE_CHANGER_H
+#ifndef _LOG4CXXNG_HELPERS_LOCALE_CHANGER_H
+#define _LOG4CXXNG_HELPERS_LOCALE_CHANGER_H
 
 #include <locale>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {

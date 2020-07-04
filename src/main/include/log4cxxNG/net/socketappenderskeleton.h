@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_NET_SOCKET_APPENDER_SKELETON_H
-#define _LOG4CXX_NET_SOCKET_APPENDER_SKELETON_H
+#ifndef _LOG4CXXNG_NET_SOCKET_APPENDER_SKELETON_H
+#define _LOG4CXXNG_NET_SOCKET_APPENDER_SKELETON_H
 
 #include <log4cxxNG/appenderskeleton.h>
 #include <log4cxxNG/helpers/socket.h>
@@ -28,7 +28,7 @@
 	#pragma warning ( disable: 4251 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 namespace net
@@ -37,7 +37,7 @@ namespace net
 /**
  *  Abstract base class for SocketAppender and XMLSocketAppender
  */
-class LOG4CXX_EXPORT SocketAppenderSkeleton : public AppenderSkeleton
+class LOG4CXXNG_EXPORT SocketAppenderSkeleton : public AppenderSkeleton
 {
 	private:
 		/**
@@ -71,7 +71,7 @@ class LOG4CXX_EXPORT SocketAppenderSkeleton : public AppenderSkeleton
 		/**
 		Connect to the specified <b>RemoteHost</b> and <b>Port</b>.
 		*/
-		void activateOptions(log4cxx::helpers::Pool& p);
+		void activateOptions(log4cxxng::helpers::Pool& p);
 
 		void close();
 
@@ -169,16 +169,16 @@ class LOG4CXX_EXPORT SocketAppenderSkeleton : public AppenderSkeleton
 
 	protected:
 
-		virtual void setSocket(log4cxx::helpers::SocketPtr& socket, log4cxx::helpers::Pool& p) = 0;
+		virtual void setSocket(log4cxxng::helpers::SocketPtr& socket, log4cxxng::helpers::Pool& p) = 0;
 
-		virtual void cleanUp(log4cxx::helpers::Pool& p) = 0;
+		virtual void cleanUp(log4cxxng::helpers::Pool& p) = 0;
 
 		virtual int getDefaultDelay() const = 0;
 
 		virtual int getDefaultPort() const = 0;
 
 	private:
-		void connect(log4cxx::helpers::Pool& p);
+		void connect(log4cxxng::helpers::Pool& p);
 		/**
 		     The Connector will reconnect when the server becomes available
 		     again.  It does this by attempting to open a new connection every
@@ -190,17 +190,17 @@ class LOG4CXX_EXPORT SocketAppenderSkeleton : public AppenderSkeleton
 		     */
 
 		helpers::Thread thread;
-		static void* LOG4CXX_THREAD_FUNC monitor(apr_thread_t* thread, void* data);
+		static void* LOG4CXXNG_THREAD_FUNC monitor(apr_thread_t* thread, void* data);
 		SocketAppenderSkeleton(const SocketAppenderSkeleton&);
 		SocketAppenderSkeleton& operator=(const SocketAppenderSkeleton&);
 
 }; // class SocketAppenderSkeleton
 } // namespace net
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
-#endif // _LOG4CXX_NET_SOCKET_APPENDER_SKELETON_H
+#endif // _LOG4CXXNG_NET_SOCKET_APPENDER_SKELETON_H
 

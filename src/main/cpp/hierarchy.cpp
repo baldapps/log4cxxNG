@@ -32,8 +32,8 @@
 #include <log4cxxNG/helpers/synchronized.h>
 #include <log4cxxNG/logstring.h>
 #include <log4cxxNG/helpers/stringhelper.h>
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 #include <log4cxxNG/helpers/aprinitializer.h>
 #include <log4cxxNG/defaultconfigurator.h>
@@ -42,11 +42,11 @@
 #include "assert.h"
 
 
-using namespace log4cxx;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(Hierarchy)
+IMPLEMENT_LOG4CXXNG_OBJECT(Hierarchy)
 
 Hierarchy::Hierarchy() :
 	pool(),
@@ -91,7 +91,7 @@ void Hierarchy::addHierarchyEventListener(const spi::HierarchyEventListenerPtr& 
 
 	if (std::find(listeners.begin(), listeners.end(), listener) != listeners.end())
 	{
-		LogLog::warn(LOG4CXX_STR("Ignoring attempt to add an existent listener."));
+		LogLog::warn(LOG4CXXNG_STR("Ignoring attempt to add an existent listener."));
 	}
 	else
 	{
@@ -117,9 +117,9 @@ void Hierarchy::emitNoAppenderWarning(const LoggerPtr& logger)
 	// No appender in hierarchy, warn user only once.
 	if (emitWarning)
 	{
-		LogLog::warn(((LogString) LOG4CXX_STR("No appender could be found for logger ("))
-			+ logger->getName() + LOG4CXX_STR(")."));
-		LogLog::warn(LOG4CXX_STR("Please initialize the log4cxx system properly."));
+		LogLog::warn(((LogString) LOG4CXXNG_STR("No appender could be found for logger ("))
+			+ logger->getName() + LOG4CXXNG_STR(")."));
+		LogLog::warn(LOG4CXXNG_STR("Please initialize the log4cxx system properly."));
 	}
 }
 
@@ -165,8 +165,8 @@ void Hierarchy::setThreshold(const LogString& levelStr)
 	}
 	else
 	{
-		LogLog::warn(((LogString) LOG4CXX_STR("No level could be found named \""))
-			+ levelStr + LOG4CXX_STR("\"."));
+		LogLog::warn(((LogString) LOG4CXXNG_STR("No level could be found named \""))
+			+ levelStr + LOG4CXXNG_STR("\"."));
 	}
 }
 

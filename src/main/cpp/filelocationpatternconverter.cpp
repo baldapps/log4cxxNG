@@ -24,16 +24,16 @@
 #include <log4cxxNG/spi/loggingevent.h>
 #include <log4cxxNG/spi/location/locationinfo.h>
 
-using namespace log4cxx;
-using namespace log4cxx::pattern;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::pattern;
+using namespace log4cxxng::spi;
 using namespace helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(FileLocationPatternConverter)
+IMPLEMENT_LOG4CXXNG_OBJECT(FileLocationPatternConverter)
 
 FileLocationPatternConverter::FileLocationPatternConverter() :
-	LoggingEventPatternConverter(LOG4CXX_STR("File Location"),
-		LOG4CXX_STR("file"))
+	LoggingEventPatternConverter(LOG4CXXNG_STR("File Location"),
+		LOG4CXXNG_STR("file"))
 {
 }
 

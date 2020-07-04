@@ -24,10 +24,10 @@
 #include <log4cxxNG/filter/stringmatchfilter.h>
 #include "../logunit.h"
 
-using namespace log4cxx;
-using namespace log4cxx::filter;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::filter;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
 
 /**
@@ -53,10 +53,10 @@ public:
 	void test1()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.filter.AndFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.filter.AndFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		FilterPtr filter(new AndFilter());
 		Pool p;
 		filter->activateOptions(p);
@@ -70,13 +70,13 @@ public:
 	void test2()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.filter.AndFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.filter.AndFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		AndFilterPtr filter(new AndFilter());
 		LevelMatchFilterPtr filter1(new LevelMatchFilter());
-		filter1->setLevelToMatch(LOG4CXX_STR("info"));
+		filter1->setLevelToMatch(LOG4CXXNG_STR("info"));
 		Pool p;
 		filter1->activateOptions(p);
 		filter->addFilter(filter1);
@@ -91,18 +91,18 @@ public:
 	void test3()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.filter.AndFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.filter.AndFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		AndFilterPtr filter(new AndFilter());
 		LevelMatchFilterPtr filter1(new LevelMatchFilter());
-		filter1->setLevelToMatch(LOG4CXX_STR("info"));
+		filter1->setLevelToMatch(LOG4CXXNG_STR("info"));
 		Pool p;
 		filter1->activateOptions(p);
 		filter->addFilter(filter1);
 		LevelMatchFilterPtr filter2(new LevelMatchFilter());
-		filter2->setLevelToMatch(LOG4CXX_STR("info"));
+		filter2->setLevelToMatch(LOG4CXXNG_STR("info"));
 		filter2->activateOptions(p);
 		filter->addFilter(filter2);
 		filter->activateOptions(p);
@@ -117,13 +117,13 @@ public:
 	void test4()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.filter.AndFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.filter.AndFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		AndFilterPtr filter(new AndFilter());
 		LevelMatchFilterPtr filter1(new LevelMatchFilter());
-		filter1->setLevelToMatch(LOG4CXX_STR("info"));
+		filter1->setLevelToMatch(LOG4CXXNG_STR("info"));
 		Pool p;
 		filter1->activateOptions(p);
 		filter->addFilter(filter1);
@@ -139,13 +139,13 @@ public:
 	void test5()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.filter.AndFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.filter.AndFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		AndFilterPtr filter(new AndFilter());
 		LevelMatchFilterPtr filter1(new LevelMatchFilter());
-		filter1->setLevelToMatch(LOG4CXX_STR("info"));
+		filter1->setLevelToMatch(LOG4CXXNG_STR("info"));
 		Pool p;
 		filter1->activateOptions(p);
 		filter->addFilter(filter1);
@@ -163,13 +163,13 @@ public:
 	void test6()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.filter.AndFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.filter.AndFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		AndFilterPtr filter(new AndFilter());
 		LevelMatchFilterPtr filter1(new LevelMatchFilter());
-		filter1->setLevelToMatch(LOG4CXX_STR("info"));
+		filter1->setLevelToMatch(LOG4CXXNG_STR("info"));
 		Pool p;
 		filter1->activateOptions(p);
 		filter->addFilter(filter1);

@@ -18,8 +18,8 @@
 #include <log4cxxNG/helpers/inetaddress.h>
 #include "../logunit.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 
 LOGUNIT_CLASS(InetAddressTestCase)
@@ -39,7 +39,7 @@ public:
 	{
 		InetAddressPtr addr = InetAddress::getLocalHost();
 
-		LOGUNIT_ASSERT(addr->getHostAddress() == LOG4CXX_STR("127.0.0.1"));
+		LOGUNIT_ASSERT(addr->getHostAddress() == LOG4CXXNG_STR("127.0.0.1"));
 		LOGUNIT_ASSERT(!addr->getHostName().empty());
 	}
 
@@ -49,9 +49,9 @@ public:
 	 */
 	void testByNameLocal()
 	{
-		InetAddressPtr addr = InetAddress::getByName(LOG4CXX_STR("localhost"));
+		InetAddressPtr addr = InetAddress::getByName(LOG4CXXNG_STR("localhost"));
 
-		LOGUNIT_ASSERT(addr->getHostAddress() == LOG4CXX_STR("127.0.0.1"));
+		LOGUNIT_ASSERT(addr->getHostAddress() == LOG4CXXNG_STR("127.0.0.1"));
 		LOGUNIT_ASSERT(!addr->getHostName().empty());
 	}
 
@@ -61,7 +61,7 @@ public:
 	 */
 	void testAllByNameLocal()
 	{
-		std::vector<InetAddressPtr> addr = InetAddress::getAllByName(LOG4CXX_STR("localhost"));
+		std::vector<InetAddressPtr> addr = InetAddress::getAllByName(LOG4CXXNG_STR("localhost"));
 
 		LOGUNIT_ASSERT(addr.size() > 0);
 	}
@@ -71,7 +71,7 @@ public:
 	 */
 	void testUnknownHost()
 	{
-		InetAddressPtr addr = InetAddress::getByName(LOG4CXX_STR("unknown.invalid"));
+		InetAddressPtr addr = InetAddress::getByName(LOG4CXXNG_STR("unknown.invalid"));
 	}
 
 	/**
@@ -79,9 +79,9 @@ public:
 	*/
 	void testUnreachable()
 	{
-		InetAddressPtr addr(InetAddress::getByName(LOG4CXX_STR("192.168.10.254")));
+		InetAddressPtr addr(InetAddress::getByName(LOG4CXXNG_STR("192.168.10.254")));
 		LogString addrStr(addr->toString());
-		LOGUNIT_ASSERT_EQUAL(addrStr.size() - 15, addrStr.find(LOG4CXX_STR("/192.168.10.254")));
+		LOGUNIT_ASSERT_EQUAL(addrStr.size() - 15, addrStr.find(LOG4CXXNG_STR("/192.168.10.254")));
 	}
 
 };

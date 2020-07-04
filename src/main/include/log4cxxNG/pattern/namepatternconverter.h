@@ -15,15 +15,15 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_PATTERN_NAMED_PATTERN_CONVERTER_H
-#define _LOG4CXX_PATTERN_NAMED_PATTERN_CONVERTER_H
+#ifndef _LOG4CXXNG_PATTERN_NAMED_PATTERN_CONVERTER_H
+#define _LOG4CXXNG_PATTERN_NAMED_PATTERN_CONVERTER_H
 
 #include <log4cxxNG/pattern/loggingeventpatternconverter.h>
 #include <log4cxxNG/pattern/nameabbreviator.h>
 
 #include <vector>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace pattern
 {
@@ -33,7 +33,7 @@ namespace pattern
  * Base class for other pattern converters which can return only parts of their name.
  *
  */
-class LOG4CXX_EXPORT NamePatternConverter : public LoggingEventPatternConverter
+class LOG4CXXNG_EXPORT NamePatternConverter : public LoggingEventPatternConverter
 {
 		/**
 		 * Abbreviator.
@@ -41,11 +41,11 @@ class LOG4CXX_EXPORT NamePatternConverter : public LoggingEventPatternConverter
 		const NameAbbreviatorPtr abbreviator;
 
 	public:
-		DECLARE_LOG4CXX_PATTERN(NamePatternConverter)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(NamePatternConverter)
-		LOG4CXX_CAST_ENTRY_CHAIN(LoggingEventPatternConverter)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_PATTERN(NamePatternConverter)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(NamePatternConverter)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(LoggingEventPatternConverter)
+		END_LOG4CXXNG_CAST_MAP()
 
 
 	protected:

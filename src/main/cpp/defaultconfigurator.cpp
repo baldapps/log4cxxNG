@@ -23,9 +23,9 @@
 #include <log4cxxNG/helpers/optionconverter.h>
 
 
-using namespace log4cxx;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
 void DefaultConfigurator::configure(LoggerRepository* repository)
 {
@@ -58,9 +58,9 @@ void DefaultConfigurator::configure(LoggerRepository* repository)
 
 	if (configuration.exists(pool))
 	{
-		LogString msg(LOG4CXX_STR("Using configuration file ["));
+		LogString msg(LOG4CXXNG_STR("Using configuration file ["));
 		msg += configuration.getPath();
-		msg += LOG4CXX_STR("] for automatic log4cxx configuration");
+		msg += LOG4CXXNG_STR("] for automatic log4cxx configuration");
 		LogLog::debug(msg);
 
 		LoggerRepositoryPtr repo(repository);
@@ -73,13 +73,13 @@ void DefaultConfigurator::configure(LoggerRepository* repository)
 	{
 		if (configurationOptionStr.empty())
 		{
-			LogLog::debug(LOG4CXX_STR("Could not find default configuration file."));
+			LogLog::debug(LOG4CXXNG_STR("Could not find default configuration file."));
 		}
 		else
 		{
-			LogString msg(LOG4CXX_STR("Could not find configuration file: ["));
+			LogString msg(LOG4CXXNG_STR("Could not find configuration file: ["));
 			msg += configurationOptionStr;
-			msg += LOG4CXX_STR("].");
+			msg += LOG4CXXNG_STR("].");
 			LogLog::debug(msg);
 		}
 	}
@@ -92,9 +92,9 @@ const LogString DefaultConfigurator::getConfiguratorClass()
 
 	// Use automatic configration to configure the default hierarchy
 	const LogString log4jConfiguratorClassName(
-		OptionConverter::getSystemProperty(LOG4CXX_STR("log4j.configuratorClass"), LOG4CXX_STR("")));
+		OptionConverter::getSystemProperty(LOG4CXXNG_STR("log4j.configuratorClass"), LOG4CXXNG_STR("")));
 	const LogString configuratorClassName(
-		OptionConverter::getSystemProperty(LOG4CXX_STR("LOG4CXX_CONFIGURATOR_CLASS"),
+		OptionConverter::getSystemProperty(LOG4CXXNG_STR("LOG4CXXNG_CONFIGURATOR_CLASS"),
 			log4jConfiguratorClassName));
 	return configuratorClassName;
 }
@@ -102,12 +102,12 @@ const LogString DefaultConfigurator::getConfiguratorClass()
 
 const LogString DefaultConfigurator::getConfigurationFileName()
 {
-	static const LogString LOG4CXX_DEFAULT_CONFIGURATION_KEY(LOG4CXX_STR("LOG4CXX_CONFIGURATION"));
-	static const LogString LOG4J_DEFAULT_CONFIGURATION_KEY(LOG4CXX_STR("log4j.configuration"));
+	static const LogString LOG4CXXNG_DEFAULT_CONFIGURATION_KEY(LOG4CXXNG_STR("LOG4CXXNG_CONFIGURATION"));
+	static const LogString LOG4J_DEFAULT_CONFIGURATION_KEY(LOG4CXXNG_STR("log4j.configuration"));
 	const LogString log4jConfigurationOptionStr(
-		OptionConverter::getSystemProperty(LOG4J_DEFAULT_CONFIGURATION_KEY, LOG4CXX_STR("")));
+		OptionConverter::getSystemProperty(LOG4J_DEFAULT_CONFIGURATION_KEY, LOG4CXXNG_STR("")));
 	const LogString configurationOptionStr(
-		OptionConverter::getSystemProperty(LOG4CXX_DEFAULT_CONFIGURATION_KEY,
+		OptionConverter::getSystemProperty(LOG4CXXNG_DEFAULT_CONFIGURATION_KEY,
 			log4jConfigurationOptionStr));
 	return configurationOptionStr;
 }

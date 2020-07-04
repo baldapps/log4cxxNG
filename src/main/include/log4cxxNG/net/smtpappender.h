@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_NET_SMTP_H
-#define _LOG4CXX_NET_SMTP_H
+#ifndef _LOG4CXXNG_NET_SMTP_H
+#define _LOG4CXXNG_NET_SMTP_H
 
 
 #include <log4cxxNG/appenderskeleton.h>
@@ -28,7 +28,7 @@
 	#pragma warning ( disable: 4251 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace net
 {
@@ -42,7 +42,7 @@ the value of <b>BufferSize</b> option. The
 keeps memory requirements at a reasonable level while still
 delivering useful application context.
 */
-class LOG4CXX_EXPORT SMTPAppender : public AppenderSkeleton
+class LOG4CXXNG_EXPORT SMTPAppender : public AppenderSkeleton
 {
 	private:
 
@@ -72,18 +72,18 @@ class LOG4CXX_EXPORT SMTPAppender : public AppenderSkeleton
 		spi::TriggeringEventEvaluatorPtr evaluator;
 
 	public:
-		DECLARE_LOG4CXX_OBJECT(SMTPAppender)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(SMTPAppender)
-		LOG4CXX_CAST_ENTRY_CHAIN(AppenderSkeleton)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(SMTPAppender)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(SMTPAppender)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(AppenderSkeleton)
+		END_LOG4CXXNG_CAST_MAP()
 
 		SMTPAppender();
 		/**
 		The default constructor will instantiate the appender with a
 		spi::TriggeringEventEvaluator that will trigger on events with
 		level ERROR or higher.*/
-		SMTPAppender(log4cxx::helpers::Pool& p);
+		SMTPAppender(log4cxxng::helpers::Pool& p);
 
 		/**
 		Use <code>evaluator</code> passed as parameter as the
@@ -102,13 +102,13 @@ class LOG4CXX_EXPORT SMTPAppender : public AppenderSkeleton
 		Activate the specified options, such as the smtp host, the
 		recipient, from, etc.
 		*/
-		virtual void activateOptions(log4cxx::helpers::Pool& p);
+		virtual void activateOptions(log4cxxng::helpers::Pool& p);
 
 		/**
 		Perform SMTPAppender specific appending actions, mainly adding
 		the event to a cyclic buffer and checking if the event triggers
 		an e-mail to be sent. */
-		virtual void append(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& p);
+		virtual void append(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& p);
 
 
 		virtual void close();
@@ -137,7 +137,7 @@ class LOG4CXX_EXPORT SMTPAppender : public AppenderSkeleton
 		/**
 		Send the contents of the cyclic buffer as an e-mail message.
 		*/
-		void sendBuffer(log4cxx::helpers::Pool& p);
+		void sendBuffer(log4cxxng::helpers::Pool& p);
 
 
 		/**
@@ -253,13 +253,13 @@ class LOG4CXX_EXPORT SMTPAppender : public AppenderSkeleton
 		 *   Gets the current triggering evaluator.
 		 *   @return triggering evaluator.
 		 */
-		log4cxx::spi::TriggeringEventEvaluatorPtr getEvaluator() const;
+		log4cxxng::spi::TriggeringEventEvaluatorPtr getEvaluator() const;
 
 		/**
 		 *   Sets the triggering evaluator.
 		 *   @param trigger triggering evaluator.
 		 */
-		void setEvaluator(log4cxx::spi::TriggeringEventEvaluatorPtr& trigger);
+		void setEvaluator(log4cxxng::spi::TriggeringEventEvaluatorPtr& trigger);
 
 		/**
 		The <b>EvaluatorClass</b> option takes a string value
@@ -282,13 +282,13 @@ class LOG4CXX_EXPORT SMTPAppender : public AppenderSkeleton
 		bool getLocationInfo() const;
 }; // class SMTPAppender
 
-LOG4CXX_PTR_DEF(SMTPAppender);
+LOG4CXXNG_PTR_DEF(SMTPAppender);
 
 }  // namespace net
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
-#endif // _LOG4CXX_NET_SMTP_H
+#endif // _LOG4CXXNG_NET_SMTP_H

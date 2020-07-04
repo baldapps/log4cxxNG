@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_CONSOLE_APPENDER_H
-#define _LOG4CXX_CONSOLE_APPENDER_H
+#ifndef _LOG4CXXNG_CONSOLE_APPENDER_H
+#define _LOG4CXXNG_CONSOLE_APPENDER_H
 
 #include <log4cxxNG/writerappender.h>
 
@@ -25,7 +25,7 @@
 	#pragma warning ( disable: 4251 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 /**
@@ -33,17 +33,17 @@ namespace log4cxx
 * <code>stderr</code> using a layout specified by the user. The
 * default target is <code>stdout</code>.
 */
-class LOG4CXX_EXPORT ConsoleAppender : public WriterAppender
+class LOG4CXXNG_EXPORT ConsoleAppender : public WriterAppender
 {
 	private:
 		LogString target;
 
 	public:
-		DECLARE_LOG4CXX_OBJECT(ConsoleAppender)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(ConsoleAppender)
-		LOG4CXX_CAST_ENTRY_CHAIN(AppenderSkeleton)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(ConsoleAppender)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(ConsoleAppender)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(AppenderSkeleton)
+		END_LOG4CXXNG_CAST_MAP()
 
 		ConsoleAppender();
 		ConsoleAppender(const LayoutPtr& layout);
@@ -66,7 +66,7 @@ class LOG4CXX_EXPORT ConsoleAppender : public WriterAppender
 		* */
 		LogString getTarget() const;
 
-		void activateOptions(log4cxx::helpers::Pool& p);
+		void activateOptions(log4cxxng::helpers::Pool& p);
 		void setOption(const LogString& option, const LogString& value);
 		static const LogString& getSystemOut();
 		static const LogString& getSystemErr();
@@ -76,12 +76,12 @@ class LOG4CXX_EXPORT ConsoleAppender : public WriterAppender
 		void targetWarn(const LogString& val);
 
 };
-LOG4CXX_PTR_DEF(ConsoleAppender);
-}  //namespace log4cxx
+LOG4CXXNG_PTR_DEF(ConsoleAppender);
+}  //namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
-#endif //_LOG4CXX_CONSOLE_APPENDER_H
+#endif //_LOG4CXXNG_CONSOLE_APPENDER_H
 

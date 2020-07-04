@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_SPI_HIERARCHY_EVENT_LISTENER_H
-#define _LOG4CXX_SPI_HIERARCHY_EVENT_LISTENER_H
+#ifndef _LOG4CXXNG_SPI_HIERARCHY_EVENT_LISTENER_H
+#define _LOG4CXXNG_SPI_HIERARCHY_EVENT_LISTENER_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -28,7 +28,7 @@
 #include <log4cxxNG/helpers/objectptr.h>
 #include <vector>
 
-namespace log4cxx
+namespace log4cxxng
 {
 class Logger;
 class Appender;
@@ -38,28 +38,28 @@ namespace spi
 {
 
 /** Listen to events occuring within a Hierarchy.*/
-class LOG4CXX_EXPORT HierarchyEventListener :
-	public virtual log4cxx::helpers::Object
+class LOG4CXXNG_EXPORT HierarchyEventListener :
+	public virtual log4cxxng::helpers::Object
 {
 	public:
 		virtual ~HierarchyEventListener() {}
 
 		virtual void addAppenderEvent(
-			const log4cxx::helpers::ObjectPtrT<Logger>& logger,
-			const log4cxx::helpers::ObjectPtrT<Appender>& appender) = 0;
+			const log4cxxng::helpers::ObjectPtrT<Logger>& logger,
+			const log4cxxng::helpers::ObjectPtrT<Appender>& appender) = 0;
 
 		virtual void removeAppenderEvent(
-			const log4cxx::helpers::ObjectPtrT<Logger>& logger,
-			const log4cxx::helpers::ObjectPtrT<Appender>& appender) = 0;
+			const log4cxxng::helpers::ObjectPtrT<Logger>& logger,
+			const log4cxxng::helpers::ObjectPtrT<Appender>& appender) = 0;
 };
-LOG4CXX_PTR_DEF(HierarchyEventListener);
-LOG4CXX_LIST_DEF(HierarchyEventListenerList, HierarchyEventListenerPtr);
+LOG4CXXNG_PTR_DEF(HierarchyEventListener);
+LOG4CXXNG_LIST_DEF(HierarchyEventListenerList, HierarchyEventListenerPtr);
 
 }  // namespace spi
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
 #endif
 
-#endif //_LOG4CXX_SPI_HIERARCHY_EVENT_LISTENER_H
+#endif //_LOG4CXXNG_SPI_HIERARCHY_EVENT_LISTENER_H

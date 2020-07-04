@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_STRING_TOKENIZER_H
-#define _LOG4CXX_HELPERS_STRING_TOKENIZER_H
+#ifndef _LOG4CXXNG_HELPERS_STRING_TOKENIZER_H
+#define _LOG4CXXNG_HELPERS_STRING_TOKENIZER_H
 
 #include <log4cxxNG/logstring.h>
 #include <log4cxxNG/helpers/exception.h>
@@ -26,11 +26,11 @@
 	#pragma warning ( disable: 4251 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
-class LOG4CXX_EXPORT StringTokenizer
+class LOG4CXXNG_EXPORT StringTokenizer
 {
 	public:
 		StringTokenizer(const LogString& str, const LogString& delim);
@@ -49,10 +49,10 @@ class LOG4CXX_EXPORT StringTokenizer
 		StringTokenizer& operator=(const StringTokenizer&);
 }; // class StringTokenizer
 }  // namespace helpers;
-} // namespace log4cxx;
+} // namespace log4cxxng;
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
-#endif //_LOG4CXX_HELPERS_STRING_TOKENIZER_H
+#endif //_LOG4CXXNG_HELPERS_STRING_TOKENIZER_H

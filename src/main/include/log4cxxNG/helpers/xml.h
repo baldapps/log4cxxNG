@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_XML_H
-#define _LOG4CXX_HELPERS_XML_H
+#ifndef _LOG4CXXNG_HELPERS_XML_H
+#define _LOG4CXXNG_HELPERS_XML_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -29,7 +29,7 @@
 #include <log4cxxNG/helpers/object.h>
 #include <log4cxxNG/helpers/exception.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 class File;
 namespace helpers
@@ -43,10 +43,10 @@ typedef helpers::ObjectPtrT<XMLDOMDocument> XMLDOMDocumentPtr;
 class XMLDOMNodeList;
 typedef helpers::ObjectPtrT<XMLDOMNodeList> XMLDOMNodeListPtr;
 
-class LOG4CXX_EXPORT DOMException : public RuntimeException
+class LOG4CXXNG_EXPORT DOMException : public RuntimeException
 {
 	public:
-		DOMException() : RuntimeException(LOG4CXX_STR("DOM exception")) {}
+		DOMException() : RuntimeException(LOG4CXXNG_STR("DOM exception")) {}
 };
 
 
@@ -54,10 +54,10 @@ class LOG4CXX_EXPORT DOMException : public RuntimeException
 The XMLDOMNode interface is the primary datatype for the entire Document
 Object Model.
 */
-class LOG4CXX_EXPORT XMLDOMNode : virtual public Object
+class LOG4CXXNG_EXPORT XMLDOMNode : virtual public Object
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(XMLDOMNode)
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(XMLDOMNode)
 		enum XMLDOMNodeType
 		{
 			NOT_IMPLEMENTED_NODE = 0,
@@ -69,20 +69,20 @@ class LOG4CXX_EXPORT XMLDOMNode : virtual public Object
 		virtual XMLDOMNodeType getNodeType() = 0;
 		virtual XMLDOMDocumentPtr getOwnerDocument() = 0;
 };
-LOG4CXX_PTR_DEF(XMLDOMNode);
+LOG4CXXNG_PTR_DEF(XMLDOMNode);
 
 
 /**
 The XMLDOMElement interface represents an element in an XML document
 */
-class LOG4CXX_EXPORT XMLDOMElement : virtual public XMLDOMNode
+class LOG4CXXNG_EXPORT XMLDOMElement : virtual public XMLDOMNode
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(XMLDOMElement)
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(XMLDOMElement)
 		virtual LogString getTagName() = 0;
 		virtual LogString getAttribute(const LogString& name) = 0;
 };
-LOG4CXX_PTR_DEF(XMLDOMElement);
+LOG4CXXNG_PTR_DEF(XMLDOMElement);
 
 /**
 The XMLDOMDocument interface represents an entire XML document.
@@ -90,16 +90,16 @@ The XMLDOMDocument interface represents an entire XML document.
 Conceptually, it is the root of the document tree, and provides the
 primary access to the document's data.
 */
-class LOG4CXX_EXPORT XMLDOMDocument : virtual public XMLDOMNode
+class LOG4CXXNG_EXPORT XMLDOMDocument : virtual public XMLDOMNode
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(XMLDOMDocument)
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(XMLDOMDocument)
 		virtual void load(const File& fileName) = 0;
 		virtual XMLDOMElementPtr getDocumentElement() = 0;
 		virtual XMLDOMElementPtr getElementById(const LogString& tagName,
 			const LogString& elementId) = 0;
 };
-LOG4CXX_PTR_DEF(XMLDOMDocument);
+LOG4CXXNG_PTR_DEF(XMLDOMDocument);
 
 /**
 The XMLDOMNodeList interface provides the abstraction of an ordered
@@ -111,21 +111,21 @@ XMLDOMNodeList objects in the DOM are live.
 The items in the XMLDOMNodeList are accessible via an integral index,
 starting from 0.
 */
-class LOG4CXX_EXPORT XMLDOMNodeList : virtual public Object
+class LOG4CXXNG_EXPORT XMLDOMNodeList : virtual public Object
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(XMLDOMNodeList)
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(XMLDOMNodeList)
 		virtual int getLength() = 0;
 		virtual XMLDOMNodePtr item(int index) = 0;
 };
-LOG4CXX_PTR_DEF(XMLDOMNodeList);
+LOG4CXXNG_PTR_DEF(XMLDOMNodeList);
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
 #endif
 
-#endif // _LOG4CXX_HELPERS_XML_H
+#endif // _LOG4CXXNG_HELPERS_XML_H
 

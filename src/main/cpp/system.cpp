@@ -25,20 +25,20 @@
 #include <apr_env.h>
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 
 LogString System::getProperty(const LogString& lkey)
 {
 	if (lkey.empty())
 	{
-		throw IllegalArgumentException(LOG4CXX_STR("key is empty"));
+		throw IllegalArgumentException(LOG4CXXNG_STR("key is empty"));
 	}
 
 	LogString rv;
 
-	if (lkey == LOG4CXX_STR("java.io.tmpdir"))
+	if (lkey == LOG4CXXNG_STR("java.io.tmpdir"))
 	{
 		Pool p;
 		const char* dir = NULL;
@@ -52,7 +52,7 @@ LogString System::getProperty(const LogString& lkey)
 		return rv;
 	}
 
-	if (lkey == LOG4CXX_STR("user.dir"))
+	if (lkey == LOG4CXXNG_STR("user.dir"))
 	{
 		Pool p;
 		char* dir = NULL;
@@ -69,7 +69,7 @@ LogString System::getProperty(const LogString& lkey)
 
 #if APR_HAS_USER
 
-	if (lkey == LOG4CXX_STR("user.home") || lkey == LOG4CXX_STR("user.name"))
+	if (lkey == LOG4CXXNG_STR("user.home") || lkey == LOG4CXXNG_STR("user.name"))
 	{
 		Pool pool;
 		apr_uid_t userid;
@@ -84,7 +84,7 @@ LogString System::getProperty(const LogString& lkey)
 
 			if (stat == APR_SUCCESS)
 			{
-				if (lkey == LOG4CXX_STR("user.name"))
+				if (lkey == LOG4CXXNG_STR("user.name"))
 				{
 					Transcoder::decode(username, rv);
 				}
@@ -106,7 +106,7 @@ LogString System::getProperty(const LogString& lkey)
 
 #endif
 
-	LOG4CXX_ENCODE_CHAR(key, lkey);
+	LOG4CXXNG_ENCODE_CHAR(key, lkey);
 	Pool p;
 	char* value = NULL;
 	apr_status_t stat = apr_env_get(&value, key.c_str(),

@@ -22,8 +22,8 @@
 #include <log4cxxNG/helpers/stringhelper.h>
 #include <log4cxxNG/helpers/transcoder.h>
 
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 
 #include <log4cxxNG/private/log4cxxNG_private.h>
@@ -31,16 +31,16 @@
 #include <log4cxxNG/helpers/mutex.h>
 #include <log4cxxNG/helpers/synchronized.h>
 
-#ifdef LOG4CXX_HAS_WCSTOMBS
+#ifdef LOG4CXXNG_HAS_WCSTOMBS
 	#include <stdlib.h>
 #endif
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(CharsetEncoder)
+IMPLEMENT_LOG4CXXNG_OBJECT(CharsetEncoder)
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 namespace helpers
@@ -55,13 +55,13 @@ class APRCharsetEncoder : public CharsetEncoder
 	public:
 		APRCharsetEncoder(const LogString& topage) : pool(), mutex(pool)
 		{
-#if LOG4CXX_LOGCHAR_IS_WCHAR
+#if LOG4CXXNG_LOGCHAR_IS_WCHAR
 			const char* frompage = "WCHAR_T";
 #endif
-#if LOG4CXX_LOGCHAR_IS_UTF8
+#if LOG4CXXNG_LOGCHAR_IS_UTF8
 			const char* frompage = "UTF-8";
 #endif
-#if LOG4CXX_LOGCHAR_IS_UNICHAR
+#if LOG4CXXNG_LOGCHAR_IS_UNICHAR
 			const char* frompage = "UTF-16";
 #endif
 			std::string tpage(Transcoder::encodeCharsetName(topage));
@@ -80,7 +80,7 @@ class APRCharsetEncoder : public CharsetEncoder
 		{
 		}
 
-		virtual log4cxx_status_t encode(const LogString& in,
+		virtual log4cxxng_status_t encode(const LogString& in,
 			LogString::const_iterator& iter,
 			ByteBuffer& out)
 		{
@@ -125,7 +125,7 @@ class APRCharsetEncoder : public CharsetEncoder
 };
 #endif
 
-#if LOG4CXX_LOGCHAR_IS_WCHAR && LOG4CXX_HAS_WCSTOMBS
+#if LOG4CXXNG_LOGCHAR_IS_WCHAR && LOG4CXXNG_HAS_WCSTOMBS
 /**
  *  A character encoder implemented using wcstombs.
 */
@@ -139,11 +139,11 @@ class WcstombsCharsetEncoder : public CharsetEncoder
 		/**
 		 *   Converts a wchar_t to the default external multibyte encoding.
 		 */
-		log4cxx_status_t encode(const LogString& in,
+		log4cxxng_status_t encode(const LogString& in,
 			LogString::const_iterator& iter,
 			ByteBuffer& out)
 		{
-			log4cxx_status_t stat = APR_SUCCESS;
+			log4cxxng_status_t stat = APR_SUCCESS;
 
 			if (iter != in.end())
 			{
@@ -222,11 +222,11 @@ class USASCIICharsetEncoder : public CharsetEncoder
 		{
 		}
 
-		virtual log4cxx_status_t encode(const LogString& in,
+		virtual log4cxxng_status_t encode(const LogString& in,
 			LogString::const_iterator& iter,
 			ByteBuffer& out)
 		{
-			log4cxx_status_t stat = APR_SUCCESS;
+			log4cxxng_status_t stat = APR_SUCCESS;
 
 			if (iter != in.end())
 			{
@@ -266,11 +266,11 @@ class ISOLatinCharsetEncoder : public CharsetEncoder
 		{
 		}
 
-		virtual log4cxx_status_t encode(const LogString& in,
+		virtual log4cxxng_status_t encode(const LogString& in,
 			LogString::const_iterator& iter,
 			ByteBuffer& out)
 		{
-			log4cxx_status_t stat = APR_SUCCESS;
+			log4cxxng_status_t stat = APR_SUCCESS;
 
 			if (iter != in.end())
 			{
@@ -311,7 +311,7 @@ class TrivialCharsetEncoder : public CharsetEncoder
 		}
 
 
-		virtual log4cxx_status_t encode(const LogString& in,
+		virtual log4cxxng_status_t encode(const LogString& in,
 			LogString::const_iterator& iter,
 			ByteBuffer& out)
 		{
@@ -339,7 +339,7 @@ class TrivialCharsetEncoder : public CharsetEncoder
 		TrivialCharsetEncoder& operator=(const TrivialCharsetEncoder&);
 };
 
-#if LOG4CXX_LOGCHAR_IS_UTF8
+#if LOG4CXXNG_LOGCHAR_IS_UTF8
 typedef TrivialCharsetEncoder UTF8CharsetEncoder;
 #else
 /**
@@ -352,7 +352,7 @@ class UTF8CharsetEncoder : public CharsetEncoder
 		{
 		}
 
-		virtual log4cxx_status_t encode(const LogString& in,
+		virtual log4cxxng_status_t encode(const LogString& in,
 			LogString::const_iterator& iter,
 			ByteBuffer& out)
 		{
@@ -387,7 +387,7 @@ class UTF16BECharsetEncoder : public CharsetEncoder
 		{
 		}
 
-		virtual log4cxx_status_t encode(const LogString& in,
+		virtual log4cxxng_status_t encode(const LogString& in,
 			LogString::const_iterator& iter,
 			ByteBuffer& out)
 		{
@@ -422,7 +422,7 @@ class UTF16LECharsetEncoder : public CharsetEncoder
 		}
 
 
-		virtual log4cxx_status_t encode(const LogString& in,
+		virtual log4cxxng_status_t encode(const LogString& in,
 			LogString::const_iterator& iter,
 			ByteBuffer& out)
 		{
@@ -458,11 +458,11 @@ class LocaleCharsetEncoder : public CharsetEncoder
 		virtual ~LocaleCharsetEncoder()
 		{
 		}
-		virtual log4cxx_status_t encode(const LogString& in,
+		virtual log4cxxng_status_t encode(const LogString& in,
 			LogString::const_iterator& iter,
 			ByteBuffer& out)
 		{
-#if !LOG4CXX_CHARSET_EBCDIC
+#if !LOG4CXXNG_CHARSET_EBCDIC
 			char* current = out.current();
 			size_t remain = out.remaining();
 
@@ -525,7 +525,7 @@ class LocaleCharsetEncoder : public CharsetEncoder
 
 } // namespace helpers
 
-}  //namespace log4cxx
+}  //namespace log4cxxng
 
 
 
@@ -556,13 +556,13 @@ CharsetEncoderPtr CharsetEncoder::getDefaultEncoder()
 
 CharsetEncoder* CharsetEncoder::createDefaultEncoder()
 {
-#if LOG4CXX_CHARSET_UTF8
+#if LOG4CXXNG_CHARSET_UTF8
 	return new UTF8CharsetEncoder();
-#elif LOG4CXX_CHARSET_ISO88591
+#elif LOG4CXXNG_CHARSET_ISO88591
 	return new ISOLatinCharsetEncoder();
-#elif LOG4CXX_CHARSET_USASCII
+#elif LOG4CXXNG_CHARSET_USASCII
 	return new USASCIICharsetEncoder();
-#elif LOG4CXX_LOGCHAR_IS_WCHAR && LOG4CXX_HAS_WCSTOMBS
+#elif LOG4CXXNG_LOGCHAR_IS_WCHAR && LOG4CXXNG_HAS_WCSTOMBS
 	return new WcstombsCharsetEncoder();
 #else
 	return new LocaleCharsetEncoder();
@@ -579,29 +579,29 @@ CharsetEncoderPtr CharsetEncoder::getUTF8Encoder()
 
 CharsetEncoderPtr CharsetEncoder::getEncoder(const LogString& charset)
 {
-	if (StringHelper::equalsIgnoreCase(charset, LOG4CXX_STR("UTF-8"), LOG4CXX_STR("utf-8")))
+	if (StringHelper::equalsIgnoreCase(charset, LOG4CXXNG_STR("UTF-8"), LOG4CXXNG_STR("utf-8")))
 	{
 		return new UTF8CharsetEncoder();
 	}
-	else if (StringHelper::equalsIgnoreCase(charset, LOG4CXX_STR("C"), LOG4CXX_STR("c")) ||
-		charset == LOG4CXX_STR("646") ||
-		StringHelper::equalsIgnoreCase(charset, LOG4CXX_STR("US-ASCII"), LOG4CXX_STR("us-ascii")) ||
-		StringHelper::equalsIgnoreCase(charset, LOG4CXX_STR("ISO646-US"), LOG4CXX_STR("iso646-US")) ||
-		StringHelper::equalsIgnoreCase(charset, LOG4CXX_STR("ANSI_X3.4-1968"), LOG4CXX_STR("ansi_x3.4-1968")))
+	else if (StringHelper::equalsIgnoreCase(charset, LOG4CXXNG_STR("C"), LOG4CXXNG_STR("c")) ||
+		charset == LOG4CXXNG_STR("646") ||
+		StringHelper::equalsIgnoreCase(charset, LOG4CXXNG_STR("US-ASCII"), LOG4CXXNG_STR("us-ascii")) ||
+		StringHelper::equalsIgnoreCase(charset, LOG4CXXNG_STR("ISO646-US"), LOG4CXXNG_STR("iso646-US")) ||
+		StringHelper::equalsIgnoreCase(charset, LOG4CXXNG_STR("ANSI_X3.4-1968"), LOG4CXXNG_STR("ansi_x3.4-1968")))
 	{
 		return new USASCIICharsetEncoder();
 	}
-	else if (StringHelper::equalsIgnoreCase(charset, LOG4CXX_STR("ISO-8859-1"), LOG4CXX_STR("iso-8859-1")) ||
-		StringHelper::equalsIgnoreCase(charset, LOG4CXX_STR("ISO-LATIN-1"), LOG4CXX_STR("iso-latin-1")))
+	else if (StringHelper::equalsIgnoreCase(charset, LOG4CXXNG_STR("ISO-8859-1"), LOG4CXXNG_STR("iso-8859-1")) ||
+		StringHelper::equalsIgnoreCase(charset, LOG4CXXNG_STR("ISO-LATIN-1"), LOG4CXXNG_STR("iso-latin-1")))
 	{
 		return new ISOLatinCharsetEncoder();
 	}
-	else if (StringHelper::equalsIgnoreCase(charset, LOG4CXX_STR("UTF-16BE"), LOG4CXX_STR("utf-16be"))
-		|| StringHelper::equalsIgnoreCase(charset, LOG4CXX_STR("UTF-16"), LOG4CXX_STR("utf-16")))
+	else if (StringHelper::equalsIgnoreCase(charset, LOG4CXXNG_STR("UTF-16BE"), LOG4CXXNG_STR("utf-16be"))
+		|| StringHelper::equalsIgnoreCase(charset, LOG4CXXNG_STR("UTF-16"), LOG4CXXNG_STR("utf-16")))
 	{
 		return new UTF16BECharsetEncoder();
 	}
-	else if (StringHelper::equalsIgnoreCase(charset, LOG4CXX_STR("UTF-16LE"), LOG4CXX_STR("utf-16le")))
+	else if (StringHelper::equalsIgnoreCase(charset, LOG4CXXNG_STR("UTF-16LE"), LOG4CXXNG_STR("utf-16le")))
 	{
 		return new UTF16LECharsetEncoder();
 	}
@@ -628,13 +628,13 @@ void CharsetEncoder::encode(CharsetEncoderPtr& enc,
 	LogString::const_iterator& iter,
 	ByteBuffer& dst)
 {
-	log4cxx_status_t stat = enc->encode(src, iter, dst);
+	log4cxxng_status_t stat = enc->encode(src, iter, dst);
 
 	if (stat != APR_SUCCESS && iter != src.end())
 	{
-#if LOG4CXX_LOGCHAR_IS_WCHAR || LOG4CXX_LOGCHAR_IS_UNICHAR
+#if LOG4CXXNG_LOGCHAR_IS_WCHAR || LOG4CXXNG_LOGCHAR_IS_UNICHAR
 		iter++;
-#elif LOG4CXX_LOGCHAR_IS_UTF8
+#elif LOG4CXXNG_LOGCHAR_IS_UTF8
 
 		//  advance past this character and all continuation characters
 		while ((*(++iter) & 0xC0) == 0x80);

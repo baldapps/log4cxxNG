@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_FILTER_STRING_MATCH_FILTER_H
-#define _LOG4CXX_FILTER_STRING_MATCH_FILTER_H
+#ifndef _LOG4CXXNG_FILTER_STRING_MATCH_FILTER_H
+#define _LOG4CXXNG_FILTER_STRING_MATCH_FILTER_H
 
 #include <log4cxxNG/spi/filter.h>
 
@@ -25,7 +25,7 @@
 	#pragma warning ( disable: 4251 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace filter
 {
@@ -36,9 +36,9 @@ This is a very simple filter based on string matching.
 <b>AcceptOnMatch</b>. If there is a match between the value of the
 StringToMatch option and the message of the {@link spi::LoggingEvent
 LoggingEvent}, then the #decide method returns
-{@link log4cxx::spi::Filter#ACCEPT ACCEPT} if the <b>AcceptOnMatch</b> option
-value is true, if it is false then {@link log4cxx::spi::Filter#DENY DENY} is
-returned. If there is no match, {@link log4cxx::spi::Filter#NEUTRAL NEUTRAL}
+{@link log4cxxng::spi::Filter#ACCEPT ACCEPT} if the <b>AcceptOnMatch</b> option
+value is true, if it is false then {@link log4cxxng::spi::Filter#DENY DENY} is
+returned. If there is no match, {@link log4cxxng::spi::Filter#NEUTRAL NEUTRAL}
 is returned.
 
 <p>See configuration files <a
@@ -50,7 +50,7 @@ href="../xml/doc-files/test10.xml">test10.xml</a> for examples of
 seeting up a <code>StringMatchFilter</code>.
 */
 
-class LOG4CXX_EXPORT StringMatchFilter : public spi::Filter
+class LOG4CXXNG_EXPORT StringMatchFilter : public spi::Filter
 {
 	private:
 		bool acceptOnMatch;
@@ -58,11 +58,11 @@ class LOG4CXX_EXPORT StringMatchFilter : public spi::Filter
 
 	public:
 		typedef spi::Filter BASE_CLASS;
-		DECLARE_LOG4CXX_OBJECT(StringMatchFilter)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(StringMatchFilter)
-		LOG4CXX_CAST_ENTRY_CHAIN(BASE_CLASS)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(StringMatchFilter)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(StringMatchFilter)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(BASE_CLASS)
+		END_LOG4CXXNG_CAST_MAP()
 
 		StringMatchFilter();
 
@@ -93,17 +93,17 @@ class LOG4CXX_EXPORT StringMatchFilter : public spi::Filter
 		}
 
 		/**
-		Returns {@link log4cxx::spi::Filter#NEUTRAL NEUTRAL}
+		Returns {@link log4cxxng::spi::Filter#NEUTRAL NEUTRAL}
 		is there is no string match.
 		*/
 		FilterDecision decide(const spi::LoggingEventPtr& event) const;
 }; // class StringMatchFilter
-LOG4CXX_PTR_DEF(StringMatchFilter);
+LOG4CXXNG_PTR_DEF(StringMatchFilter);
 }  // namespace filter
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
-#endif // _LOG4CXX_FILTER_STRING_MATCH_FILTER_H
+#endif // _LOG4CXXNG_FILTER_STRING_MATCH_FILTER_H

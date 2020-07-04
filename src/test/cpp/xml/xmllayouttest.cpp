@@ -39,16 +39,16 @@
 #include <log4cxxNG/helpers/transcoder.h>
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::xml;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::xml;
+using namespace log4cxxng::spi;
 
-#if defined(__LOG4CXX_FUNC__)
-	#undef __LOG4CXX_FUNC__
-	#define __LOG4CXX_FUNC__ "X::X()"
+#if defined(__LOG4CXXNG_FUNC__)
+	#undef __LOG4CXXNG_FUNC__
+	#define __LOG4CXXNG_FUNC__ "X::X()"
 #else
-	#error __LOG4CXX_FUNC__ expected to be defined
+	#error __LOG4CXXNG_FUNC__ expected to be defined
 #endif
 /**
  * Test for XMLLayout.
@@ -95,7 +95,7 @@ public:
 	 */
 	void testGetContentType()
 	{
-		LogString expected(LOG4CXX_STR("text/plain"));
+		LogString expected(LOG4CXXNG_STR("text/plain"));
 		LogString actual(XMLLayout().getContentType());
 		LOGUNIT_ASSERT(expected == actual);
 	}
@@ -142,14 +142,14 @@ private:
 		char backing[3000];
 		ByteBuffer buf(backing, sizeof(backing));
 		CharsetEncoderPtr encoder(CharsetEncoder::getUTF8Encoder());
-		LogString header(LOG4CXX_STR("<log4j:eventSet xmlns:log4j='http://jakarta.apache.org/log4j/'>"));
+		LogString header(LOG4CXXNG_STR("<log4j:eventSet xmlns:log4j='http://jakarta.apache.org/log4j/'>"));
 		LogString::const_iterator iter(header.begin());
 		encoder->encode(header, iter, buf);
 		LOGUNIT_ASSERT(iter == header.end());
 		iter = source.begin();
 		encoder->encode(source, iter, buf);
 		LOGUNIT_ASSERT(iter == source.end());
-		LogString footer(LOG4CXX_STR("</log4j:eventSet>"));
+		LogString footer(LOG4CXXNG_STR("</log4j:eventSet>"));
 		iter = footer.begin();
 		encoder->encode(footer, iter, buf);
 		buf.flip();
@@ -206,9 +206,9 @@ private:
 	{
 		std::string tagName("event");
 		LOGUNIT_ASSERT_EQUAL(tagName, (std::string) element->name);
-		LOG4CXX_ENCODE_CHAR(cLoggerName, event->getLoggerName());
+		LOG4CXXNG_ENCODE_CHAR(cLoggerName, event->getLoggerName());
 		LOGUNIT_ASSERT_EQUAL(cLoggerName, getAttribute(element, "logger"));
-		LOG4CXX_ENCODE_CHAR(cLevelName, event->getLevel()->toString());
+		LOG4CXXNG_ENCODE_CHAR(cLevelName, event->getLevel()->toString());
 		LOGUNIT_ASSERT_EQUAL(cLevelName, getAttribute(element, "level"));
 	}
 
@@ -273,10 +273,10 @@ public:
 	 */
 	void testFormat()
 	{
-		LogString logger = LOG4CXX_STR("org.apache.log4j.xml.XMLLayoutTest");
+		LogString logger = LOG4CXXNG_STR("org.apache.log4j.xml.XMLLayoutTest");
 		LoggingEventPtr event =
 			new LoggingEvent(
-			logger, Level::getInfo(), LOG4CXX_STR("Hello, World"), LOG4CXX_LOCATION);
+			logger, Level::getInfo(), LOG4CXXNG_STR("Hello, World"), LOG4CXXNG_LOCATION);
 		Pool p;
 		XMLLayout layout;
 		LogString result;
@@ -305,12 +305,12 @@ public:
 	 */
 	void testFormatWithNDC()
 	{
-		LogString logger = LOG4CXX_STR("org.apache.log4j.xml.XMLLayoutTest");
+		LogString logger = LOG4CXXNG_STR("org.apache.log4j.xml.XMLLayoutTest");
 		NDC::push("NDC goes here");
 
 		LoggingEventPtr event =
 			new LoggingEvent(
-			logger, Level::getInfo(), LOG4CXX_STR("Hello, World"), LOG4CXX_LOCATION);
+			logger, Level::getInfo(), LOG4CXXNG_STR("Hello, World"), LOG4CXXNG_LOCATION);
 		Pool p;
 		XMLLayout layout;
 		LogString result;
@@ -371,13 +371,13 @@ public:
 	void testProblemCharacters()
 	{
 		std::string problemName = "com.example.bar<>&\"'";
-		LogString problemNameLS = LOG4CXX_STR("com.example.bar<>&\"'");
+		LogString problemNameLS = LOG4CXXNG_STR("com.example.bar<>&\"'");
 		LevelPtr level = new XLevel(6000, problemNameLS, 7);
 		NDC::push(problemName);
 		MDC::clear();
 		MDC::put(problemName, problemName);
 		LoggingEventPtr event =
-			new LoggingEvent(problemNameLS, level, problemNameLS, LOG4CXX_LOCATION);
+			new LoggingEvent(problemNameLS, level, problemNameLS, LOG4CXXNG_LOCATION);
 		XMLLayout layout;
 		layout.setProperties(true);
 		Pool p;
@@ -424,13 +424,13 @@ public:
 	  */
 	void testNDCWithCDATA()
 	{
-		LogString logger = LOG4CXX_STR("com.example.bar");
+		LogString logger = LOG4CXXNG_STR("com.example.bar");
 		LevelPtr level = Level::getInfo();
 		std::string ndcMessage = "<envelope><faultstring><![CDATA[The EffectiveDate]]></faultstring><envelope>";
 		NDC::push(ndcMessage);
 		LoggingEventPtr event =
 			new LoggingEvent(
-			logger, level, LOG4CXX_STR("Hello, World"), LOG4CXX_LOCATION);
+			logger, level, LOG4CXXNG_STR("Hello, World"), LOG4CXXNG_LOCATION);
 		XMLLayout layout;
 		Pool p;
 		LogString result;

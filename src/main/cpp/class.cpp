@@ -26,8 +26,8 @@
 #include <map>
 #include <log4cxxNG/helpers/stringhelper.h>
 #include <log4cxxNG/log4cxxNG.h>
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 #include <log4cxxNG/private/log4cxxNG_private.h>
 #include <log4cxxNG/rollingfileappender.h>
@@ -74,12 +74,12 @@
 #include <apr.h>
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::net;
-using namespace log4cxx::filter;
-using namespace log4cxx::xml;
-using namespace log4cxx::rolling;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::net;
+using namespace log4cxxng::filter;
+using namespace log4cxxng::xml;
+using namespace log4cxxng::rolling;
 
 Class::Class()
 {
@@ -96,8 +96,8 @@ LogString Class::toString() const
 
 ObjectPtr Class::newInstance() const
 {
-	throw InstantiationException(LOG4CXX_STR("Cannot create new instances of Class."));
-#if LOG4CXX_RETURN_AFTER_THROW
+	throw InstantiationException(LOG4CXXNG_STR("Cannot create new instances of Class."));
+#if LOG4CXXNG_RETURN_AFTER_THROW
 	return 0;
 #endif
 }
@@ -120,7 +120,7 @@ const Class& Class::forName(const LogString& className)
 
 	if (clazz == 0)
 	{
-		LogString::size_type pos = className.find_last_of(LOG4CXX_STR(".$"));
+		LogString::size_type pos = className.find_last_of(LOG4CXXNG_STR(".$"));
 
 		if (pos != LogString::npos)
 		{
@@ -166,14 +166,14 @@ void Class::registerClasses()
 #endif
 	ConsoleAppender::registerClass();
 	FileAppender::registerClass();
-	log4cxx::db::ODBCAppender::registerClass();
+	log4cxxng::db::ODBCAppender::registerClass();
 #if (defined(WIN32) || defined(_WIN32))
 #if !defined(_WIN32_WCE)
-	log4cxx::nt::NTEventLogAppender::registerClass();
+	log4cxxng::nt::NTEventLogAppender::registerClass();
 #endif
-	log4cxx::nt::OutputDebugStringAppender::registerClass();
+	log4cxxng::nt::OutputDebugStringAppender::registerClass();
 #endif
-	log4cxx::RollingFileAppender::registerClass();
+	log4cxxng::RollingFileAppender::registerClass();
 	SMTPAppender::registerClass();
 	SocketAppender::registerClass();
 #if APR_HAS_THREADS
@@ -193,15 +193,15 @@ void Class::registerClasses()
 	LevelMatchFilter::registerClass();
 	LevelRangeFilter::registerClass();
 	StringMatchFilter::registerClass();
-	log4cxx::RollingFileAppender::registerClass();
-	log4cxx::rolling::RollingFileAppender::registerClass();
+	log4cxxng::RollingFileAppender::registerClass();
+	log4cxxng::rolling::RollingFileAppender::registerClass();
 	DailyRollingFileAppender::registerClass();
-	log4cxx::rolling::SizeBasedTriggeringPolicy::registerClass();
-	log4cxx::rolling::TimeBasedRollingPolicy::registerClass();
-	log4cxx::rolling::ManualTriggeringPolicy::registerClass();
-	log4cxx::rolling::FixedWindowRollingPolicy::registerClass();
-	log4cxx::rolling::FilterBasedTriggeringPolicy::registerClass();
-	log4cxx::xml::DOMConfigurator::registerClass();
-	log4cxx::PropertyConfigurator::registerClass();
+	log4cxxng::rolling::SizeBasedTriggeringPolicy::registerClass();
+	log4cxxng::rolling::TimeBasedRollingPolicy::registerClass();
+	log4cxxng::rolling::ManualTriggeringPolicy::registerClass();
+	log4cxxng::rolling::FixedWindowRollingPolicy::registerClass();
+	log4cxxng::rolling::FilterBasedTriggeringPolicy::registerClass();
+	log4cxxng::xml::DOMConfigurator::registerClass();
+	log4cxxng::PropertyConfigurator::registerClass();
 }
 

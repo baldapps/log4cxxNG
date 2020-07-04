@@ -21,10 +21,10 @@
 #include "apr_signal.h"
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(Socket)
+IMPLEMENT_LOG4CXXNG_OBJECT(Socket)
 
 /** Creates a stream socket and connects it to the specified port
 number at the specified IP address.
@@ -40,7 +40,7 @@ Socket::Socket(InetAddressPtr& addr, int prt) : pool(), socket(0), address(addr)
 		throw SocketException(status);
 	}
 
-	LOG4CXX_ENCODE_CHAR(host, addr->getHostAddress());
+	LOG4CXXNG_ENCODE_CHAR(host, addr->getHostAddress());
 
 	// create socket address (including port)
 	apr_sockaddr_t* client_addr;

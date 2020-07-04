@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_SPI_LOCATION_LOCATIONINFO_H
-#define _LOG4CXX_SPI_LOCATION_LOCATIONINFO_H
+#ifndef _LOG4CXXNG_SPI_LOCATION_LOCATIONINFO_H
+#define _LOG4CXXNG_SPI_LOCATION_LOCATIONINFO_H
 
 #include <log4cxxNG/log4cxxNG.h>
 #include <string>
 #include <log4cxxNG/helpers/objectoutputstream.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace spi
 {
@@ -30,7 +30,7 @@ namespace spi
  * This class represents the location of a logging statement.
  *
  */
-class LOG4CXX_EXPORT LocationInfo
+class LOG4CXXNG_EXPORT LocationInfo
 {
 	public:
 
@@ -49,7 +49,7 @@ class LOG4CXX_EXPORT LocationInfo
 
 		/**
 		 *   Constructor.
-		 *   @remarks Used by LOG4CXX_LOCATION to generate
+		 *   @remarks Used by LOG4CXXNG_LOCATION to generate
 		 *       location info for current code site
 		 */
 		LocationInfo( const char* const fileName,
@@ -97,7 +97,7 @@ class LOG4CXX_EXPORT LocationInfo
 		/** Returns the method name of the caller. */
 		const std::string getMethodName() const;
 
-		void write(log4cxx::helpers::ObjectOutputStream& os, log4cxx::helpers::Pool& p) const;
+		void write(log4cxxng::helpers::ObjectOutputStream& os, log4cxxng::helpers::Pool& p) const;
 
 
 	private:
@@ -115,26 +115,26 @@ class LOG4CXX_EXPORT LocationInfo
 }
 }
 
-#if !defined(LOG4CXX_LOCATION)
+#if !defined(LOG4CXXNG_LOCATION)
 #if defined(_MSC_VER)
 	#if _MSC_VER >= 1300
-		#define __LOG4CXX_FUNC__ __FUNCSIG__
+		#define __LOG4CXXNG_FUNC__ __FUNCSIG__
 	#endif
 #else
 	#if defined(__GNUC__)
-		#define __LOG4CXX_FUNC__ __PRETTY_FUNCTION__
+		#define __LOG4CXXNG_FUNC__ __PRETTY_FUNCTION__
 	#else
 		#if defined(__BORLANDC__)
-			#define __LOG4CXX_FUNC__ __FUNC__
+			#define __LOG4CXXNG_FUNC__ __FUNC__
 		#endif
 	#endif
 #endif
-#if !defined(__LOG4CXX_FUNC__)
-	#define __LOG4CXX_FUNC__ ""
+#if !defined(__LOG4CXXNG_FUNC__)
+	#define __LOG4CXXNG_FUNC__ ""
 #endif
-#define LOG4CXX_LOCATION ::log4cxx::spi::LocationInfo(__FILE__,         \
-	__LOG4CXX_FUNC__, \
+#define LOG4CXXNG_LOCATION ::log4cxxng::spi::LocationInfo(__FILE__,         \
+	__LOG4CXXNG_FUNC__, \
 	__LINE__)
 #endif
 
-#endif //_LOG4CXX_SPI_LOCATION_LOCATIONINFO_H
+#endif //_LOG4CXXNG_SPI_LOCATION_LOCATIONINFO_H

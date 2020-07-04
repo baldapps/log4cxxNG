@@ -23,9 +23,9 @@
 #include "apr_network_io.h"
 #include "apr_lib.h"
 
-using namespace log4cxx::helpers;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(DatagramSocket)
+IMPLEMENT_LOG4CXXNG_OBJECT(DatagramSocket)
 
 DatagramSocket::DatagramSocket()
 	: socket(0), address(), localAddress(), port(0), localPort(0)
@@ -66,7 +66,7 @@ void DatagramSocket::bind(int localPort1, InetAddressPtr localAddress1)
 	Pool addrPool;
 
 	// Create server socket address (including port number)
-	LOG4CXX_ENCODE_CHAR(hostAddr, localAddress1->getHostAddress());
+	LOG4CXXNG_ENCODE_CHAR(hostAddr, localAddress1->getHostAddress());
 	apr_sockaddr_t* server_addr;
 	apr_status_t status =
 		apr_sockaddr_info_get(&server_addr, hostAddr.c_str(), APR_INET,
@@ -115,7 +115,7 @@ void DatagramSocket::connect(InetAddressPtr address1, int port1)
 	Pool addrPool;
 
 	// create socket address
-	LOG4CXX_ENCODE_CHAR(hostAddr, address1->getHostAddress());
+	LOG4CXXNG_ENCODE_CHAR(hostAddr, address1->getHostAddress());
 	apr_sockaddr_t* client_addr;
 	apr_status_t status =
 		apr_sockaddr_info_get(&client_addr, hostAddr.c_str(), APR_INET,
@@ -156,7 +156,7 @@ void DatagramSocket::receive(DatagramPacketPtr& p)
 	Pool addrPool;
 
 	// Create the address from which to receive the datagram packet
-	LOG4CXX_ENCODE_CHAR(hostAddr, p->getAddress()->getHostAddress());
+	LOG4CXXNG_ENCODE_CHAR(hostAddr, p->getAddress()->getHostAddress());
 	apr_sockaddr_t* addr;
 	apr_status_t status =
 		apr_sockaddr_info_get(&addr, hostAddr.c_str(), APR_INET,
@@ -184,7 +184,7 @@ void DatagramSocket::send(DatagramPacketPtr& p)
 	Pool addrPool;
 
 	// create the adress to which to send the datagram packet
-	LOG4CXX_ENCODE_CHAR(hostAddr, p->getAddress()->getHostAddress());
+	LOG4CXXNG_ENCODE_CHAR(hostAddr, p->getAddress()->getHostAddress());
 	apr_sockaddr_t* addr;
 	apr_status_t status =
 		apr_sockaddr_info_get(&addr, hostAddr.c_str(), APR_INET, p->getPort(),

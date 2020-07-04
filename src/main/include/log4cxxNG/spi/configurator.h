@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_SPI_CONFIGURATOR_H
-#define _LOG4CXX_SPI_CONFIGURATOR_H
+#ifndef _LOG4CXXNG_SPI_CONFIGURATOR_H
+#define _LOG4CXXNG_SPI_CONFIGURATOR_H
 
 #include <log4cxxNG/spi/loggerrepository.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 class File;
 
@@ -29,10 +29,10 @@ namespace spi
 /**
 Implemented by classes capable of configuring log4j using a URL.
 */
-class LOG4CXX_EXPORT Configurator : virtual public helpers::Object
+class LOG4CXXNG_EXPORT Configurator : virtual public helpers::Object
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(Configurator)
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(Configurator)
 		Configurator();
 
 		/**
@@ -54,8 +54,8 @@ class LOG4CXX_EXPORT Configurator : virtual public helpers::Object
 		bool initialized;
 };
 
-LOG4CXX_PTR_DEF(Configurator);
+LOG4CXXNG_PTR_DEF(Configurator);
 }
 }
 
-#endif // _LOG4CXX_SPI_CONFIGURATOR_H
+#endif // _LOG4CXXNG_SPI_CONFIGURATOR_H

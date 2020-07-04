@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_SOCKET_H
-#define _LOG4CXX_HELPERS_SOCKET_H
+#ifndef _LOG4CXXNG_HELPERS_SOCKET_H
+#define _LOG4CXXNG_HELPERS_SOCKET_H
 
 extern "C" {
 	struct apr_socket_t;
@@ -27,7 +27,7 @@ extern "C" {
 #include <log4cxxNG/helpers/pool.h>
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -40,13 +40,13 @@ class. An application, by changing the socket factory that creates the socket
 implementation, can configure itself to create sockets appropriate to the
 local firewall.
 */
-class LOG4CXX_EXPORT Socket : public helpers::ObjectImpl
+class LOG4CXXNG_EXPORT Socket : public helpers::ObjectImpl
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(Socket)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(Socket)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(Socket)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(Socket)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/** Creates a stream socket and connects it to the specified port
 		number at the specified IP address.
@@ -82,9 +82,9 @@ class LOG4CXX_EXPORT Socket : public helpers::ObjectImpl
 		int port;
 };
 
-LOG4CXX_PTR_DEF(Socket);
+LOG4CXXNG_PTR_DEF(Socket);
 
 } // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif // _LOG4CXX_HELPERS_SOCKET_H
+#endif // _LOG4CXXNG_HELPERS_SOCKET_H

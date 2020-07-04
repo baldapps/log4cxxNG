@@ -34,11 +34,11 @@
 #include <log4cxxNG/helpers/fileoutputstream.h>
 
 
-using namespace log4cxx;
-using namespace log4cxx::xml;
-using namespace log4cxx::filter;
-using namespace log4cxx::helpers;
-using namespace log4cxx::rolling;
+using namespace log4cxxng;
+using namespace log4cxxng::xml;
+using namespace log4cxxng::filter;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::rolling;
 
 /**
  *   Tests of explicit manual rolling of RollingFileAppenders.
@@ -98,7 +98,7 @@ public:
 				msg[8] = '0' + digit;
 			}
 
-			LOG4CXX_DEBUG(logger1, msg);
+			LOG4CXXNG_DEBUG(logger1, msg);
 		}
 	}
 
@@ -110,16 +110,16 @@ public:
 	 */
 	void test1()
 	{
-		PatternLayoutPtr layout = new PatternLayout(LOG4CXX_STR("%m\n"));
+		PatternLayoutPtr layout = new PatternLayout(LOG4CXXNG_STR("%m\n"));
 		RollingFileAppenderPtr rfa = new RollingFileAppender();
-		rfa->setName(LOG4CXX_STR("ROLLING"));
+		rfa->setName(LOG4CXXNG_STR("ROLLING"));
 		rfa->setAppend(false);
 		rfa->setLayout(layout);
 
 		FixedWindowRollingPolicyPtr swrp = new FixedWindowRollingPolicy();
 		swrp->setMinIndex(0);
 
-		swrp->setFileNamePattern(LOG4CXX_STR("output/manual-test1.%i"));
+		swrp->setFileNamePattern(LOG4CXXNG_STR("output/manual-test1.%i"));
 		Pool p;
 		swrp->activateOptions(p);
 
@@ -146,12 +146,12 @@ public:
 	 */
 	void test2()
 	{
-		PatternLayoutPtr layout = new PatternLayout(LOG4CXX_STR("%m\n"));
+		PatternLayoutPtr layout = new PatternLayout(LOG4CXXNG_STR("%m\n"));
 		RollingFileAppenderPtr rfa = new RollingFileAppender();
-		rfa->setName(LOG4CXX_STR("ROLLING"));
+		rfa->setName(LOG4CXXNG_STR("ROLLING"));
 		rfa->setAppend(false);
 		rfa->setLayout(layout);
-		rfa->setFile(LOG4CXX_STR("output/manual-test2.log"));
+		rfa->setFile(LOG4CXXNG_STR("output/manual-test2.log"));
 
 		Pool p;
 		rfa->activateOptions(p);
@@ -176,7 +176,7 @@ public:
 	 */
 	void test3()
 	{
-		PatternLayoutPtr layout = new PatternLayout(LOG4CXX_STR("%m\n"));
+		PatternLayoutPtr layout = new PatternLayout(LOG4CXXNG_STR("%m\n"));
 		RollingFileAppenderPtr rfa = new RollingFileAppender();
 		rfa->setAppend(false);
 		rfa->setLayout(layout);
@@ -184,8 +184,8 @@ public:
 		FixedWindowRollingPolicyPtr  fwrp = new FixedWindowRollingPolicy();
 
 		fwrp->setMinIndex(0);
-		rfa->setFile(LOG4CXX_STR("output/manual-test3.log"));
-		fwrp->setFileNamePattern(LOG4CXX_STR("output/sbr-test3.%i.gz"));
+		rfa->setFile(LOG4CXXNG_STR("output/manual-test3.log"));
+		fwrp->setFileNamePattern(LOG4CXXNG_STR("output/sbr-test3.%i.gz"));
 		Pool p;
 		fwrp->activateOptions(p);
 		rfa->setRollingPolicy(fwrp);
@@ -208,12 +208,12 @@ public:
 	 */
 	void test4()
 	{
-		PatternLayoutPtr layout = new PatternLayout(LOG4CXX_STR("%m\n"));
+		PatternLayoutPtr layout = new PatternLayout(LOG4CXXNG_STR("%m\n"));
 		RollingFileAppenderPtr rfa = new RollingFileAppender();
-		rfa->setName(LOG4CXX_STR("ROLLING"));
+		rfa->setName(LOG4CXXNG_STR("ROLLING"));
 		rfa->setAppend(false);
 		rfa->setLayout(layout);
-		rfa->setFile(LOG4CXX_STR("output/manual-test4.log"));
+		rfa->setFile(LOG4CXXNG_STR("output/manual-test4.log"));
 
 		FixedWindowRollingPolicyPtr swrp = new FixedWindowRollingPolicy();
 
@@ -222,7 +222,7 @@ public:
 		//
 		//   test4 directory should not exists.  Should cause all rollover attempts to fail.
 		//
-		swrp->setFileNamePattern(LOG4CXX_STR("output/test4/manual-test4.%i"));
+		swrp->setFileNamePattern(LOG4CXXNG_STR("output/test4/manual-test4.%i"));
 		Pool p;
 		swrp->activateOptions(p);
 
@@ -244,18 +244,18 @@ public:
 	 */
 	void test5()
 	{
-		PatternLayoutPtr layout = new PatternLayout(LOG4CXX_STR("%m\n"));
+		PatternLayoutPtr layout = new PatternLayout(LOG4CXXNG_STR("%m\n"));
 		RollingFileAppenderPtr rfa = new RollingFileAppender();
-		rfa->setName(LOG4CXX_STR("ROLLING"));
+		rfa->setName(LOG4CXXNG_STR("ROLLING"));
 		rfa->setAppend(false);
 		rfa->setLayout(layout);
-		rfa->setFile(LOG4CXX_STR("output/manual-test5.log"));
+		rfa->setFile(LOG4CXXNG_STR("output/manual-test5.log"));
 
 		FixedWindowRollingPolicyPtr swrp = new FixedWindowRollingPolicy();
 
 		swrp->setMinIndex(0);
 
-		swrp->setFileNamePattern(LOG4CXX_STR("output/manual-test5.%i"));
+		swrp->setFileNamePattern(LOG4CXXNG_STR("output/manual-test5.%i"));
 		Pool p;
 		swrp->activateOptions(p);
 
@@ -265,11 +265,11 @@ public:
 
 		//
 		//   put stray file about locked file
-		FileOutputStream os1(LOG4CXX_STR("output/manual-test5.1"), false);
+		FileOutputStream os1(LOG4CXXNG_STR("output/manual-test5.1"), false);
 		os1.close(p);
 
 
-		FileOutputStream os0(LOG4CXX_STR("output/manual-test5.0"), false);
+		FileOutputStream os0(LOG4CXXNG_STR("output/manual-test5.0"), false);
 
 		common(rfa, p, logger);
 

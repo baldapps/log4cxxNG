@@ -18,9 +18,9 @@
 #include <log4cxxNG/logstring.h>
 #include <log4cxxNG/helpers/reader.h>
 
-using namespace log4cxx::helpers;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(Reader)
+IMPLEMENT_LOG4CXXNG_OBJECT(Reader)
 
 Reader::Reader()
 {

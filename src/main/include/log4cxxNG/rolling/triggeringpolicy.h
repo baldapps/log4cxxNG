@@ -16,8 +16,8 @@
  */
 
 
-#if !defined(_LOG4CXX_ROLLING_TRIGGER_POLICY_H)
-#define _LOG4CXX_ROLLING_TRIGGER_POLICY_H
+#if !defined(_LOG4CXXNG_ROLLING_TRIGGER_POLICY_H)
+#define _LOG4CXXNG_ROLLING_TRIGGER_POLICY_H
 
 
 #include <log4cxxNG/spi/optionhandler.h>
@@ -25,7 +25,7 @@
 #include <log4cxxNG/spi/loggingevent.h>
 #include <log4cxxNG/appender.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 class File;
 
@@ -41,15 +41,15 @@ namespace rolling
  *
  * */
 
-class LOG4CXX_EXPORT TriggeringPolicy :
+class LOG4CXXNG_EXPORT TriggeringPolicy :
 	public virtual spi::OptionHandler,
 	public virtual helpers::ObjectImpl
 {
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(TriggeringPolicy)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(TriggeringPolicy)
-		LOG4CXX_CAST_ENTRY(spi::OptionHandler)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(TriggeringPolicy)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(TriggeringPolicy)
+		LOG4CXXNG_CAST_ENTRY(spi::OptionHandler)
+		END_LOG4CXXNG_CAST_MAP()
 	public:
 		virtual ~TriggeringPolicy();
 		void addRef() const;
@@ -68,13 +68,13 @@ class LOG4CXX_EXPORT TriggeringPolicy :
 		 */
 		virtual bool isTriggeringEvent(
 			Appender* appender,
-			const log4cxx::spi::LoggingEventPtr& event,
+			const log4cxxng::spi::LoggingEventPtr& event,
 			const LogString& filename,
 			size_t fileLength) = 0;
 
 };
 
-LOG4CXX_PTR_DEF(TriggeringPolicy);
+LOG4CXXNG_PTR_DEF(TriggeringPolicy);
 
 
 }

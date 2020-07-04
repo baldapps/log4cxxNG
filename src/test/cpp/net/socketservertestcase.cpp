@@ -47,9 +47,9 @@
 	#include <windows.h>
 #endif
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::net;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::net;
 
 #define REGEX_STR(x) x
 // %5p %x [%t] %c %m%n
@@ -124,7 +124,7 @@ LOGUNIT_CLASS(SocketServerTestCase)
 public:
 	void setUp()
 	{
-		logger = Logger::getLogger(LOG4CXX_STR("org.apache.log4j.net.SocketServerTestCase"));
+		logger = Logger::getLogger(LOG4CXXNG_STR("org.apache.log4j.net.SocketServerTestCase"));
 		root = Logger::getRootLogger();
 	}
 
@@ -142,9 +142,9 @@ public:
 	void test1()
 	{
 		SocketAppenderPtr socketAppender1 =
-			new SocketAppender(LOG4CXX_STR("localhost"), PORT);
+			new SocketAppender(LOG4CXXNG_STR("localhost"), PORT);
 		root->addAppender(socketAppender1);
-		common("test1", LOG4CXX_STR("T1"), LOG4CXX_STR("key1"), LOG4CXX_STR("MDC-TEST1"));
+		common("test1", LOG4CXXNG_STR("T1"), LOG4CXXNG_STR("key1"), LOG4CXXNG_STR("MDC-TEST1"));
 		delay(1);
 
 		ControlFilter cf;
@@ -166,15 +166,15 @@ public:
 			throw;
 		}
 
-		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXX_FILE("witness/socketServer.1")));
+		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXXNG_FILE("witness/socketServer.1")));
 	}
 
 	void test2()
 	{
 		SocketAppenderPtr socketAppender1 =
-			new SocketAppender(LOG4CXX_STR("localhost"), PORT);
+			new SocketAppender(LOG4CXXNG_STR("localhost"), PORT);
 		root->addAppender(socketAppender1);
-		common("test2", LOG4CXX_STR("T2"), LOG4CXX_STR("key2"), LOG4CXX_STR("MDC-TEST2"));
+		common("test2", LOG4CXXNG_STR("T2"), LOG4CXXNG_STR("key2"), LOG4CXXNG_STR("MDC-TEST2"));
 		delay(1);
 
 		ControlFilter cf;
@@ -201,15 +201,15 @@ public:
 			throw;
 		}
 
-		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXX_FILE("witness/socketServer.2")));
+		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXXNG_FILE("witness/socketServer.2")));
 	}
 
 	void test3()
 	{
 		SocketAppenderPtr socketAppender1 =
-			new SocketAppender(LOG4CXX_STR("localhost"), PORT);
+			new SocketAppender(LOG4CXXNG_STR("localhost"), PORT);
 		root->addAppender(socketAppender1);
-		common("test3", LOG4CXX_STR("T3"), LOG4CXX_STR("key3"), LOG4CXX_STR("MDC-TEST3"));
+		common("test3", LOG4CXXNG_STR("T3"), LOG4CXXNG_STR("key3"), LOG4CXXNG_STR("MDC-TEST3"));
 		delay(1);
 
 		ControlFilter cf;
@@ -236,16 +236,16 @@ public:
 			throw;
 		}
 
-		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXX_FILE("witness/socketServer.3")));
+		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXXNG_FILE("witness/socketServer.3")));
 	}
 
 	void test4()
 	{
 		SocketAppenderPtr socketAppender1 =
-			new SocketAppender(LOG4CXX_STR("localhost"), PORT);
+			new SocketAppender(LOG4CXXNG_STR("localhost"), PORT);
 		root->addAppender(socketAppender1);
-		NDC::push(LOG4CXX_TEST_STR("some"));
-		common("test4", LOG4CXX_STR("T4"), LOG4CXX_STR("key4"), LOG4CXX_STR("MDC-TEST4"));
+		NDC::push(LOG4CXXNG_TEST_STR("some"));
+		common("test4", LOG4CXXNG_STR("T4"), LOG4CXXNG_STR("key4"), LOG4CXXNG_STR("MDC-TEST4"));
 		NDC::pop();
 		delay(1);
 
@@ -268,20 +268,20 @@ public:
 			throw;
 		}
 
-		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXX_FILE("witness/socketServer.4")));
+		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXXNG_FILE("witness/socketServer.4")));
 	}
 
 	void test5()
 	{
 		SocketAppenderPtr socketAppender1 =
-			new SocketAppender(LOG4CXX_STR("localhost"), PORT);
+			new SocketAppender(LOG4CXXNG_STR("localhost"), PORT);
 		AsyncAppenderPtr asyncAppender = new AsyncAppender();
 
 		root->addAppender(socketAppender1);
 		root->addAppender(asyncAppender);
 
-		NDC::push(LOG4CXX_TEST_STR("some5"));
-		common("test5", LOG4CXX_STR("T5"), LOG4CXX_STR("key5"), LOG4CXX_STR("MDC-TEST5"));
+		NDC::push(LOG4CXXNG_TEST_STR("some5"));
+		common("test5", LOG4CXXNG_STR("T5"), LOG4CXXNG_STR("key5"), LOG4CXXNG_STR("MDC-TEST5"));
 		NDC::pop();
 		delay(2);
 
@@ -304,23 +304,23 @@ public:
 			throw;
 		}
 
-		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXX_FILE("witness/socketServer.5")));
+		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXXNG_FILE("witness/socketServer.5")));
 	}
 
 	void test6()
 	{
 		SocketAppenderPtr socketAppender1 =
-			new SocketAppender(LOG4CXX_STR("localhost"), PORT);
+			new SocketAppender(LOG4CXXNG_STR("localhost"), PORT);
 		AsyncAppenderPtr asyncAppender = new AsyncAppender();
 
 		root->addAppender(socketAppender1);
 		root->addAppender(asyncAppender);
 
-		NDC::push(LOG4CXX_TEST_STR("some6"));
-		MDC::put(LOG4CXX_TEST_STR("hostID"), LOG4CXX_TEST_STR("client-test6"));
-		common("test6", LOG4CXX_STR("T6"), LOG4CXX_STR("key6"), LOG4CXX_STR("MDC-TEST6"));
+		NDC::push(LOG4CXXNG_TEST_STR("some6"));
+		MDC::put(LOG4CXXNG_TEST_STR("hostID"), LOG4CXXNG_TEST_STR("client-test6"));
+		common("test6", LOG4CXXNG_STR("T6"), LOG4CXXNG_STR("key6"), LOG4CXXNG_STR("MDC-TEST6"));
 		NDC::pop();
-		MDC::remove(LOG4CXX_TEST_STR("hostID"));
+		MDC::remove(LOG4CXXNG_TEST_STR("hostID"));
 		delay(2);
 
 		ControlFilter cf;
@@ -342,23 +342,23 @@ public:
 			throw;
 		}
 
-		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXX_FILE("witness/socketServer.6")));
+		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXXNG_FILE("witness/socketServer.6")));
 	}
 
 	void test7()
 	{
 		SocketAppenderPtr socketAppender1 =
-			new SocketAppender(LOG4CXX_STR("localhost"), PORT);
+			new SocketAppender(LOG4CXXNG_STR("localhost"), PORT);
 		AsyncAppenderPtr asyncAppender = new AsyncAppender();
 
 		root->addAppender(socketAppender1);
 		root->addAppender(asyncAppender);
 
-		NDC::push(LOG4CXX_TEST_STR("some7"));
-		MDC::put(LOG4CXX_TEST_STR("hostID"), LOG4CXX_TEST_STR("client-test7"));
-		common("test7", LOG4CXX_STR("T7"), LOG4CXX_STR("key7"), LOG4CXX_STR("MDC-TEST7"));
+		NDC::push(LOG4CXXNG_TEST_STR("some7"));
+		MDC::put(LOG4CXXNG_TEST_STR("hostID"), LOG4CXXNG_TEST_STR("client-test7"));
+		common("test7", LOG4CXXNG_STR("T7"), LOG4CXXNG_STR("key7"), LOG4CXXNG_STR("MDC-TEST7"));
 		NDC::pop();
-		MDC::remove(LOG4CXX_TEST_STR("hostID"));
+		MDC::remove(LOG4CXXNG_TEST_STR("hostID"));
 		delay(2);
 
 		ControlFilter cf;
@@ -380,18 +380,18 @@ public:
 			throw;
 		}
 
-		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXX_FILE("witness/socketServer.7")));
+		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXXNG_FILE("witness/socketServer.7")));
 	}
 
 	void test8()
 	{
 		SocketAppenderPtr socketAppender1 =
-			new SocketAppender(LOG4CXX_STR("localhost"), PORT);
+			new SocketAppender(LOG4CXXNG_STR("localhost"), PORT);
 
 		root->addAppender(socketAppender1);
 
-		NDC::push(LOG4CXX_TEST_STR("some8"));
-		common("test8", LOG4CXX_STR("T8"), LOG4CXX_STR("key8"), LOG4CXX_STR("MDC-TEST8"));
+		NDC::push(LOG4CXXNG_TEST_STR("some8"));
+		common("test8", LOG4CXXNG_STR("T8"), LOG4CXXNG_STR("key8"), LOG4CXXNG_STR("MDC-TEST8"));
 		NDC::pop();
 		delay(2);
 
@@ -414,7 +414,7 @@ public:
 			throw;
 		}
 
-		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXX_FILE("witness/socketServer.8")));
+		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXXNG_FILE("witness/socketServer.8")));
 	}
 
 	void common(const std::string & testName, const LogString & dc, const LogString & key, const LogString & val)
@@ -426,21 +426,21 @@ public:
 		logger->setLevel(Level::getDebug());
 		root->setLevel(Level::getDebug());
 
-		LOG4CXX_TRACE(logger, "Message " << i);
+		LOG4CXXNG_TRACE(logger, "Message " << i);
 		i++;
 
 		logger->setLevel(Level::getTrace());
 		root->setLevel(Level::getTrace());
 
-		LOG4CXX_TRACE(logger, "Message " << ++i);
-		LOG4CXX_TRACE(root, "Message " << ++i);
+		LOG4CXXNG_TRACE(logger, "Message " << ++i);
+		LOG4CXXNG_TRACE(root, "Message " << ++i);
 
-		LOG4CXX_DEBUG(logger, "Message " << ++i);
-		LOG4CXX_DEBUG(root, "Message " << ++i);
+		LOG4CXXNG_DEBUG(logger, "Message " << ++i);
+		LOG4CXXNG_DEBUG(root, "Message " << ++i);
 
-		LOG4CXX_INFO(logger, "Message "  << ++i);
-		LOG4CXX_WARN(logger, "Message " << ++i);
-		LOG4CXX_FATAL(logger, "Message " << ++i); //5
+		LOG4CXXNG_INFO(logger, "Message "  << ++i);
+		LOG4CXXNG_WARN(logger, "Message " << ++i);
+		LOG4CXXNG_FATAL(logger, "Message " << ++i); //5
 
 		std::string exceptionMsg("\njava.lang.Exception: Just testing\n"
 			"\tat org.apache.log4j.net.SocketServerTestCase.common(SocketServerTestCase.java:XXX)\n"
@@ -457,8 +457,8 @@ public:
 			"\tat junit.framework.TestSuite.run(TestSuite.java:XXX)");
 
 
-		LOG4CXX_DEBUG(logger, "Message " << ++i << exceptionMsg);
-		LOG4CXX_ERROR(root, "Message " << ++i << exceptionMsg);
+		LOG4CXXNG_DEBUG(logger, "Message " << ++i << exceptionMsg);
+		LOG4CXXNG_ERROR(root, "Message " << ++i << exceptionMsg);
 
 		NDC::pop();
 		MDC::remove(key);

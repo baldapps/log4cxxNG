@@ -23,21 +23,21 @@
 #include <vector>
 #include <apr_strings.h>
 #include <log4cxxNG/helpers/pool.h>
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 #include <log4cxxNG/private/log4cxxNG_private.h>
 #include <cctype>
 #include <iterator>
 #include <apr.h>
-//LOG4CXX-417: need stdlib.h for atoi on some systems.
+//LOG4CXXNG-417: need stdlib.h for atoi on some systems.
 #ifdef APR_HAVE_STDLIB_H
 	#include <stdlib.h>
 #endif
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 bool StringHelper::equalsIgnoreCase(const LogString& s1, const logchar* upper, const logchar* lower)
 {
@@ -124,7 +124,7 @@ int StringHelper::toInt(const LogString& s)
 	return atoi(as.c_str());
 }
 
-log4cxx_int64_t StringHelper::toInt64(const LogString& s)
+log4cxxng_int64_t StringHelper::toInt64(const LogString& s)
 {
 	std::string as;
 	Transcoder::encode(s, as);
@@ -141,16 +141,16 @@ void StringHelper::toString(bool val, LogString& dst)
 {
 	if (val)
 	{
-		dst.append(LOG4CXX_STR("true"));
+		dst.append(LOG4CXXNG_STR("true"));
 	}
 	else
 	{
-		dst.append(LOG4CXX_STR("false"));
+		dst.append(LOG4CXXNG_STR("false"));
 	}
 }
 
 
-void StringHelper::toString(log4cxx_int64_t n, Pool& pool, LogString& dst)
+void StringHelper::toString(log4cxxng_int64_t n, Pool& pool, LogString& dst)
 {
 	if (n >= INT_MIN && n <= INT_MAX)
 	{
@@ -158,7 +158,7 @@ void StringHelper::toString(log4cxx_int64_t n, Pool& pool, LogString& dst)
 	}
 	else
 	{
-		const log4cxx_int64_t BILLION = APR_INT64_C(1000000000);
+		const log4cxxng_int64_t BILLION = APR_INT64_C(1000000000);
 		int billions = (int) (n / BILLION);
 		char* upper = pool.itoa(billions);
 		int remain = (int) (n - billions * BILLION);
@@ -178,7 +178,7 @@ void StringHelper::toString(log4cxx_int64_t n, Pool& pool, LogString& dst)
 
 void StringHelper::toString(size_t n, Pool& pool, LogString& s)
 {
-	toString((log4cxx_int64_t) n, pool, s);
+	toString((log4cxxng_int64_t) n, pool, s);
 }
 
 LogString StringHelper::format(const LogString& pattern, const std::vector<LogString>& params)

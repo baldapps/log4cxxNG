@@ -19,12 +19,12 @@
 #include "../appenderskeletontestcase.h"
 #include "apr.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 #if APR_HAS_THREADS
 /**
-   Unit tests of log4cxx::SocketAppender
+   Unit tests of log4cxxng::SocketAppender
  */
 class SocketAppenderTestCase : public AppenderSkeletonTestCase
 {
@@ -42,7 +42,7 @@ class SocketAppenderTestCase : public AppenderSkeletonTestCase
 
 		AppenderSkeleton* createAppenderSkeleton() const
 		{
-			return new log4cxx::net::SocketAppender();
+			return new log4cxxng::net::SocketAppender();
 		}
 };
 

@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_APPENDER_ATTACHABLE_IMPL_H
-#define _LOG4CXX_HELPERS_APPENDER_ATTACHABLE_IMPL_H
+#ifndef _LOG4CXXNG_HELPERS_APPENDER_ATTACHABLE_IMPL_H
+#define _LOG4CXXNG_HELPERS_APPENDER_ATTACHABLE_IMPL_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -29,7 +29,7 @@
 #include <log4cxxNG/helpers/mutex.h>
 #include <log4cxxNG/helpers/pool.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace spi
 {
@@ -40,7 +40,7 @@ typedef helpers::ObjectPtrT<LoggingEvent> LoggingEventPtr;
 namespace helpers
 {
 
-class LOG4CXX_EXPORT AppenderAttachableImpl :
+class LOG4CXXNG_EXPORT AppenderAttachableImpl :
 	public virtual spi::AppenderAttachable,
 	public virtual helpers::ObjectImpl
 {
@@ -55,11 +55,11 @@ class LOG4CXX_EXPORT AppenderAttachableImpl :
 		 */
 		AppenderAttachableImpl(Pool& pool);
 
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(AppenderAttachableImpl)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(AppenderAttachableImpl)
-		LOG4CXX_CAST_ENTRY(spi::AppenderAttachable)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(AppenderAttachableImpl)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(AppenderAttachableImpl)
+		LOG4CXXNG_CAST_ENTRY(spi::AppenderAttachable)
+		END_LOG4CXXNG_CAST_MAP()
 
 		void addRef() const;
 		void releaseRef() const;
@@ -74,7 +74,7 @@ class LOG4CXX_EXPORT AppenderAttachableImpl :
 		 Call the <code>doAppend</code> method on all attached appenders.
 		*/
 		int appendLoopOnAppenders(const spi::LoggingEventPtr& event,
-			log4cxx::helpers::Pool& p);
+			log4cxxng::helpers::Pool& p);
 
 		/**
 		 * Get all previously added appenders as an Enumeration.
@@ -108,18 +108,18 @@ class LOG4CXX_EXPORT AppenderAttachableImpl :
 		 */
 		virtual void removeAppender(const LogString& name);
 
-		inline const log4cxx::helpers::Mutex& getMutex() const
+		inline const log4cxxng::helpers::Mutex& getMutex() const
 		{
 			return mutex;
 		}
 
 	private:
-		log4cxx::helpers::Mutex mutex;
+		log4cxxng::helpers::Mutex mutex;
 		AppenderAttachableImpl(const AppenderAttachableImpl&);
 		AppenderAttachableImpl& operator=(const AppenderAttachableImpl&);
 };
 
-LOG4CXX_PTR_DEF(AppenderAttachableImpl);
+LOG4CXXNG_PTR_DEF(AppenderAttachableImpl);
 
 }
 }
@@ -128,4 +128,4 @@ LOG4CXX_PTR_DEF(AppenderAttachableImpl);
 	#pragma warning ( pop )
 #endif
 
-#endif //_LOG4CXX_HELPERS_APPENDER_ATTACHABLE_IMPL_H
+#endif //_LOG4CXXNG_HELPERS_APPENDER_ATTACHABLE_IMPL_H

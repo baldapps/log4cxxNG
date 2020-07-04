@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_APPENDER_SKELETON_H
-#define _LOG4CXX_APPENDER_SKELETON_H
+#ifndef _LOG4CXXNG_APPENDER_SKELETON_H
+#define _LOG4CXXNG_APPENDER_SKELETON_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -34,7 +34,7 @@
 #include <log4cxxNG/level.h>
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 /**
 *  Implementation base class for all appenders.
@@ -42,7 +42,7 @@ namespace log4cxx
 *  This class provides the code for common functionality, such as
 *  support for threshold filtering and support for general filters.
 * */
-class LOG4CXX_EXPORT AppenderSkeleton :
+class LOG4CXXNG_EXPORT AppenderSkeleton :
 	public virtual Appender,
 	public virtual helpers::ObjectImpl
 {
@@ -75,7 +75,7 @@ class LOG4CXX_EXPORT AppenderSkeleton :
 		*/
 		bool closed;
 
-		log4cxx::helpers::Pool pool;
+		log4cxxng::helpers::Pool pool;
 		mutable SHARED_MUTEX mutex;
 
 		/**
@@ -83,17 +83,17 @@ class LOG4CXX_EXPORT AppenderSkeleton :
 		method to perform actual logging. See also AppenderSkeleton::doAppend
 		method.
 		*/
-		virtual void append(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& p) = 0;
+		virtual void append(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& p) = 0;
 
-		void doAppendImpl(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& pool);
+		void doAppendImpl(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& pool);
 
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(AppenderSkeleton)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(AppenderSkeleton)
-		LOG4CXX_CAST_ENTRY(Appender)
-		LOG4CXX_CAST_ENTRY(spi::OptionHandler)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(AppenderSkeleton)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(AppenderSkeleton)
+		LOG4CXXNG_CAST_ENTRY(Appender)
+		LOG4CXXNG_CAST_ENTRY(spi::OptionHandler)
+		END_LOG4CXXNG_CAST_MAP()
 
 		AppenderSkeleton();
 		AppenderSkeleton(const LayoutPtr& layout);
@@ -111,7 +111,7 @@ class LOG4CXX_EXPORT AppenderSkeleton :
 		Derived appenders should override this method if option structure
 		requires it.
 		*/
-		virtual void activateOptions(log4cxx::helpers::Pool& /* pool */) {}
+		virtual void activateOptions(log4cxxng::helpers::Pool& /* pool */) {}
 		virtual void setOption(const LogString& option, const LogString& value);
 
 		/**
@@ -191,7 +191,7 @@ class LOG4CXX_EXPORT AppenderSkeleton :
 		* delegating actual logging to the subclasses specific
 		* AppenderSkeleton#append method.
 		* */
-		virtual void doAppend(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& pool);
+		virtual void doAppend(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& pool);
 
 		/**
 		Set the {@link spi::ErrorHandler ErrorHandler} for this Appender.
@@ -229,11 +229,11 @@ class LOG4CXX_EXPORT AppenderSkeleton :
 		void setThreshold(const LevelPtr& threshold);
 
 }; // class AppenderSkeleton
-}  // namespace log4cxx
+}  // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
 #endif
 
 
-#endif //_LOG4CXX_APPENDER_SKELETON_H
+#endif //_LOG4CXXNG_APPENDER_SKELETON_H

@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_TCHAR_H
-#define _LOG4CXX_HELPERS_TCHAR_H
+#ifndef _LOG4CXXNG_HELPERS_TCHAR_H
+#define _LOG4CXXNG_HELPERS_TCHAR_H
 
 #error log4cxx/helpers/tchar.h is obsolete, see details following this line.
 
@@ -75,11 +75,11 @@
 * were made to log4cxx:
 *
 * 1. All inclusions of log4cxx/helpers/tchar.h
-*       and use of TCHAR, log4cxx::String and _T
+*       and use of TCHAR, log4cxxng::String and _T
 *       were removed from log4cxx.
 * 2. log4cxx/logstring.h was added to define the
-*     implementation character model using the log4cxx::logchar
-*     and log4cxx::LogString typedefs and LOG4CXX_STR macro.
+*     implementation character model using the log4cxxng::logchar
+*     and log4cxxng::LogString typedefs and LOG4CXXNG_STR macro.
 * 3. Methods commonly used by calling applications were defined
 *    in both wide-char and multi-byte and both pointer and string
 *    forms with conversion to the implementation character
@@ -87,18 +87,18 @@
 * 4. Use of Standard Template Library streams within
 *    log4cxx was substantially reduced (but not totally
 *    elminated).
-* 5. The LOG4CXX_DEBUG and similar macros were simplified
+* 5. The LOG4CXXNG_DEBUG and similar macros were simplified
 *    and now only take arguments that evaluate to
 *    character pointers or strings and no longer take
 *    the right hand side of an insertion operation:
 *
 *    //   This used to work, but no longer
-*    LOG4CXX_DEBUG(logger, "foo" << i);
+*    LOG4CXXNG_DEBUG(logger, "foo" << i);
 *
 *    If you extensively used this idiom, please consider
 *    migrating to stream-like API defined in log4cxx/stream.h.
 *
-* 6. The LOG4CXX_DEBUG and similar use the LOG4CXX_LOCATION
+* 6. The LOG4CXXNG_DEBUG and similar use the LOG4CXXNG_LOCATION
 *    macro to define the log statement location instead of
 *    using __FILE__ and __LINE__.  Logger::debug and
 *    similar now take const LocationInfo& instead of
@@ -116,8 +116,8 @@
 * Developers using log4cxx should seldom be concerned
 * with the internal character model of log4cxx unless
 * writing custom appenders or layouts.  An application
-* should not be using log4cxx::logchar, log4cxx::LogString
-* or LOG4CXX_STR unless dealing with something that is
+* should not be using log4cxxng::logchar, log4cxxng::LogString
+* or LOG4CXXNG_STR unless dealing with something that is
 * clearly a log4cxx internal.  If you find something
 * defined as using or returning LogString that you
 * don't consider a log4cxx internal, please file a
@@ -168,4 +168,4 @@
 *
 */
 
-#endif //_LOG4CXX_HELPERS_TCHAR_H
+#endif //_LOG4CXXNG_HELPERS_TCHAR_H

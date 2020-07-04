@@ -36,8 +36,8 @@
 #include <log4cxxNG/helpers/stringhelper.h>
 #include <apr_strings.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 
 #define TTCC_PAT  \
@@ -72,18 +72,18 @@ public:
 	void simple()
 	{
 		LayoutPtr layout = new SimpleLayout();
-		AppenderPtr appender = new FileAppender(layout, LOG4CXX_STR("output/simple"), false);
+		AppenderPtr appender = new FileAppender(layout, LOG4CXXNG_STR("output/simple"), false);
 		root->addAppender(appender);
 		common();
 
-		LOGUNIT_ASSERT(Compare::compare(LOG4CXX_FILE("output/simple"), LOG4CXX_FILE("witness/simple")));
+		LOGUNIT_ASSERT(Compare::compare(LOG4CXXNG_FILE("output/simple"), LOG4CXXNG_FILE("witness/simple")));
 	}
 
 	void ttcc()
 	{
 		LayoutPtr layout =
-			new TTCCLayout(LOG4CXX_STR("DATE"));
-		AppenderPtr appender = new FileAppender(layout, LOG4CXX_STR("output/ttcc"), false);
+			new TTCCLayout(LOG4CXXNG_STR("DATE"));
+		AppenderPtr appender = new FileAppender(layout, LOG4CXXNG_STR("output/ttcc"), false);
 		root->addAppender(appender);
 		common();
 
@@ -126,113 +126,113 @@ public:
 		// In the lines below, the logger names are chosen as an aid in
 		// remembering their level values. In general, the logger names
 		// have no bearing to level values.
-		LoggerPtr ERRlogger = Logger::getLogger(LOG4CXX_TEST_STR("ERR"));
+		LoggerPtr ERRlogger = Logger::getLogger(LOG4CXXNG_TEST_STR("ERR"));
 		ERRlogger->setLevel(Level::getError());
 
-		LoggerPtr INF = Logger::getLogger(LOG4CXX_TEST_STR("INF"));
+		LoggerPtr INF = Logger::getLogger(LOG4CXXNG_TEST_STR("INF"));
 		INF->setLevel(Level::getInfo());
 
-		LoggerPtr INF_ERR = Logger::getLogger(LOG4CXX_TEST_STR("INF.ERR"));
+		LoggerPtr INF_ERR = Logger::getLogger(LOG4CXXNG_TEST_STR("INF.ERR"));
 		INF_ERR->setLevel(Level::getError());
 
-		LoggerPtr DEB = Logger::getLogger(LOG4CXX_TEST_STR("DEB"));
+		LoggerPtr DEB = Logger::getLogger(LOG4CXXNG_TEST_STR("DEB"));
 		DEB->setLevel(Level::getDebug());
 
 		// Note: categories with undefined level
-		LoggerPtr INF_UNDEF = Logger::getLogger(LOG4CXX_TEST_STR("INF.UNDEF"));
-		LoggerPtr INF_ERR_UNDEF = Logger::getLogger(LOG4CXX_TEST_STR("INF.ERR.UNDEF"));
-		LoggerPtr UNDEF = Logger::getLogger(LOG4CXX_TEST_STR("UNDEF"));
+		LoggerPtr INF_UNDEF = Logger::getLogger(LOG4CXXNG_TEST_STR("INF.UNDEF"));
+		LoggerPtr INF_ERR_UNDEF = Logger::getLogger(LOG4CXXNG_TEST_STR("INF.ERR.UNDEF"));
+		LoggerPtr UNDEF = Logger::getLogger(LOG4CXXNG_TEST_STR("UNDEF"));
 
 		std::string msg("Message ");
 
 		Pool pool;
 
 		// These should all log.----------------------------
-		LOG4CXX_FATAL(ERRlogger, createMessage(i, pool));
+		LOG4CXXNG_FATAL(ERRlogger, createMessage(i, pool));
 		i++; //0
-		LOG4CXX_ERROR(ERRlogger, createMessage(i, pool));
+		LOG4CXXNG_ERROR(ERRlogger, createMessage(i, pool));
 		i++;
 
-		LOG4CXX_FATAL(INF, createMessage(i, pool));
+		LOG4CXXNG_FATAL(INF, createMessage(i, pool));
 		i++; // 2
-		LOG4CXX_ERROR(INF, createMessage(i, pool));
+		LOG4CXXNG_ERROR(INF, createMessage(i, pool));
 		i++;
-		LOG4CXX_WARN(INF, createMessage(i, pool));
+		LOG4CXXNG_WARN(INF, createMessage(i, pool));
 		i++;
-		LOG4CXX_INFO(INF, createMessage(i, pool));
+		LOG4CXXNG_INFO(INF, createMessage(i, pool));
 		i++;
 
-		LOG4CXX_FATAL(INF_UNDEF, createMessage(i, pool));
+		LOG4CXXNG_FATAL(INF_UNDEF, createMessage(i, pool));
 		i++; //6
-		LOG4CXX_ERROR(INF_UNDEF, createMessage(i, pool));
+		LOG4CXXNG_ERROR(INF_UNDEF, createMessage(i, pool));
 		i++;
-		LOG4CXX_WARN(INF_UNDEF, createMessage(i, pool));
+		LOG4CXXNG_WARN(INF_UNDEF, createMessage(i, pool));
 		i++;
-		LOG4CXX_INFO(INF_UNDEF, createMessage(i, pool));
+		LOG4CXXNG_INFO(INF_UNDEF, createMessage(i, pool));
 		i++;
 
-		LOG4CXX_FATAL(INF_ERR, createMessage(i, pool));
+		LOG4CXXNG_FATAL(INF_ERR, createMessage(i, pool));
 		i++; // 10
-		LOG4CXX_ERROR(INF_ERR, createMessage(i, pool));
+		LOG4CXXNG_ERROR(INF_ERR, createMessage(i, pool));
 		i++;
 
-		LOG4CXX_FATAL(INF_ERR_UNDEF, createMessage(i, pool));
+		LOG4CXXNG_FATAL(INF_ERR_UNDEF, createMessage(i, pool));
 		i++;
-		LOG4CXX_ERROR(INF_ERR_UNDEF, createMessage(i, pool));
+		LOG4CXXNG_ERROR(INF_ERR_UNDEF, createMessage(i, pool));
 		i++;
 
-		LOG4CXX_FATAL(DEB, createMessage(i, pool));
+		LOG4CXXNG_FATAL(DEB, createMessage(i, pool));
 		i++; //14
-		LOG4CXX_ERROR(DEB, createMessage(i, pool));
+		LOG4CXXNG_ERROR(DEB, createMessage(i, pool));
 		i++;
-		LOG4CXX_WARN(DEB, createMessage(i, pool));
+		LOG4CXXNG_WARN(DEB, createMessage(i, pool));
 		i++;
-		LOG4CXX_INFO(DEB, createMessage(i, pool));
+		LOG4CXXNG_INFO(DEB, createMessage(i, pool));
 		i++;
-		LOG4CXX_DEBUG(DEB, createMessage(i, pool));
+		LOG4CXXNG_DEBUG(DEB, createMessage(i, pool));
 		i++;
 
 		// defaultLevel=DEBUG
-		LOG4CXX_FATAL(UNDEF, createMessage(i, pool));
+		LOG4CXXNG_FATAL(UNDEF, createMessage(i, pool));
 		i++; // 19
-		LOG4CXX_ERROR(UNDEF, createMessage(i, pool));
+		LOG4CXXNG_ERROR(UNDEF, createMessage(i, pool));
 		i++;
-		LOG4CXX_WARN(UNDEF, createMessage(i, pool));
+		LOG4CXXNG_WARN(UNDEF, createMessage(i, pool));
 		i++;
-		LOG4CXX_INFO(UNDEF, createMessage(i, pool));
+		LOG4CXXNG_INFO(UNDEF, createMessage(i, pool));
 		i++;
-		LOG4CXX_DEBUG(UNDEF, createMessage(i, pool));
+		LOG4CXXNG_DEBUG(UNDEF, createMessage(i, pool));
 		i++;
 
 		// -------------------------------------------------
 		// The following should not log
-		LOG4CXX_WARN(ERRlogger, createMessage(i, pool));
+		LOG4CXXNG_WARN(ERRlogger, createMessage(i, pool));
 		i++;
-		LOG4CXX_INFO(ERRlogger, createMessage(i, pool));
+		LOG4CXXNG_INFO(ERRlogger, createMessage(i, pool));
 		i++;
-		LOG4CXX_DEBUG(ERRlogger, createMessage(i, pool));
-		i++;
-
-		LOG4CXX_DEBUG(INF, createMessage(i, pool));
-		i++;
-		LOG4CXX_DEBUG(INF_UNDEF, createMessage(i, pool));
+		LOG4CXXNG_DEBUG(ERRlogger, createMessage(i, pool));
 		i++;
 
-		LOG4CXX_WARN(INF_ERR, createMessage(i, pool));
+		LOG4CXXNG_DEBUG(INF, createMessage(i, pool));
 		i++;
-		LOG4CXX_INFO(INF_ERR, createMessage(i, pool));
+		LOG4CXXNG_DEBUG(INF_UNDEF, createMessage(i, pool));
 		i++;
-		LOG4CXX_DEBUG(INF_ERR, createMessage(i, pool));
+
+		LOG4CXXNG_WARN(INF_ERR, createMessage(i, pool));
 		i++;
-		LOG4CXX_WARN(INF_ERR_UNDEF, createMessage(i, pool));
+		LOG4CXXNG_INFO(INF_ERR, createMessage(i, pool));
 		i++;
-		LOG4CXX_INFO(INF_ERR_UNDEF, createMessage(i, pool));
+		LOG4CXXNG_DEBUG(INF_ERR, createMessage(i, pool));
 		i++;
-		LOG4CXX_DEBUG(INF_ERR_UNDEF, createMessage(i, pool));
+		LOG4CXXNG_WARN(INF_ERR_UNDEF, createMessage(i, pool));
+		i++;
+		LOG4CXXNG_INFO(INF_ERR_UNDEF, createMessage(i, pool));
+		i++;
+		LOG4CXXNG_DEBUG(INF_ERR_UNDEF, createMessage(i, pool));
 		i++;
 
 		// -------------------------------------------------
-		LOG4CXX_INFO(INF, LOG4CXX_TEST_STR("Messages should bear numbers 0 through 23."));
+		LOG4CXXNG_INFO(INF, LOG4CXXNG_TEST_STR("Messages should bear numbers 0 through 23."));
 	}
 
 	LoggerPtr root;

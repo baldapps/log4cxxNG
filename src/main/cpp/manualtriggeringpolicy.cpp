@@ -19,18 +19,18 @@
 #include <log4cxxNG/helpers/stringhelper.h>
 #include <log4cxxNG/helpers/optionconverter.h>
 
-using namespace log4cxx;
-using namespace log4cxx::rolling;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::rolling;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(ManualTriggeringPolicy)
+IMPLEMENT_LOG4CXXNG_OBJECT(ManualTriggeringPolicy)
 
 ManualTriggeringPolicy::ManualTriggeringPolicy()
 {
 }
 
 bool ManualTriggeringPolicy::isTriggeringEvent(Appender* /* appender */,
-	const log4cxx::spi::LoggingEventPtr& /* event */,
+	const log4cxxng::spi::LoggingEventPtr& /* event */,
 	const LogString& /* file */,
 	size_t /* fileLength */ )
 {

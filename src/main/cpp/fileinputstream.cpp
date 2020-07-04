@@ -21,15 +21,15 @@
 #include <log4cxxNG/helpers/bytebuffer.h>
 #include <apr_file_io.h>
 #include <log4cxxNG/helpers/transcoder.h>
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 #include <log4cxxNG/helpers/aprinitializer.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(FileInputStream)
+IMPLEMENT_LOG4CXXNG_OBJECT(FileInputStream)
 
 FileInputStream::FileInputStream(const LogString& filename) : fileptr(0)
 {

@@ -15,19 +15,19 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_TRANSFORM_H
-#define _LOG4CXX_HELPERS_TRANSFORM_H
+#ifndef _LOG4CXXNG_HELPERS_TRANSFORM_H
+#define _LOG4CXXNG_HELPERS_TRANSFORM_H
 
 #include <log4cxxNG/logstring.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
 /**
 Utility class for transforming strings.
 */
-class LOG4CXX_EXPORT Transform
+class LOG4CXXNG_EXPORT Transform
 {
 	public:
 		/**
@@ -57,6 +57,6 @@ class LOG4CXX_EXPORT Transform
 			LogString& buf, const LogString& input);
 }; // class Transform
 }  // namespace helpers
-} //namespace log4cxx
+} //namespace log4cxxng
 
-#endif // _LOG4CXX_HELPERS_TRANSFORM_H
+#endif // _LOG4CXXNG_HELPERS_TRANSFORM_H

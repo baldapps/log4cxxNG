@@ -15,31 +15,31 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_RESOURCE_BUNDLE_H
-#define _LOG4CXX_HELPERS_RESOURCE_BUNDLE_H
+#ifndef _LOG4CXXNG_HELPERS_RESOURCE_BUNDLE_H
+#define _LOG4CXXNG_HELPERS_RESOURCE_BUNDLE_H
 
 #include <log4cxxNG/helpers/objectimpl.h>
 #include <log4cxxNG/helpers/objectptr.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
 class Locale;
 
 class ResourceBundle;
-LOG4CXX_PTR_DEF(ResourceBundle);
+LOG4CXXNG_PTR_DEF(ResourceBundle);
 
 /**
 Resource bundles contain locale-specific objects
 */
-class LOG4CXX_EXPORT ResourceBundle : public ObjectImpl
+class LOG4CXXNG_EXPORT ResourceBundle : public ObjectImpl
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(ResourceBundle)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(ResourceBundle)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(ResourceBundle)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(ResourceBundle)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		Gets a string for the given key from this resource bundle or one of
@@ -85,7 +85,7 @@ class LOG4CXX_EXPORT ResourceBundle : public ObjectImpl
 		ResourceBundlePtr parent;
 }; // class ResourceBundle
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #endif
 

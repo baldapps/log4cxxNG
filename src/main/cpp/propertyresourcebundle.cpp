@@ -17,15 +17,15 @@
 #include <log4cxxNG/logstring.h>
 #include <log4cxxNG/helpers/propertyresourcebundle.h>
 #include <log4cxxNG/helpers/exception.h>
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 #include <log4cxxNG/private/log4cxxNG_private.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(PropertyResourceBundle)
+IMPLEMENT_LOG4CXXNG_OBJECT(PropertyResourceBundle)
 
 
 PropertyResourceBundle::PropertyResourceBundle(InputStreamPtr inStream)
@@ -52,7 +52,7 @@ LogString PropertyResourceBundle::getString(const LogString& key) const
 	while (resourceBundle != 0);
 
 	throw MissingResourceException(key);
-#if LOG4CXX_RETURN_AFTER_THROW
+#if LOG4CXXNG_RETURN_AFTER_THROW
 	return resource;
 #endif
 }

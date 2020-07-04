@@ -24,8 +24,8 @@
 #include <log4cxxNG/helpers/transcoder.h>
 #include <log4cxxNG/helpers/threadspecificdata.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 NDC::NDC(const std::string& message)
 {
@@ -220,7 +220,7 @@ void NDC::pushLS(const LogString& message)
 
 void NDC::push(const std::string& message)
 {
-	LOG4CXX_DECODE_CHAR(msg, message);
+	LOG4CXXNG_DECODE_CHAR(msg, message);
 	pushLS(msg);
 }
 
@@ -248,7 +248,7 @@ bool NDC::empty()
 	return empty;
 }
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 NDC::NDC(const std::wstring& message)
 {
 	push(message);
@@ -256,7 +256,7 @@ NDC::NDC(const std::wstring& message)
 
 void NDC::push(const std::wstring& message)
 {
-	LOG4CXX_DECODE_WCHAR(msg, message);
+	LOG4CXXNG_DECODE_WCHAR(msg, message);
 	pushLS(msg);
 }
 
@@ -305,7 +305,7 @@ bool NDC::peek(std::wstring& dst)
 #endif
 
 
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 NDC::NDC(const std::basic_string<UniChar>& message)
 {
 	push(message);
@@ -313,7 +313,7 @@ NDC::NDC(const std::basic_string<UniChar>& message)
 
 void NDC::push(const std::basic_string<UniChar>& message)
 {
-	LOG4CXX_DECODE_UNICHAR(msg, message);
+	LOG4CXXNG_DECODE_UNICHAR(msg, message);
 	pushLS(msg);
 }
 
@@ -362,7 +362,7 @@ bool NDC::peek(std::basic_string<UniChar>& dst)
 #endif
 
 
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 NDC::NDC(const CFStringRef& message)
 {
 	push(message);
@@ -370,7 +370,7 @@ NDC::NDC(const CFStringRef& message)
 
 void NDC::push(const CFStringRef& message)
 {
-	LOG4CXX_DECODE_CFSTRING(msg, message);
+	LOG4CXXNG_DECODE_CFSTRING(msg, message);
 	pushLS(msg);
 }
 

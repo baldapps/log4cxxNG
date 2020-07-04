@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_TESTS_UTIL_ABS_DATE_TIME_FILTER_H
-#define _LOG4CXX_TESTS_UTIL_ABS_DATE_TIME_FILTER_H
+#ifndef _LOG4CXXNG_TESTS_UTIL_ABS_DATE_TIME_FILTER_H
+#define _LOG4CXXNG_TESTS_UTIL_ABS_DATE_TIME_FILTER_H
 
 #include "filter.h"
 
-namespace log4cxx
+namespace log4cxxng
 {
 class AbsoluteDateAndTimeFilter : public Filter
 {
@@ -30,4 +30,4 @@ class AbsoluteDateAndTimeFilter : public Filter
 }
 
 
-#endif //_LOG4CXX_TESTS_UTIL_ABS_DATE_TIME_FILTER_H
+#endif //_LOG4CXXNG_TESTS_UTIL_ABS_DATE_TIME_FILTER_H

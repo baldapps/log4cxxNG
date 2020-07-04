@@ -21,15 +21,15 @@
 #include <log4cxxNG/logstring.h>
 #include "num343patternconverter.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::pattern;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::pattern;
 
-IMPLEMENT_LOG4CXX_OBJECT(Num343PatternConverter)
+IMPLEMENT_LOG4CXXNG_OBJECT(Num343PatternConverter)
 
 
 Num343PatternConverter::Num343PatternConverter() :
-	LoggingEventPatternConverter(LOG4CXX_STR("Num343"), LOG4CXX_STR("num343"))
+	LoggingEventPatternConverter(LOG4CXXNG_STR("Num343"), LOG4CXXNG_STR("num343"))
 {
 }
 
@@ -45,6 +45,6 @@ void Num343PatternConverter::format(
 	LogString& sbuf,
 	Pool&) const
 {
-	sbuf.append(LOG4CXX_STR("343"));
+	sbuf.append(LOG4CXXNG_STR("343"));
 }
 

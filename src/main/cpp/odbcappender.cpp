@@ -22,11 +22,11 @@
 #include <log4cxxNG/patternlayout.h>
 #include <apr_strings.h>
 
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 #include <log4cxxNG/private/log4cxxNG_private.h>
-#if LOG4CXX_HAVE_ODBC
+#if LOG4CXXNG_HAVE_ODBC
 	#if defined(WIN32) || defined(_WIN32)
 		#include <windows.h>
 	#endif
@@ -34,14 +34,14 @@
 #endif
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::db;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::db;
+using namespace log4cxxng::spi;
 
 SQLException::SQLException(short fHandleType,
 	void* hInput, const char* prolog,
-	log4cxx::helpers::Pool& p)
+	log4cxxng::helpers::Pool& p)
 	: Exception(formatMessage(fHandleType, hInput, prolog, p))
 {
 }
@@ -58,11 +58,11 @@ SQLException::SQLException(const SQLException& src)
 }
 
 const char* SQLException::formatMessage(short fHandleType,
-	void* hInput, const char* prolog, log4cxx::helpers::Pool& p)
+	void* hInput, const char* prolog, log4cxxng::helpers::Pool& p)
 {
 	std::string strReturn(prolog);
 	strReturn.append(" - ");
-#if LOG4CXX_HAVE_ODBC
+#if LOG4CXXNG_HAVE_ODBC
 	SQLCHAR       SqlState[6];
 	SQLCHAR       Msg[SQL_MAX_MESSAGE_LENGTH];
 	SQLINTEGER    NativeError;
@@ -88,7 +88,7 @@ const char* SQLException::formatMessage(short fHandleType,
 }
 
 
-IMPLEMENT_LOG4CXX_OBJECT(ODBCAppender)
+IMPLEMENT_LOG4CXXNG_OBJECT(ODBCAppender)
 
 
 
@@ -104,25 +104,25 @@ ODBCAppender::~ODBCAppender()
 
 void ODBCAppender::setOption(const LogString& option, const LogString& value)
 {
-	if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("BUFFERSIZE"), LOG4CXX_STR("buffersize")))
+	if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("BUFFERSIZE"), LOG4CXXNG_STR("buffersize")))
 	{
 		setBufferSize((size_t)OptionConverter::toInt(value, 1));
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("PASSWORD"), LOG4CXX_STR("password")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("PASSWORD"), LOG4CXXNG_STR("password")))
 	{
 		setPassword(value);
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("SQL"), LOG4CXX_STR("sql")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("SQL"), LOG4CXXNG_STR("sql")))
 	{
 		setSql(value);
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("URL"), LOG4CXX_STR("url"))
-		|| StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("DSN"), LOG4CXX_STR("dsn"))
-		|| StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("CONNECTIONSTRING"), LOG4CXX_STR("connectionstring"))  )
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("URL"), LOG4CXXNG_STR("url"))
+		|| StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("DSN"), LOG4CXXNG_STR("dsn"))
+		|| StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("CONNECTIONSTRING"), LOG4CXXNG_STR("connectionstring"))  )
 	{
 		setURL(value);
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("USER"), LOG4CXX_STR("user")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("USER"), LOG4CXXNG_STR("user")))
 	{
 		setUser(value);
 	}
@@ -132,17 +132,17 @@ void ODBCAppender::setOption(const LogString& option, const LogString& value)
 	}
 }
 
-void ODBCAppender::activateOptions(log4cxx::helpers::Pool&)
+void ODBCAppender::activateOptions(log4cxxng::helpers::Pool&)
 {
-#if !LOG4CXX_HAVE_ODBC
-	LogLog::error(LOG4CXX_STR("Can not activate ODBCAppender unless compiled with ODBC support."));
+#if !LOG4CXXNG_HAVE_ODBC
+	LogLog::error(LOG4CXXNG_STR("Can not activate ODBCAppender unless compiled with ODBC support."));
 #endif
 }
 
 
-void ODBCAppender::append(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& p)
+void ODBCAppender::append(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& p)
 {
-#if LOG4CXX_HAVE_ODBC
+#if LOG4CXXNG_HAVE_ODBC
 	buffer.push_back(event);
 
 	if (buffer.size() >= bufferSize)
@@ -153,16 +153,16 @@ void ODBCAppender::append(const spi::LoggingEventPtr& event, log4cxx::helpers::P
 #endif
 }
 
-LogString ODBCAppender::getLogStatement(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& p) const
+LogString ODBCAppender::getLogStatement(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& p) const
 {
 	LogString sbuf;
 	getLayout()->format(sbuf, event, p);
 	return sbuf;
 }
 
-void ODBCAppender::execute(const LogString& sql, log4cxx::helpers::Pool& p)
+void ODBCAppender::execute(const LogString& sql, log4cxxng::helpers::Pool& p)
 {
-#if LOG4CXX_HAVE_ODBC
+#if LOG4CXXNG_HAVE_ODBC
 	SQLRETURN ret;
 	SQLHDBC con = SQL_NULL_HDBC;
 	SQLHSTMT stmt = SQL_NULL_HSTMT;
@@ -214,9 +214,9 @@ void ODBCAppender::closeConnection(ODBCAppender::SQLHDBC /* con */)
 
 
 
-ODBCAppender::SQLHDBC ODBCAppender::getConnection(log4cxx::helpers::Pool& p)
+ODBCAppender::SQLHDBC ODBCAppender::getConnection(log4cxxng::helpers::Pool& p)
 {
-#if LOG4CXX_HAVE_ODBC
+#if LOG4CXXNG_HAVE_ODBC
 	SQLRETURN ret;
 
 	if (env == SQL_NULL_HENV)
@@ -294,11 +294,11 @@ void ODBCAppender::close()
 	}
 	catch (SQLException& e)
 	{
-		errorHandler->error(LOG4CXX_STR("Error closing connection"),
+		errorHandler->error(LOG4CXXNG_STR("Error closing connection"),
 			e, ErrorCode::GENERIC_FAILURE);
 	}
 
-#if LOG4CXX_HAVE_ODBC
+#if LOG4CXXNG_HAVE_ODBC
 
 	if (connection != SQL_NULL_HDBC)
 	{
@@ -329,7 +329,7 @@ void ODBCAppender::flushBuffer(Pool& p)
 		}
 		catch (SQLException& e)
 		{
-			errorHandler->error(LOG4CXX_STR("Failed to execute sql"), e,
+			errorHandler->error(LOG4CXXNG_STR("Failed to execute sql"), e,
 				ErrorCode::FLUSH_FAILURE);
 		}
 	}

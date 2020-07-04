@@ -15,17 +15,17 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_THREAD_LOCAL_H
-#define _LOG4CXX_HELPERS_THREAD_LOCAL_H
+#ifndef _LOG4CXXNG_HELPERS_THREAD_LOCAL_H
+#define _LOG4CXXNG_HELPERS_THREAD_LOCAL_H
 
 #include <log4cxxNG/log4cxxNG.h>
 #include <log4cxxNG/helpers/pool.h>
 
-#if !defined(LOG4CXX_THREAD_FUNC)
+#if !defined(LOG4CXXNG_THREAD_FUNC)
 	#if defined(_WIN32)
-		#define LOG4CXX_THREAD_FUNC __stdcall
+		#define LOG4CXXNG_THREAD_FUNC __stdcall
 	#else
-		#define LOG4CXX_THREAD_FUNC
+		#define LOG4CXXNG_THREAD_FUNC
 	#endif
 #endif
 
@@ -34,7 +34,7 @@ extern "C" {
 	struct apr_threadkey_t;
 }
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -43,7 +43,7 @@ namespace helpers
  *  This class provides thread-local variables.  This class is similar in function
  *  to java.lang.ThreadLocal.
  */
-class LOG4CXX_EXPORT ThreadLocal
+class LOG4CXXNG_EXPORT ThreadLocal
 {
 	public:
 		/**
@@ -81,6 +81,6 @@ class LOG4CXX_EXPORT ThreadLocal
 		apr_threadkey_t* key;
 };
 } // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_THREAD_LOCAL_H
+#endif //_LOG4CXXNG_HELPERS_THREAD_LOCAL_H

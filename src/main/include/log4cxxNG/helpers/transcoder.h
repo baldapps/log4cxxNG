@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_TRANSCODER_H
-#define _LOG4CXX_HELPERS_TRANSCODER_H
+#ifndef _LOG4CXXNG_HELPERS_TRANSCODER_H
+#define _LOG4CXXNG_HELPERS_TRANSCODER_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -26,7 +26,7 @@
 #include <log4cxxNG/logstring.h>
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -38,7 +38,7 @@ class Pool;
 *      internal strings.
 *
 */
-class LOG4CXX_EXPORT Transcoder
+class LOG4CXXNG_EXPORT Transcoder
 {
 	public:
 
@@ -54,7 +54,7 @@ class LOG4CXX_EXPORT Transcoder
 		/**
 		 *    Converts the LogString to a UTF-8 string.
 		 */
-		static char* encodeUTF8(const LogString& src, log4cxx::helpers::Pool& p);
+		static char* encodeUTF8(const LogString& src, log4cxxng::helpers::Pool& p);
 		/**
 		 *    Append UCS-4 code point to a byte buffer as UTF-8.
 		 */
@@ -105,14 +105,14 @@ class LOG4CXX_EXPORT Transcoder
 		  *      @param p pool from which to allocate return value.
 		  *      @return pool allocated string.
 		  */
-		static char* encode(const LogString& src, log4cxx::helpers::Pool& p);
+		static char* encode(const LogString& src, log4cxxng::helpers::Pool& p);
 
 
 
-#if LOG4CXX_WCHAR_T_API || LOG4CXX_LOGCHAR_IS_WCHAR_T || defined(WIN32) || defined(_WIN32)
+#if LOG4CXXNG_WCHAR_T_API || LOG4CXXNG_LOGCHAR_IS_WCHAR_T || defined(WIN32) || defined(_WIN32)
 		static void decode(const std::wstring& src, LogString& dst);
 		static void encode(const LogString& src, std::wstring& dst);
-		static wchar_t* wencode(const LogString& src, log4cxx::helpers::Pool& p);
+		static wchar_t* wencode(const LogString& src, log4cxxng::helpers::Pool& p);
 
 		/**
 		 *   Decodes next character from a wstring.
@@ -134,7 +134,7 @@ class LOG4CXX_EXPORT Transcoder
 #endif
 
 
-#if LOG4CXX_UNICHAR_API || LOG4CXX_CFSTRING_API || LOG4CXX_LOGCHAR_IS_UNICHAR
+#if LOG4CXXNG_UNICHAR_API || LOG4CXXNG_CFSTRING_API || LOG4CXXNG_LOGCHAR_IS_UNICHAR
 		static void decode(const std::basic_string<UniChar>& src, LogString& dst);
 		static void encode(const LogString& src, std::basic_string<UniChar>& dst);
 
@@ -157,7 +157,7 @@ class LOG4CXX_EXPORT Transcoder
 
 #endif
 
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		static void decode(const CFStringRef& src, LogString& dst);
 		static CFStringRef encode(const LogString& src);
 #endif
@@ -166,12 +166,12 @@ class LOG4CXX_EXPORT Transcoder
 
 		/**
 		 *   Returns a logchar value given a character literal in the ASCII charset.
-		 *   Used to implement the LOG4CXX_STR macro for EBCDIC and UNICHAR.
+		 *   Used to implement the LOG4CXXNG_STR macro for EBCDIC and UNICHAR.
 		 */
 		static logchar decode(char v);
 		/**
 		 *   Returns a LogString given a string literal in the ASCII charset.
-		 *   Used to implement the LOG4CXX_STR macro for EBCDIC and UNICHAR.
+		 *   Used to implement the LOG4CXXNG_STR macro for EBCDIC and UNICHAR.
 		 */
 		static LogString decode(const char* v);
 
@@ -196,59 +196,59 @@ class LOG4CXX_EXPORT Transcoder
 }
 }
 
-#define LOG4CXX_ENCODE_CHAR(var, src) \
+#define LOG4CXXNG_ENCODE_CHAR(var, src) \
 	std::string var;                      \
-	log4cxx::helpers::Transcoder::encode(src, var)
+	log4cxxng::helpers::Transcoder::encode(src, var)
 
-#define LOG4CXX_DECODE_CHAR(var, src) \
-	log4cxx::LogString var;                      \
-	log4cxx::helpers::Transcoder::decode(src, var)
+#define LOG4CXXNG_DECODE_CHAR(var, src) \
+	log4cxxng::LogString var;                      \
+	log4cxxng::helpers::Transcoder::decode(src, var)
 
-#define LOG4CXX_DECODE_CFSTRING(var, src) \
-	log4cxx::LogString var;                      \
-	log4cxx::helpers::Transcoder::decode(src, var)
+#define LOG4CXXNG_DECODE_CFSTRING(var, src) \
+	log4cxxng::LogString var;                      \
+	log4cxxng::helpers::Transcoder::decode(src, var)
 
-#define LOG4CXX_ENCODE_CFSTRING(var, src) \
-	CFStringRef var = log4cxx::helpers::Transcoder::encode(src)
+#define LOG4CXXNG_ENCODE_CFSTRING(var, src) \
+	CFStringRef var = log4cxxng::helpers::Transcoder::encode(src)
 
 
-#if LOG4CXX_LOGCHAR_IS_WCHAR
+#if LOG4CXXNG_LOGCHAR_IS_WCHAR
 
-#define LOG4CXX_ENCODE_WCHAR(var, src) \
+#define LOG4CXXNG_ENCODE_WCHAR(var, src) \
 	const std::wstring& var = src
 
-#define LOG4CXX_DECODE_WCHAR(var, src) \
-	const log4cxx::LogString& var = src
+#define LOG4CXXNG_DECODE_WCHAR(var, src) \
+	const log4cxxng::LogString& var = src
 
 #else
 
-#define LOG4CXX_ENCODE_WCHAR(var, src) \
+#define LOG4CXXNG_ENCODE_WCHAR(var, src) \
 	std::wstring var;                      \
-	log4cxx::helpers::Transcoder::encode(src, var)
+	log4cxxng::helpers::Transcoder::encode(src, var)
 
-#define LOG4CXX_DECODE_WCHAR(var, src) \
-	log4cxx::LogString var;                      \
-	log4cxx::helpers::Transcoder::decode(src, var)
+#define LOG4CXXNG_DECODE_WCHAR(var, src) \
+	log4cxxng::LogString var;                      \
+	log4cxxng::helpers::Transcoder::decode(src, var)
 
 #endif
 
-#if LOG4CXX_LOGCHAR_IS_UNICHAR
+#if LOG4CXXNG_LOGCHAR_IS_UNICHAR
 
-#define LOG4CXX_ENCODE_UNICHAR(var, src) \
+#define LOG4CXXNG_ENCODE_UNICHAR(var, src) \
 	const std::basic_string<UniChar>& var = src
 
-#define LOG4CXX_DECODE_UNICHAR(var, src) \
-	const log4cxx::LogString& var = src
+#define LOG4CXXNG_DECODE_UNICHAR(var, src) \
+	const log4cxxng::LogString& var = src
 
 #else
 
-#define LOG4CXX_ENCODE_UNICHAR(var, src) \
+#define LOG4CXXNG_ENCODE_UNICHAR(var, src) \
 	std::basic_string<UniChar> var;          \
-	log4cxx::helpers::Transcoder::encode(src, var)
+	log4cxxng::helpers::Transcoder::encode(src, var)
 
-#define LOG4CXX_DECODE_UNICHAR(var, src) \
-	log4cxx::LogString var;                      \
-	log4cxx::helpers::Transcoder::decode(src, var)
+#define LOG4CXXNG_DECODE_UNICHAR(var, src) \
+	log4cxxng::LogString var;                      \
+	log4cxxng::helpers::Transcoder::decode(src, var)
 
 #endif
 
@@ -256,4 +256,4 @@ class LOG4CXX_EXPORT Transcoder
 	#pragma warning (pop)
 #endif
 
-#endif //_LOG4CXX_HELPERS_TRANSCODER_H
+#endif //_LOG4CXXNG_HELPERS_TRANSCODER_H

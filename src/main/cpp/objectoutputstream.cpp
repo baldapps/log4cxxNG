@@ -25,10 +25,10 @@
 #include <log4cxxNG/helpers/charsetencoder.h>
 #include "apr_pools.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(ObjectOutputStream)
+IMPLEMENT_LOG4CXXNG_OBJECT(ObjectOutputStream)
 
 ObjectOutputStream::ObjectOutputStream(OutputStreamPtr outputStream, Pool& p)
 	:   os(outputStream),
@@ -72,7 +72,7 @@ void ObjectOutputStream::writeObject(const LogString& val, Pool& p)
 	objectHandle++;
 	writeByte(TC_STRING, p);
 	char bytes[2];
-#if LOG4CXX_LOGCHAR_IS_UTF8
+#if LOG4CXXNG_LOGCHAR_IS_UTF8
 	size_t len = val.size();
 	ByteBuffer dataBuf(const_cast<char*>(val.data()), val.size());
 #else
@@ -174,7 +174,7 @@ void ObjectOutputStream::writeInt(int val, Pool& p)
 	os->write(buf, p);
 }
 
-void ObjectOutputStream::writeLong(log4cxx_time_t val, Pool& p)
+void ObjectOutputStream::writeLong(log4cxxng_time_t val, Pool& p)
 {
 	char bytes[8];
 

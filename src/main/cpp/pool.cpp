@@ -21,13 +21,13 @@
 #include <log4cxxNG/helpers/exception.h>
 #include <apr_pools.h>
 #include <assert.h>
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 #include <log4cxxNG/helpers/aprinitializer.h>
 
-using namespace log4cxx::helpers;
-using namespace log4cxx;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng;
 
 
 Pool::Pool() : pool(0), release(true)

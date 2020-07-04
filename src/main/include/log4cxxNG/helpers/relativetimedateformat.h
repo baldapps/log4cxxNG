@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_RELATIVE_TIME_DATE_FORMAT_H
-#define _LOG4CXX_HELPERS_RELATIVE_TIME_DATE_FORMAT_H
+#ifndef _LOG4CXXNG_HELPERS_RELATIVE_TIME_DATE_FORMAT_H
+#define _LOG4CXXNG_HELPERS_RELATIVE_TIME_DATE_FORMAT_H
 
 #include <log4cxxNG/helpers/dateformat.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -29,19 +29,19 @@ Formats a date by printing the number of milliseconds
 elapsed since the start of the application. This is the fastest
 printing DateFormat in the package.
 */
-class LOG4CXX_EXPORT RelativeTimeDateFormat : public DateFormat
+class LOG4CXXNG_EXPORT RelativeTimeDateFormat : public DateFormat
 {
 	public:
 		RelativeTimeDateFormat();
 		virtual void format(LogString& s,
-			log4cxx_time_t tm,
-			log4cxx::helpers::Pool& p) const;
+			log4cxxng_time_t tm,
+			log4cxxng::helpers::Pool& p) const;
 
 	private:
-		log4cxx_time_t startTime;
+		log4cxxng_time_t startTime;
 
 };
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif // _LOG4CXX_HELPERS_RELATIVE_TIME_DATE_FORMAT_H
+#endif // _LOG4CXXNG_HELPERS_RELATIVE_TIME_DATE_FORMAT_H

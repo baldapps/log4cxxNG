@@ -18,11 +18,11 @@
 #include <log4cxxNG/helpers/messagebuffer.h>
 #include <log4cxxNG/helpers/transcoder.h>
 
-using namespace log4cxx::helpers;
+using namespace log4cxxng::helpers;
 
 static bool gMessageBufferUseStaticStream = false;
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -211,7 +211,7 @@ std::ostream& CharMessageBuffer::operator<<(void* val)
 }
 
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 WideMessageBuffer::WideMessageBuffer() : stream(0)
 {
 
@@ -384,7 +384,7 @@ std::basic_ostream<wchar_t>& WideMessageBuffer::operator<<(void* val)
 
 
 MessageBuffer::MessageBuffer()  : wbuf(0)
-#if LOG4CXX_UNICHAR_API || LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_UNICHAR_API || LOG4CXXNG_CFSTRING_API
 	, ubuf(0)
 #endif
 {
@@ -393,7 +393,7 @@ MessageBuffer::MessageBuffer()  : wbuf(0)
 MessageBuffer::~MessageBuffer()
 {
 	delete wbuf;
-#if LOG4CXX_UNICHAR_API || LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_UNICHAR_API || LOG4CXXNG_CFSTRING_API
 	delete ubuf;
 #endif
 }
@@ -401,7 +401,7 @@ MessageBuffer::~MessageBuffer()
 bool MessageBuffer::hasStream() const
 {
 	bool retval = cbuf.hasStream() || (wbuf != 0 && wbuf->hasStream());
-#if LOG4CXX_UNICHAR_API || LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_UNICHAR_API || LOG4CXXNG_CFSTRING_API
 	retval = retval || (ubuf != 0 && ubuf->hasStream());
 #endif
 	return retval;
@@ -526,36 +526,36 @@ std::ostream& MessageBuffer::operator<<(void* val)
 #endif
 
 
-#if LOG4CXX_UNICHAR_API || LOG4CXX_CFSTRING_API
-UniCharMessageBuffer& MessageBuffer::operator<<(const std::basic_string<log4cxx::UniChar>& msg)
+#if LOG4CXXNG_UNICHAR_API || LOG4CXXNG_CFSTRING_API
+UniCharMessageBuffer& MessageBuffer::operator<<(const std::basic_string<log4cxxng::UniChar>& msg)
 {
 	ubuf = new UniCharMessageBuffer();
 	return (*ubuf) << msg;
 }
 
-UniCharMessageBuffer& MessageBuffer::operator<<(const log4cxx::UniChar* msg)
+UniCharMessageBuffer& MessageBuffer::operator<<(const log4cxxng::UniChar* msg)
 {
 	ubuf = new UniCharMessageBuffer();
 	return (*ubuf) << msg;
 }
-UniCharMessageBuffer& MessageBuffer::operator<<(log4cxx::UniChar* msg)
+UniCharMessageBuffer& MessageBuffer::operator<<(log4cxxng::UniChar* msg)
 {
 	ubuf = new UniCharMessageBuffer();
-	return (*ubuf) << (const log4cxx::UniChar*) msg;
+	return (*ubuf) << (const log4cxxng::UniChar*) msg;
 }
 
-UniCharMessageBuffer& MessageBuffer::operator<<(const log4cxx::UniChar msg)
+UniCharMessageBuffer& MessageBuffer::operator<<(const log4cxxng::UniChar msg)
 {
 	ubuf = new UniCharMessageBuffer();
 	return (*ubuf) << msg;
 }
 
-const std::basic_string<log4cxx::UniChar>& MessageBuffer::str(UniCharMessageBuffer& buf)
+const std::basic_string<log4cxxng::UniChar>& MessageBuffer::str(UniCharMessageBuffer& buf)
 {
 	return ubuf->str(buf);
 }
 
-const std::basic_string<log4cxx::UniChar>& MessageBuffer::str(std::basic_ostream<log4cxx::UniChar>& os)
+const std::basic_string<log4cxxng::UniChar>& MessageBuffer::str(std::basic_ostream<log4cxxng::UniChar>& os)
 {
 	return ubuf->str(os);
 }
@@ -568,8 +568,8 @@ UniCharMessageBuffer::UniCharMessageBuffer() : stream(0)
 
 	if (gMessageBufferUseStaticStream)
 	{
-		thread_local static log4cxx::UniChar ossBuf[8192];
-		thread_local static std::basic_ostringstream<log4cxx::UniChar> sStream;
+		thread_local static log4cxxng::UniChar ossBuf[8192];
+		thread_local static std::basic_ostringstream<log4cxxng::UniChar> sStream;
 		thread_local static bool inited = false;
 
 		if (!inited)
@@ -595,7 +595,7 @@ UniCharMessageBuffer::~UniCharMessageBuffer()
 }
 
 
-UniCharMessageBuffer& UniCharMessageBuffer::operator<<(const std::basic_string<log4cxx::UniChar>& msg)
+UniCharMessageBuffer& UniCharMessageBuffer::operator<<(const std::basic_string<log4cxxng::UniChar>& msg)
 {
 	if (stream == 0)
 	{
@@ -609,10 +609,10 @@ UniCharMessageBuffer& UniCharMessageBuffer::operator<<(const std::basic_string<l
 	return *this;
 }
 
-UniCharMessageBuffer& UniCharMessageBuffer::operator<<(const log4cxx::UniChar* msg)
+UniCharMessageBuffer& UniCharMessageBuffer::operator<<(const log4cxxng::UniChar* msg)
 {
-	const log4cxx::UniChar* actualMsg = msg;
-	static log4cxx::UniChar nullLiteral[] = { 0x6E, 0x75, 0x6C, 0x6C, 0};
+	const log4cxxng::UniChar* actualMsg = msg;
+	static log4cxxng::UniChar nullLiteral[] = { 0x6E, 0x75, 0x6C, 0x6C, 0};
 
 	if (actualMsg == 0)
 	{
@@ -631,12 +631,12 @@ UniCharMessageBuffer& UniCharMessageBuffer::operator<<(const log4cxx::UniChar* m
 	return *this;
 }
 
-UniCharMessageBuffer& UniCharMessageBuffer::operator<<(log4cxx::UniChar* msg)
+UniCharMessageBuffer& UniCharMessageBuffer::operator<<(log4cxxng::UniChar* msg)
 {
-	return operator<<((const log4cxx::UniChar*) msg);
+	return operator<<((const log4cxxng::UniChar*) msg);
 }
 
-UniCharMessageBuffer& UniCharMessageBuffer::operator<<(const log4cxx::UniChar msg)
+UniCharMessageBuffer& UniCharMessageBuffer::operator<<(const log4cxxng::UniChar msg)
 {
 	if (stream == 0)
 	{
@@ -665,14 +665,14 @@ UniCharMessageBuffer::operator UniCharMessageBuffer::uostream& ()
 	return *stream;
 }
 
-const std::basic_string<log4cxx::UniChar>& UniCharMessageBuffer::str(UniCharMessageBuffer::uostream&)
+const std::basic_string<log4cxxng::UniChar>& UniCharMessageBuffer::str(UniCharMessageBuffer::uostream&)
 {
 	buf = stream->str();
 	ResetStream(*stream);
 	return buf;
 }
 
-const std::basic_string<log4cxx::UniChar>& UniCharMessageBuffer::str(UniCharMessageBuffer&)
+const std::basic_string<log4cxxng::UniChar>& UniCharMessageBuffer::str(UniCharMessageBuffer&)
 {
 	return buf;
 }
@@ -734,13 +734,13 @@ UniCharMessageBuffer::uostream& UniCharMessageBuffer::operator<<(void* val)
 
 #endif
 
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 #include <CoreFoundation/CFString.h>
 #include <vector>
 
 UniCharMessageBuffer& UniCharMessageBuffer::operator<<(const CFStringRef& msg)
 {
-	const log4cxx::UniChar* chars = CFStringGetCharactersPtr(msg);
+	const log4cxxng::UniChar* chars = CFStringGetCharactersPtr(msg);
 
 	if (chars != 0)
 	{
@@ -749,7 +749,7 @@ UniCharMessageBuffer& UniCharMessageBuffer::operator<<(const CFStringRef& msg)
 	else
 	{
 		size_t length = CFStringGetLength(msg);
-		std::vector<log4cxx::UniChar> tmp(length);
+		std::vector<log4cxxng::UniChar> tmp(length);
 		CFStringGetCharacters(msg, CFRangeMake(0, length), &tmp[0]);
 
 		if (stream)

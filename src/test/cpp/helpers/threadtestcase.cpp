@@ -20,8 +20,8 @@
 #include <apr_time.h>
 #include <log4cxxNG/helpers/exception.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 
 /**
@@ -53,7 +53,7 @@ public:
 	}
 
 private:
-	static void* LOG4CXX_THREAD_FUNC sleep(apr_thread_t* thread, void* data)
+	static void* LOG4CXXNG_THREAD_FUNC sleep(apr_thread_t* thread, void* data)
 	{
 		try
 		{

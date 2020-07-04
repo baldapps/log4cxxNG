@@ -15,20 +15,20 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_SPI_FILTER_H
-#define _LOG4CXX_SPI_FILTER_H
+#ifndef _LOG4CXXNG_SPI_FILTER_H
+#define _LOG4CXXNG_SPI_FILTER_H
 
 #include <log4cxxNG/helpers/objectptr.h>
 #include <log4cxxNG/helpers/objectimpl.h>
 #include <log4cxxNG/spi/optionhandler.h>
 #include <log4cxxNG/spi/loggingevent.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace spi
 {
 class Filter;
-LOG4CXX_PTR_DEF(Filter);
+LOG4CXXNG_PTR_DEF(Filter);
 
 
 /**
@@ -66,7 +66,7 @@ Linux ipchains.
 <p>Note that filtering is only supported by the {@link
 xml::DOMConfigurator DOMConfigurator}.
 */
-class LOG4CXX_EXPORT Filter : public virtual OptionHandler,
+class LOG4CXXNG_EXPORT Filter : public virtual OptionHandler,
 	public virtual helpers::ObjectImpl
 {
 		/**
@@ -79,14 +79,14 @@ class LOG4CXX_EXPORT Filter : public virtual OptionHandler,
 		void addRef() const;
 		void releaseRef() const;
 
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(Filter)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(Filter)
-		LOG4CXX_CAST_ENTRY(spi::OptionHandler)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(Filter)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(Filter)
+		LOG4CXXNG_CAST_ENTRY(spi::OptionHandler)
+		END_LOG4CXXNG_CAST_MAP()
 
-		log4cxx::spi::FilterPtr getNext() const;
-		void setNext(const log4cxx::spi::FilterPtr& newNext);
+		log4cxxng::spi::FilterPtr getNext() const;
+		void setNext(const log4cxxng::spi::FilterPtr& newNext);
 
 		enum FilterDecision
 		{
@@ -113,7 +113,7 @@ class LOG4CXX_EXPORT Filter : public virtual OptionHandler,
 
 		default do-nothing implementation for convenience.
 		*/
-		void activateOptions(log4cxx::helpers::Pool& p);
+		void activateOptions(log4cxxng::helpers::Pool& p);
 		void setOption(const LogString& option, const LogString& value);
 
 		/**
@@ -130,4 +130,4 @@ class LOG4CXX_EXPORT Filter : public virtual OptionHandler,
 }
 }
 
-#endif //_LOG4CXX_SPI_FILTER_H
+#endif //_LOG4CXXNG_SPI_FILTER_H

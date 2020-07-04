@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_WRITER_H
-#define _LOG4CXX_HELPERS_WRITER_H
+#ifndef _LOG4CXXNG_HELPERS_WRITER_H
+#define _LOG4CXXNG_HELPERS_WRITER_H
 
 #include <log4cxxNG/helpers/objectimpl.h>
 #include <log4cxxNG/helpers/outputstream.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 namespace helpers
@@ -30,13 +30,13 @@ namespace helpers
 /**
 *   Abstract class for writing to character streams.
 */
-class LOG4CXX_EXPORT Writer : public ObjectImpl
+class LOG4CXXNG_EXPORT Writer : public ObjectImpl
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(Writer)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(Writer)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(Writer)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(Writer)
+		END_LOG4CXXNG_CAST_MAP()
 
 	protected:
 		Writer();
@@ -46,7 +46,7 @@ class LOG4CXX_EXPORT Writer : public ObjectImpl
 		virtual void close(Pool& p) = 0;
 		virtual void flush(Pool& p) = 0;
 		virtual void write(const LogString& str, Pool& p) = 0;
-#ifdef LOG4CXX_MULTI_PROCESS
+#ifdef LOG4CXXNG_MULTI_PROCESS
 		virtual OutputStreamPtr getOutPutStreamPtr();
 #endif
 
@@ -55,9 +55,9 @@ class LOG4CXX_EXPORT Writer : public ObjectImpl
 		Writer& operator=(const Writer&);
 };
 
-LOG4CXX_PTR_DEF(Writer);
+LOG4CXXNG_PTR_DEF(Writer);
 } // namespace helpers
 
-}  //namespace log4cxx
+}  //namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_WRITER_H
+#endif //_LOG4CXXNG_HELPERS_WRITER_H

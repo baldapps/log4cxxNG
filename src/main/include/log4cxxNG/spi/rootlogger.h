@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_SPI_ROOT_LOGGER_H
-#define _LOG4CXX_SPI_ROOT_LOGGER_H
+#ifndef _LOG4CXXNG_SPI_ROOT_LOGGER_H
+#define _LOG4CXXNG_SPI_ROOT_LOGGER_H
 
 #include <log4cxxNG/logger.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace spi
 {
@@ -33,14 +33,14 @@ level. Second, since root logger cannot have a parent, the
 #getEffectiveLevel method always returns the value of the
 level field without walking the hierarchy.
 */
-class LOG4CXX_EXPORT RootLogger : public Logger
+class LOG4CXXNG_EXPORT RootLogger : public Logger
 {
 	public:
 		/**
 		The root logger names itself as "root". However, the root
 		logger cannot be retrieved by name.
 		*/
-		RootLogger(log4cxx::helpers::Pool& pool, const LevelPtr& level);
+		RootLogger(log4cxxng::helpers::Pool& pool, const LevelPtr& level);
 
 		/**
 		Return the assigned level value without walking the logger
@@ -55,6 +55,6 @@ class LOG4CXX_EXPORT RootLogger : public Logger
 		void setLevel(const LevelPtr& level);
 };
 }  // namespace spi
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif //_LOG4CXX_SPI_ROOT_LOGGER_H
+#endif //_LOG4CXXNG_SPI_ROOT_LOGGER_H

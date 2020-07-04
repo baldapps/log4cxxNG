@@ -15,31 +15,31 @@
  * limitations under the License.
  */
 
-#if !defined(_LOG4CXX_ROLLING_ROLLING_FILE_APPENDER_H)
-#define _LOG4CXX_ROLLING_ROLLING_FILE_APPENDER_H
+#if !defined(_LOG4CXXNG_ROLLING_ROLLING_FILE_APPENDER_H)
+#define _LOG4CXXNG_ROLLING_ROLLING_FILE_APPENDER_H
 
 #include <log4cxxNG/rolling/rollingfileappenderskeleton.h>
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace rolling
 {
 
 
 /**
- * <code>RollingFileAppender</code> extends {@link log4cxx::FileAppender} to backup the log files
- * depending on {@link log4cxx::rolling::RollingPolicy RollingPolicy} and {@link log4cxx::rolling::TriggeringPolicy TriggeringPolicy}.
+ * <code>RollingFileAppender</code> extends {@link log4cxxng::FileAppender} to backup the log files
+ * depending on {@link log4cxxng::rolling::RollingPolicy RollingPolicy} and {@link log4cxxng::rolling::TriggeringPolicy TriggeringPolicy}.
  * <p>
  * To be of any use, a <code>RollingFileAppender</code> instance must have both
  * a <code>RollingPolicy</code> and a <code>TriggeringPolicy</code> set up.
  * However, if its <code>RollingPolicy</code> also implements the
  * <code>TriggeringPolicy</code> interface, then only the former needs to be
- * set up. For example, {@link log4cxx::rolling::TimeBasedRollingPolicy TimeBasedRollingPolicy} acts both as a
+ * set up. For example, {@link log4cxxng::rolling::TimeBasedRollingPolicy TimeBasedRollingPolicy} acts both as a
  * <code>RollingPolicy</code> and a <code>TriggeringPolicy</code>.
  *
  * <p><code>RollingFileAppender</code> can be configured programattically or
- * using {@link log4cxx::xml::DOMConfigurator}. Here is a sample
+ * using {@link log4cxxng::xml::DOMConfigurator}. Here is a sample
  * configration file:
 
 <pre>&lt;?xml version="1.0" encoding="UTF-8" ?>
@@ -72,13 +72,13 @@ namespace rolling
  *
  *
  * */
-class LOG4CXX_EXPORT RollingFileAppender : public RollingFileAppenderSkeleton
+class LOG4CXXNG_EXPORT RollingFileAppender : public RollingFileAppenderSkeleton
 {
-		DECLARE_LOG4CXX_OBJECT(RollingFileAppender)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(RollingFileAppender)
-		LOG4CXX_CAST_ENTRY_CHAIN(RollingFileAppenderSkeleton)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(RollingFileAppender)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(RollingFileAppender)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(RollingFileAppenderSkeleton)
+		END_LOG4CXXNG_CAST_MAP()
 
 	public:
 		RollingFileAppender();
@@ -99,7 +99,7 @@ class LOG4CXX_EXPORT RollingFileAppender : public RollingFileAppenderSkeleton
 
 };
 
-LOG4CXX_PTR_DEF(RollingFileAppender);
+LOG4CXXNG_PTR_DEF(RollingFileAppender);
 
 }
 }

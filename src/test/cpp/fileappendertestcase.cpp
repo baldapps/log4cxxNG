@@ -20,8 +20,8 @@
 #include <log4cxxNG/fileappender.h>
 #include "insertwide.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 WriterAppender* FileAppenderAbstractTestCase::createWriterAppender() const
 {
@@ -30,7 +30,7 @@ WriterAppender* FileAppenderAbstractTestCase::createWriterAppender() const
 
 
 /**
-   Unit tests of log4cxx::FileAppender
+   Unit tests of log4cxxng::FileAppender
  */
 class FileAppenderTestCase : public FileAppenderAbstractTestCase
 {
@@ -54,15 +54,15 @@ class FileAppenderTestCase : public FileAppenderAbstractTestCase
 
 		FileAppender* createFileAppender() const
 		{
-			return new log4cxx::FileAppender();
+			return new log4cxxng::FileAppender();
 		}
 
 		void testSetDoubleBackslashes()
 		{
 			FileAppender appender;
-			appender.setOption(LOG4CXX_STR("FILE"), LOG4CXX_STR("output\\\\temp"));
+			appender.setOption(LOG4CXXNG_STR("FILE"), LOG4CXXNG_STR("output\\\\temp"));
 			const File& file = appender.getFile();
-			LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("output\\temp"), file.getPath());
+			LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("output\\temp"), file.getPath());
 		}
 
 		/**
@@ -74,9 +74,9 @@ class FileAppenderTestCase : public FileAppenderAbstractTestCase
 		{
 
 			FileAppender appender;
-			appender.setOption(LOG4CXX_STR("FILE"), LOG4CXX_STR("output\\\\temp"));
+			appender.setOption(LOG4CXXNG_STR("FILE"), LOG4CXXNG_STR("output\\\\temp"));
 			const File& file = appender.getFile();
-			LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("output\\temp"), file.getPath());
+			LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("output\\temp"), file.getPath());
 		}
 
 		/**
@@ -86,29 +86,29 @@ class FileAppenderTestCase : public FileAppenderAbstractTestCase
 		 */
 		void testStripDuplicateBackslashes()
 		{
-			LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("\\foo\\bar\\foo"),
-				FileAppender::stripDuplicateBackslashes(LOG4CXX_STR("\\foo\\bar\\foo")));
-			LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("\\foo\\bar\\foo\\"),
-				FileAppender::stripDuplicateBackslashes(LOG4CXX_STR("\\\\foo\\\\bar\\\\foo\\\\")));
-			LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("\\foo\\bar\\foo\\"),
-				FileAppender::stripDuplicateBackslashes(LOG4CXX_STR("\\foo\\bar\\foo\\")));
+			LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("\\foo\\bar\\foo"),
+				FileAppender::stripDuplicateBackslashes(LOG4CXXNG_STR("\\foo\\bar\\foo")));
+			LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("\\foo\\bar\\foo\\"),
+				FileAppender::stripDuplicateBackslashes(LOG4CXXNG_STR("\\\\foo\\\\bar\\\\foo\\\\")));
+			LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("\\foo\\bar\\foo\\"),
+				FileAppender::stripDuplicateBackslashes(LOG4CXXNG_STR("\\foo\\bar\\foo\\")));
 			//
 			//   UNC's should either start with two backslashes and contain additional singles
 			//       or four back slashes and addition doubles
-			LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("\\\\foo\\bar\\foo"),
-				FileAppender::stripDuplicateBackslashes(LOG4CXX_STR("\\\\\\\\foo\\\\bar\\\\foo")));
-			LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("\\\\foo\\bar\\foo"),
-				FileAppender::stripDuplicateBackslashes(LOG4CXX_STR("\\\\foo\\bar\\foo")));
+			LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("\\\\foo\\bar\\foo"),
+				FileAppender::stripDuplicateBackslashes(LOG4CXXNG_STR("\\\\\\\\foo\\\\bar\\\\foo")));
+			LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("\\\\foo\\bar\\foo"),
+				FileAppender::stripDuplicateBackslashes(LOG4CXXNG_STR("\\\\foo\\bar\\foo")));
 			//
 			//   it it starts with doubles but has no other path component
 			//      then it is a file path
-			LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("\\foo.log"),
-				FileAppender::stripDuplicateBackslashes(LOG4CXX_STR("\\\\foo.log")));
+			LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("\\foo.log"),
+				FileAppender::stripDuplicateBackslashes(LOG4CXXNG_STR("\\\\foo.log")));
 			//
 			//   it it starts with quads but has no other path component
 			//      then it is a UNC
-			LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("\\\\foo.log"),
-				FileAppender::stripDuplicateBackslashes(LOG4CXX_STR("\\\\\\\\foo.log")));
+			LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("\\\\foo.log"),
+				FileAppender::stripDuplicateBackslashes(LOG4CXXNG_STR("\\\\\\\\foo.log")));
 		}
 
 };

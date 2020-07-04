@@ -23,8 +23,8 @@
 #include <log4cxxNG/helpers/stringtokenizer.h>
 #include <log4cxxNG/helpers/transcoder.h>
 #include <log4cxxNG/helpers/synchronized.h>
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 #include <log4cxxNG/private/log4cxxNG_private.h>
 
@@ -33,17 +33,17 @@
 #include <apr_strings.h>
 #include <vector>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::net;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::net;
+using namespace log4cxxng::spi;
 
-#if LOG4CXX_HAVE_LIBESMTP
+#if LOG4CXXNG_HAVE_LIBESMTP
 	#include <auth-client.h>
 	#include <libesmtp.h>
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace net
 {
@@ -53,7 +53,7 @@ namespace net
 //   or libesmtp could be combined with libgmime to enable support for non-ASCII
 //   content.
 
-#if LOG4CXX_HAVE_LIBESMTP
+#if LOG4CXXNG_HAVE_LIBESMTP
 /**
  *   SMTP Session.
  */
@@ -249,9 +249,9 @@ class SMTPMessage
 			//
 			int feedCount = 0;
 
-			for (size_t pos = str.find_first_of(LOG4CXX_STR("\n\r"));
+			for (size_t pos = str.find_first_of(LOG4CXXNG_STR("\n\r"));
 				pos != LogString::npos;
-				pos = str.find_first_of(LOG4CXX_STR("\n\r"), ++pos))
+				pos = str.find_first_of(LOG4CXXNG_STR("\n\r"), ++pos))
 			{
 				feedCount++;
 			}
@@ -346,16 +346,16 @@ class SMTPMessage
 };
 #endif
 
-class LOG4CXX_EXPORT DefaultEvaluator :
+class LOG4CXXNG_EXPORT DefaultEvaluator :
 	public virtual spi::TriggeringEventEvaluator,
 	public virtual helpers::ObjectImpl
 {
 	public:
-		DECLARE_LOG4CXX_OBJECT(DefaultEvaluator)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(DefaultEvaluator)
-		LOG4CXX_CAST_ENTRY(spi::TriggeringEventEvaluator)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(DefaultEvaluator)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(DefaultEvaluator)
+		LOG4CXXNG_CAST_ENTRY(spi::TriggeringEventEvaluator)
+		END_LOG4CXXNG_CAST_MAP()
 
 		DefaultEvaluator();
 
@@ -374,8 +374,8 @@ class LOG4CXX_EXPORT DefaultEvaluator :
 }
 }
 
-IMPLEMENT_LOG4CXX_OBJECT(DefaultEvaluator)
-IMPLEMENT_LOG4CXX_OBJECT(SMTPAppender)
+IMPLEMENT_LOG4CXXNG_OBJECT(DefaultEvaluator)
+IMPLEMENT_LOG4CXXNG_OBJECT(SMTPAppender)
 
 DefaultEvaluator::DefaultEvaluator()
 {
@@ -490,47 +490,47 @@ void SMTPAppender::setSMTPPassword(const LogString& newVal)
 void SMTPAppender::setOption(const LogString& option,
 	const LogString& value)
 {
-	if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("BUFFERSIZE"), LOG4CXX_STR("buffersize")))
+	if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("BUFFERSIZE"), LOG4CXXNG_STR("buffersize")))
 	{
 		setBufferSize(OptionConverter::toInt(value, 512));
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("EVALUATORCLASS"), LOG4CXX_STR("evaluatorclass")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("EVALUATORCLASS"), LOG4CXXNG_STR("evaluatorclass")))
 	{
 		setEvaluatorClass(value);
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("FROM"), LOG4CXX_STR("from")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("FROM"), LOG4CXXNG_STR("from")))
 	{
 		setFrom(value);
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("SMTPHOST"), LOG4CXX_STR("smtphost")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("SMTPHOST"), LOG4CXXNG_STR("smtphost")))
 	{
 		setSMTPHost(value);
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("SMTPUSERNAME"), LOG4CXX_STR("smtpusername")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("SMTPUSERNAME"), LOG4CXXNG_STR("smtpusername")))
 	{
 		setSMTPUsername(value);
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("SMTPPASSWORD"), LOG4CXX_STR("smtppassword")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("SMTPPASSWORD"), LOG4CXXNG_STR("smtppassword")))
 	{
 		setSMTPPassword(value);
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("SUBJECT"), LOG4CXX_STR("subject")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("SUBJECT"), LOG4CXXNG_STR("subject")))
 	{
 		setSubject(value);
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("TO"), LOG4CXX_STR("to")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("TO"), LOG4CXXNG_STR("to")))
 	{
 		setTo(value);
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("CC"), LOG4CXX_STR("cc")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("CC"), LOG4CXXNG_STR("cc")))
 	{
 		setCc(value);
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("BCC"), LOG4CXX_STR("bcc")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("BCC"), LOG4CXXNG_STR("bcc")))
 	{
 		setBcc(value);
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("SMTPPORT"), LOG4CXX_STR("smtpport")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("SMTPPORT"), LOG4CXXNG_STR("smtpport")))
 	{
 		setSMTPPort(OptionConverter::toInt(value, 25));
 	}
@@ -549,7 +549,7 @@ bool SMTPAppender::asciiCheck(const LogString& value, const LogString& field)
 	{
 		if (0x7F < (unsigned int) *iter)
 		{
-			LogLog::warn(field + LOG4CXX_STR(" contains non-ASCII character"));
+			LogLog::warn(field + LOG4CXXNG_STR(" contains non-ASCII character"));
 			return false;
 		}
 	}
@@ -566,38 +566,38 @@ void SMTPAppender::activateOptions(Pool& p)
 
 	if (layout == 0)
 	{
-		errorHandler->error(LOG4CXX_STR("No layout set for appender named [") + name + LOG4CXX_STR("]."));
+		errorHandler->error(LOG4CXXNG_STR("No layout set for appender named [") + name + LOG4CXXNG_STR("]."));
 		activate = false;
 	}
 
 	if (evaluator == 0)
 	{
-		errorHandler->error(LOG4CXX_STR("No TriggeringEventEvaluator is set for appender [") +
-			name + LOG4CXX_STR("]."));
+		errorHandler->error(LOG4CXXNG_STR("No TriggeringEventEvaluator is set for appender [") +
+			name + LOG4CXXNG_STR("]."));
 		activate = false;
 	}
 
 	if (smtpHost.empty())
 	{
-		errorHandler->error(LOG4CXX_STR("No smtpHost is set for appender [") +
-			name + LOG4CXX_STR("]."));
+		errorHandler->error(LOG4CXXNG_STR("No smtpHost is set for appender [") +
+			name + LOG4CXXNG_STR("]."));
 		activate = false;
 	}
 
 	if (to.empty() && cc.empty() && bcc.empty())
 	{
-		errorHandler->error(LOG4CXX_STR("No recipient address is set for appender [") +
-			name + LOG4CXX_STR("]."));
+		errorHandler->error(LOG4CXXNG_STR("No recipient address is set for appender [") +
+			name + LOG4CXXNG_STR("]."));
 		activate = false;
 	}
 
-	activate &= asciiCheck(to, LOG4CXX_STR("to"));
-	activate &= asciiCheck(cc, LOG4CXX_STR("cc"));
-	activate &= asciiCheck(bcc, LOG4CXX_STR("bcc"));
-	activate &= asciiCheck(from, LOG4CXX_STR("from"));
+	activate &= asciiCheck(to, LOG4CXXNG_STR("to"));
+	activate &= asciiCheck(cc, LOG4CXXNG_STR("cc"));
+	activate &= asciiCheck(bcc, LOG4CXXNG_STR("bcc"));
+	activate &= asciiCheck(from, LOG4CXXNG_STR("from"));
 
-#if !LOG4CXX_HAVE_LIBESMTP
-	errorHandler->error(LOG4CXX_STR("log4cxx built without SMTP support."));
+#if !LOG4CXXNG_HAVE_LIBESMTP
+	errorHandler->error(LOG4CXXNG_STR("log4cxx built without SMTP support."));
 	activate = false;
 #endif
 
@@ -639,25 +639,25 @@ there is a set layout. If these checks fail, then the boolean
 value <code>false</code> is returned. */
 bool SMTPAppender::checkEntryConditions()
 {
-#if LOG4CXX_HAVE_LIBESMTP
+#if LOG4CXXNG_HAVE_LIBESMTP
 
 	if ((to.empty() && cc.empty() && bcc.empty()) || from.empty() || smtpHost.empty())
 	{
-		errorHandler->error(LOG4CXX_STR("Message not configured."));
+		errorHandler->error(LOG4CXXNG_STR("Message not configured."));
 		return false;
 	}
 
 	if (evaluator == 0)
 	{
-		errorHandler->error(LOG4CXX_STR("No TriggeringEventEvaluator is set for appender [") +
-			name + LOG4CXX_STR("]."));
+		errorHandler->error(LOG4CXXNG_STR("No TriggeringEventEvaluator is set for appender [") +
+			name + LOG4CXXNG_STR("]."));
 		return false;
 	}
 
 
 	if (layout == 0)
 	{
-		errorHandler->error(LOG4CXX_STR("No layout set for appender named [") + name + LOG4CXX_STR("]."));
+		errorHandler->error(LOG4CXXNG_STR("No layout set for appender named [") + name + LOG4CXXNG_STR("]."));
 		return false;
 	}
 
@@ -709,7 +709,7 @@ Send the contents of the cyclic buffer as an e-mail message.
 */
 void SMTPAppender::sendBuffer(Pool& p)
 {
-#if LOG4CXX_HAVE_LIBESMTP
+#if LOG4CXXNG_HAVE_LIBESMTP
 
 	// Note: this code already owns the monitor for this
 	// appender. This frees us from needing to synchronize on 'cb'.
@@ -738,7 +738,7 @@ void SMTPAppender::sendBuffer(Pool& p)
 	}
 	catch (std::exception& e)
 	{
-		LogLog::error(LOG4CXX_STR("Error occured while sending e-mail notification."), e);
+		LogLog::error(LOG4CXXNG_STR("Error occured while sending e-mail notification."), e);
 	}
 
 #endif
@@ -752,12 +752,12 @@ LogString SMTPAppender::getEvaluatorClass()
 	return evaluator == 0 ? LogString() : evaluator->getClass().getName();
 }
 
-log4cxx::spi::TriggeringEventEvaluatorPtr SMTPAppender::getEvaluator() const
+log4cxxng::spi::TriggeringEventEvaluatorPtr SMTPAppender::getEvaluator() const
 {
 	return evaluator;
 }
 
-void SMTPAppender::setEvaluator(log4cxx::spi::TriggeringEventEvaluatorPtr& trigger)
+void SMTPAppender::setEvaluator(log4cxxng::spi::TriggeringEventEvaluatorPtr& trigger)
 {
 	evaluator = trigger;
 }

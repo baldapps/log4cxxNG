@@ -20,7 +20,7 @@
 #include <log4cxxNG/logmanager.h>
 #include <log4cxxNG/logger.h>
 
-using namespace log4cxx;
+using namespace log4cxxng;
 
 LOGUNIT_CLASS(TestCase1)
 {
@@ -41,7 +41,7 @@ public:
 	void noneTest()
 	{
 		LoggerPtr root = Logger::getRootLogger();
-		LOG4CXX_DEBUG(root, "Hello, world");
+		LOG4CXXNG_DEBUG(root, "Hello, world");
 		bool rootIsConfigured = !root->getAllAppenders().empty();
 		LOGUNIT_ASSERT(!rootIsConfigured);
 	}

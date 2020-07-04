@@ -19,19 +19,19 @@
 #include <log4cxxNG/spi/loggingevent.h>
 #include <log4cxxNG/level.h>
 
-using namespace log4cxx;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::spi;
 
-IMPLEMENT_LOG4CXX_OBJECT(SimpleLayout)
+IMPLEMENT_LOG4CXXNG_OBJECT(SimpleLayout)
 
 
 
 void SimpleLayout::format(LogString& output,
 	const spi::LoggingEventPtr& event,
-	log4cxx::helpers::Pool&) const
+	log4cxxng::helpers::Pool&) const
 {
 	output.append(event->getLevel()->toString());
-	output.append(LOG4CXX_STR(" - "));
+	output.append(LOG4CXXNG_STR(" - "));
 	output.append(event->getRenderedMessage());
-	output.append(LOG4CXX_EOL);
+	output.append(LOG4CXXNG_EOL);
 }

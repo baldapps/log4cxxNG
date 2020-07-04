@@ -19,62 +19,62 @@
 #include <log4cxxNG/level.h>
 #include <log4cxxNG/helpers/stringhelper.h>
 #include <log4cxxNG/helpers/transcoder.h>
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 #include <log4cxxNG/helpers/aprinitializer.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT_WITH_CUSTOM_CLASS(Level, LevelClass)
+IMPLEMENT_LOG4CXXNG_OBJECT_WITH_CUSTOM_CLASS(Level, LevelClass)
 
 LevelPtr Level::getOff()
 {
-    static LevelPtr level(new Level(Level::OFF_INT, LOG4CXX_STR("OFF"), 0));
+    static LevelPtr level(new Level(Level::OFF_INT, LOG4CXXNG_STR("OFF"), 0));
 	return level;
 }
 
 LevelPtr Level::getFatal()
 {
-	static LevelPtr level(new Level(Level::FATAL_INT, LOG4CXX_STR("FATAL"), 0));
+	static LevelPtr level(new Level(Level::FATAL_INT, LOG4CXXNG_STR("FATAL"), 0));
 	return level;
 }
 
 LevelPtr Level::getError()
 {
-	static LevelPtr level(new Level(Level::ERROR_INT, LOG4CXX_STR("ERROR"), 3));
+	static LevelPtr level(new Level(Level::ERROR_INT, LOG4CXXNG_STR("ERROR"), 3));
 	return level;
 }
 
 LevelPtr Level::getWarn()
 {
-    static LevelPtr level(new Level(Level::WARN_INT, LOG4CXX_STR("WARN"), 4));
+    static LevelPtr level(new Level(Level::WARN_INT, LOG4CXXNG_STR("WARN"), 4));
     return level;
 }
 
 LevelPtr Level::getInfo()
 {
-	static LevelPtr level(new Level(Level::INFO_INT, LOG4CXX_STR("INFO"), 6));
+	static LevelPtr level(new Level(Level::INFO_INT, LOG4CXXNG_STR("INFO"), 6));
 	return level;
 }
 
 LevelPtr Level::getDebug()
 {
-	static LevelPtr level(new Level(Level::DEBUG_INT, LOG4CXX_STR("DEBUG"), 7));
+	static LevelPtr level(new Level(Level::DEBUG_INT, LOG4CXXNG_STR("DEBUG"), 7));
 	return level;
 }
 
 LevelPtr Level::getTrace()
 {
-	static LevelPtr level(new Level(Level::TRACE_INT, LOG4CXX_STR("TRACE"), 7));
+	static LevelPtr level(new Level(Level::TRACE_INT, LOG4CXXNG_STR("TRACE"), 7));
 	return level;
 }
 
 
 LevelPtr Level::getAll()
 {
-	static LevelPtr level(new Level(Level::ALL_INT, LOG4CXX_STR("ALL"), 7));
+	static LevelPtr level(new Level(Level::ALL_INT, LOG4CXXNG_STR("ALL"), 7));
 	return level;
 }
 
@@ -144,7 +144,7 @@ LevelPtr Level::toLevel(const std::string& sArg)
 
 LevelPtr Level::toLevel(const std::string& sArg, const LevelPtr& defaultLevel)
 {
-	LOG4CXX_DECODE_CHAR(s, sArg);
+	LOG4CXXNG_DECODE_CHAR(s, sArg);
 	return toLevelLS(s, defaultLevel);
 }
 
@@ -153,7 +153,7 @@ void Level::toString(std::string& dst) const
 	Transcoder::encode(name, dst);
 }
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 LevelPtr Level::toLevel(const std::wstring& sArg)
 {
 	return toLevel(sArg, Level::getDebug());
@@ -161,7 +161,7 @@ LevelPtr Level::toLevel(const std::wstring& sArg)
 
 LevelPtr Level::toLevel(const std::wstring& sArg, const LevelPtr& defaultLevel)
 {
-	LOG4CXX_DECODE_WCHAR(s, sArg);
+	LOG4CXXNG_DECODE_WCHAR(s, sArg);
 	return toLevelLS(s, defaultLevel);
 }
 
@@ -172,7 +172,7 @@ void Level::toString(std::wstring& dst) const
 
 #endif
 
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 LevelPtr Level::toLevel(const std::basic_string<UniChar>& sArg)
 {
 	return toLevel(sArg, Level::getDebug());
@@ -180,7 +180,7 @@ LevelPtr Level::toLevel(const std::basic_string<UniChar>& sArg)
 
 LevelPtr Level::toLevel(const std::basic_string<UniChar>& sArg, const LevelPtr& defaultLevel)
 {
-	LOG4CXX_DECODE_UNICHAR(s, sArg);
+	LOG4CXXNG_DECODE_UNICHAR(s, sArg);
 	return toLevelLS(s, defaultLevel);
 }
 
@@ -191,7 +191,7 @@ void Level::toString(std::basic_string<UniChar>& dst) const
 
 #endif
 
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 LevelPtr Level::toLevel(const CFStringRef& sArg)
 {
 	return toLevel(sArg, Level::getDebug());
@@ -218,12 +218,12 @@ LevelPtr Level::toLevelLS(const LogString& sArg, const LevelPtr& defaultLevel)
 
 	if (len == 4)
 	{
-		if (StringHelper::equalsIgnoreCase(trimmed, LOG4CXX_STR("INFO"), LOG4CXX_STR("info")))
+		if (StringHelper::equalsIgnoreCase(trimmed, LOG4CXXNG_STR("INFO"), LOG4CXXNG_STR("info")))
 		{
 			return getInfo();
 		}
 
-		if (StringHelper::equalsIgnoreCase(trimmed, LOG4CXX_STR("WARN"), LOG4CXX_STR("warn")))
+		if (StringHelper::equalsIgnoreCase(trimmed, LOG4CXXNG_STR("WARN"), LOG4CXXNG_STR("warn")))
 		{
 			return getWarn();
 		}
@@ -232,22 +232,22 @@ LevelPtr Level::toLevelLS(const LogString& sArg, const LevelPtr& defaultLevel)
 	{
 		if (len == 5)
 		{
-			if (StringHelper::equalsIgnoreCase(trimmed, LOG4CXX_STR("DEBUG"), LOG4CXX_STR("debug")))
+			if (StringHelper::equalsIgnoreCase(trimmed, LOG4CXXNG_STR("DEBUG"), LOG4CXXNG_STR("debug")))
 			{
 				return getDebug();
 			}
 
-			if (StringHelper::equalsIgnoreCase(trimmed, LOG4CXX_STR("TRACE"), LOG4CXX_STR("trace")))
+			if (StringHelper::equalsIgnoreCase(trimmed, LOG4CXXNG_STR("TRACE"), LOG4CXXNG_STR("trace")))
 			{
 				return getTrace();
 			}
 
-			if (StringHelper::equalsIgnoreCase(trimmed, LOG4CXX_STR("ERROR"), LOG4CXX_STR("error")))
+			if (StringHelper::equalsIgnoreCase(trimmed, LOG4CXXNG_STR("ERROR"), LOG4CXXNG_STR("error")))
 			{
 				return getError();
 			}
 
-			if (StringHelper::equalsIgnoreCase(trimmed, LOG4CXX_STR("FATAL"), LOG4CXX_STR("fatal")))
+			if (StringHelper::equalsIgnoreCase(trimmed, LOG4CXXNG_STR("FATAL"), LOG4CXXNG_STR("fatal")))
 			{
 				return getFatal();
 			}
@@ -256,12 +256,12 @@ LevelPtr Level::toLevelLS(const LogString& sArg, const LevelPtr& defaultLevel)
 		{
 			if (len == 3)
 			{
-				if (StringHelper::equalsIgnoreCase(trimmed, LOG4CXX_STR("OFF"), LOG4CXX_STR("off")))
+				if (StringHelper::equalsIgnoreCase(trimmed, LOG4CXXNG_STR("OFF"), LOG4CXXNG_STR("off")))
 				{
 					return getOff();
 				}
 
-				if (StringHelper::equalsIgnoreCase(trimmed, LOG4CXX_STR("ALL"), LOG4CXX_STR("all")))
+				if (StringHelper::equalsIgnoreCase(trimmed, LOG4CXXNG_STR("ALL"), LOG4CXXNG_STR("all")))
 				{
 					return getAll();
 				}

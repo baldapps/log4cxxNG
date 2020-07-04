@@ -15,18 +15,18 @@
  * limitations under the License.
  */
 
-#if !defined(_LOG4CXX_TESTCHAR_H)
-#define _LOG4CXX_TESTCHAR_H
+#if !defined(_LOG4CXXNG_TESTCHAR_H)
+#define _LOG4CXXNG_TESTCHAR_H
 
 //
 //   This macro and typedef lets many tests
 //      check either the wchar_t or char based methods.
 //
-#if LOG4CXX_WCHAR_T_API && defined(LOG4CXX_TEST_WCHAR)
-	#define LOG4CXX_TEST_STR(str) L ## str
+#if LOG4CXXNG_WCHAR_T_API && defined(LOG4CXXNG_TEST_WCHAR)
+	#define LOG4CXXNG_TEST_STR(str) L ## str
 	typedef wchar_t testchar;
 #else
-	#define LOG4CXX_TEST_STR(str) str
+	#define LOG4CXXNG_TEST_STR(str) str
 	typedef char testchar;
 #endif
 

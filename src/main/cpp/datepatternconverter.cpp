@@ -32,17 +32,17 @@
 #include <log4cxxNG/helpers/loglog.h>
 #include <log4cxxNG/helpers/date.h>
 
-using namespace log4cxx;
-using namespace log4cxx::pattern;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::pattern;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(DatePatternConverter)
+IMPLEMENT_LOG4CXXNG_OBJECT(DatePatternConverter)
 
 DatePatternConverter::DatePatternConverter(
 	const std::vector<LogString>& options) :
-	LoggingEventPatternConverter(LOG4CXX_STR("Class Name"),
-		LOG4CXX_STR("class name")), df(getDateFormat(options))
+	LoggingEventPatternConverter(LOG4CXXNG_STR("Class Name"),
+		LOG4CXXNG_STR("class name")), df(getDateFormat(options))
 {
 }
 
@@ -61,17 +61,17 @@ DateFormatPtr DatePatternConverter::getDateFormat(const OptionsList& options)
 
 		if (dateFormatStr.empty() ||
 			StringHelper::equalsIgnoreCase(dateFormatStr,
-				LOG4CXX_STR("ISO8601"), LOG4CXX_STR("iso8601")))
+				LOG4CXXNG_STR("ISO8601"), LOG4CXXNG_STR("iso8601")))
 		{
 			df = new ISO8601DateFormat();
 		}
 		else if (StringHelper::equalsIgnoreCase(dateFormatStr,
-				LOG4CXX_STR("ABSOLUTE"), LOG4CXX_STR("absolute")))
+				LOG4CXXNG_STR("ABSOLUTE"), LOG4CXXNG_STR("absolute")))
 		{
 			df = new AbsoluteTimeDateFormat();
 		}
 		else if (StringHelper::equalsIgnoreCase(dateFormatStr,
-				LOG4CXX_STR("DATE"), LOG4CXX_STR("date")))
+				LOG4CXXNG_STR("DATE"), LOG4CXXNG_STR("date")))
 		{
 			df = new DateTimeDateFormat();
 		}
@@ -89,7 +89,7 @@ DateFormatPtr DatePatternConverter::getDateFormat(const OptionsList& options)
 				{
 					df = new ISO8601DateFormat();
 					LogLog::warn(((LogString)
-							LOG4CXX_STR("Could not instantiate SimpleDateFormat with pattern "))
+							LOG4CXXNG_STR("Could not instantiate SimpleDateFormat with pattern "))
 						+ dateFormatStr, e);
 				}
 			}

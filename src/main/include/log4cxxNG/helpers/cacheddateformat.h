@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_CACHED_DATE_FORMAT_H
-#define _LOG4CXX_HELPERS_CACHED_DATE_FORMAT_H
+#ifndef _LOG4CXXNG_HELPERS_CACHED_DATE_FORMAT_H
+#define _LOG4CXXNG_HELPERS_CACHED_DATE_FORMAT_H
 
 #include <log4cxxNG/helpers/dateformat.h>
 
@@ -25,11 +25,11 @@
 	#pragma warning ( disable: 4251 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace pattern
 {
-class LOG4CXX_EXPORT CachedDateFormat : public log4cxx::helpers::DateFormat
+class LOG4CXXNG_EXPORT CachedDateFormat : public log4cxxng::helpers::DateFormat
 {
 	public:
 		enum
@@ -90,7 +90,7 @@ class LOG4CXX_EXPORT CachedDateFormat : public log4cxx::helpers::DateFormat
 		/**
 		 *   Wrapped formatter.
 		 */
-		log4cxx::helpers::DateFormatPtr formatter;
+		log4cxxng::helpers::DateFormatPtr formatter;
 
 		/**
 		 *  Index of initial digit of millisecond pattern or
@@ -101,7 +101,7 @@ class LOG4CXX_EXPORT CachedDateFormat : public log4cxx::helpers::DateFormat
 		/**
 		 *  Integral second preceding the previous convered Date.
 		 */
-		mutable log4cxx_time_t slotBegin;
+		mutable log4cxxng_time_t slotBegin;
 
 
 		/**
@@ -120,7 +120,7 @@ class LOG4CXX_EXPORT CachedDateFormat : public log4cxx::helpers::DateFormat
 		/**
 		 *  Date requested in previous conversion.
 		 */
-		mutable log4cxx_time_t previousTime;
+		mutable log4cxxng_time_t previousTime;
 
 	public:
 		/**
@@ -131,7 +131,7 @@ class LOG4CXX_EXPORT CachedDateFormat : public log4cxx::helpers::DateFormat
 		 *      caching algorithm, use a value of 0 to totally disable
 		 *      caching or 1 to only use cache for duplicate requests.
 		 */
-		CachedDateFormat(const log4cxx::helpers::DateFormatPtr& dateFormat, int expiration);
+		CachedDateFormat(const log4cxxng::helpers::DateFormatPtr& dateFormat, int expiration);
 
 		/**
 		 * Finds start of millisecond field in formatted time.
@@ -144,9 +144,9 @@ class LOG4CXX_EXPORT CachedDateFormat : public log4cxx::helpers::DateFormat
 		 *    field (likely RelativeTimeDateFormat)
 		 */
 		static int findMillisecondStart(
-			log4cxx_time_t time, const LogString& formatted,
-			const log4cxx::helpers::DateFormatPtr& formatter,
-			log4cxx::helpers::Pool& pool);
+			log4cxxng_time_t time, const LogString& formatted,
+			const log4cxxng::helpers::DateFormatPtr& formatter,
+			log4cxxng::helpers::Pool& pool);
 
 		/**
 		 * Formats a Date into a date/time string.
@@ -156,8 +156,8 @@ class LOG4CXX_EXPORT CachedDateFormat : public log4cxx::helpers::DateFormat
 		 *  @param p memory pool.
 		 */
 		virtual void format(LogString& sbuf,
-			log4cxx_time_t date,
-			log4cxx::helpers::Pool& p) const;
+			log4cxxng_time_t date,
+			log4cxxng::helpers::Pool& p) const;
 
 	private:
 		/**
@@ -180,7 +180,7 @@ class LOG4CXX_EXPORT CachedDateFormat : public log4cxx::helpers::DateFormat
 		 * will likely cause caching to misbehave.
 		 * @param zone TimeZone new timezone
 		 */
-		virtual void setTimeZone(const log4cxx::helpers::TimeZonePtr& zone);
+		virtual void setTimeZone(const log4cxxng::helpers::TimeZonePtr& zone);
 
 		/**
 		* Format an integer consistent with the format method.
@@ -190,7 +190,7 @@ class LOG4CXX_EXPORT CachedDateFormat : public log4cxx::helpers::DateFormat
 		*/
 		virtual void numberFormat(LogString& s,
 			int n,
-			log4cxx::helpers::Pool& p) const;
+			log4cxxng::helpers::Pool& p) const;
 
 		/**
 		 * Gets maximum cache validity for the specified SimpleDateTime
@@ -226,10 +226,10 @@ class LOG4CXX_EXPORT CachedDateFormat : public log4cxx::helpers::DateFormat
 
 
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
-#endif // _LOG4CXX_HELPERS_SIMPLE_DATE_FORMAT_H
+#endif // _LOG4CXXNG_HELPERS_SIMPLE_DATE_FORMAT_H

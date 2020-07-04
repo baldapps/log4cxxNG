@@ -17,10 +17,10 @@
 #include <log4cxxNG/logstring.h>
 #include <log4cxxNG/layout.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(Layout)
+IMPLEMENT_LOG4CXXNG_OBJECT(Layout)
 
 
 Layout::~Layout() {}
@@ -37,9 +37,9 @@ void Layout::releaseRef() const
 
 LogString Layout::getContentType() const
 {
-	return LOG4CXX_STR("text/plain");
+	return LOG4CXXNG_STR("text/plain");
 }
 
-void Layout::appendHeader(LogString&, log4cxx::helpers::Pool&) {}
+void Layout::appendHeader(LogString&, log4cxxng::helpers::Pool&) {}
 
-void Layout::appendFooter(LogString&, log4cxx::helpers::Pool&) {}
+void Layout::appendFooter(LogString&, log4cxxng::helpers::Pool&) {}

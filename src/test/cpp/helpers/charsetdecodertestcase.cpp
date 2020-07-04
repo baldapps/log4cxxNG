@@ -20,11 +20,11 @@
 #include "../insertwide.h"
 #include <log4cxxNG/helpers/bytebuffer.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 
-#define APR_SUCCESS ((log4cxx_status_t) 0)
+#define APR_SUCCESS ((log4cxxng_status_t) 0)
 
 
 
@@ -48,14 +48,14 @@ public:
 
 		CharsetDecoderPtr dec(CharsetDecoder::getDefaultDecoder());
 		LogString greeting;
-		log4cxx_status_t stat = dec->decode(src, greeting);
+		log4cxxng_status_t stat = dec->decode(src, greeting);
 		LOGUNIT_ASSERT_EQUAL(APR_SUCCESS, stat);
 
 		stat = dec->decode(src, greeting);
 		LOGUNIT_ASSERT_EQUAL(APR_SUCCESS, stat);
 		LOGUNIT_ASSERT_EQUAL((size_t) 12, src.position());
 
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("Hello, World"), greeting);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("Hello, World"), greeting);
 	}
 
 	void decode2()
@@ -73,7 +73,7 @@ public:
 		CharsetDecoderPtr dec(CharsetDecoder::getDefaultDecoder());
 
 		LogString greeting;
-		log4cxx_status_t stat = dec->decode(src, greeting);
+		log4cxxng_status_t stat = dec->decode(src, greeting);
 		LOGUNIT_ASSERT_EQUAL(APR_SUCCESS, stat);
 		LOGUNIT_ASSERT_EQUAL((size_t) 0, src.remaining());
 
@@ -81,9 +81,9 @@ public:
 		stat = dec->decode(src, greeting);
 		LOGUNIT_ASSERT_EQUAL(APR_SUCCESS, stat);
 
-		LogString manyAs(BUFSIZE - 3, LOG4CXX_STR('A'));
+		LogString manyAs(BUFSIZE - 3, LOG4CXXNG_STR('A'));
 		LOGUNIT_ASSERT_EQUAL(manyAs, greeting.substr(0, BUFSIZE - 3));
-		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXX_STR("Hello")), greeting.substr(BUFSIZE - 3));
+		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXXNG_STR("Hello")), greeting.substr(BUFSIZE - 3));
 	}
 
 
@@ -95,7 +95,7 @@ public:
 
 		CharsetDecoderPtr dec(CharsetDecoder::getDefaultDecoder());
 		LogString greeting;
-		log4cxx_status_t stat = dec->decode(src, greeting);
+		log4cxxng_status_t stat = dec->decode(src, greeting);
 		LOGUNIT_ASSERT_EQUAL(APR_SUCCESS, stat);
 
 		stat = dec->decode(src, greeting);

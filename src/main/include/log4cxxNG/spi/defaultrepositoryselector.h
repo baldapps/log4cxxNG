@@ -15,26 +15,26 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_SPI_DEFAULT_REPOSITORY_SELECTOR_H
-#define _LOG4CXX_SPI_DEFAULT_REPOSITORY_SELECTOR_H
+#ifndef _LOG4CXXNG_SPI_DEFAULT_REPOSITORY_SELECTOR_H
+#define _LOG4CXXNG_SPI_DEFAULT_REPOSITORY_SELECTOR_H
 
 #include <log4cxxNG/spi/repositoryselector.h>
 #include <log4cxxNG/helpers/objectimpl.h>
 #include <log4cxxNG/spi/loggerrepository.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace spi
 {
-class LOG4CXX_EXPORT DefaultRepositorySelector :
+class LOG4CXXNG_EXPORT DefaultRepositorySelector :
 	public virtual RepositorySelector,
 	public virtual helpers::ObjectImpl
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(DefaultRepositorySelector)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(RepositorySelector)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(DefaultRepositorySelector)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(RepositorySelector)
+		END_LOG4CXXNG_CAST_MAP()
 
 		DefaultRepositorySelector(const LoggerRepositoryPtr& repository1);
 		void addRef() const;
@@ -45,6 +45,6 @@ class LOG4CXX_EXPORT DefaultRepositorySelector :
 		LoggerRepositoryPtr repository;
 };
 }  // namespace spi
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif //_LOG4CXX_SPI_DEFAULT_REPOSITORY_SELECTOR_H
+#endif //_LOG4CXXNG_SPI_DEFAULT_REPOSITORY_SELECTOR_H

@@ -21,10 +21,10 @@
 #include <log4cxxNG/mdc.h>
 #include "../logunit.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::util;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::util;
+using namespace log4cxxng::spi;
 using namespace std;
 
 
@@ -64,7 +64,7 @@ public:
 	{
 		LoggingEventPtr event =
 			new LoggingEvent(
-			LOG4CXX_STR("root"), Level::getInfo(), LOG4CXX_STR("Hello, world."), LocationInfo::getLocationUnavailable());
+			LOG4CXXNG_STR("root"), Level::getInfo(), LOG4CXXNG_STR("Hello, world."), LocationInfo::getLocationUnavailable());
 
 		LOGUNIT_ASSERT_EQUAL(true, SerializationTestHelper::compare(
 				"witness/serialization/simple.bin", event, 237));
@@ -81,7 +81,7 @@ public:
 	{
 		LoggingEventPtr event =
 			new LoggingEvent(
-			LOG4CXX_STR("root"), Level::getInfo(), LOG4CXX_STR("Hello, world."), LOG4CXX_LOCATION);
+			LOG4CXXNG_STR("root"), Level::getInfo(), LOG4CXXNG_STR("Hello, world."), LOG4CXXNG_LOCATION);
 
 		LOGUNIT_ASSERT_EQUAL(true, SerializationTestHelper::compare(
 				"witness/serialization/location.bin", event, 237));
@@ -98,7 +98,7 @@ public:
 
 		LoggingEventPtr event =
 			new LoggingEvent(
-			LOG4CXX_STR("root"), Level::getInfo(), LOG4CXX_STR("Hello, world."), LocationInfo::getLocationUnavailable());
+			LOG4CXXNG_STR("root"), Level::getInfo(), LOG4CXXNG_STR("Hello, world."), LocationInfo::getLocationUnavailable());
 
 		LOGUNIT_ASSERT_EQUAL(true, SerializationTestHelper::compare(
 				"witness/serialization/ndc.bin", event, 237));
@@ -115,7 +115,7 @@ public:
 
 		LoggingEventPtr event =
 			new LoggingEvent(
-			LOG4CXX_STR("root"), Level::getInfo(), LOG4CXX_STR("Hello, world."), LocationInfo::getLocationUnavailable());
+			LOG4CXXNG_STR("root"), Level::getInfo(), LOG4CXXNG_STR("Hello, world."), LocationInfo::getLocationUnavailable());
 
 		LOGUNIT_ASSERT_EQUAL(true, SerializationTestHelper::compare(
 				"witness/serialization/mdc.bin", event, 237));

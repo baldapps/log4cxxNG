@@ -21,13 +21,13 @@
 #include <apr_thread_proc.h>
 #include <apr_time.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::net;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::net;
 
 #if APR_HAS_THREADS
 /**
-   Unit tests of log4cxx::TelnetAppender
+   Unit tests of log4cxxng::TelnetAppender
  */
 class TelnetAppenderTestCase : public AppenderSkeletonTestCase
 {
@@ -49,7 +49,7 @@ class TelnetAppenderTestCase : public AppenderSkeletonTestCase
 
 		AppenderSkeleton* createAppenderSkeleton() const
 		{
-			return new log4cxx::net::TelnetAppender();
+			return new log4cxxng::net::TelnetAppender();
 		}
 
 		void testActivateClose()
@@ -85,7 +85,7 @@ class TelnetAppenderTestCase : public AppenderSkeletonTestCase
 
 			for (int i = 0; i < 50; i++)
 			{
-				LOG4CXX_INFO(root, "Hello, World " << i);
+				LOG4CXXNG_INFO(root, "Hello, World " << i);
 			}
 
 			appender->close();

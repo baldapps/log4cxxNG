@@ -24,17 +24,17 @@
 #include <cstdio>
 #include <cstring>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(InputStreamReader)
+IMPLEMENT_LOG4CXXNG_OBJECT(InputStreamReader)
 
 InputStreamReader::InputStreamReader(const InputStreamPtr& in1)
 	: in(in1), dec(CharsetDecoder::getDefaultDecoder())
 {
 	if (in1 == 0)
 	{
-		throw NullPointerException(LOG4CXX_STR("in parameter may not be null."));
+		throw NullPointerException(LOG4CXXNG_STR("in parameter may not be null."));
 	}
 }
 
@@ -43,12 +43,12 @@ InputStreamReader::InputStreamReader(const InputStreamPtr& in1, const CharsetDec
 {
 	if (in1 == 0)
 	{
-		throw NullPointerException(LOG4CXX_STR("in parameter may not be null."));
+		throw NullPointerException(LOG4CXXNG_STR("in parameter may not be null."));
 	}
 
 	if (dec1 == 0)
 	{
-		throw NullPointerException(LOG4CXX_STR("dec parameter may not be null."));
+		throw NullPointerException(LOG4CXXNG_STR("dec parameter may not be null."));
 	}
 }
 
@@ -71,7 +71,7 @@ LogString InputStreamReader::read(Pool& p)
 	while (in->read(buf) >= 0)
 	{
 		buf.flip();
-		log4cxx_status_t stat = dec->decode(buf, output);
+		log4cxxng_status_t stat = dec->decode(buf, output);
 
 		if (stat != 0)
 		{

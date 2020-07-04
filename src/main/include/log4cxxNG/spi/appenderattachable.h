@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_SPI_APPENDER_ATTACHABLE_H_
-#define _LOG4CXX_SPI_APPENDER_ATTACHABLE_H_
+#ifndef _LOG4CXXNG_SPI_APPENDER_ATTACHABLE_H_
+#define _LOG4CXXNG_SPI_APPENDER_ATTACHABLE_H_
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -29,18 +29,18 @@
 #include <log4cxxNG/helpers/object.h>
 #include <log4cxxNG/appender.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace spi
 {
 /**
  * This Interface is for attaching Appenders to objects.
  */
-class LOG4CXX_EXPORT AppenderAttachable : public virtual helpers::Object
+class LOG4CXXNG_EXPORT AppenderAttachable : public virtual helpers::Object
 {
 	public:
 		// Methods
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(AppenderAttachable)
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(AppenderAttachable)
 
 		/**
 		 * Add an appender.
@@ -83,7 +83,7 @@ class LOG4CXX_EXPORT AppenderAttachable : public virtual helpers::Object
 		virtual ~AppenderAttachable() {}
 };
 
-LOG4CXX_PTR_DEF(AppenderAttachable);
+LOG4CXXNG_PTR_DEF(AppenderAttachable);
 }
 }
 
@@ -91,4 +91,4 @@ LOG4CXX_PTR_DEF(AppenderAttachable);
 	#pragma warning ( pop )
 #endif
 
-#endif //_LOG4CXX_SPI_APPENDER_ATTACHABLE_H_
+#endif //_LOG4CXXNG_SPI_APPENDER_ATTACHABLE_H_

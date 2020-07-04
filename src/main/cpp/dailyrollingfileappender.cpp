@@ -23,11 +23,11 @@
 #include <log4cxxNG/rolling/rollingfileappender.h>
 #include <log4cxxNG/rolling/timebasedrollingpolicy.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::rolling;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::rolling;
 
-IMPLEMENT_LOG4CXX_OBJECT(DailyRollingFileAppender)
+IMPLEMENT_LOG4CXXNG_OBJECT(DailyRollingFileAppender)
 
 
 
@@ -58,7 +58,7 @@ LogString DailyRollingFileAppender::getDatePattern() const
 	return datePattern;
 }
 
-void DailyRollingFileAppender::activateOptions(log4cxx::helpers::Pool& p)
+void DailyRollingFileAppender::activateOptions(log4cxxng::helpers::Pool& p)
 {
 	TimeBasedRollingPolicyPtr policy = new TimeBasedRollingPolicy();
 	LogString pattern(getFile());
@@ -108,7 +108,7 @@ void DailyRollingFileAppender::setOption(const LogString& option,
 	const LogString& value)
 {
 	if (StringHelper::equalsIgnoreCase(option,
-			LOG4CXX_STR("DATEPATTERN"), LOG4CXX_STR("datepattern")))
+			LOG4CXXNG_STR("DATEPATTERN"), LOG4CXXNG_STR("datepattern")))
 	{
 		setDatePattern(value);
 	}

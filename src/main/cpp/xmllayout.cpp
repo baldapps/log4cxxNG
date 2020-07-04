@@ -27,12 +27,12 @@
 #include <log4cxxNG/ndc.h>
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::spi;
-using namespace log4cxx::xml;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::xml;
 
-IMPLEMENT_LOG4CXX_OBJECT(XMLLayout)
+IMPLEMENT_LOG4CXXNG_OBJECT(XMLLayout)
 
 XMLLayout::XMLLayout()
 	: locationInfo(false), properties(false)
@@ -42,12 +42,12 @@ XMLLayout::XMLLayout()
 void XMLLayout::setOption(const LogString& option,
 	const LogString& value)
 {
-	if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("LOCATIONINFO"), LOG4CXX_STR("locationinfo")))
+	if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("LOCATIONINFO"), LOG4CXXNG_STR("locationinfo")))
 	{
 		setLocationInfo(OptionConverter::toBoolean(value, false));
 	}
 
-	if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("PROPERTIES"), LOG4CXX_STR("properties")))
+	if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("PROPERTIES"), LOG4CXXNG_STR("properties")))
 	{
 		setProperties(OptionConverter::toBoolean(value, false));
 	}
@@ -57,50 +57,50 @@ void XMLLayout::format(LogString& output,
 	const spi::LoggingEventPtr& event,
 	Pool& p) const
 {
-	output.append(LOG4CXX_STR("<log4j:event logger=\""));
+	output.append(LOG4CXXNG_STR("<log4j:event logger=\""));
 	Transform::appendEscapingTags(output, event->getLoggerName());
-	output.append(LOG4CXX_STR("\" timestamp=\""));
+	output.append(LOG4CXXNG_STR("\" timestamp=\""));
 	StringHelper::toString(event->getTimeStamp() / 1000L, p, output);
-	output.append(LOG4CXX_STR("\" level=\""));
+	output.append(LOG4CXXNG_STR("\" level=\""));
 	Transform::appendEscapingTags(output, event->getLevel()->toString());
-	output.append(LOG4CXX_STR("\" thread=\""));
+	output.append(LOG4CXXNG_STR("\" thread=\""));
 	Transform::appendEscapingTags(output, event->getThreadName());
-	output.append(LOG4CXX_STR("\">"));
-	output.append(LOG4CXX_EOL);
+	output.append(LOG4CXXNG_STR("\">"));
+	output.append(LOG4CXXNG_EOL);
 
-	output.append(LOG4CXX_STR("<log4j:message><![CDATA["));
+	output.append(LOG4CXXNG_STR("<log4j:message><![CDATA["));
 	// Append the rendered message. Also make sure to escape any
 	// existing CDATA sections.
 	Transform::appendEscapingCDATA(output, event->getRenderedMessage());
-	output.append(LOG4CXX_STR("]]></log4j:message>"));
-	output.append(LOG4CXX_EOL);
+	output.append(LOG4CXXNG_STR("]]></log4j:message>"));
+	output.append(LOG4CXXNG_EOL);
 
 	LogString ndc;
 
 	if (event->getNDC(ndc))
 	{
-		output.append(LOG4CXX_STR("<log4j:NDC><![CDATA["));
+		output.append(LOG4CXXNG_STR("<log4j:NDC><![CDATA["));
 		Transform::appendEscapingCDATA(output, ndc);
-		output.append(LOG4CXX_STR("]]></log4j:NDC>"));
-		output.append(LOG4CXX_EOL);
+		output.append(LOG4CXXNG_STR("]]></log4j:NDC>"));
+		output.append(LOG4CXXNG_EOL);
 	}
 
 	if (locationInfo)
 	{
-		output.append(LOG4CXX_STR("<log4j:locationInfo class=\""));
+		output.append(LOG4CXXNG_STR("<log4j:locationInfo class=\""));
 		const LocationInfo& locInfo = event->getLocationInformation();
-		LOG4CXX_DECODE_CHAR(className, locInfo.getClassName());
+		LOG4CXXNG_DECODE_CHAR(className, locInfo.getClassName());
 		Transform::appendEscapingTags(output, className);
-		output.append(LOG4CXX_STR("\" method=\""));
-		LOG4CXX_DECODE_CHAR(method, locInfo.getMethodName());
+		output.append(LOG4CXXNG_STR("\" method=\""));
+		LOG4CXXNG_DECODE_CHAR(method, locInfo.getMethodName());
 		Transform::appendEscapingTags(output, method);
-		output.append(LOG4CXX_STR("\" file=\""));
-		LOG4CXX_DECODE_CHAR(fileName, locInfo.getFileName());
+		output.append(LOG4CXXNG_STR("\" file=\""));
+		LOG4CXXNG_DECODE_CHAR(fileName, locInfo.getFileName());
 		Transform::appendEscapingTags(output, fileName);
-		output.append(LOG4CXX_STR("\" line=\""));
+		output.append(LOG4CXXNG_STR("\" line=\""));
 		StringHelper::toString(locInfo.getLineNumber(), p, output);
-		output.append(LOG4CXX_STR("\"/>"));
-		output.append(LOG4CXX_EOL);
+		output.append(LOG4CXXNG_STR("\"/>"));
+		output.append(LOG4CXXNG_EOL);
 	}
 
 	if (properties)
@@ -110,8 +110,8 @@ void XMLLayout::format(LogString& output,
 
 		if (!(keySet.empty() && propertySet.empty()))
 		{
-			output.append(LOG4CXX_STR("<log4j:properties>"));
-			output.append(LOG4CXX_EOL);
+			output.append(LOG4CXXNG_STR("<log4j:properties>"));
+			output.append(LOG4CXXNG_EOL);
 
 			for (LoggingEvent::KeySet::const_iterator i = keySet.begin();
 				i != keySet.end();
@@ -122,12 +122,12 @@ void XMLLayout::format(LogString& output,
 
 				if (event->getMDC(key, value))
 				{
-					output.append(LOG4CXX_STR("<log4j:data name=\""));
+					output.append(LOG4CXXNG_STR("<log4j:data name=\""));
 					Transform::appendEscapingTags(output, key);
-					output.append(LOG4CXX_STR("\" value=\""));
+					output.append(LOG4CXXNG_STR("\" value=\""));
 					Transform::appendEscapingTags(output, value);
-					output.append(LOG4CXX_STR("\"/>"));
-					output.append(LOG4CXX_EOL);
+					output.append(LOG4CXXNG_STR("\"/>"));
+					output.append(LOG4CXXNG_EOL);
 				}
 			}
 
@@ -140,22 +140,22 @@ void XMLLayout::format(LogString& output,
 
 				if (event->getProperty(key, value))
 				{
-					output.append(LOG4CXX_STR("<log4j:data name=\""));
+					output.append(LOG4CXXNG_STR("<log4j:data name=\""));
 					Transform::appendEscapingTags(output, key);
-					output.append(LOG4CXX_STR("\" value=\""));
+					output.append(LOG4CXXNG_STR("\" value=\""));
 					Transform::appendEscapingTags(output, value);
-					output.append(LOG4CXX_STR("\"/>"));
-					output.append(LOG4CXX_EOL);
+					output.append(LOG4CXXNG_STR("\"/>"));
+					output.append(LOG4CXXNG_EOL);
 				}
 			}
 
-			output.append(LOG4CXX_STR("</log4j:properties>"));
-			output.append(LOG4CXX_EOL);
+			output.append(LOG4CXXNG_STR("</log4j:properties>"));
+			output.append(LOG4CXXNG_EOL);
 		}
 	}
 
-	output.append(LOG4CXX_STR("</log4j:event>"));
-	output.append(LOG4CXX_EOL);
-	output.append(LOG4CXX_EOL);
+	output.append(LOG4CXXNG_STR("</log4j:event>"));
+	output.append(LOG4CXXNG_EOL);
+	output.append(LOG4CXXNG_EOL);
 }
 

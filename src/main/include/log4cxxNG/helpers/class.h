@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_CLASS_H
-#define _LOG4CXX_HELPERS_CLASS_H
+#ifndef _LOG4CXXNG_HELPERS_CLASS_H
+#define _LOG4CXXNG_HELPERS_CLASS_H
 
 #if defined(_MSC_VER)
 	#pragma warning (push)
@@ -28,7 +28,7 @@
 #include <log4cxxNG/helpers/objectptr.h>
 #include <map>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -36,7 +36,7 @@ class Object;
 typedef ObjectPtrT<Object> ObjectPtr;
 
 
-class LOG4CXX_EXPORT Class
+class LOG4CXXNG_EXPORT Class
 {
 	public:
 		virtual ~Class();
@@ -56,7 +56,7 @@ class LOG4CXX_EXPORT Class
 		static ClassMap& getRegistry();
 		static void registerClasses();
 };
-}  // namespace log4cxx
+}  // namespace log4cxxng
 } // namespace helper
 
 #if defined(_MSC_VER)
@@ -64,4 +64,4 @@ class LOG4CXX_EXPORT Class
 #endif
 
 
-#endif //_LOG4CXX_HELPERS_CLASS_H
+#endif //_LOG4CXXNG_HELPERS_CLASS_H

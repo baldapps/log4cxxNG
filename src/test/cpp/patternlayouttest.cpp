@@ -57,8 +57,8 @@
 	REGEX_STR("Message [0-9]\\{1,2\\}")
 #define PAT_MDC_1 REGEX_STR("")
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 LOGUNIT_CLASS(PatternLayoutTest)
 {
@@ -87,7 +87,7 @@ public:
 	{
 		root = Logger::getRootLogger();
 		MDC::clear();
-		logger = Logger::getLogger(LOG4CXX_TEST_STR("java.org.apache.log4j.PatternLayoutTest"));
+		logger = Logger::getLogger(LOG4CXXNG_TEST_STR("java.org.apache.log4j.PatternLayoutTest"));
 	}
 
 	void tearDown()
@@ -98,14 +98,14 @@ public:
 
 	void test1()
 	{
-		PropertyConfigurator::configure(LOG4CXX_FILE("input/patternLayout1.properties"));
+		PropertyConfigurator::configure(LOG4CXXNG_FILE("input/patternLayout1.properties"));
 		common();
-		LOGUNIT_ASSERT(Compare::compare(TEMP, LOG4CXX_FILE("witness/patternLayout.1")));
+		LOGUNIT_ASSERT(Compare::compare(TEMP, LOG4CXXNG_FILE("witness/patternLayout.1")));
 	}
 
 	void test2()
 	{
-		PropertyConfigurator::configure(LOG4CXX_FILE("input/patternLayout2.properties"));
+		PropertyConfigurator::configure(LOG4CXXNG_FILE("input/patternLayout2.properties"));
 		common();
 
 		ControlFilter filter1;
@@ -128,12 +128,12 @@ public:
 			throw;
 		}
 
-		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXX_FILE("witness/patternLayout.2")));
+		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXXNG_FILE("witness/patternLayout.2")));
 	}
 
 	void test3()
 	{
-		PropertyConfigurator::configure(LOG4CXX_FILE("input/patternLayout3.properties"));
+		PropertyConfigurator::configure(LOG4CXXNG_FILE("input/patternLayout3.properties"));
 		common();
 
 		ControlFilter filter1;
@@ -156,14 +156,14 @@ public:
 			throw;
 		}
 
-		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXX_FILE("witness/patternLayout.3")));
+		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXXNG_FILE("witness/patternLayout.3")));
 	}
 
 	// Output format:
 	// 06 avr. 2002 18:30:58,937 [12345] DEBUG atternLayoutTest - Message 0
 	void test4()
 	{
-		PropertyConfigurator::configure(LOG4CXX_FILE("input/patternLayout4.properties"));
+		PropertyConfigurator::configure(LOG4CXXNG_FILE("input/patternLayout4.properties"));
 		common();
 
 		ControlFilter filter1;
@@ -186,12 +186,12 @@ public:
 			throw;
 		}
 
-		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXX_FILE("witness/patternLayout.4")));
+		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXXNG_FILE("witness/patternLayout.4")));
 	}
 
 	void test5()
 	{
-		PropertyConfigurator::configure(LOG4CXX_FILE("input/patternLayout5.properties"));
+		PropertyConfigurator::configure(LOG4CXXNG_FILE("input/patternLayout5.properties"));
 		common();
 
 		ControlFilter filter1;
@@ -214,12 +214,12 @@ public:
 			throw;
 		}
 
-		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXX_FILE("witness/patternLayout.5")));
+		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXXNG_FILE("witness/patternLayout.5")));
 	}
 
 	void test6()
 	{
-		PropertyConfigurator::configure(LOG4CXX_FILE("input/patternLayout6.properties"));
+		PropertyConfigurator::configure(LOG4CXXNG_FILE("input/patternLayout6.properties"));
 		common();
 
 		ControlFilter filter1;
@@ -242,12 +242,12 @@ public:
 			throw;
 		}
 
-		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXX_FILE("witness/patternLayout.6")));
+		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXXNG_FILE("witness/patternLayout.6")));
 	}
 
 	void test7()
 	{
-		PropertyConfigurator::configure(LOG4CXX_FILE("input/patternLayout7.properties"));
+		PropertyConfigurator::configure(LOG4CXXNG_FILE("input/patternLayout7.properties"));
 		common();
 
 		ControlFilter filter1;
@@ -270,12 +270,12 @@ public:
 			throw;
 		}
 
-		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXX_FILE("witness/patternLayout.7")));
+		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXXNG_FILE("witness/patternLayout.7")));
 	}
 
 	void test8()
 	{
-		PropertyConfigurator::configure(LOG4CXX_FILE("input/patternLayout8.properties"));
+		PropertyConfigurator::configure(LOG4CXXNG_FILE("input/patternLayout8.properties"));
 		common();
 
 
@@ -301,12 +301,12 @@ public:
 			throw;
 		}
 
-		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXX_FILE("witness/patternLayout.8")));
+		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXXNG_FILE("witness/patternLayout.8")));
 	}
 
 	void test9()
 	{
-		PropertyConfigurator::configure(LOG4CXX_FILE("input/patternLayout9.properties"));
+		PropertyConfigurator::configure(LOG4CXXNG_FILE("input/patternLayout9.properties"));
 		common();
 
 		ControlFilter filter1;
@@ -327,12 +327,12 @@ public:
 			throw;
 		}
 
-		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXX_FILE("witness/patternLayout.9")));
+		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXXNG_FILE("witness/patternLayout.9")));
 	}
 
 	void test10()
 	{
-		PropertyConfigurator::configure(LOG4CXX_FILE("input/patternLayout10.properties"));
+		PropertyConfigurator::configure(LOG4CXXNG_FILE("input/patternLayout10.properties"));
 		common();
 
 		ControlFilter filter1;
@@ -359,12 +359,12 @@ public:
 			throw;
 		}
 
-		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXX_FILE("witness/patternLayout.10")));
+		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXXNG_FILE("witness/patternLayout.10")));
 	}
 
 	void test11()
 	{
-		PropertyConfigurator::configure(LOG4CXX_FILE("input/patternLayout11.properties"));
+		PropertyConfigurator::configure(LOG4CXXNG_FILE("input/patternLayout11.properties"));
 		common();
 
 		ControlFilter filter1;
@@ -385,12 +385,12 @@ public:
 			throw;
 		}
 
-		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXX_FILE("witness/patternLayout.11")));
+		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXXNG_FILE("witness/patternLayout.11")));
 	}
 
 	void test12()
 	{
-		PropertyConfigurator::configure(LOG4CXX_FILE("input/patternLayout12.properties"));
+		PropertyConfigurator::configure(LOG4CXXNG_FILE("input/patternLayout12.properties"));
 		common();
 
 		ControlFilter filter1;
@@ -415,33 +415,33 @@ public:
 			throw;
 		}
 
-		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXX_FILE("witness/patternLayout.12")));
+		LOGUNIT_ASSERT(Compare::compare(FILTERED, LOG4CXXNG_FILE("witness/patternLayout.12")));
 	}
 
 	void testMDC1()
 	{
-		PropertyConfigurator::configure(LOG4CXX_FILE("input/patternLayout.mdc.1.properties"));
-		MDC::put(LOG4CXX_TEST_STR("key1"), LOG4CXX_TEST_STR("va11"));
-		MDC::put(LOG4CXX_TEST_STR("key2"), LOG4CXX_TEST_STR("va12"));
-		logger->debug(LOG4CXX_TEST_STR("Hello World"));
+		PropertyConfigurator::configure(LOG4CXXNG_FILE("input/patternLayout.mdc.1.properties"));
+		MDC::put(LOG4CXXNG_TEST_STR("key1"), LOG4CXXNG_TEST_STR("va11"));
+		MDC::put(LOG4CXXNG_TEST_STR("key2"), LOG4CXXNG_TEST_STR("va12"));
+		logger->debug(LOG4CXXNG_TEST_STR("Hello World"));
 		MDC::clear();
 
-		LOGUNIT_ASSERT(Compare::compare(TEMP, LOG4CXX_FILE("witness/patternLayout.mdc.1")));
+		LOGUNIT_ASSERT(Compare::compare(TEMP, LOG4CXXNG_FILE("witness/patternLayout.mdc.1")));
 	}
 
 	void testMDC2()
 	{
-		LogString OUTPUT_FILE   = LOG4CXX_STR("output/patternLayout.mdc.2");
-		File WITNESS_FILE  = LOG4CXX_FILE("witness/patternLayout.mdc.2");
+		LogString OUTPUT_FILE   = LOG4CXXNG_STR("output/patternLayout.mdc.2");
+		File WITNESS_FILE  = LOG4CXXNG_FILE("witness/patternLayout.mdc.2");
 
-		LogString mdcMsgPattern1 = LOG4CXX_STR("%m : %X%n");
-		LogString mdcMsgPattern2 = LOG4CXX_STR("%m : %X{key1}%n");
-		LogString mdcMsgPattern3 = LOG4CXX_STR("%m : %X{key2}%n");
-		LogString mdcMsgPattern4 = LOG4CXX_STR("%m : %X{key3}%n");
-		LogString mdcMsgPattern5 = LOG4CXX_STR("%m : %X{key1},%X{key2},%X{key3}%n");
+		LogString mdcMsgPattern1 = LOG4CXXNG_STR("%m : %X%n");
+		LogString mdcMsgPattern2 = LOG4CXXNG_STR("%m : %X{key1}%n");
+		LogString mdcMsgPattern3 = LOG4CXXNG_STR("%m : %X{key2}%n");
+		LogString mdcMsgPattern4 = LOG4CXXNG_STR("%m : %X{key3}%n");
+		LogString mdcMsgPattern5 = LOG4CXXNG_STR("%m : %X{key1},%X{key2},%X{key3}%n");
 
 		// set up appender
-		PatternLayoutPtr layout = new PatternLayout(LOG4CXX_STR("%m%n"));
+		PatternLayoutPtr layout = new PatternLayout(LOG4CXXNG_STR("%m%n"));
 		AppenderPtr appender = new FileAppender(layout, OUTPUT_FILE, false);
 
 		// set appender on root and set level to debug
@@ -449,58 +449,58 @@ public:
 		root->setLevel(Level::getDebug());
 
 		// output starting message
-		root->debug(LOG4CXX_TEST_STR("starting mdc pattern test"));
+		root->debug(LOG4CXXNG_TEST_STR("starting mdc pattern test"));
 
 		layout->setConversionPattern(mdcMsgPattern1);
-		log4cxx::helpers::Pool pool;
+		log4cxxng::helpers::Pool pool;
 		layout->activateOptions(pool);
-		root->debug(LOG4CXX_TEST_STR("empty mdc, no key specified in pattern"));
+		root->debug(LOG4CXXNG_TEST_STR("empty mdc, no key specified in pattern"));
 
 		layout->setConversionPattern(mdcMsgPattern2);
 		layout->activateOptions(pool);
-		root->debug(LOG4CXX_TEST_STR("empty mdc, key1 in pattern"));
+		root->debug(LOG4CXXNG_TEST_STR("empty mdc, key1 in pattern"));
 
 		layout->setConversionPattern(mdcMsgPattern3);
 		layout->activateOptions(pool);
-		root->debug(LOG4CXX_TEST_STR("empty mdc, key2 in pattern"));
+		root->debug(LOG4CXXNG_TEST_STR("empty mdc, key2 in pattern"));
 
 		layout->setConversionPattern(mdcMsgPattern4);
 		layout->activateOptions(pool);
-		root->debug(LOG4CXX_TEST_STR("empty mdc, key3 in pattern"));
+		root->debug(LOG4CXXNG_TEST_STR("empty mdc, key3 in pattern"));
 
 		layout->setConversionPattern(mdcMsgPattern5);
 		layout->activateOptions(pool);
-		root->debug(LOG4CXX_TEST_STR("empty mdc, key1, key2, and key3 in pattern"));
+		root->debug(LOG4CXXNG_TEST_STR("empty mdc, key1, key2, and key3 in pattern"));
 
-		MDC::put(LOG4CXX_TEST_STR("key1"), LOG4CXX_TEST_STR("value1"));
-		MDC::put(LOG4CXX_TEST_STR("key2"), LOG4CXX_TEST_STR("value2"));
+		MDC::put(LOG4CXXNG_TEST_STR("key1"), LOG4CXXNG_TEST_STR("value1"));
+		MDC::put(LOG4CXXNG_TEST_STR("key2"), LOG4CXXNG_TEST_STR("value2"));
 
 		layout->setConversionPattern(mdcMsgPattern1);
 		layout->activateOptions(pool);
-		root->debug(LOG4CXX_TEST_STR("filled mdc, no key specified in pattern"));
+		root->debug(LOG4CXXNG_TEST_STR("filled mdc, no key specified in pattern"));
 
 		layout->setConversionPattern(mdcMsgPattern2);
 		layout->activateOptions(pool);
-		root->debug(LOG4CXX_TEST_STR("filled mdc, key1 in pattern"));
+		root->debug(LOG4CXXNG_TEST_STR("filled mdc, key1 in pattern"));
 
 		layout->setConversionPattern(mdcMsgPattern3);
 		layout->activateOptions(pool);
-		root->debug(LOG4CXX_TEST_STR("filled mdc, key2 in pattern"));
+		root->debug(LOG4CXXNG_TEST_STR("filled mdc, key2 in pattern"));
 
 		layout->setConversionPattern(mdcMsgPattern4);
 		layout->activateOptions(pool);
-		root->debug(LOG4CXX_TEST_STR("filled mdc, key3 in pattern"));
+		root->debug(LOG4CXXNG_TEST_STR("filled mdc, key3 in pattern"));
 
 		layout->setConversionPattern(mdcMsgPattern5);
 		layout->activateOptions(pool);
-		root->debug(LOG4CXX_TEST_STR("filled mdc, key1, key2, and key3 in pattern"));
+		root->debug(LOG4CXXNG_TEST_STR("filled mdc, key1, key2, and key3 in pattern"));
 
-		MDC::remove(LOG4CXX_TEST_STR("key1"));
-		MDC::remove(LOG4CXX_TEST_STR("key2"));
+		MDC::remove(LOG4CXXNG_TEST_STR("key1"));
+		MDC::remove(LOG4CXXNG_TEST_STR("key2"));
 
-		layout->setConversionPattern(LOG4CXX_STR("%m%n"));
+		layout->setConversionPattern(LOG4CXXNG_STR("%m%n"));
 		layout->activateOptions(pool);
-		root->debug(LOG4CXX_TEST_STR("finished mdc pattern test"));
+		root->debug(LOG4CXXNG_TEST_STR("finished mdc pattern test"));
 
 		LOGUNIT_ASSERT(Compare::compare(OUTPUT_FILE, WITNESS_FILE));
 	}
@@ -519,20 +519,20 @@ public:
 		Pool pool;
 
 
-		LOG4CXX_DEBUG(logger, createMessage(pool, ++i));
-		LOG4CXX_DEBUG(root, createMessage(pool, i));
+		LOG4CXXNG_DEBUG(logger, createMessage(pool, ++i));
+		LOG4CXXNG_DEBUG(root, createMessage(pool, i));
 
-		LOG4CXX_INFO(logger, createMessage(pool, ++i));
-		LOG4CXX_INFO(root, createMessage(pool, i));
+		LOG4CXXNG_INFO(logger, createMessage(pool, ++i));
+		LOG4CXXNG_INFO(root, createMessage(pool, i));
 
-		LOG4CXX_WARN(logger, createMessage(pool, ++i));
-		LOG4CXX_WARN(root, createMessage(pool, i));
+		LOG4CXXNG_WARN(logger, createMessage(pool, ++i));
+		LOG4CXXNG_WARN(root, createMessage(pool, i));
 
-		LOG4CXX_ERROR(logger, createMessage(pool, ++i));
-		LOG4CXX_ERROR(root, createMessage(pool, i));
+		LOG4CXXNG_ERROR(logger, createMessage(pool, ++i));
+		LOG4CXXNG_ERROR(root, createMessage(pool, i));
 
-		LOG4CXX_FATAL(logger, createMessage(pool, ++i));
-		LOG4CXX_FATAL(root, createMessage(pool, i));
+		LOG4CXXNG_FATAL(logger, createMessage(pool, ++i));
+		LOG4CXXNG_FATAL(root, createMessage(pool, i));
 	}
 
 private:
@@ -541,8 +541,8 @@ private:
 
 };
 
-const LogString PatternLayoutTest::TEMP(LOG4CXX_STR("output/temp"));
-const LogString PatternLayoutTest::FILTERED(LOG4CXX_STR("output/filtered"));
+const LogString PatternLayoutTest::TEMP(LOG4CXXNG_STR("output/temp"));
+const LogString PatternLayoutTest::FILTERED(LOG4CXXNG_STR("output/filtered"));
 
 
 LOGUNIT_TEST_SUITE_REGISTRATION(PatternLayoutTest);

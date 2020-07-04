@@ -21,11 +21,11 @@
 #include <log4cxxNG/helpers/exception.h>
 #include <log4cxxNG/helpers/transcoder.h>
 
-using namespace log4cxx;
-using namespace log4cxx::rolling;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::rolling;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(GZCompressAction)
+IMPLEMENT_LOG4CXXNG_OBJECT(GZCompressAction)
 
 GZCompressAction::GZCompressAction(const File& src,
 	const File& dest,
@@ -34,7 +34,7 @@ GZCompressAction::GZCompressAction(const File& src,
 {
 }
 
-bool GZCompressAction::execute(log4cxx::helpers::Pool& p) const
+bool GZCompressAction::execute(log4cxxng::helpers::Pool& p) const
 {
 	if (source.exists(p))
 	{

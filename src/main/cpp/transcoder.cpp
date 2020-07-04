@@ -26,17 +26,17 @@
 #include <vector>
 #include <apr.h>
 #include <apr_strings.h>
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 #include <log4cxxNG/private/log4cxxNG_private.h>
 
-#if LOG4CXX_LOGCHAR_IS_UNICHAR || LOG4CXX_CFSTRING_API || LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_LOGCHAR_IS_UNICHAR || LOG4CXXNG_CFSTRING_API || LOG4CXXNG_UNICHAR_API
 	#include <CoreFoundation/CFString.h>
 #endif
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 
 void Transcoder::decodeUTF8(const std::string& src, LogString& dst)
@@ -61,7 +61,7 @@ void Transcoder::decodeUTF8(const std::string& src, LogString& dst)
 
 void Transcoder::encodeUTF8(const LogString& src, std::string& dst)
 {
-#if LOG4CXX_LOGCHAR_IS_UTF8
+#if LOG4CXXNG_LOGCHAR_IS_UTF8
 	dst.append(src);
 #else
 	LogString::const_iterator iter = src.begin();
@@ -86,7 +86,7 @@ void Transcoder::encodeUTF8(const LogString& src, std::string& dst)
 
 char* Transcoder::encodeUTF8(const LogString& src, Pool& p)
 {
-#if LOG4CXX_LOGCHAR_IS_UTF8
+#if LOG4CXXNG_LOGCHAR_IS_UTF8
 	return p.pstrdup(src);
 #else
 	std::string tmp;
@@ -312,13 +312,13 @@ void Transcoder::encode(unsigned int sv, std::string& dst)
 
 void Transcoder::decode(const std::string& src, LogString& dst)
 {
-#if LOG4CXX_CHARSET_UTF8 && LOG4CXX_LOGCHAR_IS_UTF8
+#if LOG4CXXNG_CHARSET_UTF8 && LOG4CXXNG_LOGCHAR_IS_UTF8
 	dst.append(src);
 #else
 	static CharsetDecoderPtr decoder(CharsetDecoder::getDefaultDecoder());
 	dst.reserve(dst.size() + src.size());
 	std::string::const_iterator iter = src.begin();
-#if !LOG4CXX_CHARSET_EBCDIC
+#if !LOG4CXXNG_CHARSET_EBCDIC
 
 	for (;
 		iter != src.end() && ((unsigned char) *iter) < 0x80;
@@ -336,7 +336,7 @@ void Transcoder::decode(const std::string& src, LogString& dst)
 
 		while (buf.remaining() > 0)
 		{
-			log4cxx_status_t stat = decoder->decode(buf, dst);
+			log4cxxng_status_t stat = decoder->decode(buf, dst);
 
 			if (CharsetDecoder::isError(stat))
 			{
@@ -353,7 +353,7 @@ void Transcoder::decode(const std::string& src, LogString& dst)
 
 char* Transcoder::encode(const LogString& src, Pool& p)
 {
-#if LOG4CXX_CHARSET_UTF8 && LOG4CXX_LOGCHAR_IS_UTF8
+#if LOG4CXXNG_CHARSET_UTF8 && LOG4CXXNG_LOGCHAR_IS_UTF8
 	return p.pstrdup(src);
 #else
 	std::string tmp;
@@ -366,13 +366,13 @@ char* Transcoder::encode(const LogString& src, Pool& p)
 
 void Transcoder::encode(const LogString& src, std::string& dst)
 {
-#if LOG4CXX_CHARSET_UTF8 && LOG4CXX_LOGCHAR_IS_UTF8
+#if LOG4CXXNG_CHARSET_UTF8 && LOG4CXXNG_LOGCHAR_IS_UTF8
 	dst.append(src);
 #else
 	static CharsetEncoderPtr encoder(CharsetEncoder::getDefaultEncoder());
 	dst.reserve(dst.size() + src.size());
 	LogString::const_iterator iter = src.begin();
-#if !LOG4CXX_CHARSET_EBCDIC
+#if !LOG4CXXNG_CHARSET_EBCDIC
 
 	for (;
 		iter != src.end() && ((unsigned int) *iter) < 0x80;
@@ -390,7 +390,7 @@ void Transcoder::encode(const LogString& src, std::string& dst)
 
 		while (iter != src.end())
 		{
-			log4cxx_status_t stat = encoder->encode(src, iter, out);
+			log4cxxng_status_t stat = encoder->encode(src, iter, out);
 			out.flip();
 			dst.append(out.data(), out.limit());
 			out.clear();
@@ -477,10 +477,10 @@ static void encodeUTF16(unsigned int sv, String& dst)
 
 
 
-#if LOG4CXX_WCHAR_T_API || LOG4CXX_LOGCHAR_IS_WCHAR_T || defined(WIN32) || defined(_WIN32)
+#if LOG4CXXNG_WCHAR_T_API || LOG4CXXNG_LOGCHAR_IS_WCHAR_T || defined(WIN32) || defined(_WIN32)
 void Transcoder::decode(const std::wstring& src, LogString& dst)
 {
-#if LOG4CXX_LOGCHAR_IS_WCHAR_T
+#if LOG4CXXNG_LOGCHAR_IS_WCHAR_T
 	dst.append(src, len);
 #else
 	std::wstring::const_iterator i = src.begin();
@@ -505,7 +505,7 @@ void Transcoder::decode(const std::wstring& src, LogString& dst)
 
 void Transcoder::encode(const LogString& src, std::wstring& dst)
 {
-#if LOG4CXX_LOGCHAR_IS_WCHAR_T
+#if LOG4CXXNG_LOGCHAR_IS_WCHAR_T
 	dst.append(src);
 #else
 
@@ -521,7 +521,7 @@ void Transcoder::encode(const LogString& src, std::wstring& dst)
 
 wchar_t* Transcoder::wencode(const LogString& src, Pool& p)
 {
-#if LOG4CXX_LOGCHAR_IS_WCHAR_T
+#if LOG4CXXNG_LOGCHAR_IS_WCHAR_T
 	std::wstring& tmp = src;
 #else
 	std::wstring tmp;
@@ -567,10 +567,10 @@ void Transcoder::encode(unsigned int sv, std::wstring& dst)
 
 
 
-#if LOG4CXX_UNICHAR_API || LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_UNICHAR_API || LOG4CXXNG_CFSTRING_API
 void Transcoder::decode(const std::basic_string<UniChar>& src, LogString& dst)
 {
-#if LOG4CXX_LOGCHAR_IS_UNICHAR
+#if LOG4CXXNG_LOGCHAR_IS_UNICHAR
 	dst.append(src);
 #else
 
@@ -586,7 +586,7 @@ void Transcoder::decode(const std::basic_string<UniChar>& src, LogString& dst)
 
 void Transcoder::encode(const LogString& src, std::basic_string<UniChar>& dst)
 {
-#if LOG4CXX_LOGCHAR_IS_UNICHAR
+#if LOG4CXXNG_LOGCHAR_IS_UNICHAR
 	dst.append(src);
 #else
 
@@ -613,7 +613,7 @@ void Transcoder::encode(unsigned int sv, std::basic_string<UniChar>& dst)
 
 #endif
 
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 void Transcoder::decode(const CFStringRef& src, LogString& dst)
 {
 	const UniChar* chars = CFStringGetCharactersPtr(src);
@@ -630,7 +630,7 @@ void Transcoder::decode(const CFStringRef& src, LogString& dst)
 		{
 			std::vector<UniChar> tmp(length);
 			CFStringGetCharacters(src, CFRangeMake(0, length), &tmp[0]);
-#if LOG4CXX_LOGCHAR_IS_UNICHAR
+#if LOG4CXXNG_LOGCHAR_IS_UNICHAR
 			dst.append(&tmp[0], tmp.size());
 #else
 			decode(std::basic_string<UniChar>(&tmp[0], tmp.size()), dst);
@@ -641,7 +641,7 @@ void Transcoder::decode(const CFStringRef& src, LogString& dst)
 
 CFStringRef Transcoder::encode(const LogString& src)
 {
-	LOG4CXX_ENCODE_UNICHAR(tmp, src);
+	LOG4CXXNG_ENCODE_UNICHAR(tmp, src);
 	return CFStringCreateWithCharacters(kCFAllocatorDefault, tmp.data(), tmp.size());
 }
 #endif
@@ -649,7 +649,7 @@ CFStringRef Transcoder::encode(const LogString& src)
 
 logchar Transcoder::decode(char val)
 {
-#if LOG4CXX_CHARSET_EBCDIC
+#if LOG4CXXNG_CHARSET_EBCDIC
 	LogString dst;
 	Transcoder::decode(std::string(1, val), dst);
 	return dst[0];
@@ -660,7 +660,7 @@ logchar Transcoder::decode(char val)
 
 LogString Transcoder::decode(const char* val)
 {
-#if LOG4CXX_LOGCHAR_IS_UTF8 && !LOG4CXX_CHARSET_EBCDIC
+#if LOG4CXXNG_LOGCHAR_IS_UTF8 && !LOG4CXXNG_CHARSET_EBCDIC
 	return val;
 #else
 	LogString dst;

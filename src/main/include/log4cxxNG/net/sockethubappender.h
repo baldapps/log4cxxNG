@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_NET_SOCKET_HUB_APPENDER_H
-#define _LOG4CXX_NET_SOCKET_HUB_APPENDER_H
+#ifndef _LOG4CXXNG_NET_SOCKET_HUB_APPENDER_H
+#define _LOG4CXXNG_NET_SOCKET_HUB_APPENDER_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -30,7 +30,7 @@
 #include <log4cxxNG/helpers/objectoutputstream.h>
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -39,10 +39,10 @@ typedef ObjectPtrT<ObjectOutputStream> ObjectOutputStreamPtr;
 }
 namespace net
 {
-LOG4CXX_LIST_DEF(ObjectOutputStreamList, log4cxx::helpers::ObjectOutputStreamPtr);
+LOG4CXXNG_LIST_DEF(ObjectOutputStreamList, log4cxxng::helpers::ObjectOutputStreamPtr);
 
 /**
-Sends {@link log4cxx::spi::LoggingEvent LoggingEvent} objects to a set of remote log
+Sends {@link log4cxxng::spi::LoggingEvent LoggingEvent} objects to a set of remote log
 servers, usually a SocketNode.
 
 <p>Acts just like SocketAppender except that instead of
@@ -106,7 +106,7 @@ the LogManager#shutdown method before
 exiting the application.
 */
 
-class LOG4CXX_EXPORT SocketHubAppender : public AppenderSkeleton
+class LOG4CXXNG_EXPORT SocketHubAppender : public AppenderSkeleton
 {
 	private:
 		/**
@@ -119,11 +119,11 @@ class LOG4CXX_EXPORT SocketHubAppender : public AppenderSkeleton
 		bool locationInfo;
 
 	public:
-		DECLARE_LOG4CXX_OBJECT(SocketHubAppender)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(SocketHubAppender)
-		LOG4CXX_CAST_ENTRY_CHAIN(AppenderSkeleton)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(SocketHubAppender)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(SocketHubAppender)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(AppenderSkeleton)
+		END_LOG4CXXNG_CAST_MAP()
 
 		SocketHubAppender();
 		~SocketHubAppender();
@@ -136,7 +136,7 @@ class LOG4CXX_EXPORT SocketHubAppender : public AppenderSkeleton
 		/**
 		Set up the socket server on the specified port.
 		*/
-		virtual void activateOptions(log4cxx::helpers::Pool& p);
+		virtual void activateOptions(log4cxxng::helpers::Pool& p);
 
 		/**
 		Set options
@@ -147,7 +147,7 @@ class LOG4CXX_EXPORT SocketHubAppender : public AppenderSkeleton
 
 		/**
 		Append an event to all of current connections. */
-		virtual void append(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& p);
+		virtual void append(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& p);
 
 		/**
 		The SocketHubAppender does not use a layout. Hence, this method returns
@@ -194,16 +194,16 @@ class LOG4CXX_EXPORT SocketHubAppender : public AppenderSkeleton
 		void startServer();
 
 		helpers::Thread thread;
-		static void* LOG4CXX_THREAD_FUNC monitor(apr_thread_t* thread, void* data);
+		static void* LOG4CXXNG_THREAD_FUNC monitor(apr_thread_t* thread, void* data);
 
 }; // class SocketHubAppender
-LOG4CXX_PTR_DEF(SocketHubAppender);
+LOG4CXXNG_PTR_DEF(SocketHubAppender);
 }  // namespace net
-} // namespace log4cxx
+} // namespace log4cxxng
 
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
 #endif
 
-#endif // _LOG4CXX_NET_SOCKET_HUB_APPENDER_H
+#endif // _LOG4CXXNG_NET_SOCKET_HUB_APPENDER_H

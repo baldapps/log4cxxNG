@@ -26,16 +26,16 @@
 #include <log4cxxNG/spi/loggingevent.h>
 #include <log4cxxNG/spi/location/locationinfo.h>
 
-using namespace log4cxx;
-using namespace log4cxx::pattern;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::pattern;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(NDCPatternConverter)
+IMPLEMENT_LOG4CXXNG_OBJECT(NDCPatternConverter)
 
 NDCPatternConverter::NDCPatternConverter() :
-	LoggingEventPatternConverter(LOG4CXX_STR("NDC"),
-		LOG4CXX_STR("ndc"))
+	LoggingEventPatternConverter(LOG4CXXNG_STR("NDC"),
+		LOG4CXXNG_STR("ndc"))
 {
 }
 
@@ -53,6 +53,6 @@ void NDCPatternConverter::format(
 {
 	if (!event->getNDC(toAppendTo))
 	{
-		toAppendTo.append(LOG4CXX_STR("null"));
+		toAppendTo.append(LOG4CXXNG_STR("null"));
 	}
 }

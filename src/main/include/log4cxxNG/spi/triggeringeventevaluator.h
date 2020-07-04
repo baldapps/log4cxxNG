@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_SPI_TRIGGERING_EVENT_EVALUATOR_H
-#define _LOG4CXX_SPI_TRIGGERING_EVENT_EVALUATOR_H
+#ifndef _LOG4CXXNG_SPI_TRIGGERING_EVENT_EVALUATOR_H
+#define _LOG4CXXNG_SPI_TRIGGERING_EVENT_EVALUATOR_H
 
 #include <log4cxxNG/spi/loggingevent.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace spi
 {
@@ -34,17 +34,17 @@ an email when the #isTriggeringEvent method returns
 returned result is <code>false</code>.
 
 */
-class LOG4CXX_EXPORT TriggeringEventEvaluator : public virtual helpers::Object
+class LOG4CXXNG_EXPORT TriggeringEventEvaluator : public virtual helpers::Object
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(TriggeringEventEvaluator)
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(TriggeringEventEvaluator)
 		/**
 		Is this the triggering event?
 		*/
 		virtual bool isTriggeringEvent(const spi::LoggingEventPtr& event) = 0;
 };
-LOG4CXX_PTR_DEF(TriggeringEventEvaluator);
+LOG4CXXNG_PTR_DEF(TriggeringEventEvaluator);
 }
 }
 
-#endif // _LOG4CXX_SPI_TRIGGERING_EVENT_EVALUATOR_H
+#endif // _LOG4CXXNG_SPI_TRIGGERING_EVENT_EVALUATOR_H

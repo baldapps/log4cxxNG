@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_LAYOUT_H
-#define _LOG4CXX_LAYOUT_H
+#ifndef _LOG4CXXNG_LAYOUT_H
+#define _LOG4CXXNG_LAYOUT_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -30,21 +30,21 @@
 #include <log4cxxNG/spi/loggingevent.h>
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 /**
 Extend this abstract class to create your own log layout format.
 */
-class LOG4CXX_EXPORT Layout :
+class LOG4CXXNG_EXPORT Layout :
 	public virtual spi::OptionHandler,
 	public virtual helpers::ObjectImpl
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(Layout)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(Layout)
-		LOG4CXX_CAST_ENTRY(spi::OptionHandler)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(Layout)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(Layout)
+		LOG4CXXNG_CAST_ENTRY(spi::OptionHandler)
+		END_LOG4CXXNG_CAST_MAP()
 
 		virtual ~Layout();
 		void addRef() const;
@@ -55,7 +55,7 @@ class LOG4CXX_EXPORT Layout :
 		Implement this method to create your own layout format.
 		*/
 		virtual void format(LogString& output,
-			const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& pool) const = 0;
+			const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& pool) const = 0;
 
 		/**
 		Returns the content type output by this layout. The base class
@@ -67,13 +67,13 @@ class LOG4CXX_EXPORT Layout :
 		Append the header for the layout format. The base class does
 		nothing.
 		*/
-		virtual void appendHeader(LogString& output, log4cxx::helpers::Pool& p);
+		virtual void appendHeader(LogString& output, log4cxxng::helpers::Pool& p);
 
 		/**
 		Append the footer for the layout format. The base class does
 		nothing.
 		*/
-		virtual void appendFooter(LogString& output, log4cxx::helpers::Pool& p);
+		virtual void appendFooter(LogString& output, log4cxxng::helpers::Pool& p);
 
 		/**
 		If the layout handles the throwable object contained within
@@ -87,11 +87,11 @@ class LOG4CXX_EXPORT Layout :
 		*/
 		virtual bool ignoresThrowable() const = 0;
 };
-LOG4CXX_PTR_DEF(Layout);
+LOG4CXXNG_PTR_DEF(Layout);
 }
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
 #endif
 
-#endif // _LOG4CXX_LAYOUT_H
+#endif // _LOG4CXXNG_LAYOUT_H

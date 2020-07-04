@@ -21,7 +21,7 @@
 #include "apr_pools.h"
 #include "apr_poll.h"
 
-using namespace log4cxx::helpers;
+using namespace log4cxxng::helpers;
 
 /**  Creates a server socket on a specified port.
 */

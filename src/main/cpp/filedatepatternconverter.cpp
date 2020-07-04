@@ -22,10 +22,10 @@
 #include <log4cxxNG/pattern/filedatepatternconverter.h>
 #include <log4cxxNG/pattern/datepatternconverter.h>
 
-using namespace log4cxx;
-using namespace log4cxx::pattern;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::pattern;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
 PatternConverterPtr FileDatePatternConverter::newInstance(
 	const std::vector<LogString>& options)
@@ -33,7 +33,7 @@ PatternConverterPtr FileDatePatternConverter::newInstance(
 	if (options.size() == 0)
 	{
 		std::vector<LogString> altOptions;
-		altOptions.push_back(LOG4CXX_STR("yyyy-MM-dd"));
+		altOptions.push_back(LOG4CXXNG_STR("yyyy-MM-dd"));
 		return DatePatternConverter::newInstance(altOptions);
 	}
 

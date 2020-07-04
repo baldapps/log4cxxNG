@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HTML_LAYOUT_H
-#define _LOG4CXX_HTML_LAYOUT_H
+#ifndef _LOG4CXXNG_HTML_LAYOUT_H
+#define _LOG4CXXNG_HTML_LAYOUT_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -29,12 +29,12 @@
 
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 /**
 This layout outputs events in a HTML table.
 */
-class LOG4CXX_EXPORT HTMLLayout : public Layout
+class LOG4CXXNG_EXPORT HTMLLayout : public Layout
 {
 	private:
 		// Print no location info by default
@@ -45,11 +45,11 @@ class LOG4CXX_EXPORT HTMLLayout : public Layout
 		helpers::ISO8601DateFormat dateFormat;
 
 	public:
-		DECLARE_LOG4CXX_OBJECT(HTMLLayout)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(HTMLLayout)
-		LOG4CXX_CAST_ENTRY_CHAIN(Layout)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(HTMLLayout)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(HTMLLayout)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(Layout)
+		END_LOG4CXXNG_CAST_MAP()
 
 		HTMLLayout();
 
@@ -100,13 +100,13 @@ class LOG4CXX_EXPORT HTMLLayout : public Layout
 		*/
 		virtual LogString getContentType() const
 		{
-			return LOG4CXX_STR("text/html");
+			return LOG4CXXNG_STR("text/html");
 		}
 
 		/**
 		No options to activate.
 		*/
-		virtual void activateOptions(log4cxx::helpers::Pool& /* p */) {}
+		virtual void activateOptions(log4cxxng::helpers::Pool& /* p */) {}
 
 		/**
 		Set options
@@ -114,17 +114,17 @@ class LOG4CXX_EXPORT HTMLLayout : public Layout
 		virtual void setOption(const LogString& option, const LogString& value);
 
 		virtual void format(LogString& output,
-			const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& pool) const;
+			const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& pool) const;
 
 		/**
 		Append appropriate HTML headers.
 		*/
-		virtual void appendHeader(LogString& output, log4cxx::helpers::Pool& pool);
+		virtual void appendHeader(LogString& output, log4cxxng::helpers::Pool& pool);
 
 		/**
 		Append the appropriate HTML footers.
 		*/
-		virtual void appendFooter(LogString& output, log4cxx::helpers::Pool& pool);
+		virtual void appendFooter(LogString& output, log4cxxng::helpers::Pool& pool);
 
 		/**
 		The HTML layout handles the throwable contained in logging
@@ -135,12 +135,12 @@ class LOG4CXX_EXPORT HTMLLayout : public Layout
 		}
 
 }; // class HtmlLayout
-LOG4CXX_PTR_DEF(HTMLLayout);
-}  // namespace log4cxx
+LOG4CXXNG_PTR_DEF(HTMLLayout);
+}  // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
 #endif
 
 
-#endif // _LOG4CXX_HTML_LAYOUT_H
+#endif // _LOG4CXXNG_HTML_LAYOUT_H

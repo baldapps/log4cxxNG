@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#define LOG4CXX_TEST 1
+#define LOG4CXXNG_TEST 1
 #include <log4cxxNG/private/log4cxxNG_private.h>
 
 #include "../logunit.h"
@@ -25,11 +25,11 @@
 #include "../util/compare.h"
 #include <log4cxxNG/file.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::xml;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::xml;
 
-#define LOG4CXX_TEST_STR(x) L##x
+#define LOG4CXXNG_TEST_STR(x) L##x
 
 /**
    Tests handling of custom loggers.
@@ -47,7 +47,7 @@ public:
 	void setUp()
 	{
 		logger = XLogger::getLogger(
-				LOG4CXX_STR("org.apache.log4j.customLogger.XLoggerTestCase"));
+				LOG4CXXNG_STR("org.apache.log4j.customLogger.XLoggerTestCase"));
 	}
 
 	void tearDown()
@@ -72,18 +72,18 @@ public:
 		DOMConfigurator::configure(fn);
 
 		int i = 0;
-		LOG4CXX_LOG(logger, log4cxx::XLevel::getTrace(), "Message " << i);
+		LOG4CXXNG_LOG(logger, log4cxxng::XLevel::getTrace(), "Message " << i);
 
 		i++;
-		LOG4CXX_DEBUG(logger, "Message " << i);
+		LOG4CXXNG_DEBUG(logger, "Message " << i);
 		i++;
-		LOG4CXX_WARN(logger, "Message " << i);
+		LOG4CXXNG_WARN(logger, "Message " << i);
 		i++;
-		LOG4CXX_ERROR(logger, "Message " << i);
+		LOG4CXXNG_ERROR(logger, "Message " << i);
 		i++;
-		LOG4CXX_FATAL(logger, "Message " << i);
+		LOG4CXXNG_FATAL(logger, "Message " << i);
 		i++;
-		LOG4CXX_DEBUG(logger, "Message " << i);
+		LOG4CXXNG_DEBUG(logger, "Message " << i);
 
 		const File OUTPUT("output/temp");
 		std::string witness("witness/customLogger.");

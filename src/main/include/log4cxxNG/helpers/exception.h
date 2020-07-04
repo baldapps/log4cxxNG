@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_EXCEPTION_H
-#define _LOG4CXX_HELPERS_EXCEPTION_H
+#ifndef _LOG4CXXNG_HELPERS_EXCEPTION_H
+#define _LOG4CXXNG_HELPERS_EXCEPTION_H
 
 #include <exception>
 #include <log4cxxNG/log4cxxNG.h>
@@ -27,14 +27,14 @@
 	#pragma warning (disable : 4251 4275) // ::std::exception needs to have dll-interface
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
 /** The class Exception and its subclasses indicate conditions that a
 reasonable application might want to catch.
 */
-class LOG4CXX_EXPORT Exception : public ::std::exception
+class LOG4CXXNG_EXPORT Exception : public ::std::exception
 {
 	public:
 		Exception(const char* msg);
@@ -50,21 +50,21 @@ class LOG4CXX_EXPORT Exception : public ::std::exception
 /** RuntimeException is the parent class of those exceptions that can be
 thrown during the normal operation of the process.
 */
-class LOG4CXX_EXPORT RuntimeException : public Exception
+class LOG4CXXNG_EXPORT RuntimeException : public Exception
 {
 	public:
-		RuntimeException(log4cxx_status_t stat);
+		RuntimeException(log4cxxng_status_t stat);
 		RuntimeException(const LogString& msg);
 		RuntimeException(const RuntimeException& msg);
 		RuntimeException& operator=(const RuntimeException& src);
 	private:
-		static LogString formatMessage(log4cxx_status_t stat);
+		static LogString formatMessage(log4cxxng_status_t stat);
 }; // class RuntimeException
 
 /** Thrown when an application attempts to use null in a case where an
 object is required.
 */
-class LOG4CXX_EXPORT  NullPointerException : public RuntimeException
+class LOG4CXXNG_EXPORT  NullPointerException : public RuntimeException
 {
 	public:
 		NullPointerException(const LogString& msg);
@@ -74,7 +74,7 @@ class LOG4CXX_EXPORT  NullPointerException : public RuntimeException
 
 /** Thrown to indicate that a method has been passed
 an illegal or inappropriate argument.*/
-class LOG4CXX_EXPORT IllegalArgumentException : public RuntimeException
+class LOG4CXXNG_EXPORT IllegalArgumentException : public RuntimeException
 {
 	public:
 		IllegalArgumentException(const LogString& msg);
@@ -86,19 +86,19 @@ class LOG4CXX_EXPORT IllegalArgumentException : public RuntimeException
 is the general class of exceptions produced by failed or interrupted
 I/O operations.
 */
-class LOG4CXX_EXPORT IOException : public Exception
+class LOG4CXXNG_EXPORT IOException : public Exception
 {
 	public:
 		IOException();
-		IOException(log4cxx_status_t stat);
+		IOException(log4cxxng_status_t stat);
 		IOException(const LogString& msg);
 		IOException(const IOException& src);
 		IOException& operator=(const IOException&);
 	private:
-		static LogString formatMessage(log4cxx_status_t stat);
+		static LogString formatMessage(log4cxxng_status_t stat);
 };
 
-class LOG4CXX_EXPORT MissingResourceException : public Exception
+class LOG4CXXNG_EXPORT MissingResourceException : public Exception
 {
 	public:
 		MissingResourceException(const LogString& key);
@@ -108,61 +108,61 @@ class LOG4CXX_EXPORT MissingResourceException : public Exception
 		static LogString formatMessage(const LogString& key);
 };
 
-class LOG4CXX_EXPORT PoolException : public Exception
+class LOG4CXXNG_EXPORT PoolException : public Exception
 {
 	public:
-		PoolException(log4cxx_status_t stat);
+		PoolException(log4cxxng_status_t stat);
 		PoolException(const PoolException& src);
 		PoolException& operator=(const PoolException&);
 	private:
-		static LogString formatMessage(log4cxx_status_t stat);
+		static LogString formatMessage(log4cxxng_status_t stat);
 };
 
 
-class LOG4CXX_EXPORT MutexException : public Exception
+class LOG4CXXNG_EXPORT MutexException : public Exception
 {
 	public:
-		MutexException(log4cxx_status_t stat);
+		MutexException(log4cxxng_status_t stat);
 		MutexException(const MutexException& src);
 		MutexException& operator=(const MutexException&);
 	private:
-		static LogString formatMessage(log4cxx_status_t stat);
+		static LogString formatMessage(log4cxxng_status_t stat);
 };
 
-class LOG4CXX_EXPORT InterruptedException : public Exception
+class LOG4CXXNG_EXPORT InterruptedException : public Exception
 {
 	public:
 		InterruptedException();
-		InterruptedException(log4cxx_status_t stat);
+		InterruptedException(log4cxxng_status_t stat);
 		InterruptedException(const InterruptedException& src);
 		InterruptedException& operator=(const InterruptedException&);
 	private:
-		static LogString formatMessage(log4cxx_status_t stat);
+		static LogString formatMessage(log4cxxng_status_t stat);
 };
 
-class LOG4CXX_EXPORT ThreadException
+class LOG4CXXNG_EXPORT ThreadException
 	: public Exception
 {
 	public:
-		ThreadException(log4cxx_status_t stat);
+		ThreadException(log4cxxng_status_t stat);
 		ThreadException(const LogString& msg);
 		ThreadException(const ThreadException& src);
 		ThreadException& operator=(const ThreadException&);
 	private:
-		static LogString formatMessage(log4cxx_status_t stat);
+		static LogString formatMessage(log4cxxng_status_t stat);
 };
 
-class LOG4CXX_EXPORT TranscoderException : public Exception
+class LOG4CXXNG_EXPORT TranscoderException : public Exception
 {
 	public:
-		TranscoderException(log4cxx_status_t stat);
+		TranscoderException(log4cxxng_status_t stat);
 		TranscoderException(const TranscoderException& src);
 		TranscoderException& operator=(const TranscoderException&);
 	private:
-		static LogString formatMessage(log4cxx_status_t stat);
+		static LogString formatMessage(log4cxxng_status_t stat);
 };
 
-class LOG4CXX_EXPORT IllegalMonitorStateException
+class LOG4CXXNG_EXPORT IllegalMonitorStateException
 	: public Exception
 {
 	public:
@@ -176,7 +176,7 @@ Thrown when an application tries to create an instance of a class using
 the newInstance method in class Class, but the specified class object
 cannot be instantiated because it is an interface or is an abstract class.
 */
-class LOG4CXX_EXPORT InstantiationException : public Exception
+class LOG4CXXNG_EXPORT InstantiationException : public Exception
 {
 	public:
 		InstantiationException(const LogString& msg);
@@ -189,7 +189,7 @@ Thrown when an application tries to load in a class through its
 string name but no definition for the class with the specified name
 could be found.
 */
-class LOG4CXX_EXPORT ClassNotFoundException : public Exception
+class LOG4CXXNG_EXPORT ClassNotFoundException : public Exception
 {
 	public:
 		ClassNotFoundException(const LogString& className);
@@ -219,11 +219,11 @@ class IllegalStateException : public Exception
 /** Thrown to indicate that there is an error in the underlying
 protocol, such as a TCP error.
 */
-class LOG4CXX_EXPORT SocketException : public IOException
+class LOG4CXXNG_EXPORT SocketException : public IOException
 {
 	public:
 		SocketException(const LogString& msg);
-		SocketException(log4cxx_status_t status);
+		SocketException(log4cxxng_status_t status);
 		SocketException(const SocketException&);
 		SocketException& operator=(const SocketException&);
 };
@@ -232,15 +232,15 @@ class LOG4CXX_EXPORT SocketException : public IOException
 to a remote address and port. Typically, the connection was refused
 remotely (e.g., no process is listening on the remote address/port).
 */
-class LOG4CXX_EXPORT ConnectException : public SocketException
+class LOG4CXXNG_EXPORT ConnectException : public SocketException
 {
 	public:
-		ConnectException(log4cxx_status_t status);
+		ConnectException(log4cxxng_status_t status);
 		ConnectException(const ConnectException& src);
 		ConnectException& operator=(const ConnectException&);
 };
 
-class LOG4CXX_EXPORT ClosedChannelException : public SocketException
+class LOG4CXXNG_EXPORT ClosedChannelException : public SocketException
 {
 	public:
 		ClosedChannelException();
@@ -252,10 +252,10 @@ class LOG4CXX_EXPORT ClosedChannelException : public SocketException
 a local address and port. Typically, the port is in use, or the
 requested local address could not be assigned.
 */
-class LOG4CXX_EXPORT BindException : public SocketException
+class LOG4CXXNG_EXPORT BindException : public SocketException
 {
 	public:
-		BindException(log4cxx_status_t status);
+		BindException(log4cxxng_status_t status);
 		BindException(const BindException&);
 		BindException& operator=(const BindException&);
 };
@@ -266,7 +266,7 @@ transfer has been terminated because the thread performing it was
 interrupted. The field bytesTransferred  indicates how many bytes were
 successfully transferred before the interruption occurred.
 */
-class LOG4CXX_EXPORT InterruptedIOException : public IOException
+class LOG4CXXNG_EXPORT InterruptedIOException : public IOException
 {
 	public:
 		InterruptedIOException(const LogString& msg);
@@ -281,7 +281,7 @@ transfer has been terminated because the thread performing it was
 interrupted. The field bytesTransferred  indicates how many bytes were
 successfully transferred before the interruption occurred.
 */
-class LOG4CXX_EXPORT SocketTimeoutException : public InterruptedIOException
+class LOG4CXXNG_EXPORT SocketTimeoutException : public InterruptedIOException
 {
 	public:
 		SocketTimeoutException();
@@ -291,10 +291,10 @@ class LOG4CXX_EXPORT SocketTimeoutException : public InterruptedIOException
 
 
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
-#endif // _LOG4CXX_HELPERS_EXCEPTION_H
+#endif // _LOG4CXXNG_HELPERS_EXCEPTION_H

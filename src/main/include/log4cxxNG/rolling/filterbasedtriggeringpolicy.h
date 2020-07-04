@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-#if !defined(_LOG4CXX_ROLLING_FILTER_BASED_TRIGGERING_POLICY_H)
-#define _LOG4CXX_ROLLING_FILTER_BASED_TRIGGERING_POLICY_H
+#if !defined(_LOG4CXXNG_ROLLING_FILTER_BASED_TRIGGERING_POLICY_H)
+#define _LOG4CXXNG_ROLLING_FILTER_BASED_TRIGGERING_POLICY_H
 
 #include <log4cxxNG/rolling/triggeringpolicy.h>
 #include <log4cxxNG/spi/filter.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 class File;
@@ -45,24 +45,24 @@ namespace rolling
  *
  *
  */
-class LOG4CXX_EXPORT FilterBasedTriggeringPolicy : public TriggeringPolicy
+class LOG4CXXNG_EXPORT FilterBasedTriggeringPolicy : public TriggeringPolicy
 {
 
-		DECLARE_LOG4CXX_OBJECT(FilterBasedTriggeringPolicy)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(FilterBasedTriggeringPolicy)
-		LOG4CXX_CAST_ENTRY_CHAIN(TriggeringPolicy)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(FilterBasedTriggeringPolicy)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(FilterBasedTriggeringPolicy)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(TriggeringPolicy)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		 * The first filter in the filter chain. Set to <code>null</code> initially.
 		 */
-		log4cxx::spi::FilterPtr headFilter;
+		log4cxxng::spi::FilterPtr headFilter;
 
 		/**
 		 * The last filter in the filter chain.
 		 */
-		log4cxx::spi::FilterPtr tailFilter;
+		log4cxxng::spi::FilterPtr tailFilter;
 
 	public:
 		/**
@@ -84,7 +84,7 @@ class LOG4CXX_EXPORT FilterBasedTriggeringPolicy : public TriggeringPolicy
 		 */
 		virtual bool isTriggeringEvent(
 			Appender* appender,
-			const log4cxx::spi::LoggingEventPtr& event,
+			const log4cxxng::spi::LoggingEventPtr& event,
 			const LogString& filename,
 			size_t fileLength);
 
@@ -92,7 +92,7 @@ class LOG4CXX_EXPORT FilterBasedTriggeringPolicy : public TriggeringPolicy
 		 * Add a filter to end of the filter list.
 		 * @param newFilter filter to add to end of list.
 		 */
-		void addFilter(const log4cxx::spi::FilterPtr& newFilter);
+		void addFilter(const log4cxxng::spi::FilterPtr& newFilter);
 
 		/**
 		 * Clear the filters chain.
@@ -104,17 +104,17 @@ class LOG4CXX_EXPORT FilterBasedTriggeringPolicy : public TriggeringPolicy
 		 * Returns the head Filter.
 		 *
 		 */
-		log4cxx::spi::FilterPtr& getFilter();
+		log4cxxng::spi::FilterPtr& getFilter();
 
 		/**
 		 *  Prepares the instance for use.
 		 */
-		void activateOptions(log4cxx::helpers::Pool&);
+		void activateOptions(log4cxxng::helpers::Pool&);
 
 		void setOption(const LogString& option, const LogString& value);
 };
 
-LOG4CXX_PTR_DEF(FilterBasedTriggeringPolicy);
+LOG4CXXNG_PTR_DEF(FilterBasedTriggeringPolicy);
 
 }
 }

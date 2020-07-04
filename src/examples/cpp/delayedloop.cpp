@@ -25,8 +25,8 @@
 #include <exception>
 #include <stdlib.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 
 /**
@@ -88,7 +88,7 @@ public:
                 int i = 0;
                 while(true)
                 {
-                   LOG4CXX_DEBUG(logger, "MSG " << i++);
+                   LOG4CXXNG_DEBUG(logger, "MSG " << i++);
                         try
                         {
                                 apr_sleep(1000000);

@@ -15,15 +15,15 @@
  * limitations under the License.
  */
 
-#if !defined(_LOG4CXX_ROLLING_ROLLING_POLICY_H)
-#define _LOG4CXX_ROLLING_ROLLING_POLICY_H
+#if !defined(_LOG4CXXNG_ROLLING_ROLLING_POLICY_H)
+#define _LOG4CXXNG_ROLLING_ROLLING_POLICY_H
 
 #include <log4cxxNG/portability.h>
 #include <log4cxxNG/spi/optionhandler.h>
 #include <log4cxxNG/rolling/rolloverdescription.h>
 #include <log4cxxNG/file.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace rolling
 {
@@ -39,10 +39,10 @@ namespace rolling
  *
  *
 */
-class LOG4CXX_EXPORT RollingPolicy :
+class LOG4CXXNG_EXPORT RollingPolicy :
 	public virtual spi::OptionHandler
 {
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(RollingPolicy)
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(RollingPolicy)
 
 	public:
 		virtual ~RollingPolicy() {}
@@ -60,7 +60,7 @@ class LOG4CXX_EXPORT RollingPolicy :
 		virtual RolloverDescriptionPtr initialize(
 			const   LogString&              currentActiveFile,
 			const   bool                    append,
-			log4cxx::helpers::Pool& pool) = 0;
+			log4cxxng::helpers::Pool& pool) = 0;
 
 		/**
 		 * Prepare for a rollover.  This method is called prior to
@@ -78,10 +78,10 @@ class LOG4CXX_EXPORT RollingPolicy :
 		virtual RolloverDescriptionPtr rollover(
 			const   LogString&              currentActiveFile,
 			const   bool                    append,
-			log4cxx::helpers::Pool& pool) = 0;
+			log4cxxng::helpers::Pool& pool) = 0;
 };
 
-LOG4CXX_PTR_DEF(RollingPolicy);
+LOG4CXXNG_PTR_DEF(RollingPolicy);
 
 }
 }

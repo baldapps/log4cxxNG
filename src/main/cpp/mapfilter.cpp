@@ -21,12 +21,12 @@
 #include <log4cxxNG/helpers/stringhelper.h>
 #include <log4cxxNG/helpers/optionconverter.h>
 
-using namespace log4cxx;
-using namespace log4cxx::filter;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::filter;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(MapFilter)
+IMPLEMENT_LOG4CXXNG_OBJECT(MapFilter)
 
 MapFilter::MapFilter() : acceptOnMatch(true), mustMatchAll(false)
 {
@@ -36,13 +36,13 @@ MapFilter::MapFilter() : acceptOnMatch(true), mustMatchAll(false)
 void MapFilter::setOption(	const LogString& option,
 							const LogString& value)
 {
-	if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("ACCEPTONMATCH"), LOG4CXX_STR("acceptonmatch")))
+	if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("ACCEPTONMATCH"), LOG4CXXNG_STR("acceptonmatch")))
 	{
 		acceptOnMatch = OptionConverter::toBoolean(value, acceptOnMatch);
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("OPERATOR"), LOG4CXX_STR("operator")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("OPERATOR"), LOG4CXXNG_STR("operator")))
 	{
-		mustMatchAll = StringHelper::equalsIgnoreCase(value, LOG4CXX_STR("AND"), LOG4CXX_STR("and")) ? true : false;
+		mustMatchAll = StringHelper::equalsIgnoreCase(value, LOG4CXXNG_STR("AND"), LOG4CXXNG_STR("and")) ? true : false;
 	}
 	else if (!option.empty() && !value.empty())
 	{
@@ -51,7 +51,7 @@ void MapFilter::setOption(	const LogString& option,
 }
 
 Filter::FilterDecision MapFilter::decide(
-	const log4cxx::spi::LoggingEventPtr& event) const
+	const log4cxxng::spi::LoggingEventPtr& event) const
 {
 	if (keyVals.empty())
 	{

@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_FILEWATCHDOG_H
-#define _LOG4CXX_HELPERS_FILEWATCHDOG_H
+#ifndef _LOG4CXXNG_HELPERS_FILEWATCHDOG_H
+#define _LOG4CXXNG_HELPERS_FILEWATCHDOG_H
 
 #include <log4cxxNG/logstring.h>
 #include <time.h>
@@ -24,7 +24,7 @@
 #include <log4cxxNG/helpers/thread.h>
 #include <log4cxxNG/file.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -33,7 +33,7 @@ namespace helpers
 Check every now and then that a certain file has not changed. If it
 has, then call the #doOnChange method.
 */
-class LOG4CXX_EXPORT FileWatchdog
+class LOG4CXXNG_EXPORT FileWatchdog
 {
 	public:
 		virtual ~FileWatchdog();
@@ -52,7 +52,7 @@ class LOG4CXX_EXPORT FileWatchdog
 		The delay to observe between every check.
 		By default set DEFAULT_DELAY.*/
 		long delay;
-		log4cxx_time_t lastModif;
+		log4cxxng_time_t lastModif;
 		bool warnedAlready;
 		volatile unsigned int interrupted;
 
@@ -73,7 +73,7 @@ class LOG4CXX_EXPORT FileWatchdog
 		void start();
 
 	private:
-		static void* LOG4CXX_THREAD_FUNC run(apr_thread_t* thread, void* data);
+		static void* LOG4CXXNG_THREAD_FUNC run(apr_thread_t* thread, void* data);
 		Pool pool;
 		Thread thread;
 
@@ -82,7 +82,7 @@ class LOG4CXX_EXPORT FileWatchdog
 
 };
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
 
-#endif // _LOG4CXX_HELPERS_FILEWATCHDOG_H
+#endif // _LOG4CXXNG_HELPERS_FILEWATCHDOG_H

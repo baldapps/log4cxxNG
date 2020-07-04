@@ -18,11 +18,11 @@
 #include <log4cxxNG/rolling/action.h>
 #include <log4cxxNG/helpers/synchronized.h>
 
-using namespace log4cxx;
-using namespace log4cxx::rolling;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::rolling;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(Action)
+IMPLEMENT_LOG4CXXNG_OBJECT(Action)
 
 Action::Action() :
 	complete(false),
@@ -39,7 +39,7 @@ Action::~Action()
 /**
  * {@inheritDoc}
  */
-void Action::run(log4cxx::helpers::Pool& pool1)
+void Action::run(log4cxxng::helpers::Pool& pool1)
 {
 	synchronized sync(mutex);
 

@@ -23,8 +23,8 @@
 #include <log4cxxNG/helpers/inputstreamreader.h>
 #include <log4cxxNG/helpers/systemoutwriter.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 bool Compare::compare(const File& file1, const File& file2)
 {
@@ -56,21 +56,21 @@ bool Compare::compare(const File& file1, const File& file2)
 
 		if (s1 != s2)
 		{
-			LogString msg(LOG4CXX_STR("Files ["));
+			LogString msg(LOG4CXXNG_STR("Files ["));
 			msg += file1.getPath();
-			msg += LOG4CXX_STR("] and [");
+			msg += LOG4CXXNG_STR("] and [");
 			msg += file2.getPath();
-			msg += LOG4CXX_STR("] differ on line ");
+			msg += LOG4CXXNG_STR("] differ on line ");
 			StringHelper::toString(lineCounter, pool, msg);
-			msg += LOG4CXX_EOL;
-			msg += LOG4CXX_STR("One reads:  [");
+			msg += LOG4CXXNG_EOL;
+			msg += LOG4CXXNG_STR("One reads:  [");
 			msg += s1;
-			msg += LOG4CXX_STR("].");
-			msg += LOG4CXX_EOL;
-			msg += LOG4CXX_STR("Other reads:[");
+			msg += LOG4CXXNG_STR("].");
+			msg += LOG4CXXNG_EOL;
+			msg += LOG4CXXNG_STR("Other reads:[");
 			msg += s2;
-			msg += LOG4CXX_STR("].");
-			msg += LOG4CXX_EOL;
+			msg += LOG4CXXNG_STR("].");
+			msg += LOG4CXXNG_EOL;
 			emit(msg);
 
 			outputFile(file1, back1, pool);
@@ -83,12 +83,12 @@ bool Compare::compare(const File& file1, const File& file2)
 	// the second file is longer
 	if (getline(in2, s2))
 	{
-		LogString msg(LOG4CXX_STR("File ["));
+		LogString msg(LOG4CXXNG_STR("File ["));
 		msg += file2.getPath();
-		msg += LOG4CXX_STR("] longer than file [");
+		msg += LOG4CXXNG_STR("] longer than file [");
 		msg += file1.getPath();
-		msg += LOG4CXX_STR("].");
-		msg += LOG4CXX_EOL;
+		msg += LOG4CXXNG_STR("].");
+		msg += LOG4CXXNG_EOL;
 		emit(msg);
 		outputFile(file1, back1, pool);
 		outputFile(file2, back2, pool);
@@ -101,15 +101,15 @@ bool Compare::compare(const File& file1, const File& file2)
 
 void Compare::outputFile(const File& file,
 	const LogString& contents,
-	log4cxx::helpers::Pool& pool)
+	log4cxxng::helpers::Pool& pool)
 {
 	int lineCounter = 0;
-	emit(LOG4CXX_STR("--------------------------------"));
-	emit(LOG4CXX_EOL);
-	LogString msg(LOG4CXX_STR("Contents of "));
+	emit(LOG4CXXNG_STR("--------------------------------"));
+	emit(LOG4CXXNG_EOL);
+	LogString msg(LOG4CXXNG_STR("Contents of "));
 	msg += file.getPath();
-	msg += LOG4CXX_STR(":");
-	msg += LOG4CXX_EOL;
+	msg += LOG4CXXNG_STR(":");
+	msg += LOG4CXXNG_EOL;
 	emit(msg);
 	LogString in1(contents);
 	LogString s1;
@@ -123,23 +123,23 @@ void Compare::outputFile(const File& file,
 
 		if (lineCounter < 10)
 		{
-			emit(LOG4CXX_STR("   : "));
+			emit(LOG4CXXNG_STR("   : "));
 		}
 		else if (lineCounter < 100)
 		{
-			emit(LOG4CXX_STR("  : "));
+			emit(LOG4CXXNG_STR("  : "));
 		}
 		else if (lineCounter < 1000)
 		{
-			emit(LOG4CXX_STR(" : "));
+			emit(LOG4CXXNG_STR(" : "));
 		}
 		else
 		{
-			emit(LOG4CXX_STR(": "));
+			emit(LOG4CXXNG_STR(": "));
 		}
 
 		emit(s1);
-		emit(LOG4CXX_EOL);
+		emit(LOG4CXXNG_EOL);
 	}
 }
 

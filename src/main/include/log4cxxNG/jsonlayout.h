@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_JSON_LAYOUT_H
-#define _LOG4CXX_JSON_LAYOUT_H
+#ifndef _LOG4CXXNG_JSON_LAYOUT_H
+#define _LOG4CXXNG_JSON_LAYOUT_H
 
 #include <log4cxxNG/layout.h>
 #include <log4cxxNG/helpers/iso8601dateformat.h>
@@ -28,12 +28,12 @@
 #endif
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 /**
 This layout outputs events in a JSON dictionary.
 */
-class LOG4CXX_EXPORT JSONLayout : public Layout
+class LOG4CXXNG_EXPORT JSONLayout : public Layout
 {
 	private:
 		// Print no location info by default
@@ -53,14 +53,14 @@ class LOG4CXX_EXPORT JSONLayout : public Layout
 		void appendSerializedNDC(LogString& buf,
 			const spi::LoggingEventPtr& event) const;
 		void appendSerializedLocationInfo(LogString& buf,
-			const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& p) const;
+			const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& p) const;
 
 	public:
-		DECLARE_LOG4CXX_OBJECT(JSONLayout)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(JSONLayout)
-		LOG4CXX_CAST_ENTRY_CHAIN(Layout)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(JSONLayout)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(JSONLayout)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(Layout)
+		END_LOG4CXXNG_CAST_MAP()
 
 		JSONLayout();
 
@@ -111,13 +111,13 @@ class LOG4CXX_EXPORT JSONLayout : public Layout
 		*/
 		virtual LogString getContentType() const
 		{
-			return LOG4CXX_STR("application/json");
+			return LOG4CXXNG_STR("application/json");
 		}
 
 		/**
 		No options to activate.
 		*/
-		virtual void activateOptions(log4cxx::helpers::Pool& /* p */) {}
+		virtual void activateOptions(log4cxxng::helpers::Pool& /* p */) {}
 
 		/**
 		Set options
@@ -125,7 +125,7 @@ class LOG4CXX_EXPORT JSONLayout : public Layout
 		virtual void setOption(const LogString& option, const LogString& value);
 
 		virtual void format(LogString& output,
-			const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& pool) const;
+			const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& pool) const;
 
 		/**
 		The JSON layout handles the throwable contained in logging
@@ -136,11 +136,11 @@ class LOG4CXX_EXPORT JSONLayout : public Layout
 		}
 
 }; // class JSONLayout
-LOG4CXX_PTR_DEF(JSONLayout);
-}  // namespace log4cxx
+LOG4CXXNG_PTR_DEF(JSONLayout);
+}  // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
-#endif // _LOG4CXX_JSON_LAYOUT_H
+#endif // _LOG4CXXNG_JSON_LAYOUT_H

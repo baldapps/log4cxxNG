@@ -22,10 +22,10 @@
 #include <log4cxxNG/helpers/transcoder.h>
 #include <log4cxxNG/helpers/locale.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(ResourceBundle)
+IMPLEMENT_LOG4CXXNG_OBJECT(ResourceBundle)
 
 ResourceBundlePtr ResourceBundle::getBundle(const LogString& baseName,
 	const Locale& locale)
@@ -37,22 +37,22 @@ ResourceBundlePtr ResourceBundle::getBundle(const LogString& baseName,
 
 	if (!locale.getVariant().empty())
 	{
-		bundlesNames.push_back(baseName + LOG4CXX_STR("_") +
-			locale.getLanguage() + LOG4CXX_STR("_") +
-			locale.getCountry() + LOG4CXX_STR("_") +
+		bundlesNames.push_back(baseName + LOG4CXXNG_STR("_") +
+			locale.getLanguage() + LOG4CXXNG_STR("_") +
+			locale.getCountry() + LOG4CXXNG_STR("_") +
 			locale.getVariant());
 	}
 
 	if (!locale.getCountry().empty())
 	{
-		bundlesNames.push_back(baseName + LOG4CXX_STR("_") +
-			locale.getLanguage() + LOG4CXX_STR("_") +
+		bundlesNames.push_back(baseName + LOG4CXXNG_STR("_") +
+			locale.getLanguage() + LOG4CXXNG_STR("_") +
 			locale.getCountry());
 	}
 
 	if (!locale.getLanguage().empty())
 	{
-		bundlesNames.push_back(baseName + LOG4CXX_STR("_") +
+		bundlesNames.push_back(baseName + LOG4CXXNG_STR("_") +
 			locale.getLanguage());
 	}
 
@@ -82,7 +82,7 @@ ResourceBundlePtr ResourceBundle::getBundle(const LogString& baseName,
 		{
 			InputStreamPtr bundleStream =
 				Loader::getResourceAsStream(
-					bundleName + LOG4CXX_STR(".properties"));
+					bundleName + LOG4CXXNG_STR(".properties"));
 
 			if (bundleStream == 0)
 			{
@@ -116,7 +116,7 @@ ResourceBundlePtr ResourceBundle::getBundle(const LogString& baseName,
 	if (resourceBundle == 0)
 	{
 		throw MissingResourceException(
-			((LogString) LOG4CXX_STR("Missing resource bundle ")) + baseName);
+			((LogString) LOG4CXXNG_STR("Missing resource bundle ")) + baseName);
 	}
 
 	return resourceBundle;

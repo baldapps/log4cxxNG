@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#if !defined(_LOG4CXX_ROLLING_ROLLING_POLICY_BASE_H)
-#define _LOG4CXX_ROLLING_ROLLING_POLICY_BASE_H
+#if !defined(_LOG4CXXNG_ROLLING_ROLLING_POLICY_BASE_H)
+#define _LOG4CXXNG_ROLLING_ROLLING_POLICY_BASE_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -32,12 +32,12 @@
 #include <log4cxxNG/pattern/formattinginfo.h>
 #include <log4cxxNG/pattern/patternparser.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace rolling
 {
-LOG4CXX_LIST_DEF(PatternConverterList, log4cxx::pattern::PatternConverterPtr);
-LOG4CXX_LIST_DEF(FormattingInfoList, log4cxx::pattern::FormattingInfoPtr);
+LOG4CXXNG_LIST_DEF(PatternConverterList, log4cxxng::pattern::PatternConverterPtr);
+LOG4CXXNG_LIST_DEF(FormattingInfoList, log4cxxng::pattern::FormattingInfoPtr);
 
 /**
  * Implements methods common to most, it not all, rolling
@@ -46,16 +46,16 @@ LOG4CXX_LIST_DEF(FormattingInfoList, log4cxx::pattern::FormattingInfoPtr);
  *
  *
  */
-class LOG4CXX_EXPORT RollingPolicyBase :
+class LOG4CXXNG_EXPORT RollingPolicyBase :
 	public virtual RollingPolicy,
 	public virtual helpers::ObjectImpl
 {
 	protected:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(RollingPolicyBase)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(RollingPolicy)
-		LOG4CXX_CAST_ENTRY(spi::OptionHandler)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(RollingPolicyBase)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(RollingPolicy)
+		LOG4CXXNG_CAST_ENTRY(spi::OptionHandler)
+		END_LOG4CXXNG_CAST_MAP()
 
 
 	private:
@@ -80,8 +80,8 @@ class LOG4CXX_EXPORT RollingPolicyBase :
 		virtual ~RollingPolicyBase();
 		void addRef() const;
 		void releaseRef() const;
-		virtual void activateOptions(log4cxx::helpers::Pool& p) = 0;
-		virtual log4cxx::pattern::PatternMap getFormatSpecifiers() const = 0;
+		virtual void activateOptions(log4cxxng::helpers::Pool& p) = 0;
+		virtual log4cxxng::pattern::PatternMap getFormatSpecifiers() const = 0;
 
 		virtual void setOption(const LogString& option,
 			const LogString& value);
@@ -99,7 +99,7 @@ class LOG4CXX_EXPORT RollingPolicyBase :
 		LogString getFileNamePattern() const;
 
 
-#ifdef LOG4CXX_MULTI_PROCESS
+#ifdef LOG4CXXNG_MULTI_PROCESS
 		PatternConverterList getPatternConverterList()
 		{
 			return patternConverters;
@@ -118,11 +118,11 @@ class LOG4CXX_EXPORT RollingPolicyBase :
 		 * @param buf string buffer to which formatted file name is appended, may not be null.
 		 * @param p memory pool.
 		 */
-		void formatFileName(log4cxx::helpers::ObjectPtr& obj,
-			LogString& buf, log4cxx::helpers::Pool& p) const;
+		void formatFileName(log4cxxng::helpers::ObjectPtr& obj,
+			LogString& buf, log4cxxng::helpers::Pool& p) const;
 
-		log4cxx::pattern::PatternConverterPtr getIntegerPatternConverter() const;
-		log4cxx::pattern::PatternConverterPtr getDatePatternConverter() const;
+		log4cxxng::pattern::PatternConverterPtr getIntegerPatternConverter() const;
+		log4cxxng::pattern::PatternConverterPtr getDatePatternConverter() const;
 
 
 };

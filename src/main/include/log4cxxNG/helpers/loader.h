@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_LOADER_H
-#define _LOG4CXX_HELPERS_LOADER_H
+#ifndef _LOG4CXXNG_HELPERS_LOADER_H
+#define _LOG4CXXNG_HELPERS_LOADER_H
 
 #include <log4cxxNG/helpers/objectptr.h>
 #include <log4cxxNG/logstring.h>
@@ -24,13 +24,13 @@
 #include <log4cxxNG/helpers/inputstream.h>
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
 class Class;
 
-class LOG4CXX_EXPORT Loader
+class LOG4CXXNG_EXPORT Loader
 {
 	public:
 		static const Class& loadClass(const LogString& clazz);
@@ -39,5 +39,5 @@ class LOG4CXX_EXPORT Loader
 			const LogString& name);
 };
 }  // namespace helpers
-} // namespace log4cxx
-#endif //_LOG4CXX_HELPERS_LOADER_H
+} // namespace log4cxxng
+#endif //_LOG4CXXNG_HELPERS_LOADER_H

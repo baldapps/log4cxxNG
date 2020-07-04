@@ -33,26 +33,26 @@
 #include <log4cxxNG/helpers/transcoder.h>
 #include <log4cxxNG/helpers/fileinputstream.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::spi;
-using namespace log4cxx::filter;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::filter;
 
-IMPLEMENT_LOG4CXX_OBJECT(Object)
-IMPLEMENT_LOG4CXX_OBJECT(OptionHandler)
-IMPLEMENT_LOG4CXX_OBJECT(ErrorHandler)
-IMPLEMENT_LOG4CXX_OBJECT(Appender)
-IMPLEMENT_LOG4CXX_OBJECT(Filter)
-IMPLEMENT_LOG4CXX_OBJECT(AppenderAttachable)
-IMPLEMENT_LOG4CXX_OBJECT(LoggerFactory)
-IMPLEMENT_LOG4CXX_OBJECT(LoggerRepository)
-IMPLEMENT_LOG4CXX_OBJECT(DenyAllFilter)
-IMPLEMENT_LOG4CXX_OBJECT(RepositorySelector)
-IMPLEMENT_LOG4CXX_OBJECT(XMLDOMNode)
-IMPLEMENT_LOG4CXX_OBJECT(XMLDOMDocument)
-IMPLEMENT_LOG4CXX_OBJECT(XMLDOMElement)
-IMPLEMENT_LOG4CXX_OBJECT(XMLDOMNodeList)
-IMPLEMENT_LOG4CXX_OBJECT(TriggeringEventEvaluator)
+IMPLEMENT_LOG4CXXNG_OBJECT(Object)
+IMPLEMENT_LOG4CXXNG_OBJECT(OptionHandler)
+IMPLEMENT_LOG4CXXNG_OBJECT(ErrorHandler)
+IMPLEMENT_LOG4CXXNG_OBJECT(Appender)
+IMPLEMENT_LOG4CXXNG_OBJECT(Filter)
+IMPLEMENT_LOG4CXXNG_OBJECT(AppenderAttachable)
+IMPLEMENT_LOG4CXXNG_OBJECT(LoggerFactory)
+IMPLEMENT_LOG4CXXNG_OBJECT(LoggerRepository)
+IMPLEMENT_LOG4CXXNG_OBJECT(DenyAllFilter)
+IMPLEMENT_LOG4CXXNG_OBJECT(RepositorySelector)
+IMPLEMENT_LOG4CXXNG_OBJECT(XMLDOMNode)
+IMPLEMENT_LOG4CXXNG_OBJECT(XMLDOMDocument)
+IMPLEMENT_LOG4CXXNG_OBJECT(XMLDOMElement)
+IMPLEMENT_LOG4CXXNG_OBJECT(XMLDOMNodeList)
+IMPLEMENT_LOG4CXXNG_OBJECT(TriggeringEventEvaluator)
 
 const Class& Loader::loadClass(const LogString& clazz)
 {

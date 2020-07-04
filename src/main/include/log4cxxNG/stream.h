@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_STREAM_H
-#define _LOG4CXX_STREAM_H
+#ifndef _LOG4CXXNG_STREAM_H
+#define _LOG4CXXNG_STREAM_H
 
 #include <log4cxxNG/logger.h>
 #include <sstream>
 #include <log4cxxNG/spi/location/locationinfo.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 /**
@@ -34,7 +34,7 @@ namespace log4cxx
   *   requests.  The level of the stream is compared against the
   *   current level of the logger to determine if the request should be processed.
   */
-class LOG4CXX_EXPORT logstream_base
+class LOG4CXXNG_EXPORT logstream_base
 {
 	public:
 		/**
@@ -43,8 +43,8 @@ class LOG4CXX_EXPORT logstream_base
 		 *  @param level indicates level that will be used in log requests.  Can
 		 *      be modified later by inserting a level or calling setLevel.
 		 */
-		logstream_base(const log4cxx::LoggerPtr& logger,
-			const log4cxx::LevelPtr& level);
+		logstream_base(const log4cxxng::LoggerPtr& logger,
+			const log4cxxng::LevelPtr& level);
 		/**
 		 *  Destructor.
 		 */
@@ -134,7 +134,7 @@ class LOG4CXX_EXPORT logstream_base
 		/**
 		 *  Sets the location for subsequent log requests.
 		 */
-		void setLocation(const log4cxx::spi::LocationInfo& location);
+		void setLocation(const log4cxxng::spi::LocationInfo& location);
 
 		/**
 		 *  Sets the state of the embedded stream (if any)
@@ -151,7 +151,7 @@ class LOG4CXX_EXPORT logstream_base
 		 */
 		virtual void log(LoggerPtr& logger,
 			const LevelPtr& level,
-			const log4cxx::spi::LocationInfo& location) = 0;
+			const log4cxxng::spi::LocationInfo& location) = 0;
 		/**
 		 *   Erase any content in the message construction buffer.
 		 */
@@ -180,7 +180,7 @@ class LOG4CXX_EXPORT logstream_base
 		 *   Minimal extension of std::ios_base to allow creation
 		 *     of embedded IO states.
 		 */
-		class LOG4CXX_EXPORT logstream_ios_base : public std::ios_base
+		class LOG4CXXNG_EXPORT logstream_ios_base : public std::ios_base
 		{
 			public:
 				logstream_ios_base(std::ios_base::fmtflags initval,
@@ -201,49 +201,49 @@ class LOG4CXX_EXPORT logstream_base
 		/**
 		 *   associated logger.
 		 */
-		log4cxx::LoggerPtr logger;
+		log4cxxng::LoggerPtr logger;
 		/**
 		 *   associated level.
 		 */
-		log4cxx::LevelPtr level;
+		log4cxxng::LevelPtr level;
 		/**
 		 *   associated level.
 		 */
-		log4cxx::spi::LocationInfo location;
+		log4cxxng::spi::LocationInfo location;
 };
 
 typedef logstream_base& (*logstream_manipulator)(logstream_base&);
 
 /**
  *  An STL-like stream API for log4cxx using char as the character type.
-*. Instances of log4cxx::logstream
+*. Instances of log4cxxng::logstream
  *  are not  designedfor use by multiple threads and in general should be short-lived
- *  function scoped objects.  Using log4cxx::basic_logstream as a class member or
+ *  function scoped objects.  Using log4cxxng::basic_logstream as a class member or
  *  static instance should be avoided in the same manner as you would avoid placing a std::ostringstream
  *  in those locations.  Insertion operations are generally short-circuited if the
  *  level for the stream is not the same of higher that the level of the associated logger.
  */
-class LOG4CXX_EXPORT logstream : public logstream_base
+class LOG4CXXNG_EXPORT logstream : public logstream_base
 {
 		typedef char Ch;
 	public:
 		/**
 		 *   Constructor.
 		 */
-		logstream(const log4cxx::LoggerPtr& logger,
-			const log4cxx::LevelPtr& level);
+		logstream(const log4cxxng::LoggerPtr& logger,
+			const log4cxxng::LevelPtr& level);
 
 		/**
 		 *   Constructor.
 		 */
 		logstream(const Ch* loggerName,
-			const log4cxx::LevelPtr& level);
+			const log4cxxng::LevelPtr& level);
 
 		/**
 		 *   Constructor.
 		 */
 		logstream(const std::basic_string<Ch>& loggerName,
-			const log4cxx::LevelPtr& level);
+			const log4cxxng::LevelPtr& level);
 
 		~logstream();
 
@@ -260,32 +260,32 @@ class LOG4CXX_EXPORT logstream : public logstream_base
 		/**
 		 *   Insertion operator for level.
 		 */
-		logstream& operator<<(const log4cxx::LevelPtr& level);
+		logstream& operator<<(const log4cxxng::LevelPtr& level);
 		/**
 		 *   Insertion operator for location.
 		 */
-		logstream& operator<<(const log4cxx::spi::LocationInfo& location);
+		logstream& operator<<(const log4cxxng::spi::LocationInfo& location);
 
 		/**
 		 *   Alias for insertion operator for location.  Kludge to avoid
 		*      inappropriate compiler ambiguity.
 		 */
-		logstream& operator>>(const log4cxx::spi::LocationInfo& location);
+		logstream& operator>>(const log4cxxng::spi::LocationInfo& location);
 
 		/**
 		 *   Cast operator to provide access to embedded std::basic_ostream.
 		 */
 		operator std::basic_ostream<Ch>& ();
 
-#if !(LOG4CXX_USE_GLOBAL_SCOPE_TEMPLATE)
+#if !(LOG4CXXNG_USE_GLOBAL_SCOPE_TEMPLATE)
 		/**
 		  *  Template to allow any class with an std::basic_ostream inserter
 		  *    to be applied to this class.
 		 */
 		template <class V>
-		inline log4cxx::logstream& operator<<(const V& val)
+		inline log4cxxng::logstream& operator<<(const V& val)
 		{
-			if (LOG4CXX_UNLIKELY(isEnabled()))
+			if (LOG4CXXNG_UNLIKELY(isEnabled()))
 			{
 				((std::basic_ostream<char>&) *this) << val;
 			}
@@ -298,7 +298,7 @@ class LOG4CXX_EXPORT logstream : public logstream_base
 	protected:
 		virtual void log(LoggerPtr& logger,
 			const LevelPtr& level,
-			const log4cxx::spi::LocationInfo& location);
+			const log4cxxng::spi::LocationInfo& location);
 
 		virtual void erase();
 
@@ -316,37 +316,37 @@ class LOG4CXX_EXPORT logstream : public logstream_base
 
 };
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 /**
  *  An STL-like stream API for log4cxx using wchar_t as the character type.
-*. Instances of log4cxx::logstream
+*. Instances of log4cxxng::logstream
  *  are not  designedfor use by multiple threads and in general should be short-lived
- *  function scoped objects.  Using log4cxx::basic_logstream as a class member or
+ *  function scoped objects.  Using log4cxxng::basic_logstream as a class member or
  *  static instance should be avoided in the same manner as you would avoid placing a std::ostringstream
  *  in those locations.  Insertion operations are generally short-circuited if the
  *  level for the stream is not the same of higher that the level of the associated logger.
  */
-class LOG4CXX_EXPORT wlogstream : public logstream_base
+class LOG4CXXNG_EXPORT wlogstream : public logstream_base
 {
 		typedef wchar_t Ch;
 	public:
 		/**
 		 *   Constructor.
 		 */
-		wlogstream(const log4cxx::LoggerPtr& logger,
-			const log4cxx::LevelPtr& level);
+		wlogstream(const log4cxxng::LoggerPtr& logger,
+			const log4cxxng::LevelPtr& level);
 
 		/**
 		 *   Constructor.
 		 */
 		wlogstream(const Ch* loggerName,
-			const log4cxx::LevelPtr& level);
+			const log4cxxng::LevelPtr& level);
 
 		/**
 		 *   Constructor.
 		 */
 		wlogstream(const std::basic_string<Ch>& loggerName,
-			const log4cxx::LevelPtr& level);
+			const log4cxxng::LevelPtr& level);
 
 		~wlogstream();
 
@@ -363,17 +363,17 @@ class LOG4CXX_EXPORT wlogstream : public logstream_base
 		/**
 		 *   Insertion operator for level.
 		 */
-		wlogstream& operator<<(const log4cxx::LevelPtr& level);
+		wlogstream& operator<<(const log4cxxng::LevelPtr& level);
 		/**
 		 *   Insertion operator for location.
 		 */
-		wlogstream& operator<<(const log4cxx::spi::LocationInfo& location);
+		wlogstream& operator<<(const log4cxxng::spi::LocationInfo& location);
 
 		/**
 		 *   Alias for insertion operator for location.  Kludge to avoid
 		*      inappropriate compiler ambiguity.
 		 */
-		wlogstream& operator>>(const log4cxx::spi::LocationInfo& location);
+		wlogstream& operator>>(const log4cxxng::spi::LocationInfo& location);
 
 
 		/**
@@ -381,15 +381,15 @@ class LOG4CXX_EXPORT wlogstream : public logstream_base
 		 */
 		operator std::basic_ostream<Ch>& ();
 
-#if !(LOG4CXX_USE_GLOBAL_SCOPE_TEMPLATE)
+#if !(LOG4CXXNG_USE_GLOBAL_SCOPE_TEMPLATE)
 		/**
 		  *  Template to allow any class with an std::basic_ostream inserter
 		  *    to be applied to this class.
 		 */
 		template <class V>
-		inline log4cxx::wlogstream& operator<<(const V& val)
+		inline log4cxxng::wlogstream& operator<<(const V& val)
 		{
-			if (LOG4CXX_UNLIKELY(isEnabled()))
+			if (LOG4CXXNG_UNLIKELY(isEnabled()))
 			{
 				((std::basic_ostream<wchar_t>&) *this) << val;
 			}
@@ -401,7 +401,7 @@ class LOG4CXX_EXPORT wlogstream : public logstream_base
 	protected:
 		virtual void log(LoggerPtr& logger,
 			const LevelPtr& level,
-			const log4cxx::spi::LocationInfo& location);
+			const log4cxxng::spi::LocationInfo& location);
 
 		virtual void erase();
 
@@ -420,43 +420,43 @@ class LOG4CXX_EXPORT wlogstream : public logstream_base
 };
 #endif
 
-#if LOG4CXX_UNICHAR_API || LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_UNICHAR_API || LOG4CXXNG_CFSTRING_API
 /**
  *  An STL-like stream API for log4cxx using UniChar as the character type.
-*. Instances of log4cxx::logstream
+*. Instances of log4cxxng::logstream
  *  are not  designedfor use by multiple threads and in general should be short-lived
- *  function scoped objects.  Using log4cxx::basic_logstream as a class member or
+ *  function scoped objects.  Using log4cxxng::basic_logstream as a class member or
  *  static instance should be avoided in the same manner as you would avoid placing a std::ostringstream
  *  in those locations.  Insertion operations are generally short-circuited if the
  *  level for the stream is not the same of higher that the level of the associated logger.
  */
-class LOG4CXX_EXPORT ulogstream : public logstream_base
+class LOG4CXXNG_EXPORT ulogstream : public logstream_base
 {
 		typedef UniChar Ch;
 	public:
 		/**
 		 *   Constructor.
 		 */
-		ulogstream(const log4cxx::LoggerPtr& logger,
-			const log4cxx::LevelPtr& level);
+		ulogstream(const log4cxxng::LoggerPtr& logger,
+			const log4cxxng::LevelPtr& level);
 
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 		/**
 		 *   Constructor.
 		 */
 		ulogstream(const Ch* loggerName,
-			const log4cxx::LevelPtr& level);
+			const log4cxxng::LevelPtr& level);
 
 		/**
 		 *   Constructor.
 		 */
 		ulogstream(const std::basic_string<Ch>& loggerName,
-			const log4cxx::LevelPtr& level);
+			const log4cxxng::LevelPtr& level);
 #endif
 
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		ulogstream(const CFStringRef& loggerName,
-			const log4cxx::LevelPtr& level);
+			const log4cxxng::LevelPtr& level);
 #endif
 
 		~ulogstream();
@@ -474,17 +474,17 @@ class LOG4CXX_EXPORT ulogstream : public logstream_base
 		/**
 		 *   Insertion operator for level.
 		 */
-		ulogstream& operator<<(const log4cxx::LevelPtr& level);
+		ulogstream& operator<<(const log4cxxng::LevelPtr& level);
 		/**
 		 *   Insertion operator for location.
 		 */
-		ulogstream& operator<<(const log4cxx::spi::LocationInfo& location);
+		ulogstream& operator<<(const log4cxxng::spi::LocationInfo& location);
 
 		/**
 		 *   Alias for insertion operator for location.  Kludge to avoid
 		*      inappropriate compiler ambiguity.
 		 */
-		ulogstream& operator>>(const log4cxx::spi::LocationInfo& location);
+		ulogstream& operator>>(const log4cxxng::spi::LocationInfo& location);
 
 
 		/**
@@ -492,7 +492,7 @@ class LOG4CXX_EXPORT ulogstream : public logstream_base
 		 */
 		operator std::basic_ostream<Ch>& ();
 
-#if !(LOG4CXX_USE_GLOBAL_SCOPE_TEMPLATE)
+#if !(LOG4CXXNG_USE_GLOBAL_SCOPE_TEMPLATE)
 		/**
 		  *  Template to allow any class with an std::basic_ostream inserter
 		  *    to be applied to this class.
@@ -500,7 +500,7 @@ class LOG4CXX_EXPORT ulogstream : public logstream_base
 		template <class V>
 		inline ulogstream& operator<<(const V& val)
 		{
-			if (LOG4CXX_UNLIKELY(isEnabled()))
+			if (LOG4CXXNG_UNLIKELY(isEnabled()))
 			{
 				((std::basic_ostream<Ch>&) *this) << val;
 			}
@@ -512,7 +512,7 @@ class LOG4CXX_EXPORT ulogstream : public logstream_base
 	protected:
 		virtual void log(LoggerPtr& logger,
 			const LevelPtr& level,
-			const log4cxx::spi::LocationInfo& location);
+			const log4cxxng::spi::LocationInfo& location);
 
 		virtual void erase();
 
@@ -532,10 +532,10 @@ class LOG4CXX_EXPORT ulogstream : public logstream_base
 #endif
 
 
-}  // namespace log4cxx
+}  // namespace log4cxxng
 
 
-#if LOG4CXX_USE_GLOBAL_SCOPE_TEMPLATE
+#if LOG4CXXNG_USE_GLOBAL_SCOPE_TEMPLATE
 //
 //  VC6 will fail to compile if class-scope templates
 //     are used to handle arbitrary insertion operations.
@@ -547,9 +547,9 @@ class LOG4CXX_EXPORT ulogstream : public logstream_base
  *    to be applied to this class.
  */
 template <class V>
-inline log4cxx::logstream& operator<<(log4cxx::logstream& os, const V& val)
+inline log4cxxng::logstream& operator<<(log4cxxng::logstream& os, const V& val)
 {
-	if (LOG4CXX_UNLIKELY(os.isEnabled()))
+	if (LOG4CXXNG_UNLIKELY(os.isEnabled()))
 	{
 		((std::basic_ostream<char>&) os) << val;
 	}
@@ -557,15 +557,15 @@ inline log4cxx::logstream& operator<<(log4cxx::logstream& os, const V& val)
 	return os;
 }
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 /**
  *  Template to allow any class with an std::basic_ostream inserter
  *    to be applied to this class.
  */
 template <class V>
-inline log4cxx::wlogstream& operator<<(log4cxx::wlogstream& os, const V& val)
+inline log4cxxng::wlogstream& operator<<(log4cxxng::wlogstream& os, const V& val)
 {
-	if (LOG4CXX_UNLIKELY(os.isEnabled()))
+	if (LOG4CXXNG_UNLIKELY(os.isEnabled()))
 	{
 		((std::basic_ostream<wchar_t>&) os) << val;
 	}
@@ -575,13 +575,13 @@ inline log4cxx::wlogstream& operator<<(log4cxx::wlogstream& os, const V& val)
 #endif
 #endif
 
-#if !defined(LOG4CXX_ENDMSG)
-	#if LOG4CXX_LOGSTREAM_ADD_NOP
-		#define LOG4CXX_ENDMSG (log4cxx::logstream_manipulator) log4cxx::logstream_base::nop >> LOG4CXX_LOCATION << (log4cxx::logstream_manipulator) log4cxx::logstream_base::endmsg
+#if !defined(LOG4CXXNG_ENDMSG)
+	#if LOG4CXXNG_LOGSTREAM_ADD_NOP
+		#define LOG4CXXNG_ENDMSG (log4cxxng::logstream_manipulator) log4cxxng::logstream_base::nop >> LOG4CXXNG_LOCATION << (log4cxxng::logstream_manipulator) log4cxxng::logstream_base::endmsg
 	#else
-		#define LOG4CXX_ENDMSG LOG4CXX_LOCATION << (log4cxx::logstream_manipulator) log4cxx::logstream_base::endmsg
+		#define LOG4CXXNG_ENDMSG LOG4CXXNG_LOCATION << (log4cxxng::logstream_manipulator) log4cxxng::logstream_base::endmsg
 	#endif
 #endif
 
 
-#endif //_LOG4CXX_STREAM_H
+#endif //_LOG4CXXNG_STREAM_H

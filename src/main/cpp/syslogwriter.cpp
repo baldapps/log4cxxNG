@@ -26,8 +26,8 @@
 #include <log4cxxNG/helpers/datagrampacket.h>
 #include <log4cxxNG/helpers/transcoder.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 SyslogWriter::SyslogWriter(const LogString& syslogHost1, int syslogHostPort1)
 	: syslogHost(syslogHost1), syslogHostPort(syslogHostPort1)
@@ -38,8 +38,8 @@ SyslogWriter::SyslogWriter(const LogString& syslogHost1, int syslogHostPort1)
 	}
 	catch (UnknownHostException& e)
 	{
-		LogLog::error(((LogString) LOG4CXX_STR("Could not find ")) + syslogHost1 +
-			LOG4CXX_STR(". All logging will FAIL."), e);
+		LogLog::error(((LogString) LOG4CXXNG_STR("Could not find ")) + syslogHost1 +
+			LOG4CXXNG_STR(". All logging will FAIL."), e);
 	}
 
 	try
@@ -48,8 +48,8 @@ SyslogWriter::SyslogWriter(const LogString& syslogHost1, int syslogHostPort1)
 	}
 	catch (SocketException& e)
 	{
-		LogLog::error(((LogString) LOG4CXX_STR("Could not instantiate DatagramSocket to ")) + syslogHost1 +
-			LOG4CXX_STR(". All logging will FAIL."), e);
+		LogLog::error(((LogString) LOG4CXXNG_STR("Could not instantiate DatagramSocket to ")) + syslogHost1 +
+			LOG4CXXNG_STR(". All logging will FAIL."), e);
 	}
 }
 
@@ -57,7 +57,7 @@ void SyslogWriter::write(const LogString& source)
 {
 	if (this->ds != 0 && this->address != 0)
 	{
-		LOG4CXX_ENCODE_CHAR(data, source);
+		LOG4CXXNG_ENCODE_CHAR(data, source);
 
 		DatagramPacketPtr packet(
 			new DatagramPacket((void*) data.data(), data.length(),

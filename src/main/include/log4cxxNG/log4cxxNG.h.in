@@ -15,37 +15,37 @@
  */
 
 
-#ifndef LOG4CXX_LOG4CXX_H
-#define LOG4CXX_LOG4CXX_H
+#ifndef LOG4CXXNG_LOG4CXXNG_H
+#define LOG4CXXNG_LOG4CXXNG_H
 
-/* GENERATED FILE WARNING!  DO NOT EDIT log4cxx.h
+/* GENERATED FILE WARNING!  DO NOT EDIT log4cxxNG.h
  *
- * Edit log4cxx.h.in instead
+ * Edit log4cxxNG.h.in instead
  *
  */
 
 
-#define LOG4CXX_LOGCHAR_IS_UNICHAR @LOGCHAR_IS_UNICHAR@
-#define LOG4CXX_LOGCHAR_IS_UTF8 @LOGCHAR_IS_UTF8@
-#define LOG4CXX_LOGCHAR_IS_WCHAR @LOGCHAR_IS_WCHAR@
+#define LOG4CXXNG_LOGCHAR_IS_UNICHAR @LOGCHAR_IS_UNICHAR@
+#define LOG4CXXNG_LOGCHAR_IS_UTF8 @LOGCHAR_IS_UTF8@
+#define LOG4CXXNG_LOGCHAR_IS_WCHAR @LOGCHAR_IS_WCHAR@
 
-#define LOG4CXX_CHAR_API @CHAR_API@
-#define LOG4CXX_WCHAR_T_API @WCHAR_T_API@
-#define LOG4CXX_UNICHAR_API @UNICHAR_API@
-#define LOG4CXX_CFSTRING_API @CFSTRING_API@
-
-
-typedef long long log4cxx_int64_t;
-#define LOG4CXX_USE_GLOBAL_SCOPE_TEMPLATE 0
-#define LOG4CXX_LOGSTREAM_ADD_NOP 0
-typedef log4cxx_int64_t log4cxx_time_t;
-typedef int log4cxx_status_t;
-typedef unsigned int log4cxx_uint32_t;
+#define LOG4CXXNG_CHAR_API @CHAR_API@
+#define LOG4CXXNG_WCHAR_T_API @WCHAR_T_API@
+#define LOG4CXXNG_UNICHAR_API @UNICHAR_API@
+#define LOG4CXXNG_CFSTRING_API @CFSTRING_API@
 
 
-#define LOG4CXX_EXPORT
-#define LOG4CXX_PTR_DEF(T) typedef log4cxx::helpers::ObjectPtrT<T> T##Ptr
-#define LOG4CXX_LIST_DEF(N, T) typedef std::vector<T> N
+typedef long long log4cxxng_int64_t;
+#define LOG4CXXNG_USE_GLOBAL_SCOPE_TEMPLATE 0
+#define LOG4CXXNG_LOGSTREAM_ADD_NOP 0
+typedef log4cxxng_int64_t log4cxxng_time_t;
+typedef int log4cxxng_status_t;
+typedef unsigned int log4cxxng_uint32_t;
+
+
+#define LOG4CXXNG_EXPORT
+#define LOG4CXXNG_PTR_DEF(T) typedef log4cxxng::helpers::ObjectPtrT<T> T##Ptr
+#define LOG4CXXNG_LIST_DEF(N, T) typedef std::vector<T> N
 
 
 #endif

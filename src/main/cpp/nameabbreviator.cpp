@@ -21,11 +21,11 @@
 #include <vector>
 #include <limits.h>
 
-using namespace log4cxx;
-using namespace log4cxx::pattern;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::pattern;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(NameAbbreviator)
+IMPLEMENT_LOG4CXXNG_OBJECT(NameAbbreviator)
 
 NameAbbreviator::NameAbbreviator()
 {
@@ -35,7 +35,7 @@ NameAbbreviator::~NameAbbreviator()
 {
 }
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace pattern
 {
@@ -45,11 +45,11 @@ namespace pattern
 class NOPAbbreviator : public NameAbbreviator
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(NOPAbbreviator)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(NOPAbbreviator)
-		LOG4CXX_CAST_ENTRY_CHAIN(NameAbbreviator)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(NOPAbbreviator)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(NOPAbbreviator)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(NameAbbreviator)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		 * Constructor.
@@ -78,11 +78,11 @@ class MaxElementAbbreviator : public NameAbbreviator
 		const int count;
 
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(MaxElementAbbreviator)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(MaxElementAbbreviator)
-		LOG4CXX_CAST_ENTRY_CHAIN(NameAbbreviator)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(MaxElementAbbreviator)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(MaxElementAbbreviator)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(NameAbbreviator)
+		END_LOG4CXXNG_CAST_MAP()
 		/**
 		 * Create new instance.
 		 * @param count maximum number of path elements to output.
@@ -206,11 +206,11 @@ class PatternAbbreviator : public NameAbbreviator
 		std::vector<PatternAbbreviatorFragment> fragments;
 
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(PatternAbbreviator)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(PatternAbbreviator)
-		LOG4CXX_CAST_ENTRY_CHAIN(NameAbbreviator)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(PatternAbbreviator)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(PatternAbbreviator)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(NameAbbreviator)
+		END_LOG4CXXNG_CAST_MAP()
 		/**
 		 * Create PatternAbbreviator.
 		 *
@@ -221,7 +221,7 @@ class PatternAbbreviator : public NameAbbreviator
 		{
 			if (fragments1.size() == 0)
 			{
-				throw IllegalArgumentException(LOG4CXX_STR("fragments parameter must contain at least one element"));
+				throw IllegalArgumentException(LOG4CXXNG_STR("fragments parameter must contain at least one element"));
 			}
 		}
 
@@ -258,9 +258,9 @@ class PatternAbbreviator : public NameAbbreviator
 }
 }
 
-IMPLEMENT_LOG4CXX_OBJECT(NOPAbbreviator)
-IMPLEMENT_LOG4CXX_OBJECT(MaxElementAbbreviator)
-IMPLEMENT_LOG4CXX_OBJECT(PatternAbbreviator)
+IMPLEMENT_LOG4CXXNG_OBJECT(NOPAbbreviator)
+IMPLEMENT_LOG4CXXNG_OBJECT(MaxElementAbbreviator)
+IMPLEMENT_LOG4CXXNG_OBJECT(PatternAbbreviator)
 
 
 

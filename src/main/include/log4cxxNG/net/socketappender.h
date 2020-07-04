@@ -15,18 +15,18 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_NET_SOCKET_APPENDER_H
-#define _LOG4CXX_NET_SOCKET_APPENDER_H
+#ifndef _LOG4CXXNG_NET_SOCKET_APPENDER_H
+#define _LOG4CXXNG_NET_SOCKET_APPENDER_H
 
 #include <log4cxxNG/net/socketappenderskeleton.h>
 #include <log4cxxNG/helpers/objectoutputstream.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace net
 {
 /**
-Sends {@link log4cxx::spi::LoggingEvent LoggingEvent} objects to a remote a log server,
+Sends {@link log4cxxng::spi::LoggingEvent LoggingEvent} objects to a remote a log server,
 usually Apache Chainsaw.
 
 <p>The SocketAppender has the following properties:
@@ -38,7 +38,7 @@ NDC NDC}, location info as if it were logged locally by
 the client.
 
 - SocketAppenders do not use a layout. They ship a
-serialized {@link log4cxx::spi::LoggingEvent LoggingEvent} object
+serialized {@link log4cxxng::spi::LoggingEvent LoggingEvent} object
         to the server side.
 
 - Remote logging uses the TCP protocol. Consequently, if
@@ -83,7 +83,7 @@ be untransmitted data in the pipe which might be lost.
 calling the LogManager#shutdown method
 before exiting the application.
 */
-class LOG4CXX_EXPORT SocketAppender : public SocketAppenderSkeleton
+class LOG4CXXNG_EXPORT SocketAppender : public SocketAppenderSkeleton
 {
 	public:
 		/**
@@ -96,11 +96,11 @@ class LOG4CXX_EXPORT SocketAppender : public SocketAppenderSkeleton
 		*/
 		static int DEFAULT_RECONNECTION_DELAY;
 
-		DECLARE_LOG4CXX_OBJECT(SocketAppender)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(SocketAppender)
-		LOG4CXX_CAST_ENTRY_CHAIN(AppenderSkeleton)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(SocketAppender)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(SocketAppender)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(AppenderSkeleton)
+		END_LOG4CXXNG_CAST_MAP()
 
 		SocketAppender();
 		~SocketAppender();
@@ -116,20 +116,20 @@ class LOG4CXX_EXPORT SocketAppender : public SocketAppenderSkeleton
 		SocketAppender(const LogString& host, int port);
 
 	protected:
-		virtual void setSocket(log4cxx::helpers::SocketPtr& socket, log4cxx::helpers::Pool& p);
-		virtual void cleanUp(log4cxx::helpers::Pool& p);
+		virtual void setSocket(log4cxxng::helpers::SocketPtr& socket, log4cxxng::helpers::Pool& p);
+		virtual void cleanUp(log4cxxng::helpers::Pool& p);
 		virtual int getDefaultDelay() const;
 		virtual int getDefaultPort() const;
-		void append(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& pool);
+		void append(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& pool);
 
 	private:
-		log4cxx::helpers::ObjectOutputStreamPtr oos;
+		log4cxxng::helpers::ObjectOutputStreamPtr oos;
 
 }; // class SocketAppender
 
-LOG4CXX_PTR_DEF(SocketAppender);
+LOG4CXXNG_PTR_DEF(SocketAppender);
 } // namespace net
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif // _LOG4CXX_NET_SOCKET_APPENDER_H
+#endif // _LOG4CXXNG_NET_SOCKET_APPENDER_H
 

@@ -29,12 +29,12 @@
 #include <log4cxxNG/helpers/transcoder.h>
 #include <log4cxxNG/helpers/socketoutputstream.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::net;
-using namespace log4cxx::xml;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::net;
+using namespace log4cxxng::xml;
 
-IMPLEMENT_LOG4CXX_OBJECT(XMLSocketAppender)
+IMPLEMENT_LOG4CXXNG_OBJECT(XMLSocketAppender)
 
 // The default port number of remote logging server (4560)
 int XMLSocketAppender::DEFAULT_PORT                 = 4560;
@@ -82,7 +82,7 @@ int XMLSocketAppender::getDefaultPort() const
 	return DEFAULT_PORT;
 }
 
-void XMLSocketAppender::setSocket(log4cxx::helpers::SocketPtr& socket, Pool& p)
+void XMLSocketAppender::setSocket(log4cxxng::helpers::SocketPtr& socket, Pool& p)
 {
 	OutputStreamPtr os(new SocketOutputStream(socket));
 	CharsetEncoderPtr charset(CharsetEncoder::getUTF8Encoder());
@@ -105,7 +105,7 @@ void XMLSocketAppender::cleanUp(Pool& p)
 	}
 }
 
-void XMLSocketAppender::append(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& p)
+void XMLSocketAppender::append(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& p)
 {
 	if (writer != 0)
 	{
@@ -120,7 +120,7 @@ void XMLSocketAppender::append(const spi::LoggingEventPtr& event, log4cxx::helpe
 		catch (std::exception& e)
 		{
 			writer = 0;
-			LogLog::warn(LOG4CXX_STR("Detected problem with connection: "), e);
+			LogLog::warn(LOG4CXXNG_STR("Detected problem with connection: "), e);
 
 			if (getReconnectionDelay() > 0)
 			{

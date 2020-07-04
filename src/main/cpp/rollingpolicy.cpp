@@ -17,8 +17,8 @@
 
 #include <log4cxxNG/rolling/rollingpolicy.h>
 
-using namespace log4cxx::rolling;
+using namespace log4cxxng::rolling;
 
 
-IMPLEMENT_LOG4CXX_OBJECT(RollingPolicy)
+IMPLEMENT_LOG4CXXNG_OBJECT(RollingPolicy)
 

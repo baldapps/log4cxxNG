@@ -22,14 +22,14 @@
 #include <log4cxxNG/helpers/stringhelper.h>
 #include <log4cxxNG/ndc.h>
 
-using namespace log4cxx;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(TTCCLayout)
+IMPLEMENT_LOG4CXXNG_OBJECT(TTCCLayout)
 
 TTCCLayout::TTCCLayout()
-	: DateLayout(LOG4CXX_STR("RELATIVE")), threadPrinting(true), categoryPrefixing(true),
+	: DateLayout(LOG4CXXNG_STR("RELATIVE")), threadPrinting(true), categoryPrefixing(true),
 	  contextPrinting(true), filePrinting(false)
 {
 	Pool pool;
@@ -75,5 +75,5 @@ void TTCCLayout::format(LogString& output,
 	output.append(1, (logchar) 0x2D /* '-' */);
 	output.append(1, (logchar) 0x20 /* ' ' */);
 	output.append(event->getRenderedMessage());
-	output.append(LOG4CXX_EOL);
+	output.append(LOG4CXXNG_EOL);
 }

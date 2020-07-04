@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_PATTERN_LAYOUT_H
-#define _LOG4CXX_PATTERN_LAYOUT_H
+#ifndef _LOG4CXXNG_PATTERN_LAYOUT_H
+#define _LOG4CXXNG_PATTERN_LAYOUT_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -28,10 +28,10 @@
 #include <log4cxxNG/pattern/formattinginfo.h>
 #include <log4cxxNG/pattern/patternparser.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
-LOG4CXX_LIST_DEF(LoggingEventPatternConverterList, log4cxx::pattern::LoggingEventPatternConverterPtr);
-LOG4CXX_LIST_DEF(FormattingInfoList, log4cxx::pattern::FormattingInfoPtr);
+LOG4CXXNG_LIST_DEF(LoggingEventPatternConverterList, log4cxxng::pattern::LoggingEventPatternConverterPtr);
+LOG4CXXNG_LIST_DEF(FormattingInfoList, log4cxxng::pattern::FormattingInfoPtr);
 
 /**
  * A flexible layout configurable with pattern string.
@@ -112,8 +112,8 @@ LOG4CXX_LIST_DEF(FormattingInfoList, log4cxx::pattern::FormattingInfoPtr);
  *      <td>
  *          Used to output the class of the issuer of the logging event if the compiler
  *          used supports a macro to retrieve the method of the currently compiled line and
- *          if the LOG4CXX_TRACE-like macros are used to issue a logging request. In this
- *          case the macro LOG4CXX_* is expanded at compile time to generate location info
+ *          if the LOG4CXXNG_TRACE-like macros are used to issue a logging request. In this
+ *          case the macro LOG4CXXNG_* is expanded at compile time to generate location info
  *          of the logging event and adds the method name, besides file and line, if
  *          available. In most cases the provided method contains the classname and can
  *          therefore be retrieved form the location info as needed.
@@ -167,8 +167,8 @@ LOG4CXX_LIST_DEF(FormattingInfoList, log4cxx::pattern::FormattingInfoPtr);
  *      <td>
  *          Used to output the method of the issuer of the logging event if the compiler
  *          used supports a macro to retrieve the method of the currently compiled line
- *          and if the LOG4CXX_TRACE-like macros are used to issue a logging request. In
- *          this case the macro LOG4CXX_* is expanded at compile time to generate location
+ *          and if the LOG4CXXNG_TRACE-like macros are used to issue a logging request. In
+ *          this case the macro LOG4CXXNG_* is expanded at compile time to generate location
  *          info of the logging event and adds the method name, besides file and line, if
  *          available. In most cases the provided method contains the classname which is
  *          ignored in every attempt to retrieve the method from the location info.
@@ -331,7 +331,7 @@ LOG4CXX_LIST_DEF(FormattingInfoList, log4cxx::pattern::FormattingInfoPtr);
  *  recommended book "C -- a Software Engineering Approach", ISBN 0-387-97389-3.
  * </p>
  */
-class LOG4CXX_EXPORT PatternLayout : public Layout
+class LOG4CXXNG_EXPORT PatternLayout : public Layout
 {
 		/**
 		 * Conversion pattern.
@@ -349,11 +349,11 @@ class LOG4CXX_EXPORT PatternLayout : public Layout
 		FormattingInfoList patternFields;
 
 	public:
-		DECLARE_LOG4CXX_OBJECT(PatternLayout)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(PatternLayout)
-		LOG4CXX_CAST_ENTRY_CHAIN(Layout)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(PatternLayout)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(PatternLayout)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(Layout)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		 * Does nothing
@@ -383,7 +383,7 @@ class LOG4CXX_EXPORT PatternLayout : public Layout
 		/**
 		 * Call createPatternParser
 		 */
-		virtual void activateOptions(log4cxx::helpers::Pool& p);
+		virtual void activateOptions(log4cxxng::helpers::Pool& p);
 
 		virtual void setOption(const LogString& option, const LogString& value);
 
@@ -402,17 +402,17 @@ class LOG4CXX_EXPORT PatternLayout : public Layout
 		 */
 		virtual void format(    LogString& output,
 			const spi::LoggingEventPtr& event,
-			log4cxx::helpers::Pool& pool) const;
+			log4cxxng::helpers::Pool& pool) const;
 
 	protected:
-		virtual log4cxx::pattern::PatternMap getFormatSpecifiers();
+		virtual log4cxxng::pattern::PatternMap getFormatSpecifiers();
 };
 
-LOG4CXX_PTR_DEF(PatternLayout);
-} // namespace log4cxx
+LOG4CXXNG_PTR_DEF(PatternLayout);
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
 #endif
 
-#endif //_LOG4CXX_PATTERN_LAYOUT_H
+#endif //_LOG4CXXNG_PATTERN_LAYOUT_H

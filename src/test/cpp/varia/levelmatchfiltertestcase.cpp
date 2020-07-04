@@ -32,9 +32,9 @@
 #include "../testchar.h"
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::filter;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::filter;
 
 LOGUNIT_CLASS(LevelMatchFilterTestCase)
 {
@@ -51,7 +51,7 @@ public:
 	{
 		root = Logger::getRootLogger();
 		root->removeAllAppenders();
-		logger = Logger::getLogger(LOG4CXX_TEST_STR("test"));
+		logger = Logger::getLogger(LOG4CXXNG_TEST_STR("test"));
 	}
 
 	void tearDown()
@@ -91,11 +91,11 @@ public:
 		{
 			// set the level to match
 			matchFilter->setLevelToMatch(levelArray[x]->toString());
-			LogString sbuf(LOG4CXX_STR("pass "));
+			LogString sbuf(LOG4CXXNG_STR("pass "));
 			StringHelper::toString(x, pool, sbuf);
-			sbuf.append(LOG4CXX_STR("; filter set to accept only "));
+			sbuf.append(LOG4CXXNG_STR("; filter set to accept only "));
 			sbuf.append(levelArray[x]->toString());
-			sbuf.append(LOG4CXX_STR(" msgs"));
+			sbuf.append(LOG4CXXNG_STR(" msgs"));
 			common(sbuf);
 		}
 
@@ -130,12 +130,12 @@ public:
 		{
 			// set the level to match
 			matchFilter->setLevelToMatch(levelArray[x]->toString());
-			LogString sbuf(LOG4CXX_STR("pass "));
+			LogString sbuf(LOG4CXXNG_STR("pass "));
 
 			StringHelper::toString(x, pool, sbuf);
-			sbuf.append(LOG4CXX_STR("; filter set to deny only "));
+			sbuf.append(LOG4CXXNG_STR("; filter set to deny only "));
 			sbuf.append(levelArray[x]->toString());
-			sbuf.append(LOG4CXX_STR(" msgs"));
+			sbuf.append(LOG4CXXNG_STR(" msgs"));
 			common(sbuf);
 		}
 
@@ -160,10 +160,10 @@ private:
 
 };
 
-const LogString LevelMatchFilterTestCase::ACCEPT_FILE(LOG4CXX_STR("output/LevelMatchFilter_accept"));
-const LogString LevelMatchFilterTestCase::ACCEPT_WITNESS(LOG4CXX_STR("witness/LevelMatchFilter_accept"));
-const LogString LevelMatchFilterTestCase::DENY_FILE(LOG4CXX_STR("output/LevelMatchFilter_deny"));
-const LogString LevelMatchFilterTestCase::DENY_WITNESS(LOG4CXX_STR("witness/LevelMatchFilter_deny"));
+const LogString LevelMatchFilterTestCase::ACCEPT_FILE(LOG4CXXNG_STR("output/LevelMatchFilter_accept"));
+const LogString LevelMatchFilterTestCase::ACCEPT_WITNESS(LOG4CXXNG_STR("witness/LevelMatchFilter_accept"));
+const LogString LevelMatchFilterTestCase::DENY_FILE(LOG4CXXNG_STR("output/LevelMatchFilter_deny"));
+const LogString LevelMatchFilterTestCase::DENY_WITNESS(LOG4CXXNG_STR("witness/LevelMatchFilter_deny"));
 
 
 LOGUNIT_TEST_SUITE_REGISTRATION(LevelMatchFilterTestCase);

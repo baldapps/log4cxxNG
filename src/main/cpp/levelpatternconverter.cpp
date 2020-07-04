@@ -25,16 +25,16 @@
 #include <log4cxxNG/level.h>
 
 
-using namespace log4cxx;
-using namespace log4cxx::pattern;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::pattern;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(LevelPatternConverter)
+IMPLEMENT_LOG4CXXNG_OBJECT(LevelPatternConverter)
 
 LevelPatternConverter::LevelPatternConverter() :
-	LoggingEventPatternConverter(LOG4CXX_STR("Level"),
-		LOG4CXX_STR("level"))
+	LoggingEventPatternConverter(LOG4CXXNG_STR("Level"),
+		LOG4CXXNG_STR("level"))
 {
 }
 
@@ -48,7 +48,7 @@ PatternConverterPtr LevelPatternConverter::newInstance(
 void LevelPatternConverter::format(
 	const LoggingEventPtr& event,
 	LogString& toAppendTo,
-	log4cxx::helpers::Pool& /* p */) const
+	log4cxxng::helpers::Pool& /* p */) const
 {
 	toAppendTo.append(event->getLevel()->toString());
 }
@@ -68,27 +68,27 @@ LogString LevelPatternConverter::getStyleClass(const ObjectPtr& obj) const
 		switch (lint)
 		{
 			case Level::TRACE_INT:
-				return LOG4CXX_STR("level trace");
+				return LOG4CXXNG_STR("level trace");
 
 			case Level::DEBUG_INT:
-				return LOG4CXX_STR("level debug");
+				return LOG4CXXNG_STR("level debug");
 
 			case Level::INFO_INT:
-				return LOG4CXX_STR("level info");
+				return LOG4CXXNG_STR("level info");
 
 			case Level::WARN_INT:
-				return LOG4CXX_STR("level warn");
+				return LOG4CXXNG_STR("level warn");
 
 			case Level::ERROR_INT:
-				return LOG4CXX_STR("level error");
+				return LOG4CXXNG_STR("level error");
 
 			case Level::FATAL_INT:
-				return LOG4CXX_STR("level fatal");
+				return LOG4CXXNG_STR("level fatal");
 
 			default:
-				return LogString(LOG4CXX_STR("level ")) + e->getLevel()->toString();
+				return LogString(LOG4CXXNG_STR("level ")) + e->getLevel()->toString();
 		}
 	}
 
-	return LOG4CXX_STR("level");
+	return LOG4CXXNG_STR("level");
 }

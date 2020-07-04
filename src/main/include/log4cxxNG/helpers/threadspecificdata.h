@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_THREAD_SPECIFIC_DATA_H
-#define _LOG4CXX_HELPERS_THREAD_SPECIFIC_DATA_H
+#ifndef _LOG4CXXNG_HELPERS_THREAD_SPECIFIC_DATA_H
+#define _LOG4CXXNG_HELPERS_THREAD_SPECIFIC_DATA_H
 
 #include <log4cxxNG/ndc.h>
 #include <log4cxxNG/mdc.h>
@@ -26,7 +26,7 @@
 	#pragma warning ( disable: 4251 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -34,7 +34,7 @@ namespace helpers
   *   This class contains all the thread-specific
   *   data in use by log4cxx.
   */
-class LOG4CXX_EXPORT ThreadSpecificData
+class LOG4CXXNG_EXPORT ThreadSpecificData
 {
 	public:
 		ThreadSpecificData();
@@ -52,21 +52,21 @@ class LOG4CXX_EXPORT ThreadSpecificData
 
 		static void put(const LogString& key, const LogString& val);
 		static void push(const LogString& val);
-		static void inherit(const log4cxx::NDC::Stack& stack);
+		static void inherit(const log4cxxng::NDC::Stack& stack);
 
-		log4cxx::NDC::Stack& getStack();
-		log4cxx::MDC::Map& getMap();
+		log4cxxng::NDC::Stack& getStack();
+		log4cxxng::MDC::Map& getMap();
 
 
 	private:
 		static ThreadSpecificData& getDataNoThreads();
 		static ThreadSpecificData* createCurrentData();
-		log4cxx::NDC::Stack ndcStack;
-		log4cxx::MDC::Map mdcMap;
+		log4cxxng::NDC::Stack ndcStack;
+		log4cxxng::MDC::Map mdcMap;
 };
 
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)

@@ -20,10 +20,10 @@
 #include <log4cxxNG/spi/loggingevent.h>
 #include "../logunit.h"
 
-using namespace log4cxx;
-using namespace log4cxx::filter;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::filter;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
 
 /**
@@ -46,10 +46,10 @@ public:
 	void test1()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("root"),
+				LOG4CXXNG_STR("root"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		FilterPtr filter(new LoggerMatchFilter());
 		Pool p;
 		filter->activateOptions(p);
@@ -63,10 +63,10 @@ public:
 	void test2()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("root"),
+				LOG4CXXNG_STR("root"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		LoggerMatchFilterPtr filter(new LoggerMatchFilter());
 		filter->setAcceptOnMatch(false);
 		Pool p;
@@ -81,10 +81,10 @@ public:
 	void test3()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.filter.LoggerMatchFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.filter.LoggerMatchFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		FilterPtr filter(new LoggerMatchFilter());
 		Pool p;
 		filter->activateOptions(p);
@@ -98,12 +98,12 @@ public:
 	void test4()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.filter.LoggerMatchFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.filter.LoggerMatchFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		LoggerMatchFilterPtr filter(new LoggerMatchFilter());
-		filter->setLoggerToMatch(LOG4CXX_STR("org.apache.log4j.filter.LoggerMatchFilterTest"));
+		filter->setLoggerToMatch(LOG4CXXNG_STR("org.apache.log4j.filter.LoggerMatchFilterTest"));
 		Pool p;
 		filter->activateOptions(p);
 		LOGUNIT_ASSERT_EQUAL(Filter::ACCEPT, filter->decide(event));

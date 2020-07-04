@@ -15,20 +15,20 @@
  * limitations under the License.
  */
 
-#if !defined(LOG4CXX_TEST_INSERT_WIDE)
-#define LOG4CXX_TEST_INSERT_WIDE 1
+#if !defined(LOG4CXXNG_TEST_INSERT_WIDE)
+#define LOG4CXXNG_TEST_INSERT_WIDE 1
 
 #include <ostream>
 #include <string>
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 std::ostream& operator<<(std::ostream& os,
 	const std::wstring& str);
 #endif
 
-#if LOG4CXX_LOGCHAR_IS_UNICHAR  || LOG4CXX_UNICHAR_API || LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_LOGCHAR_IS_UNICHAR  || LOG4CXXNG_UNICHAR_API || LOG4CXXNG_CFSTRING_API
 std::ostream& operator<<(std::ostream& os,
-	const std::basic_string<log4cxx::UniChar>& str);
+	const std::basic_string<log4cxxng::UniChar>& str);
 #endif
 
 #endif

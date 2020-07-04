@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#if !defined(_LOG4CXX_LOGUNIT_H)
-#define _LOG4CXX_LOGUNIT_H
+#if !defined(_LOG4CXXNG_LOGUNIT_H)
+#define _LOG4CXXNG_LOGUNIT_H
 
 
 #if defined(_MSC_VER)
@@ -76,16 +76,16 @@ class TestFixture
 			const char* expectedExpr,
 			const char* actualExpr,
 			int lineno);
-#if LOG4CXX_LOGCHAR_IS_WCHAR || LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_LOGCHAR_IS_WCHAR || LOG4CXXNG_WCHAR_T_API
 		void assertEquals(const std::wstring expected,
 			const std::wstring actual,
 			const char* expectedExpr,
 			const char* actualExpr,
 			int lineno);
 #endif
-#if LOG4CXX_LOGCHAR_IS_UNICHAR || LOG4CXX_UNICHAR_API || LOG4CXX_CFSTRING_API
-		void assertEquals(const std::basic_string<log4cxx::UniChar> expected,
-			const std::basic_string<log4cxx::UniChar> actual,
+#if LOG4CXXNG_LOGCHAR_IS_UNICHAR || LOG4CXXNG_UNICHAR_API || LOG4CXXNG_CFSTRING_API
+		void assertEquals(const std::basic_string<log4cxxng::UniChar> expected,
+			const std::basic_string<log4cxxng::UniChar> actual,
 			const char* expectedExpr,
 			const char* actualExpr, int lineno);
 #endif

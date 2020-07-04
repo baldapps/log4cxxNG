@@ -20,10 +20,10 @@
 #include <log4cxxNG/spi/loggingevent.h>
 #include "../logunit.h"
 
-using namespace log4cxx;
-using namespace log4cxx::filter;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::filter;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
 
 /**
@@ -42,10 +42,10 @@ public:
 	void test1()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.filter.DenyAllFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.filter.DenyAllFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		FilterPtr filter(new DenyAllFilter());
 		Pool p;
 		filter->activateOptions(p);

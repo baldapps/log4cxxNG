@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_MDC_H
-#define _LOG4CXX_MDC_H
+#ifndef _LOG4CXXNG_MDC_H
+#define _LOG4CXXNG_MDC_H
 
 #include <log4cxxNG/log4cxxNG.h>
 #include <log4cxxNG/logstring.h>
@@ -27,18 +27,18 @@
 	#pragma warning ( disable: 4231 4251 4275 4786 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 /**
-The MDC class is similar to the {@link log4cxx::NDC NDC} class except that it is
+The MDC class is similar to the {@link log4cxxng::NDC NDC} class except that it is
 based on a map instead of a stack. It provides <em>mapped
 diagnostic contexts</em>. A <em>Mapped Diagnostic Context</em>, or
 MDC in short, is an instrument for distinguishing interleaved log
 output from different sources. Log output is typically interleaved
 when a server handles multiple clients near-simultaneously.
 */
-class LOG4CXX_EXPORT MDC
+class LOG4CXXNG_EXPORT MDC
 {
 	public:
 		/** String to string stl map.
@@ -99,7 +99,7 @@ class LOG4CXX_EXPORT MDC
 		* @return value if key had been set, empty if not.
 		*/
 		static std::string remove(const std::string& key);
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 		/**
 		 *  Places a key/value pair in the MDC for the current thread
 		 *    which will be removed during the corresponding destructor.  Both
@@ -135,7 +135,7 @@ class LOG4CXX_EXPORT MDC
 		*/
 		static std::wstring remove(const std::wstring& key);
 #endif
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 		/**
 		 *  Places a key/value pair in the MDC for the current thread
 		 *    which will be removed during the corresponding destructor.  Both
@@ -171,7 +171,7 @@ class LOG4CXX_EXPORT MDC
 		*/
 		static std::basic_string<UniChar> remove(const std::basic_string<UniChar>& key);
 #endif
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		/**
 		 *  Places a key/value pair in the MDC for the current thread
 		 *    which will be removed during the corresponding destructor.  Both
@@ -226,11 +226,11 @@ class LOG4CXX_EXPORT MDC
 		MDC& operator=(const MDC&);
 		LogString key;
 }; // class MDC;
-}  // namespace log4cxx
+}  // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
 
-#endif // _LOG4CXX_MDC_H
+#endif // _LOG4CXXNG_MDC_H

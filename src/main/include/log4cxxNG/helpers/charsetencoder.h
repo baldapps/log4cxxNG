@@ -15,32 +15,32 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_CHARSETENCODER_H
-#define _LOG4CXX_HELPERS_CHARSETENCODER_H
+#ifndef _LOG4CXXNG_HELPERS_CHARSETENCODER_H
+#define _LOG4CXXNG_HELPERS_CHARSETENCODER_H
 
 #include <log4cxxNG/helpers/objectimpl.h>
 #include <log4cxxNG/helpers/pool.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 namespace helpers
 {
 class ByteBuffer;
 class CharsetEncoder;
-LOG4CXX_PTR_DEF(CharsetEncoder);
+LOG4CXXNG_PTR_DEF(CharsetEncoder);
 
 /**
 *   An engine to transform LogStrings into bytes
 *     for the specific character set.
 */
-class LOG4CXX_EXPORT CharsetEncoder : public ObjectImpl
+class LOG4CXXNG_EXPORT CharsetEncoder : public ObjectImpl
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(CharsetEncoder)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(CharsetEncoder)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(CharsetEncoder)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(CharsetEncoder)
+		END_LOG4CXXNG_CAST_MAP()
 
 	protected:
 		/**
@@ -93,7 +93,7 @@ class LOG4CXX_EXPORT CharsetEncoder : public ObjectImpl
 		 *  @return APR_SUCCESS unless a character can not be represented in
 		 *    the encoding.
 		 */
-		virtual log4cxx_status_t encode(const LogString& in,
+		virtual log4cxxng_status_t encode(const LogString& in,
 			LogString::const_iterator& iter,
 			ByteBuffer& out) = 0;
 
@@ -111,7 +111,7 @@ class LOG4CXX_EXPORT CharsetEncoder : public ObjectImpl
 		 *   Determines if the return value from encode indicates
 		 *     an unconvertable character.
 		 */
-		inline static bool isError(log4cxx_status_t stat)
+		inline static bool isError(log4cxxng_status_t stat)
 		{
 			return (stat != 0);
 		}
@@ -132,6 +132,6 @@ class LOG4CXX_EXPORT CharsetEncoder : public ObjectImpl
 
 } // namespace helpers
 
-}  //namespace log4cxx
+}  //namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_CHARSETENCODER_H
+#endif //_LOG4CXXNG_HELPERS_CHARSETENCODER_H

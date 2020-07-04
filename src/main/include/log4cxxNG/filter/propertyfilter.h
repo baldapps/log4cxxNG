@@ -16,8 +16,8 @@
  */
 
 
-#ifndef _LOG4CXX_FILTER_PROPERTYFILTER_H
-#define _LOG4CXX_FILTER_PROPERTYFILTER_H
+#ifndef _LOG4CXXNG_FILTER_PROPERTYFILTER_H
+#define _LOG4CXXNG_FILTER_PROPERTYFILTER_H
 
 #if defined(_MSC_VER)
 	#pragma warning (push)
@@ -28,7 +28,7 @@
 #include <log4cxxNG/spi/filter.h>
 #include <map>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace filter
 {
@@ -50,7 +50,7 @@ namespace filter
  *
  *
  */
-class LOG4CXX_EXPORT PropertyFilter : public log4cxx::spi::Filter
+class LOG4CXXNG_EXPORT PropertyFilter : public log4cxxng::spi::Filter
 {
 		typedef std::map < LogString, LogString > PropertyMap;
 		PropertyMap* properties;
@@ -58,10 +58,10 @@ class LOG4CXX_EXPORT PropertyFilter : public log4cxx::spi::Filter
 		PropertyFilter& operator=(const PropertyFilter&);
 
 	public:
-		DECLARE_LOG4CXX_OBJECT(PropertyFilter)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(log4cxx::spi::Filter)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(PropertyFilter)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(log4cxxng::spi::Filter)
+		END_LOG4CXXNG_CAST_MAP()
 
 		PropertyFilter();
 		~PropertyFilter();

@@ -33,12 +33,12 @@
 #include <log4cxxNG/rolling/zipcompressaction.h>
 #include <log4cxxNG/pattern/integerpatternconverter.h>
 
-using namespace log4cxx;
-using namespace log4cxx::rolling;
-using namespace log4cxx::helpers;
-using namespace log4cxx::pattern;
+using namespace log4cxxng;
+using namespace log4cxxng::rolling;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::pattern;
 
-IMPLEMENT_LOG4CXX_OBJECT(FixedWindowRollingPolicy)
+IMPLEMENT_LOG4CXXNG_OBJECT(FixedWindowRollingPolicy)
 
 FixedWindowRollingPolicy::FixedWindowRollingPolicy() :
 	minIndex(1), maxIndex(7)
@@ -61,14 +61,14 @@ void FixedWindowRollingPolicy::setOption(const LogString& option,
 	const LogString& value)
 {
 	if (StringHelper::equalsIgnoreCase(option,
-			LOG4CXX_STR("MININDEX"),
-			LOG4CXX_STR("minindex")))
+			LOG4CXXNG_STR("MININDEX"),
+			LOG4CXXNG_STR("minindex")))
 	{
 		minIndex = OptionConverter::toInt(value, 1);
 	}
 	else if (StringHelper::equalsIgnoreCase(option,
-			LOG4CXX_STR("MAXINDEX"),
-			LOG4CXX_STR("maxindex")))
+			LOG4CXXNG_STR("MAXINDEX"),
+			LOG4CXXNG_STR("maxindex")))
 	{
 		maxIndex = OptionConverter::toInt(value, 7);
 	}
@@ -88,13 +88,13 @@ void FixedWindowRollingPolicy::activateOptions(Pool& p)
 	if (maxIndex < minIndex)
 	{
 		LogLog::warn(
-			LOG4CXX_STR("MaxIndex  cannot be smaller than MinIndex."));
+			LOG4CXXNG_STR("MaxIndex  cannot be smaller than MinIndex."));
 		maxIndex = minIndex;
 	}
 
 	if ((maxIndex - minIndex) > MAX_WINDOW_SIZE)
 	{
-		LogLog::warn(LOG4CXX_STR("Large window sizes are not allowed."));
+		LogLog::warn(LOG4CXXNG_STR("Large window sizes are not allowed."));
 		maxIndex = minIndex + MAX_WINDOW_SIZE;
 	}
 
@@ -171,7 +171,7 @@ RolloverDescriptionPtr FixedWindowRollingPolicy::rollover(
 	LogString compressedName(renameTo);
 	ActionPtr compressAction ;
 
-	if (StringHelper::endsWith(renameTo, LOG4CXX_STR(".gz")))
+	if (StringHelper::endsWith(renameTo, LOG4CXXNG_STR(".gz")))
 	{
 		renameTo.resize(renameTo.size() - 3);
 		compressAction =
@@ -180,7 +180,7 @@ RolloverDescriptionPtr FixedWindowRollingPolicy::rollover(
 			File().setPath(compressedName),
 			true);
 	}
-	else if (StringHelper::endsWith(renameTo, LOG4CXX_STR(".zip")))
+	else if (StringHelper::endsWith(renameTo, LOG4CXXNG_STR(".zip")))
 	{
 		renameTo.resize(renameTo.size() - 4);
 		compressAction =
@@ -240,11 +240,11 @@ bool FixedWindowRollingPolicy::purge(int lowIndex, int highIndex, Pool& p) const
 
 	LogString lowFilename(buf);
 
-	if (lowFilename.compare(lowFilename.length() - 3, 3, LOG4CXX_STR(".gz")) == 0)
+	if (lowFilename.compare(lowFilename.length() - 3, 3, LOG4CXXNG_STR(".gz")) == 0)
 	{
 		suffixLength = 3;
 	}
-	else if (lowFilename.compare(lowFilename.length() - 4, 4, LOG4CXX_STR(".zip")) == 0)
+	else if (lowFilename.compare(lowFilename.length() - 4, 4, LOG4CXXNG_STR(".zip")) == 0)
 	{
 		suffixLength = 4;
 	}
@@ -334,7 +334,7 @@ bool FixedWindowRollingPolicy::purge(int lowIndex, int highIndex, Pool& p) const
 		}
 		catch (std::exception&)
 		{
-			LogLog::warn(LOG4CXX_STR("Exception during purge in RollingFileAppender"));
+			LogLog::warn(LOG4CXXNG_STR("Exception during purge in RollingFileAppender"));
 
 			return false;
 		}
@@ -344,10 +344,10 @@ bool FixedWindowRollingPolicy::purge(int lowIndex, int highIndex, Pool& p) const
 }
 
 #define RULES_PUT(spec, cls) \
-	specs.insert(PatternMap::value_type(LogString(LOG4CXX_STR(spec)), (PatternConstructor) cls ::newInstance))
+	specs.insert(PatternMap::value_type(LogString(LOG4CXXNG_STR(spec)), (PatternConstructor) cls ::newInstance))
 
 
-log4cxx::pattern::PatternMap FixedWindowRollingPolicy::getFormatSpecifiers() const
+log4cxxng::pattern::PatternMap FixedWindowRollingPolicy::getFormatSpecifiers() const
 {
 	PatternMap specs;
 	RULES_PUT("i", IntegerPatternConverter);

@@ -18,13 +18,13 @@
 #include <log4cxxNG/logstring.h>
 #include <log4cxxNG/helpers/stringtokenizer.h>
 #include <log4cxxNG/helpers/exception.h>
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 #include <log4cxxNG/private/log4cxxNG_private.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 StringTokenizer::StringTokenizer(const LogString& str, const LogString& delim1)
 	: src(str), delim(delim1), pos(0)
@@ -61,7 +61,7 @@ LogString StringTokenizer::nextToken()
 	}
 
 	throw NoSuchElementException();
-#if LOG4CXX_RETURN_AFTER_THROW
+#if LOG4CXXNG_RETURN_AFTER_THROW
 	return LogString();
 #endif
 }

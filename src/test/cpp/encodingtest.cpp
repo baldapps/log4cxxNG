@@ -22,7 +22,7 @@
 //  If there is no support for wchar_t logging then
 //     there is not a consistent way to get the test characters logged
 //
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 
 
 #include <log4cxxNG/patternlayout.h>
@@ -33,9 +33,9 @@
 #include <log4cxxNG/file.h>
 #include <log4cxxNG/helpers/pool.h>
 
-using namespace log4cxx;
-using namespace log4cxx::util;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::util;
+using namespace log4cxxng::helpers;
 
 /**
  * Tests support for encoding specification.
@@ -69,8 +69,8 @@ public:
 	{
 		LoggerPtr root(Logger::getRootLogger());
 
-		configure(root, LOG4CXX_STR("output/encoding/ascii.log"),
-			LOG4CXX_STR("US-ASCII"));
+		configure(root, LOG4CXXNG_STR("output/encoding/ascii.log"),
+			LOG4CXXNG_STR("US-ASCII"));
 		common(root);
 
 		BinaryCompare::compare( "output/encoding/ascii.log",
@@ -84,8 +84,8 @@ public:
 	{
 		LoggerPtr root(Logger::getRootLogger());
 
-		configure(root, LOG4CXX_STR("output/encoding/latin1.log"),
-			LOG4CXX_STR("iso-8859-1"));
+		configure(root, LOG4CXXNG_STR("output/encoding/latin1.log"),
+			LOG4CXXNG_STR("iso-8859-1"));
 		common(root);
 
 		BinaryCompare::compare( "output/encoding/latin1.log",
@@ -99,8 +99,8 @@ public:
 	{
 		LoggerPtr root(Logger::getRootLogger());
 
-		configure(root, LOG4CXX_STR("output/encoding/UTF-8.log"),
-			LOG4CXX_STR("UTF-8"));
+		configure(root, LOG4CXXNG_STR("output/encoding/UTF-8.log"),
+			LOG4CXXNG_STR("UTF-8"));
 		common(root);
 
 		BinaryCompare::compare( "output/encoding/UTF-8.log",
@@ -114,8 +114,8 @@ public:
 	{
 		LoggerPtr root(Logger::getRootLogger());
 
-		configure(root, LOG4CXX_STR("output/encoding/UTF-16.log"),
-			LOG4CXX_STR("UTF-16"));
+		configure(root, LOG4CXXNG_STR("output/encoding/UTF-16.log"),
+			LOG4CXXNG_STR("UTF-16"));
 		common(root);
 
 		BinaryCompare::compare( "output/encoding/UTF-16.log",
@@ -129,8 +129,8 @@ public:
 	{
 		LoggerPtr root(Logger::getRootLogger());
 
-		configure(root, LOG4CXX_STR("output/encoding/UTF-16BE.log"),
-			LOG4CXX_STR("UTF-16BE"));
+		configure(root, LOG4CXXNG_STR("output/encoding/UTF-16BE.log"),
+			LOG4CXXNG_STR("UTF-16BE"));
 		common(root);
 
 		BinaryCompare::compare( "output/encoding/UTF-16BE.log",
@@ -144,8 +144,8 @@ public:
 	{
 		LoggerPtr root(Logger::getRootLogger());
 
-		configure(root, LOG4CXX_STR("output/encoding/UTF-16LE.log"),
-			LOG4CXX_STR("UTF-16LE"));
+		configure(root, LOG4CXXNG_STR("output/encoding/UTF-16LE.log"),
+			LOG4CXXNG_STR("UTF-16LE"));
 		common(root);
 
 		BinaryCompare::compare( "output/encoding/UTF-16LE.log",
@@ -167,7 +167,7 @@ private:
 		PatternLayoutPtr layout(new PatternLayout());
 		Pool             p;
 
-		layout->setConversionPattern(LOG4CXX_STR("%p - %m\n"));
+		layout->setConversionPattern(LOG4CXXNG_STR("%p - %m\n"));
 		layout->activateOptions(p);
 
 		appender->setAppend(false);

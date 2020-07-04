@@ -15,15 +15,15 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_FILEINPUTSTREAM_H
-#define _LOG4CXX_HELPERS_FILEINPUTSTREAM_H
+#ifndef _LOG4CXXNG_HELPERS_FILEINPUTSTREAM_H
+#define _LOG4CXXNG_HELPERS_FILEINPUTSTREAM_H
 
 #include <log4cxxNG/helpers/inputstream.h>
 #include <log4cxxNG/file.h>
 #include <log4cxxNG/helpers/pool.h>
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 namespace helpers
@@ -33,18 +33,18 @@ namespace helpers
  * InputStream implemented on top of APR file IO.
  *
  */
-class LOG4CXX_EXPORT FileInputStream : public InputStream
+class LOG4CXXNG_EXPORT FileInputStream : public InputStream
 {
 	private:
 		Pool pool;
 		apr_file_t* fileptr;
 
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(FileInputStream)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(FileInputStream)
-		LOG4CXX_CAST_ENTRY_CHAIN(InputStream)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(FileInputStream)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(FileInputStream)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(InputStream)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		 * Creates a FileInputStream by opening a connection to an actual
@@ -89,9 +89,9 @@ class LOG4CXX_EXPORT FileInputStream : public InputStream
 
 };
 
-LOG4CXX_PTR_DEF(FileInputStream);
+LOG4CXXNG_PTR_DEF(FileInputStream);
 } // namespace helpers
 
-}  //namespace log4cxx
+}  //namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_FILEINPUTSTREAM_H
+#endif //_LOG4CXXNG_HELPERS_FILEINPUTSTREAM_H

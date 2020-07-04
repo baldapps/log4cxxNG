@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_BYTEBUFFER_H
-#define _LOG4CXX_HELPERS_BYTEBUFFER_H
+#ifndef _LOG4CXXNG_HELPERS_BYTEBUFFER_H
+#define _LOG4CXXNG_HELPERS_BYTEBUFFER_H
 
 #include <log4cxxNG/log4cxxNG.h>
 #include <stdio.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 namespace helpers
@@ -30,7 +30,7 @@ namespace helpers
 /**
 * A byte buffer.
 */
-class LOG4CXX_EXPORT ByteBuffer
+class LOG4CXXNG_EXPORT ByteBuffer
 {
 	private:
 		char* base;
@@ -86,6 +86,6 @@ class LOG4CXX_EXPORT ByteBuffer
 
 } // namespace helpers
 
-}  //namespace log4cxx
+}  //namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_BYTEBUFFER_H
+#endif //_LOG4CXXNG_HELPERS_BYTEBUFFER_H

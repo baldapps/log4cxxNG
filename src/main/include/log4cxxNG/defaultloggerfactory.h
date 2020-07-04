@@ -15,31 +15,31 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_DEFAULT_LOGGER_FACTORY_H
-#define _LOG4CXX_DEFAULT_LOGGER_FACTORY_H
+#ifndef _LOG4CXXNG_DEFAULT_LOGGER_FACTORY_H
+#define _LOG4CXXNG_DEFAULT_LOGGER_FACTORY_H
 
 #include <log4cxxNG/spi/loggerfactory.h>
 #include <log4cxxNG/helpers/objectimpl.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 class Logger;
 typedef helpers::ObjectPtrT<Logger> LoggerPtr;
 
-class LOG4CXX_EXPORT DefaultLoggerFactory :
+class LOG4CXXNG_EXPORT DefaultLoggerFactory :
 	public virtual spi::LoggerFactory,
 	public virtual helpers::ObjectImpl
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(DefaultLoggerFactory)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(spi::LoggerFactory)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(DefaultLoggerFactory)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(spi::LoggerFactory)
+		END_LOG4CXXNG_CAST_MAP()
 
 		virtual LoggerPtr makeNewLoggerInstance(
-			log4cxx::helpers::Pool& pool,
+			log4cxxng::helpers::Pool& pool,
 			const LogString& name) const;
 };
-}  // namespace log4cxx
+}  // namespace log4cxxng
 
-#endif //_LOG4CXX_DEFAULT_LOGGER_FACTORY_H
+#endif //_LOG4CXXNG_DEFAULT_LOGGER_FACTORY_H

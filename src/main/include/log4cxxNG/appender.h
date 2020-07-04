@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_APPENDER_H
-#define _LOG4CXX_APPENDER_H
+#ifndef _LOG4CXXNG_APPENDER_H
+#define _LOG4CXXNG_APPENDER_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -30,7 +30,7 @@
 #include <vector>
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 // Forward declarations
 namespace spi
@@ -42,22 +42,22 @@ class Filter;
 typedef helpers::ObjectPtrT<Filter> FilterPtr;
 
 class ErrorHandler;
-typedef log4cxx::helpers::ObjectPtrT<ErrorHandler> ErrorHandlerPtr;
+typedef log4cxxng::helpers::ObjectPtrT<ErrorHandler> ErrorHandlerPtr;
 }
 
 class Layout;
-typedef log4cxx::helpers::ObjectPtrT<Layout> LayoutPtr;
+typedef log4cxxng::helpers::ObjectPtrT<Layout> LayoutPtr;
 
 
 /**
 Implement this interface for your own strategies for outputting log
 statements.
 */
-class LOG4CXX_EXPORT Appender :
+class LOG4CXXNG_EXPORT Appender :
 	public virtual spi::OptionHandler
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(Appender)
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(Appender)
 
 		virtual ~Appender() {}
 
@@ -92,7 +92,7 @@ class LOG4CXX_EXPORT Appender :
 		 implementations in order to log.
 		*/
 		virtual void doAppend(const spi::LoggingEventPtr& event,
-			log4cxx::helpers::Pool& pool) = 0;
+			log4cxxng::helpers::Pool& pool) = 0;
 
 
 		/**
@@ -136,8 +136,8 @@ class LOG4CXX_EXPORT Appender :
 		virtual bool requiresLayout() const = 0;
 };
 
-LOG4CXX_PTR_DEF(Appender);
-LOG4CXX_LIST_DEF(AppenderList, AppenderPtr);
+LOG4CXXNG_PTR_DEF(Appender);
+LOG4CXXNG_LIST_DEF(AppenderList, AppenderPtr);
 
 }
 
@@ -145,4 +145,4 @@ LOG4CXX_LIST_DEF(AppenderList, AppenderPtr);
 	#pragma warning ( pop )
 #endif
 
-#endif //_LOG4CXX_APPENDER_H
+#endif //_LOG4CXXNG_APPENDER_H

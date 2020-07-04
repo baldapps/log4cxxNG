@@ -20,9 +20,9 @@
 #include <log4cxxNG/pattern/literalpatternconverter.h>
 #include <log4cxxNG/helpers/loglog.h>
 
-using namespace log4cxx;
-using namespace log4cxx::pattern;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::pattern;
+using namespace log4cxxng::helpers;
 
 const logchar PatternParser::ESCAPE_CHAR = 0x25; // '%'
 
@@ -264,7 +264,7 @@ void PatternParser::parse(
 				}
 				else
 				{
-					LogLog::error(LOG4CXX_STR("Error in pattern, was expecting digit."));
+					LogLog::error(LOG4CXXNG_STR("Error in pattern, was expecting digit."));
 
 					state = LITERAL_STATE;
 				}
@@ -331,7 +331,7 @@ PatternConverterPtr PatternParser::createConverter(
 		}
 	}
 
-	LogLog::error(LogString(LOG4CXX_STR("Unrecognized format specifier ")) + converterId);
+	LogLog::error(LogString(LOG4CXXNG_STR("Unrecognized format specifier ")) + converterId);
 	ObjectPtr converterObj;
 
 	return converterObj;
@@ -349,7 +349,7 @@ size_t PatternParser::finalizeConverter(
 
 	if (convBuf.empty())
 	{
-		LogLog::error(LOG4CXX_STR("Empty conversion specifier"));
+		LogLog::error(LOG4CXXNG_STR("Empty conversion specifier"));
 		patternConverters.push_back(
 			LiteralPatternConverter::newInstance(currentLiteral));
 		formattingInfos.push_back(FormattingInfo::getDefault());
@@ -367,9 +367,9 @@ size_t PatternParser::finalizeConverter(
 
 		if (pc == NULL)
 		{
-			LogString msg(LOG4CXX_STR("Unrecognized conversion specifier ["));
+			LogString msg(LOG4CXXNG_STR("Unrecognized conversion specifier ["));
 			msg.append(converterId);
-			msg.append(LOG4CXX_STR("] in conversion pattern."));
+			msg.append(LOG4CXXNG_STR("] in conversion pattern."));
 			LogLog::error(msg);
 			patternConverters.push_back(
 				LiteralPatternConverter::newInstance(currentLiteral));

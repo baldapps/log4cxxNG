@@ -15,10 +15,10 @@
  * limitations under the License.
  */
 
-#define LOG4CXX_TEST 1
-#include <log4cxxNG/private/log4cxx_private.h>
+#define LOG4CXXNG_TEST 1
+#include <log4cxxNG/private/log4cxxng_private.h>
 
-#if LOG4CXX_HAVE_SMTP
+#if LOG4CXXNG_HAVE_SMTP
 
 #include <log4cxxNG/net/smtpappender.h>
 #include "../appenderskeletontestcase.h"
@@ -26,13 +26,13 @@
 #include <log4cxxNG/logmanager.h>
 #include <log4cxxNG/ttcclayout.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::net;
-using namespace log4cxx::xml;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::net;
+using namespace log4cxxng::xml;
+using namespace log4cxxng::spi;
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace net
 {
@@ -42,11 +42,11 @@ class MockTriggeringEventEvaluator :
 	public virtual helpers::ObjectImpl
 {
 	public:
-		DECLARE_LOG4CXX_OBJECT(MockTriggeringEventEvaluator)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(MockTriggeringEventEvaluator)
-		LOG4CXX_CAST_ENTRY(spi::TriggeringEventEvaluator)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(MockTriggeringEventEvaluator)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(MockTriggeringEventEvaluator)
+		LOG4CXXNG_CAST_ENTRY(spi::TriggeringEventEvaluator)
+		END_LOG4CXXNG_CAST_MAP()
 
 		MockTriggeringEventEvaluator()
 		{
@@ -63,11 +63,11 @@ class MockTriggeringEventEvaluator :
 }
 }
 
-IMPLEMENT_LOG4CXX_OBJECT(MockTriggeringEventEvaluator)
+IMPLEMENT_LOG4CXXNG_OBJECT(MockTriggeringEventEvaluator)
 
 
 /**
-   Unit tests of log4cxx::SocketAppender
+   Unit tests of log4cxxng::SocketAppender
  */
 class SMTPAppenderTestCase : public AppenderSkeletonTestCase
 {
@@ -86,7 +86,7 @@ class SMTPAppenderTestCase : public AppenderSkeletonTestCase
 
 		AppenderSkeleton* createAppenderSkeleton() const
 		{
-			return new log4cxx::net::SMTPAppender();
+			return new log4cxxng::net::SMTPAppender();
 		}
 
 		void setUp()
@@ -104,7 +104,7 @@ class SMTPAppenderTestCase : public AppenderSkeletonTestCase
 		void testTrigger()
 		{
 			DOMConfigurator::configure("input/xml/smtpAppender1.xml");
-			SMTPAppenderPtr appender(Logger::getRootLogger()->getAppender(LOG4CXX_STR("A1")));
+			SMTPAppenderPtr appender(Logger::getRootLogger()->getAppender(LOG4CXXNG_STR("A1")));
 			TriggeringEventEvaluatorPtr evaluator(appender->getEvaluator());
 			LOGUNIT_ASSERT_EQUAL(true, evaluator->instanceof(MockTriggeringEventEvaluator::getStaticClass()));
 		}
@@ -112,16 +112,16 @@ class SMTPAppenderTestCase : public AppenderSkeletonTestCase
 		void testInvalid()
 		{
 			SMTPAppenderPtr appender(new SMTPAppender());
-			appender->setSMTPHost(LOG4CXX_STR("smtp.invalid"));
-			appender->setTo(LOG4CXX_STR("you@example.invalid"));
-			appender->setFrom(LOG4CXX_STR("me@example.invalid"));
+			appender->setSMTPHost(LOG4CXXNG_STR("smtp.invalid"));
+			appender->setTo(LOG4CXXNG_STR("you@example.invalid"));
+			appender->setFrom(LOG4CXXNG_STR("me@example.invalid"));
 			appender->setLayout(new TTCCLayout());
 			Pool p;
 			appender->activateOptions(p);
 			LoggerPtr root(Logger::getRootLogger());
 			root->addAppender(appender);
-			LOG4CXX_INFO(root, "Hello, World.")
-			LOG4CXX_ERROR(root, "Sending Message")
+			LOG4CXXNG_INFO(root, "Hello, World.")
+			LOG4CXXNG_ERROR(root, "Sending Message")
 		}
 
 };

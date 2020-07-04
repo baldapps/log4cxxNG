@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_OBJECT_PTR_H
-#define _LOG4CXX_HELPERS_OBJECT_PTR_H
+#ifndef _LOG4CXXNG_HELPERS_OBJECT_PTR_H
+#define _LOG4CXXNG_HELPERS_OBJECT_PTR_H
 
 #include <log4cxxNG/log4cxxNG.h>
 
@@ -27,19 +27,19 @@
 //   in member initialization list.  The use of a macro allows quick
 //   switching between the initialization styles.
 //
-#if LOG4CXX_HELGRIND
-	#define _LOG4CXX_OBJECTPTR_INIT(x) : ObjectPtrBase() { exchange(x);
+#if LOG4CXXNG_HELGRIND
+	#define _LOG4CXXNG_OBJECTPTR_INIT(x) : ObjectPtrBase() { exchange(x);
 #else
-	#define _LOG4CXX_OBJECTPTR_INIT(x) : ObjectPtrBase(), p(x) {
+	#define _LOG4CXXNG_OBJECTPTR_INIT(x) : ObjectPtrBase(), p(x) {
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
 class Class;
 
-class LOG4CXX_EXPORT ObjectPtrBase
+class LOG4CXXNG_EXPORT ObjectPtrBase
 {
 	public:
 		ObjectPtrBase();
@@ -55,16 +55,16 @@ template<typename T> class ObjectPtrT : public ObjectPtrBase
 {
 	public:
 		ObjectPtrT(const int& null)
-		_LOG4CXX_OBJECTPTR_INIT(0)
+		_LOG4CXXNG_OBJECTPTR_INIT(0)
 		ObjectPtrBase::checkNull(null);
 }
 
 ObjectPtrT()
-_LOG4CXX_OBJECTPTR_INIT(0)
+_LOG4CXXNG_OBJECTPTR_INIT(0)
 }
 
 ObjectPtrT(T* p1)
-_LOG4CXX_OBJECTPTR_INIT(p1)
+_LOG4CXXNG_OBJECTPTR_INIT(p1)
 
 if (this->p != 0)
 {
@@ -74,7 +74,7 @@ if (this->p != 0)
 
 
 ObjectPtrT(const ObjectPtrT& p1)
-_LOG4CXX_OBJECTPTR_INIT(p1.p)
+_LOG4CXXNG_OBJECTPTR_INIT(p1.p)
 
 if (this->p != 0)
 {
@@ -83,7 +83,7 @@ if (this->p != 0)
 }
 
 ObjectPtrT(const ObjectPtrBase& p1)
-_LOG4CXX_OBJECTPTR_INIT(reinterpret_cast<T*>(p1.cast(T::getStaticClass())))
+_LOG4CXXNG_OBJECTPTR_INIT(reinterpret_cast<T*>(p1.cast(T::getStaticClass())))
 
 if (this->p != 0)
 {
@@ -92,7 +92,7 @@ if (this->p != 0)
 }
 
 ObjectPtrT(ObjectPtrBase& p1)
-_LOG4CXX_OBJECTPTR_INIT(reinterpret_cast<T*>(p1.cast(T::getStaticClass())))
+_LOG4CXXNG_OBJECTPTR_INIT(reinterpret_cast<T*>(p1.cast(T::getStaticClass())))
 
 if (this->p != 0)
 {
@@ -243,4 +243,4 @@ T* exchange(const T* newValue)
 }
 }
 
-#endif //_LOG4CXX_HELPERS_OBJECT_PTR_H
+#endif //_LOG4CXXNG_HELPERS_OBJECT_PTR_H

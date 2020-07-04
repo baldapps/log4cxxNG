@@ -26,13 +26,13 @@
 #include <log4cxxNG/helpers/charsetencoder.h>
 #include <log4cxxNG/helpers/bytebuffer.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::net;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::net;
 
 #if APR_HAS_THREADS
 
-IMPLEMENT_LOG4CXX_OBJECT(TelnetAppender)
+IMPLEMENT_LOG4CXXNG_OBJECT(TelnetAppender)
 
 /** The default telnet server port */
 const int TelnetAppender::DEFAULT_PORT = 23;
@@ -42,7 +42,7 @@ const int TelnetAppender::MAX_CONNECTIONS = 20;
 
 TelnetAppender::TelnetAppender()
 	: port(DEFAULT_PORT), connections(MAX_CONNECTIONS),
-	  encoding(LOG4CXX_STR("UTF-8")),
+	  encoding(LOG4CXXNG_STR("UTF-8")),
 	  encoder(CharsetEncoder::getUTF8Encoder()),
 	  serverSocket(NULL), sh()
 {
@@ -70,11 +70,11 @@ void TelnetAppender::activateOptions(Pool& /* p */)
 void TelnetAppender::setOption(const LogString& option,
 	const LogString& value)
 {
-	if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("PORT"), LOG4CXX_STR("port")))
+	if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("PORT"), LOG4CXXNG_STR("port")))
 	{
 		setPort(OptionConverter::toInt(value, DEFAULT_PORT));
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("ENCODING"), LOG4CXX_STR("encoding")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("ENCODING"), LOG4CXXNG_STR("encoding")))
 	{
 		setEncoding(value);
 	}
@@ -193,7 +193,7 @@ void TelnetAppender::append(const spi::LoggingEventPtr& event, Pool& p)
 	{
 		LogString msg;
 		this->layout->format(msg, event, pool);
-		msg.append(LOG4CXX_STR("\r\n"));
+		msg.append(LOG4CXXNG_STR("\r\n"));
 		size_t bytesSize = msg.size() * 2;
 		char* bytes = p.pstralloc(bytesSize);
 
@@ -204,7 +204,7 @@ void TelnetAppender::append(const spi::LoggingEventPtr& event, Pool& p)
 
 		while (msgIter != msg.end())
 		{
-			log4cxx_status_t stat = encoder->encode(msg, msgIter, buf);
+			log4cxxng_status_t stat = encoder->encode(msg, msgIter, buf);
 			buf.flip();
 			write(buf);
 			buf.clear();
@@ -238,7 +238,7 @@ void* APR_THREAD_FUNC TelnetAppender::acceptConnections(apr_thread_t* /* thread 
 			if (done)
 			{
 				Pool p;
-				pThis->writeStatus(newClient, LOG4CXX_STR("Log closed.\r\n"), p);
+				pThis->writeStatus(newClient, LOG4CXXNG_STR("Log closed.\r\n"), p);
 				newClient->close();
 
 				break;
@@ -249,7 +249,7 @@ void* APR_THREAD_FUNC TelnetAppender::acceptConnections(apr_thread_t* /* thread 
 			if (count >= pThis->connections.size())
 			{
 				Pool p;
-				pThis->writeStatus(newClient, LOG4CXX_STR("Too many connections.\r\n"), p);
+				pThis->writeStatus(newClient, LOG4CXXNG_STR("Too many connections.\r\n"), p);
 				newClient->close();
 			}
 			else
@@ -273,9 +273,9 @@ void* APR_THREAD_FUNC TelnetAppender::acceptConnections(apr_thread_t* /* thread 
 				}
 
 				Pool p;
-				LogString oss(LOG4CXX_STR("TelnetAppender v1.0 ("));
+				LogString oss(LOG4CXXNG_STR("TelnetAppender v1.0 ("));
 				StringHelper::toString((int) count + 1, p, oss);
-				oss += LOG4CXX_STR(" active connections)\r\n\r\n");
+				oss += LOG4CXXNG_STR(" active connections)\r\n\r\n");
 				pThis->writeStatus(newClient, oss, p);
 			}
 		}
@@ -290,7 +290,7 @@ void* APR_THREAD_FUNC TelnetAppender::acceptConnections(apr_thread_t* /* thread 
 		{
 			if (!pThis->closed)
 			{
-				LogLog::error(LOG4CXX_STR("Encountered error while in SocketHandler loop."), e);
+				LogLog::error(LOG4CXXNG_STR("Encountered error while in SocketHandler loop."), e);
 			}
 			else
 			{

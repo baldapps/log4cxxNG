@@ -24,15 +24,15 @@
 #include <log4cxxNG/spi/location/locationinfo.h>
 
 
-using namespace log4cxx;
-using namespace log4cxx::pattern;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::pattern;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(LiteralPatternConverter)
+IMPLEMENT_LOG4CXXNG_OBJECT(LiteralPatternConverter)
 
 LiteralPatternConverter::LiteralPatternConverter(const LogString& literal1) :
-	LoggingEventPatternConverter(LOG4CXX_STR("Literal"), LOG4CXX_STR("literal")),
+	LoggingEventPatternConverter(LOG4CXXNG_STR("Literal"), LOG4CXXNG_STR("literal")),
 	literal(literal1)
 {
 }

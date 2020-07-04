@@ -17,11 +17,11 @@
 
 #include <log4cxxNG/level.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 class XLevel : public Level
 {
-		DECLARE_LOG4CXX_LEVEL(XLevel)
+		DECLARE_LOG4CXXNG_LEVEL(XLevel)
 
 	public:
 		enum

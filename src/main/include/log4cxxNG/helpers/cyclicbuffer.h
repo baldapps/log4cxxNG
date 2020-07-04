@@ -15,25 +15,25 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_CYCLICBUFFER_H
-#define _LOG4CXX_HELPERS_CYCLICBUFFER_H
+#ifndef _LOG4CXXNG_HELPERS_CYCLICBUFFER_H
+#define _LOG4CXXNG_HELPERS_CYCLICBUFFER_H
 
 #include <log4cxxNG/spi/loggingevent.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
 /**
 CyclicBuffer is used by other appenders to hold instances of
-{@link log4cxx::spi::LoggingEvent LoggingEvent} for immediate
+{@link log4cxxng::spi::LoggingEvent LoggingEvent} for immediate
 or deferred display.
 <p>This buffer gives read access to any element in the buffer not
 just the first or last element.
 */
-class LOG4CXX_EXPORT CyclicBuffer
+class LOG4CXXNG_EXPORT CyclicBuffer
 {
-		log4cxx::spi::LoggingEventList ea;
+		log4cxxng::spi::LoggingEventList ea;
 		int first;
 		int last;
 		int numElems;
@@ -91,6 +91,6 @@ class LOG4CXX_EXPORT CyclicBuffer
 		void resize(int newSize);
 }; // class CyclicBuffer
 }  //namespace helpers
-} //namespace log4cxx
+} //namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_CYCLICBUFFER_H
+#endif //_LOG4CXXNG_HELPERS_CYCLICBUFFER_H

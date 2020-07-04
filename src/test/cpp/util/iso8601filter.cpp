@@ -17,7 +17,7 @@
 
 #include "iso8601filter.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 ISO8601Filter::ISO8601Filter() : Filter(ISO8601_PAT, "") {}

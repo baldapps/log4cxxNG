@@ -21,8 +21,8 @@
 #include <log4cxxNG/appenderskeleton.h>
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 
 void AppenderSkeletonTestCase::testDefaultThreshold()
@@ -35,7 +35,7 @@ void AppenderSkeletonTestCase::testDefaultThreshold()
 void AppenderSkeletonTestCase::testSetOptionThreshold()
 {
 	ObjectPtrT<AppenderSkeleton> appender(createAppenderSkeleton());
-	appender->setOption(LOG4CXX_STR("threshold"), LOG4CXX_STR("debug"));
+	appender->setOption(LOG4CXXNG_STR("threshold"), LOG4CXXNG_STR("debug"));
 	LevelPtr threshold(appender->getThreshold());
 	LOGUNIT_ASSERT_EQUAL(Level::getDebug()->toInt(), threshold->toInt());
 }

@@ -22,8 +22,8 @@
 #include <log4cxxNG/ndc.h>
 #include <locale.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 int main()
 {
@@ -36,11 +36,11 @@ int main()
 
                 NDC::push("trivial context");
 
-                LOG4CXX_DEBUG(rootLogger, "debug message");
-                LOG4CXX_INFO(rootLogger, "info message");
-                LOG4CXX_WARN(rootLogger, "warn message");
-                LOG4CXX_ERROR(rootLogger, "error message");
-                LOG4CXX_FATAL(rootLogger, "fatal message");
+                LOG4CXXNG_DEBUG(rootLogger, "debug message");
+                LOG4CXXNG_INFO(rootLogger, "info message");
+                LOG4CXXNG_WARN(rootLogger, "warn message");
+                LOG4CXXNG_ERROR(rootLogger, "error message");
+                LOG4CXXNG_FATAL(rootLogger, "fatal message");
 
                 NDC::pop();
         }

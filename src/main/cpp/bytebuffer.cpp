@@ -20,8 +20,8 @@
 #include <apr_pools.h>
 #include <log4cxxNG/helpers/pool.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 ByteBuffer::ByteBuffer(char* data1, size_t capacity)
 	: base(data1), pos(0), lim(capacity), cap(capacity)
@@ -60,7 +60,7 @@ void ByteBuffer::limit(size_t newLimit)
 {
 	if (newLimit > cap)
 	{
-		throw IllegalArgumentException(LOG4CXX_STR("newLimit"));
+		throw IllegalArgumentException(LOG4CXXNG_STR("newLimit"));
 	}
 
 	lim = newLimit;

@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_DATAGRAM_SOCKET_H
-#define _LOG4CXX_HELPERS_DATAGRAM_SOCKET_H
+#ifndef _LOG4CXXNG_HELPERS_DATAGRAM_SOCKET_H
+#define _LOG4CXXNG_HELPERS_DATAGRAM_SOCKET_H
 
 #include <log4cxxNG/helpers/objectimpl.h>
 #include <log4cxxNG/helpers/objectptr.h>
@@ -28,19 +28,19 @@ extern "C" {
 	struct apr_socket_t;
 }
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
 /** This class represents a socket for sending and receiving
 datagram packets.*/
-class LOG4CXX_EXPORT DatagramSocket : public helpers::ObjectImpl
+class LOG4CXXNG_EXPORT DatagramSocket : public helpers::ObjectImpl
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(DatagramSocket)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(DatagramSocket)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(DatagramSocket)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(DatagramSocket)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/** Constructs a datagram socket and binds it to any available port
 		on the local host machine.*/
@@ -137,8 +137,8 @@ class LOG4CXX_EXPORT DatagramSocket : public helpers::ObjectImpl
 		int localPort;
 
 };
-LOG4CXX_PTR_DEF(DatagramSocket);
+LOG4CXXNG_PTR_DEF(DatagramSocket);
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_DATAGRAM_SOCKET_H
+#endif //_LOG4CXXNG_HELPERS_DATAGRAM_SOCKET_H

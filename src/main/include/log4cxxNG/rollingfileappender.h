@@ -14,8 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef _LOG4CXX_ROLLING_FILE_APPENDER_H
-#define _LOG4CXX_ROLLING_FILE_APPENDER_H
+#ifndef _LOG4CXXNG_ROLLING_FILE_APPENDER_H
+#define _LOG4CXXNG_ROLLING_FILE_APPENDER_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -24,11 +24,11 @@
 
 #include <log4cxxNG/rolling/rollingfileappenderskeleton.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 /** RollingFileAppender extends FileAppender to backup the log files when they reach a certain size. */
-class LOG4CXX_EXPORT RollingFileAppender : public log4cxx::rolling::RollingFileAppenderSkeleton
+class LOG4CXXNG_EXPORT RollingFileAppender : public log4cxxng::rolling::RollingFileAppenderSkeleton
 {
 	private:
 		/** The default maximum file size is 10MB. */
@@ -40,12 +40,12 @@ class LOG4CXX_EXPORT RollingFileAppender : public log4cxx::rolling::RollingFileA
 	public:
 		//
 		//   Use custom class to use non-default name to avoid
-		//       conflict with log4cxx::rolling::RollingFileAppender
-		DECLARE_LOG4CXX_OBJECT_WITH_CUSTOM_CLASS( RollingFileAppender, ClassRollingFileAppender )
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY( RollingFileAppender )
-		LOG4CXX_CAST_ENTRY_CHAIN( FileAppender )
-		END_LOG4CXX_CAST_MAP()
+		//       conflict with log4cxxng::rolling::RollingFileAppender
+		DECLARE_LOG4CXXNG_OBJECT_WITH_CUSTOM_CLASS( RollingFileAppender, ClassRollingFileAppender )
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY( RollingFileAppender )
+		LOG4CXXNG_CAST_ENTRY_CHAIN( FileAppender )
+		END_LOG4CXXNG_CAST_MAP()
 		/** The default constructor simply calls its {@link FileAppender#FileAppender parents constructor}. */
 		RollingFileAppender();
 
@@ -100,17 +100,17 @@ class LOG4CXX_EXPORT RollingFileAppender : public log4cxx::rolling::RollingFileA
 		virtual void setOption( const LogString& option, const LogString& value );
 
 		/** Prepares RollingFileAppender for use. */
-		void activateOptions( log4cxx::helpers::Pool& pool );
+		void activateOptions( log4cxxng::helpers::Pool& pool );
 
 
 }; // class RollingFileAppender
-LOG4CXX_PTR_DEF(RollingFileAppender);
+LOG4CXXNG_PTR_DEF(RollingFileAppender);
 
-} // namespace log4cxx
+} // namespace log4cxxng
 
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
 #endif
 
-#endif //_LOG4CXX_ROLLING_FILE_APPENDER_H
+#endif //_LOG4CXXNG_ROLLING_FILE_APPENDER_H

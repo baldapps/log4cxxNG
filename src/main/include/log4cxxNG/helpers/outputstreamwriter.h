@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_OUTPUTSTREAMWRITER_H
-#define _LOG4CXX_HELPERS_OUTPUTSTREAMWRITER_H
+#ifndef _LOG4CXXNG_HELPERS_OUTPUTSTREAMWRITER_H
+#define _LOG4CXXNG_HELPERS_OUTPUTSTREAMWRITER_H
 
 #include <log4cxxNG/helpers/writer.h>
 #include <log4cxxNG/helpers/outputstream.h>
 #include <log4cxxNG/helpers/charsetencoder.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 namespace helpers
@@ -31,18 +31,18 @@ namespace helpers
 /**
 *   Abstract class for writing to character streams.
 */
-class LOG4CXX_EXPORT OutputStreamWriter : public Writer
+class LOG4CXXNG_EXPORT OutputStreamWriter : public Writer
 {
 	private:
 		OutputStreamPtr out;
 		CharsetEncoderPtr enc;
 
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(OutputStreamWriter)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(OutputStreamWriter)
-		LOG4CXX_CAST_ENTRY_CHAIN(Writer)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(OutputStreamWriter)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(OutputStreamWriter)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(Writer)
+		END_LOG4CXXNG_CAST_MAP()
 
 		OutputStreamWriter(OutputStreamPtr& out);
 		OutputStreamWriter(OutputStreamPtr& out, CharsetEncoderPtr& enc);
@@ -53,7 +53,7 @@ class LOG4CXX_EXPORT OutputStreamWriter : public Writer
 		virtual void write(const LogString& str, Pool& p);
 		LogString getEncoding() const;
 
-#ifdef LOG4CXX_MULTI_PROCESS
+#ifdef LOG4CXXNG_MULTI_PROCESS
 		OutputStreamPtr getOutPutStreamPtr()
 		{
 			return out;
@@ -65,9 +65,9 @@ class LOG4CXX_EXPORT OutputStreamWriter : public Writer
 		OutputStreamWriter& operator=(const OutputStreamWriter&);
 };
 
-LOG4CXX_PTR_DEF(OutputStreamWriter);
+LOG4CXXNG_PTR_DEF(OutputStreamWriter);
 } // namespace helpers
 
-}  //namespace log4cxx
+}  //namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_OUTPUTSTREAMWRITER_H
+#endif //_LOG4CXXNG_HELPERS_OUTPUTSTREAMWRITER_H

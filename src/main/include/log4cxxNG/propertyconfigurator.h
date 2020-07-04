@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_PROPERTY_CONFIGURATOR_H
-#define _LOG4CXX_PROPERTY_CONFIGURATOR_H
+#ifndef _LOG4CXXNG_PROPERTY_CONFIGURATOR_H
+#define _LOG4CXXNG_PROPERTY_CONFIGURATOR_H
 
 #if defined(_MSC_VER)
 	#pragma warning (push)
@@ -32,7 +32,7 @@
 
 #include <log4cxxNG/file.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 class Logger;
 typedef helpers::ObjectPtrT<Logger> LoggerPtr;
@@ -54,7 +54,7 @@ class LoggerFactory;
 class PropertyWatchdog;
 /**
 Allows the configuration of log4cxx from an external file.  See
-<b>{@link #doConfigure(const File&, log4cxx::spi::LoggerRepositoryPtr&)}</b>
+<b>{@link #doConfigure(const File&, log4cxxng::spi::LoggerRepositoryPtr&)}</b>
 for the expected format.
 
 <p>It is sometimes useful to see how log4cxx is reading configuration
@@ -90,7 +90,7 @@ example, if <code>java.home</code> system property is set to
 <code>${java.home}</code> will be interpreted as
 <code>/home/xyz</code>.
 */
-class LOG4CXX_EXPORT PropertyConfigurator :
+class LOG4CXXNG_EXPORT PropertyConfigurator :
 	virtual public spi::Configurator,
 	virtual public helpers::ObjectImpl
 {
@@ -107,10 +107,10 @@ class LOG4CXX_EXPORT PropertyConfigurator :
 		helpers::ObjectPtrT<spi::LoggerFactory> loggerFactory;
 
 	public:
-		DECLARE_LOG4CXX_OBJECT(PropertyConfigurator)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(spi::Configurator)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(PropertyConfigurator)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(spi::Configurator)
+		END_LOG4CXXNG_CAST_MAP()
 
 		PropertyConfigurator();
 		virtual ~PropertyConfigurator();
@@ -326,14 +326,14 @@ class LOG4CXX_EXPORT PropertyConfigurator :
 
 		/**
 		Read configuration options from <code>properties</code>.
-		See #doConfigure(const File&, log4cxx::spi::LoggerRepositoryPtr&)
+		See #doConfigure(const File&, log4cxxng::spi::LoggerRepositoryPtr&)
 		for the expected format.
 		*/
 		static void configure(helpers::Properties& properties);
 
 		/**
 		Read configuration options from <code>properties</code>.
-		See #doConfigure(const File&, log4cxx::spi::LoggerRepositoryPtr&)
+		See #doConfigure(const File&, log4cxxng::spi::LoggerRepositoryPtr&)
 		for the expected format.
 		*/
 		void doConfigure(helpers::Properties& properties,
@@ -388,11 +388,11 @@ class LOG4CXX_EXPORT PropertyConfigurator :
 		PropertyConfigurator& operator=(const PropertyConfigurator&);
 		static PropertyWatchdog* pdog;
 }; // class PropertyConfigurator
-}  // namespace log4cxx
+}  // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
 
-#endif //_LOG4CXX_PROPERTY_CONFIGURATOR_H
+#endif //_LOG4CXXNG_PROPERTY_CONFIGURATOR_H

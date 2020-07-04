@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_FILTER_EXPRESSIONFILTER_H
-#define _LOG4CXX_FILTER_EXPRESSIONFILTER_H
+#ifndef _LOG4CXXNG_FILTER_EXPRESSIONFILTER_H
+#define _LOG4CXXNG_FILTER_EXPRESSIONFILTER_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -26,7 +26,7 @@
 
 #include <log4cxxNG/spi/filter.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace rule
 {
@@ -70,37 +70,37 @@ namespace filter
  *
  * Meaning of <b>AcceptToMatch</b>:
  * If there is a match between the value of the
- * Expression option and the {@link log4cxx::spi::LoggingEvent} and AcceptOnMatch is true,
- * the {@link #decide} method returns {@link log4cxx::spi::Filter#ACCEPT}.
+ * Expression option and the {@link log4cxxng::spi::LoggingEvent} and AcceptOnMatch is true,
+ * the {@link #decide} method returns {@link log4cxxng::spi::Filter#ACCEPT}.
  *
  * If there is a match between the value of the
- * Expression option and the {@link log4cxx::spi::LoggingEvent} and AcceptOnMatch is false,
- * {@link log4cxx::spi::Filter#DENY} is returned.
+ * Expression option and the {@link log4cxxng::spi::LoggingEvent} and AcceptOnMatch is false,
+ * {@link log4cxxng::spi::Filter#DENY} is returned.
  *
- * If there is no match, {@link log4cxx::spi::Filter#NEUTRAL} is returned.
+ * If there is no match, {@link log4cxxng::spi::Filter#NEUTRAL} is returned.
  *
  *
  */
-class LOG4CXX_EXPORT ExpressionFilter: public log4cxx::spi::Filter
+class LOG4CXXNG_EXPORT ExpressionFilter: public log4cxxng::spi::Filter
 {
 	private:
 		bool acceptOnMatch;
 		bool convertInFixToPostFix;
 		LogString expression;
-		log4cxx::rule::RulePtr expressionRule;
+		log4cxxng::rule::RulePtr expressionRule;
 		ExpressionFilter(const ExpressionFilter&);
 		ExpressionFilter& operator=(const ExpressionFilter&);
 
 	public:
-		DECLARE_LOG4CXX_OBJECT(ExpressionFilter)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(log4cxx::spi::Filter)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(ExpressionFilter)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(log4cxxng::spi::Filter)
+		END_LOG4CXXNG_CAST_MAP()
 
 
 		ExpressionFilter();
 
-		void activateOptions(log4cxx::helpers::Pool& p);
+		void activateOptions(log4cxxng::helpers::Pool& p);
 
 		void setExpression(const LogString& expression);
 
@@ -115,7 +115,7 @@ class LOG4CXX_EXPORT ExpressionFilter: public log4cxx::spi::Filter
 		bool getAcceptOnMatch() const;
 
 		/**
-		   Returns {@link log4cxx::spi::Filter#NEUTRAL} is there is no string match.
+		   Returns {@link log4cxxng::spi::Filter#NEUTRAL} is there is no string match.
 		 */
 		FilterDecision decide(const spi::LoggingEventPtr& event) const;
 };

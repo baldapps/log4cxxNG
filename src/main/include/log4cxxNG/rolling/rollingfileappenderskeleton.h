@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#if !defined(_LOG4CXX_ROLLING_ROLLING_FILE_APPENDER_SKELETON_H)
-#define _LOG4CXX_ROLLING_ROLLING_FILE_APPENDER_SKELETON_H
+#if !defined(_LOG4CXXNG_ROLLING_ROLLING_FILE_APPENDER_SKELETON_H)
+#define _LOG4CXXNG_ROLLING_ROLLING_FILE_APPENDER_SKELETON_H
 
 #include <log4cxxNG/portability.h>
 #include <log4cxxNG/spi/optionhandler.h>
@@ -25,25 +25,25 @@
 #include <log4cxxNG/rolling/rollingpolicy.h>
 #include <log4cxxNG/rolling/action.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace rolling
 {
 
 
 /**
- *  Base class for log4cxx::rolling::RollingFileAppender and log4cxx::RollingFileAppender
+ *  Base class for log4cxxng::rolling::RollingFileAppender and log4cxxng::RollingFileAppender
  * (analogues of org.apache.log4j.rolling.RFA from extras companion and
  *  org.apache.log4j.RFA from log4j 1.2, respectively).
  *
  * */
-class LOG4CXX_EXPORT RollingFileAppenderSkeleton : public FileAppender
+class LOG4CXXNG_EXPORT RollingFileAppenderSkeleton : public FileAppender
 {
-		DECLARE_LOG4CXX_OBJECT(RollingFileAppenderSkeleton)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(RollingFileAppenderSkeleton)
-		LOG4CXX_CAST_ENTRY_CHAIN(FileAppender)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(RollingFileAppenderSkeleton)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(RollingFileAppenderSkeleton)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(FileAppender)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		 * Triggering policy.
@@ -71,7 +71,7 @@ class LOG4CXX_EXPORT RollingFileAppenderSkeleton : public FileAppender
 		 * */
 		RollingFileAppenderSkeleton();
 
-		void activateOptions(log4cxx::helpers::Pool&);
+		void activateOptions(log4cxxng::helpers::Pool&);
 
 
 		/**
@@ -88,14 +88,14 @@ class LOG4CXX_EXPORT RollingFileAppenderSkeleton : public FileAppender
 		   <code>File</code> is truncated with no backup files created.
 
 		 */
-		bool rollover(log4cxx::helpers::Pool& p);
+		bool rollover(log4cxxng::helpers::Pool& p);
 
 	protected:
 
 		/**
 		 Actual writing occurs here.
 		*/
-		virtual void subAppend(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& p);
+		virtual void subAppend(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& p);
 
 	protected:
 
@@ -129,7 +129,7 @@ class LOG4CXX_EXPORT RollingFileAppenderSkeleton : public FileAppender
 		 @param os output stream, may not be null.
 		 @return new writer.
 		 */
-		log4cxx::helpers::WriterPtr createWriter(log4cxx::helpers::OutputStreamPtr& os);
+		log4cxxng::helpers::WriterPtr createWriter(log4cxxng::helpers::OutputStreamPtr& os);
 
 	public:
 
@@ -141,7 +141,7 @@ class LOG4CXX_EXPORT RollingFileAppenderSkeleton : public FileAppender
 		 */
 		size_t getFileLength() const;
 
-#ifdef LOG4CXX_MULTI_PROCESS
+#ifdef LOG4CXXNG_MULTI_PROCESS
 		/**
 		 * Set byte length of current active log file.
 		 * @return void
@@ -157,7 +157,7 @@ class LOG4CXX_EXPORT RollingFileAppenderSkeleton : public FileAppender
 		 * re-open the latest file when its own handler has been renamed
 		 * @return void
 		 */
-		void reopenLatestFile(log4cxx::helpers::Pool& p);
+		void reopenLatestFile(log4cxxng::helpers::Pool& p);
 #endif
 
 		/**
@@ -169,7 +169,7 @@ class LOG4CXX_EXPORT RollingFileAppenderSkeleton : public FileAppender
 };
 
 
-LOG4CXX_PTR_DEF(RollingFileAppenderSkeleton);
+LOG4CXXNG_PTR_DEF(RollingFileAppenderSkeleton);
 
 }
 }

@@ -22,17 +22,17 @@
 #include <log4cxxNG/helpers/bytebuffer.h>
 #include <log4cxxNG/helpers/stringhelper.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(OutputStreamWriter)
+IMPLEMENT_LOG4CXXNG_OBJECT(OutputStreamWriter)
 
 OutputStreamWriter::OutputStreamWriter(OutputStreamPtr& out1)
 	: out(out1), enc(CharsetEncoder::getDefaultEncoder())
 {
 	if (out1 == 0)
 	{
-		throw NullPointerException(LOG4CXX_STR("out parameter may not be null."));
+		throw NullPointerException(LOG4CXXNG_STR("out parameter may not be null."));
 	}
 }
 
@@ -42,12 +42,12 @@ OutputStreamWriter::OutputStreamWriter(OutputStreamPtr& out1,
 {
 	if (out1 == 0)
 	{
-		throw NullPointerException(LOG4CXX_STR("out parameter may not be null."));
+		throw NullPointerException(LOG4CXXNG_STR("out parameter may not be null."));
 	}
 
 	if (enc1 == 0)
 	{
-		throw NullPointerException(LOG4CXX_STR("enc parameter may not be null."));
+		throw NullPointerException(LOG4CXXNG_STR("enc parameter may not be null."));
 	}
 }
 
@@ -69,7 +69,7 @@ void OutputStreamWriter::write(const LogString& str, Pool& p)
 {
 	if (str.length() > 0)
 	{
-#ifdef LOG4CXX_MULTI_PROCESS
+#ifdef LOG4CXXNG_MULTI_PROCESS
 		size_t bufSize = str.length() * 2;
 		char* rawbuf = new char[bufSize];
 		ByteBuffer buf(rawbuf, (size_t) bufSize);
@@ -93,7 +93,7 @@ void OutputStreamWriter::write(const LogString& str, Pool& p)
 		enc->flush(buf);
 		buf.flip();
 		out->write(buf, p);
-#ifdef LOG4CXX_MULTI_PROCESS
+#ifdef LOG4CXXNG_MULTI_PROCESS
 		delete []rawbuf;
 #endif
 	}

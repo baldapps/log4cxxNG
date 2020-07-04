@@ -15,17 +15,17 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_SERVER_SOCKET_H
-#define _LOG4CXX_HELPERS_SERVER_SOCKET_H
+#ifndef _LOG4CXXNG_HELPERS_SERVER_SOCKET_H
+#define _LOG4CXXNG_HELPERS_SERVER_SOCKET_H
 
 #include <log4cxxNG/helpers/socket.h>
 #include <log4cxxNG/helpers/mutex.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
-class LOG4CXX_EXPORT ServerSocket
+class LOG4CXXNG_EXPORT ServerSocket
 {
 	public:
 		/**  Creates a server socket on a specified port.
@@ -59,6 +59,6 @@ class LOG4CXX_EXPORT ServerSocket
 
 };
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_SERVER_SOCKET_H
+#endif //_LOG4CXXNG_HELPERS_SERVER_SOCKET_H

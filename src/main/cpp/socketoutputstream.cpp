@@ -23,10 +23,10 @@
 #include <cstdio>
 #include <cstring>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(SocketOutputStream)
+IMPLEMENT_LOG4CXXNG_OBJECT(SocketOutputStream)
 
 SocketOutputStream::SocketOutputStream(const SocketPtr& socket1)
 	: socket(socket1)

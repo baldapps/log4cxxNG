@@ -31,10 +31,10 @@
 #include <log4cxxNG/rollingfileappender.h>
 #include <log4cxxNG/helpers/stringhelper.h>
 
-using namespace log4cxx;
-using namespace log4cxx::xml;
-using namespace log4cxx::filter;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::xml;
+using namespace log4cxxng::filter;
+using namespace log4cxxng::helpers;
 
 /**
  * Tests the emulation of org.apache.log4j.RollingFileAppender
@@ -77,13 +77,13 @@ public:
 			if (i < 10)
 			{
 				msg[8] = (char) ('0' + i);
-				LOG4CXX_DEBUG(logger, msg);
+				LOG4CXXNG_DEBUG(logger, msg);
 			}
 			else if (i < 100)
 			{
 				msg[7] = (char) ('0' + i / 10);
 				msg[8] = (char) ('0' + i % 10);
-				LOG4CXX_DEBUG(logger, msg);
+				LOG4CXXNG_DEBUG(logger, msg);
 			}
 		}
 
@@ -98,14 +98,14 @@ public:
 	 */
 	void test2()
 	{
-		PatternLayoutPtr layout(new PatternLayout(LOG4CXX_STR("%m\n")));
-		log4cxx::RollingFileAppenderPtr rfa(
-			new log4cxx::RollingFileAppender());
-		rfa->setName(LOG4CXX_STR("ROLLING"));
+		PatternLayoutPtr layout(new PatternLayout(LOG4CXXNG_STR("%m\n")));
+		log4cxxng::RollingFileAppenderPtr rfa(
+			new log4cxxng::RollingFileAppender());
+		rfa->setName(LOG4CXXNG_STR("ROLLING"));
 		rfa->setLayout(layout);
-		rfa->setOption(LOG4CXX_STR("append"), LOG4CXX_STR("false"));
+		rfa->setOption(LOG4CXXNG_STR("append"), LOG4CXXNG_STR("false"));
 		rfa->setMaximumFileSize(100);
-		rfa->setFile(LOG4CXX_STR("output/obsoleteRFA-test2.log"));
+		rfa->setFile(LOG4CXXNG_STR("output/obsoleteRFA-test2.log"));
 		Pool p;
 		rfa->activateOptions(p);
 		LoggerPtr root(Logger::getRootLogger());
@@ -122,13 +122,13 @@ public:
 			if (i < 10)
 			{
 				msg[8] = (char) ('0' + i);
-				LOG4CXX_DEBUG(logger, msg);
+				LOG4CXXNG_DEBUG(logger, msg);
 			}
 			else if (i < 100)
 			{
 				msg[7] = (char) ('0' + i / 10);
 				msg[8] = (char) ('0' + i % 10);
-				LOG4CXX_DEBUG(logger, msg);
+				LOG4CXXNG_DEBUG(logger, msg);
 			}
 		}
 
@@ -143,12 +143,12 @@ public:
 	void testIsOptionHandler()
 	{
 		RollingFileAppenderPtr rfa(new RollingFileAppender());
-		LOGUNIT_ASSERT_EQUAL(true, rfa->instanceof(log4cxx::spi::OptionHandler::getStaticClass()));
+		LOGUNIT_ASSERT_EQUAL(true, rfa->instanceof(log4cxxng::spi::OptionHandler::getStaticClass()));
 	}
 
 	void testClassForName()
 	{
-		LogString className(LOG4CXX_STR("org.apache.log4j.RollingFileAppender"));
+		LogString className(LOG4CXXNG_STR("org.apache.log4j.RollingFileAppender"));
 		const Class& myclass = Class::forName(className);
 		LOGUNIT_ASSERT_EQUAL(className, LogString(myclass.getName()));
 	}

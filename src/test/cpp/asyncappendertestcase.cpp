@@ -32,9 +32,9 @@
 #include <log4cxxNG/xml/domconfigurator.h>
 #include <log4cxxNG/file.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::spi;
 
 class NullPointerAppender : public AppenderSkeleton
 {
@@ -47,9 +47,9 @@ class NullPointerAppender : public AppenderSkeleton
 		/**
 		 * @{inheritDoc}
 		 */
-		void append(const spi::LoggingEventPtr&, log4cxx::helpers::Pool&)
+		void append(const spi::LoggingEventPtr&, log4cxxng::helpers::Pool&)
 		{
-			throw NullPointerException(LOG4CXX_STR("Intentional NullPointerException"));
+			throw NullPointerException(LOG4CXXNG_STR("Intentional NullPointerException"));
 		}
 
 		void close()
@@ -80,7 +80,7 @@ class BlockableVectorAppender : public VectorAppender
 		/**
 		 * {@inheritDoc}
 		 */
-		void append(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& p)
+		void append(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& p)
 		{
 			synchronized sync(blocker);
 			VectorAppender::append(event, p);
@@ -91,10 +91,10 @@ class BlockableVectorAppender : public VectorAppender
 			if (event->getLevel() == Level::getInfo())
 			{
 				LoggerPtr logger = Logger::getLoggerLS(event->getLoggerName());
-				LOG4CXX_LOGLS(logger, Level::getError(), event->getMessage());
-				LOG4CXX_LOGLS(logger, Level::getWarn(), event->getMessage());
-				LOG4CXX_LOGLS(logger, Level::getInfo(), event->getMessage());
-				LOG4CXX_LOGLS(logger, Level::getDebug(), event->getMessage());
+				LOG4CXXNG_LOGLS(logger, Level::getError(), event->getMessage());
+				LOG4CXXNG_LOGLS(logger, Level::getWarn(), event->getMessage());
+				LOG4CXXNG_LOGLS(logger, Level::getInfo(), event->getMessage());
+				LOG4CXXNG_LOGLS(logger, Level::getDebug(), event->getMessage());
 			}
 		}
 
@@ -155,13 +155,13 @@ class AsyncAppenderTestCase : public AppenderSkeletonTestCase
 			LayoutPtr layout = new SimpleLayout();
 			VectorAppenderPtr vectorAppender = new VectorAppender();
 			AsyncAppenderPtr asyncAppender = new AsyncAppender();
-			asyncAppender->setName(LOG4CXX_STR("async-CloseTest"));
+			asyncAppender->setName(LOG4CXXNG_STR("async-CloseTest"));
 			asyncAppender->addAppender(vectorAppender);
 			root->addAppender(asyncAppender);
 
-			root->debug(LOG4CXX_TEST_STR("m1"));
+			root->debug(LOG4CXXNG_TEST_STR("m1"));
 			asyncAppender->close();
-			root->debug(LOG4CXX_TEST_STR("m2"));
+			root->debug(LOG4CXXNG_TEST_STR("m2"));
 
 			const std::vector<spi::LoggingEventPtr>& v = vectorAppender->getVector();
 			LOGUNIT_ASSERT_EQUAL((size_t) 1, v.size());
@@ -175,13 +175,13 @@ class AsyncAppenderTestCase : public AppenderSkeletonTestCase
 			LayoutPtr layout = new SimpleLayout();
 			VectorAppenderPtr vectorAppender = new VectorAppender();
 			AsyncAppenderPtr asyncAppender = new AsyncAppender();
-			asyncAppender->setName(LOG4CXX_STR("async-test2"));
+			asyncAppender->setName(LOG4CXXNG_STR("async-test2"));
 			asyncAppender->addAppender(vectorAppender);
 			root->addAppender(asyncAppender);
 
-			root->debug(LOG4CXX_TEST_STR("m1"));
+			root->debug(LOG4CXXNG_TEST_STR("m1"));
 			asyncAppender->close();
-			root->debug(LOG4CXX_TEST_STR("m2"));
+			root->debug(LOG4CXXNG_TEST_STR("m2"));
 
 			const std::vector<spi::LoggingEventPtr>& v = vectorAppender->getVector();
 			LOGUNIT_ASSERT_EQUAL((size_t) 1, v.size());
@@ -196,17 +196,17 @@ class AsyncAppenderTestCase : public AppenderSkeletonTestCase
 			LoggerPtr root = Logger::getRootLogger();
 			VectorAppenderPtr vectorAppender = new VectorAppender();
 			AsyncAppenderPtr asyncAppender = new AsyncAppender();
-			asyncAppender->setName(LOG4CXX_STR("async-test3"));
+			asyncAppender->setName(LOG4CXXNG_STR("async-test3"));
 			asyncAppender->addAppender(vectorAppender);
 			root->addAppender(asyncAppender);
 
 			for (size_t i = 0; i < LEN; i++)
 			{
-				LOG4CXX_DEBUG(root, "message" << i);
+				LOG4CXXNG_DEBUG(root, "message" << i);
 			}
 
 			asyncAppender->close();
-			root->debug(LOG4CXX_TEST_STR("m2"));
+			root->debug(LOG4CXXNG_TEST_STR("m2"));
 
 			const std::vector<spi::LoggingEventPtr>& v = vectorAppender->getVector();
 			LOGUNIT_ASSERT_EQUAL(LEN, v.size());
@@ -226,12 +226,12 @@ class AsyncAppenderTestCase : public AppenderSkeletonTestCase
 			asyncAppender->activateOptions(p);
 			LoggerPtr root = Logger::getRootLogger();
 			root->addAppender(asyncAppender);
-			LOG4CXX_INFO(root, "Message");
+			LOG4CXXNG_INFO(root, "Message");
 			Thread::sleep(10);
 
 			try
 			{
-				LOG4CXX_INFO(root, "Message");
+				LOG4CXXNG_INFO(root, "Message");
 				LOGUNIT_FAIL("Should have thrown exception");
 			}
 			catch (NullPointerException&)
@@ -259,27 +259,27 @@ class AsyncAppenderTestCase : public AppenderSkeletonTestCase
 
 				for (int i = 0; i < 140; i++)
 				{
-					LOG4CXX_INFO(rootLogger, "Hello, World");
+					LOG4CXXNG_INFO(rootLogger, "Hello, World");
 					Thread::sleep(1);
 				}
 
-				LOG4CXX_ERROR(rootLogger, "That's all folks.");
+				LOG4CXXNG_ERROR(rootLogger, "That's all folks.");
 			}
 			async->close();
 			const std::vector<spi::LoggingEventPtr>& events = blockableAppender->getVector();
 			LOGUNIT_ASSERT(events.size() > 0);
 			LoggingEventPtr initialEvent = events[0];
 			LoggingEventPtr discardEvent = events[events.size() - 1];
-			LOGUNIT_ASSERT(initialEvent->getMessage() == LOG4CXX_STR("Hello, World"));
-			LOGUNIT_ASSERT(discardEvent->getMessage().substr(0, 10) == LOG4CXX_STR("Discarded "));
-			LOGUNIT_ASSERT_EQUAL(log4cxx::spi::LocationInfo::getLocationUnavailable().getClassName(),
+			LOGUNIT_ASSERT(initialEvent->getMessage() == LOG4CXXNG_STR("Hello, World"));
+			LOGUNIT_ASSERT(discardEvent->getMessage().substr(0, 10) == LOG4CXXNG_STR("Discarded "));
+			LOGUNIT_ASSERT_EQUAL(log4cxxng::spi::LocationInfo::getLocationUnavailable().getClassName(),
 				discardEvent->getLocationInformation().getClassName());
 		}
 
 		void testConfiguration()
 		{
-			log4cxx::xml::DOMConfigurator::configure("input/xml/asyncAppender1.xml");
-			AsyncAppenderPtr asyncAppender(Logger::getRootLogger()->getAppender(LOG4CXX_STR("ASYNC")));
+			log4cxxng::xml::DOMConfigurator::configure("input/xml/asyncAppender1.xml");
+			AsyncAppenderPtr asyncAppender(Logger::getRootLogger()->getAppender(LOG4CXXNG_STR("ASYNC")));
 			LOGUNIT_ASSERT(!(asyncAppender == 0));
 			LOGUNIT_ASSERT_EQUAL(100, asyncAppender->getBufferSize());
 			LOGUNIT_ASSERT_EQUAL(false, asyncAppender->getBlocking());
@@ -298,7 +298,7 @@ class AsyncAppenderTestCase : public AppenderSkeletonTestCase
 
 			for (size_t i = 0; i < LEN; i++)
 			{
-				LOG4CXX_DEBUG(root, "message" << i);
+				LOG4CXXNG_DEBUG(root, "message" << i);
 			}
 
 			asyncAppender->close();

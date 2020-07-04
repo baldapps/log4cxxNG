@@ -19,10 +19,10 @@
 #include <log4cxxNG/helpers/outputstream.h>
 #include <stdexcept>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(OutputStream)
+IMPLEMENT_LOG4CXXNG_OBJECT(OutputStream)
 
 OutputStream::OutputStream()
 {
@@ -32,7 +32,7 @@ OutputStream::~OutputStream()
 {
 }
 
-#ifdef LOG4CXX_MULTI_PROCESS
+#ifdef LOG4CXXNG_MULTI_PROCESS
 apr_file_t* OutputStream::getFilePtr()
 {
 	throw std::logic_error("getFilePtr must be implemented in the derived class that you are using");

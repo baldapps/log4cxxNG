@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_TIMEZONE_H
-#define _LOG4CXX_HELPERS_TIMEZONE_H
+#ifndef _LOG4CXXNG_HELPERS_TIMEZONE_H
+#define _LOG4CXXNG_HELPERS_TIMEZONE_H
 
 #include <log4cxxNG/logstring.h>
 #include <log4cxxNG/helpers/objectimpl.h>
@@ -29,20 +29,20 @@
 
 struct apr_time_exp_t;
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
 class TimeZone;
-LOG4CXX_PTR_DEF(TimeZone);
+LOG4CXXNG_PTR_DEF(TimeZone);
 
-class LOG4CXX_EXPORT TimeZone : public helpers::ObjectImpl
+class LOG4CXXNG_EXPORT TimeZone : public helpers::ObjectImpl
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(TimeZone)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(TimeZone)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(TimeZone)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(TimeZone)
+		END_LOG4CXXNG_CAST_MAP()
 
 		static const TimeZonePtr& getDefault();
 		static const TimeZonePtr& getGMT();
@@ -58,8 +58,8 @@ class LOG4CXX_EXPORT TimeZone : public helpers::ObjectImpl
 		 *   Expand an APR time into the human readable
 		 *      components for this timezone.
 		 */
-		virtual log4cxx_status_t explode(apr_time_exp_t* result,
-			log4cxx_time_t input) const = 0;
+		virtual log4cxxng_status_t explode(apr_time_exp_t* result,
+			log4cxxng_time_t input) const = 0;
 
 
 	protected:
@@ -77,4 +77,4 @@ class LOG4CXX_EXPORT TimeZone : public helpers::ObjectImpl
 	#pragma warning (pop)
 #endif
 
-#endif //_LOG4CXX_HELPERS_TIMEZONE_H
+#endif //_LOG4CXXNG_HELPERS_TIMEZONE_H

@@ -21,14 +21,14 @@
 #include <apr_time.h>
 #include <log4cxxNG/helpers/transcoder.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 
 StrftimeDateFormat::StrftimeDateFormat(const LogString& fmt)
 	: timeZone(TimeZone::getDefault())
 {
-	log4cxx::helpers::Transcoder::encode(fmt, pattern);
+	log4cxxng::helpers::Transcoder::encode(fmt, pattern);
 }
 
 StrftimeDateFormat::~StrftimeDateFormat()
@@ -36,7 +36,7 @@ StrftimeDateFormat::~StrftimeDateFormat()
 }
 
 
-void StrftimeDateFormat::format(LogString& s, log4cxx_time_t time, Pool& /* p */ ) const
+void StrftimeDateFormat::format(LogString& s, log4cxxng_time_t time, Pool& /* p */ ) const
 {
 	apr_time_exp_t exploded;
 	apr_status_t stat = timeZone->explode(&exploded, time);
@@ -50,7 +50,7 @@ void StrftimeDateFormat::format(LogString& s, log4cxx_time_t time, Pool& /* p */
 
 		if (stat == APR_SUCCESS)
 		{
-			log4cxx::helpers::Transcoder::decode(std::string(buf, bufLen), s);
+			log4cxxng::helpers::Transcoder::decode(std::string(buf, bufLen), s);
 		}
 	}
 }

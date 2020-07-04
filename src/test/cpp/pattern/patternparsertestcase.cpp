@@ -52,13 +52,13 @@
 #include <log4cxxNG/pattern/throwableinformationpatternconverter.h>
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::spi;
-using namespace log4cxx::pattern;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::pattern;
 
 #define RULES_PUT(spec, cls) \
-	map.insert(PatternMap::value_type(LOG4CXX_STR(spec), (PatternConstructor) cls ::newInstance))
+	map.insert(PatternMap::value_type(LOG4CXXNG_STR(spec), (PatternConstructor) cls ::newInstance))
 
 
 LOGUNIT_CLASS(PatternParserTestCase)
@@ -79,7 +79,7 @@ public:
 	void setUp()
 	{
 		event = new LoggingEvent(
-			LOG4CXX_STR("org.foobar"), Level::getInfo(), LOG4CXX_STR("msg 1"), LOG4CXX_LOCATION);
+			LOG4CXXNG_STR("org.foobar"), Level::getInfo(), LOG4CXXNG_STR("msg 1"), LOG4CXXNG_LOCATION);
 	}
 
 	void tearDown()
@@ -164,9 +164,9 @@ public:
 	{
 		PatternMap testRules(getFormatSpecifiers());
 		testRules.insert(
-			PatternMap::value_type(LOG4CXX_STR("z343"),
+			PatternMap::value_type(LOG4CXXNG_STR("z343"),
 				(PatternConstructor) Num343PatternConverter::newInstance));
-		assertFormattedEquals(LOG4CXX_STR("%z343"), testRules, LOG4CXX_STR("343"));
+		assertFormattedEquals(LOG4CXXNG_STR("%z343"), testRules, LOG4CXXNG_STR("343"));
 	}
 
 
@@ -177,30 +177,30 @@ public:
 	{
 		PatternMap testRules(getFormatSpecifiers());
 		testRules.insert(
-			PatternMap::value_type(LOG4CXX_STR("n343"),
+			PatternMap::value_type(LOG4CXXNG_STR("n343"),
 				(PatternConstructor) Num343PatternConverter::newInstance));
-		assertFormattedEquals(LOG4CXX_STR("%n343"), testRules, LOG4CXX_STR("343"));
+		assertFormattedEquals(LOG4CXXNG_STR("%n343"), testRules, LOG4CXXNG_STR("343"));
 	}
 
 	void testBogusWord1()
 	{
-		assertFormattedEquals(LOG4CXX_STR("%, foobar"),
+		assertFormattedEquals(LOG4CXXNG_STR("%, foobar"),
 			getFormatSpecifiers(),
-			LOG4CXX_STR("%, foobar"));
+			LOG4CXXNG_STR("%, foobar"));
 	}
 
 	void testBogusWord2()
 	{
-		assertFormattedEquals(LOG4CXX_STR("xyz %, foobar"),
+		assertFormattedEquals(LOG4CXXNG_STR("xyz %, foobar"),
 			getFormatSpecifiers(),
-			LOG4CXX_STR("xyz %, foobar"));
+			LOG4CXXNG_STR("xyz %, foobar"));
 	}
 
 	void testBasic1()
 	{
-		assertFormattedEquals(LOG4CXX_STR("hello %-5level - %m%n"),
+		assertFormattedEquals(LOG4CXXNG_STR("hello %-5level - %m%n"),
 			getFormatSpecifiers(),
-			LogString(LOG4CXX_STR("hello INFO  - msg 1")) + LOG4CXX_EOL);
+			LogString(LOG4CXXNG_STR("hello INFO  - msg 1")) + LOG4CXXNG_EOL);
 	}
 
 	void testBasic2()
@@ -210,12 +210,12 @@ public:
 		LogString expected;
 		relativeFormat.format(expected, event->getTimeStamp(), pool);
 
-		expected.append(LOG4CXX_STR(" INFO  ["));
+		expected.append(LOG4CXXNG_STR(" INFO  ["));
 		expected.append(event->getThreadName());
-		expected.append(LOG4CXX_STR("] org.foobar - msg 1"));
-		expected.append(LOG4CXX_EOL);
+		expected.append(LOG4CXXNG_STR("] org.foobar - msg 1"));
+		expected.append(LOG4CXXNG_EOL);
 
-		assertFormattedEquals(LOG4CXX_STR("%relative %-5level [%thread] %logger - %m%n"),
+		assertFormattedEquals(LOG4CXXNG_STR("%relative %-5level [%thread] %logger - %m%n"),
 			getFormatSpecifiers(),
 			expected);
 	}
@@ -224,7 +224,7 @@ public:
 	{
 		Pool pool;
 
-		SimpleDateFormat dateFormat(LOG4CXX_STR("HH:mm:ss"));
+		SimpleDateFormat dateFormat(LOG4CXXNG_STR("HH:mm:ss"));
 		LogString localTime;
 		dateFormat.format(localTime, event->getTimeStamp(), pool);
 
@@ -233,12 +233,12 @@ public:
 		dateFormat.format(utcTime, event->getTimeStamp(), pool);
 
 		LogString expected(utcTime);
-		expected.append(1, LOG4CXX_STR(' '));
+		expected.append(1, LOG4CXXNG_STR(' '));
 		expected.append(localTime);
-		expected.append(LOG4CXX_STR(" org.foobar  - msg 1"));
+		expected.append(LOG4CXXNG_STR(" org.foobar  - msg 1"));
 
 
-		assertFormattedEquals(LOG4CXX_STR("%d{HH:mm:ss}{GMT} %d{HH:mm:ss} %c  - %m"),
+		assertFormattedEquals(LOG4CXXNG_STR("%d{HH:mm:ss}{GMT} %d{HH:mm:ss} %c  - %m"),
 			getFormatSpecifiers(),
 			expected);
 	}

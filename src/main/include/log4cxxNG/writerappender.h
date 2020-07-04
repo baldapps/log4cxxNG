@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_WRITER_APPENDER_H
-#define _LOG4CXX_WRITER_APPENDER_H
+#ifndef _LOG4CXXNG_WRITER_APPENDER_H
+#define _LOG4CXXNG_WRITER_APPENDER_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -26,7 +26,7 @@
 #include <log4cxxNG/appenderskeleton.h>
 #include <log4cxxNG/helpers/outputstreamwriter.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 namespace helpers
@@ -37,7 +37,7 @@ class Transcoder;
 /**
 WriterAppender appends log events to a standard output stream
 */
-class LOG4CXX_EXPORT WriterAppender : public AppenderSkeleton
+class LOG4CXXNG_EXPORT WriterAppender : public AppenderSkeleton
 {
 	private:
 		/**
@@ -65,22 +65,22 @@ class LOG4CXX_EXPORT WriterAppender : public AppenderSkeleton
 		/**
 		*  This is the {@link Writer Writer} where we will write to.
 		*/
-		log4cxx::helpers::WriterPtr writer;
+		log4cxxng::helpers::WriterPtr writer;
 
 
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(WriterAppender)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(WriterAppender)
-		LOG4CXX_CAST_ENTRY_CHAIN(AppenderSkeleton)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(WriterAppender)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(WriterAppender)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(AppenderSkeleton)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		This default constructor does nothing.*/
 		WriterAppender();
 	protected:
 		WriterAppender(const LayoutPtr& layout,
-			log4cxx::helpers::WriterPtr& writer);
+			log4cxxng::helpers::WriterPtr& writer);
 		WriterAppender(const LayoutPtr& layout);
 
 	public:
@@ -90,7 +90,7 @@ class LOG4CXX_EXPORT WriterAppender : public AppenderSkeleton
 		Derived appenders should override this method if option structure
 		requires it.
 		*/
-		virtual void activateOptions(log4cxx::helpers::Pool& pool);
+		virtual void activateOptions(log4cxxng::helpers::Pool& pool);
 
 		/**
 		If the <b>ImmediateFlush</b> option is set to
@@ -127,7 +127,7 @@ class LOG4CXX_EXPORT WriterAppender : public AppenderSkeleton
 		layout.
 
 		*/
-		virtual void append(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& p);
+		virtual void append(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& p);
 
 
 	protected:
@@ -151,7 +151,7 @@ class LOG4CXX_EXPORT WriterAppender : public AppenderSkeleton
 
 	protected:
 		/**
-		 * Close the underlying {@link log4cxx::helpers::Writer}.
+		 * Close the underlying {@link log4cxxng::helpers::Writer}.
 		 * */
 		void closeWriter();
 
@@ -161,8 +161,8 @@ class LOG4CXX_EXPORT WriterAppender : public AppenderSkeleton
 		    <code>encoding</code> property.  If the encoding value is
 		    specified incorrectly the writer will be opened using the default
 		    system encoding (an error message will be printed to the loglog.  */
-		virtual log4cxx::helpers::WriterPtr createWriter(
-			log4cxx::helpers::OutputStreamPtr& os);
+		virtual log4cxxng::helpers::WriterPtr createWriter(
+			log4cxxng::helpers::OutputStreamPtr& os);
 
 	public:
 		LogString getEncoding() const;
@@ -182,9 +182,9 @@ class LOG4CXX_EXPORT WriterAppender : public AppenderSkeleton
 		  <p><b>WARNING:</b> Logging to an unopened Writer will fail.
 		  <p>
 		  @param writer An already opened Writer.  */
-		void setWriter(const log4cxx::helpers::WriterPtr& writer);
-#ifdef LOG4CXX_MULTI_PROCESS
-		const log4cxx::helpers::WriterPtr getWriter()
+		void setWriter(const log4cxxng::helpers::WriterPtr& writer);
+#ifdef LOG4CXXNG_MULTI_PROCESS
+		const log4cxxng::helpers::WriterPtr getWriter()
 		{
 			return writer;
 		};
@@ -196,18 +196,18 @@ class LOG4CXX_EXPORT WriterAppender : public AppenderSkeleton
 		/**
 		 Actual writing occurs here.
 		*/
-		virtual void subAppend(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& p);
+		virtual void subAppend(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& p);
 
 
 		/**
 		Write a footer as produced by the embedded layout's
 		Layout#appendFooter method.  */
-		virtual void writeFooter(log4cxx::helpers::Pool& p);
+		virtual void writeFooter(log4cxxng::helpers::Pool& p);
 
 		/**
 		Write a header as produced by the embedded layout's
 		Layout#appendHeader method.  */
-		virtual void writeHeader(log4cxx::helpers::Pool& p);
+		virtual void writeHeader(log4cxxng::helpers::Pool& p);
 
 	private:
 		//
@@ -216,12 +216,12 @@ class LOG4CXX_EXPORT WriterAppender : public AppenderSkeleton
 		WriterAppender& operator=(const WriterAppender&);
 };
 
-LOG4CXX_PTR_DEF(WriterAppender);
+LOG4CXXNG_PTR_DEF(WriterAppender);
 
-}  //namespace log4cxx
+}  //namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
 #endif
 
-#endif //_LOG4CXX_WRITER_APPENDER_H
+#endif //_LOG4CXXNG_WRITER_APPENDER_H

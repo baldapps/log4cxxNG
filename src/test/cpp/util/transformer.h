@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_TESTS_UTIL_TRANSFORMER_H
-#define _LOG4CXX_TESTS_UTIL_TRANSFORMER_H
+#ifndef _LOG4CXXNG_TESTS_UTIL_TRANSFORMER_H
+#define _LOG4CXXNG_TESTS_UTIL_TRANSFORMER_H
 
 #include "filter.h"
 #include <vector>
@@ -25,7 +25,7 @@ extern "C" {
 	struct apr_pool_t;
 }
 
-namespace log4cxx
+namespace log4cxxng
 {
 class File;
 
@@ -42,15 +42,15 @@ class Transformer
 
 		static void transform(const File& in,
 			const File& out,
-			const std::vector< log4cxx::Filter::PatternReplacement >& patterns);
+			const std::vector< log4cxxng::Filter::PatternReplacement >& patterns);
 	private:
 		static void copyFile(const File& in,
 			const File& out);
 		static void createSedCommandFile(const std::string& regexName,
-			const log4cxx::Filter::PatternList& patterns,
+			const log4cxxng::Filter::PatternList& patterns,
 			apr_pool_t* pool);
 
 };
 }
 
-#endif //_LOG4CXX_TESTS_UTIL_TRANSFORMER_H
+#endif //_LOG4CXXNG_TESTS_UTIL_TRANSFORMER_H

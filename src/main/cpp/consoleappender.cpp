@@ -22,10 +22,10 @@
 #include <log4cxxNG/helpers/stringhelper.h>
 #include <log4cxxNG/layout.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(ConsoleAppender)
+IMPLEMENT_LOG4CXXNG_OBJECT(ConsoleAppender)
 
 ConsoleAppender::ConsoleAppender()
 	: target(getSystemOut())
@@ -57,13 +57,13 @@ ConsoleAppender::~ConsoleAppender()
 
 const LogString& ConsoleAppender::getSystemOut()
 {
-	static const LogString name(LOG4CXX_STR("System.out"));
+	static const LogString name(LOG4CXXNG_STR("System.out"));
 	return name;
 }
 
 const LogString& ConsoleAppender::getSystemErr()
 {
-	static const LogString name(LOG4CXX_STR("System.err"));
+	static const LogString name(LOG4CXXNG_STR("System.err"));
 	return name;
 }
 
@@ -72,12 +72,12 @@ void ConsoleAppender::setTarget(const LogString& value)
 	LogString v = StringHelper::trim(value);
 
 	if (StringHelper::equalsIgnoreCase(v,
-			LOG4CXX_STR("SYSTEM.OUT"), LOG4CXX_STR("system.out")))
+			LOG4CXXNG_STR("SYSTEM.OUT"), LOG4CXXNG_STR("system.out")))
 	{
 		target = getSystemOut();
 	}
 	else if (StringHelper::equalsIgnoreCase(v,
-			LOG4CXX_STR("SYSTEM.ERR"), LOG4CXX_STR("system.err")))
+			LOG4CXXNG_STR("SYSTEM.ERR"), LOG4CXXNG_STR("system.err")))
 	{
 		target = getSystemErr();
 	}
@@ -94,21 +94,21 @@ LogString ConsoleAppender::getTarget() const
 
 void ConsoleAppender::targetWarn(const LogString& val)
 {
-	LogLog::warn(((LogString) LOG4CXX_STR("["))
-		+ val +  LOG4CXX_STR("] should be system.out or system.err."));
-	LogLog::warn(LOG4CXX_STR("Using previously set target, System.out by default."));
+	LogLog::warn(((LogString) LOG4CXXNG_STR("["))
+		+ val +  LOG4CXXNG_STR("] should be system.out or system.err."));
+	LogLog::warn(LOG4CXXNG_STR("Using previously set target, System.out by default."));
 }
 
 void ConsoleAppender::activateOptions(Pool& p)
 {
 	if (StringHelper::equalsIgnoreCase(target,
-			LOG4CXX_STR("SYSTEM.OUT"), LOG4CXX_STR("system.out")))
+			LOG4CXXNG_STR("SYSTEM.OUT"), LOG4CXXNG_STR("system.out")))
 	{
 		WriterPtr writer1(new SystemOutWriter());
 		setWriter(writer1);
 	}
 	else if (StringHelper::equalsIgnoreCase(target,
-			LOG4CXX_STR("SYSTEM.ERR"), LOG4CXX_STR("system.err")))
+			LOG4CXXNG_STR("SYSTEM.ERR"), LOG4CXXNG_STR("system.err")))
 	{
 		WriterPtr writer1(new SystemErrWriter());
 		setWriter(writer1);
@@ -120,7 +120,7 @@ void ConsoleAppender::activateOptions(Pool& p)
 void ConsoleAppender::setOption(const LogString& option, const LogString& value)
 {
 	if (StringHelper::equalsIgnoreCase(option,
-			LOG4CXX_STR("TARGET"), LOG4CXX_STR("target")))
+			LOG4CXXNG_STR("TARGET"), LOG4CXXNG_STR("target")))
 	{
 		setTarget(value);
 	}

@@ -17,8 +17,8 @@
 
 #include "xmlfilenamefilter.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 XMLFilenameFilter::XMLFilenameFilter(const std::string& /*actual*/, const std::string& expected)
 {

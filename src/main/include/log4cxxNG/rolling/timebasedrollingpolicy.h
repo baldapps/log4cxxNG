@@ -16,8 +16,8 @@
  */
 
 
-#if !defined(_LOG4CXX_ROLLING_TIME_BASED_ROLLING_POLICY_H)
-#define _LOG4CXX_ROLLING_TIME_BASED_ROLLING_POLICY_H
+#if !defined(_LOG4CXXNG_ROLLING_TIME_BASED_ROLLING_POLICY_H)
+#define _LOG4CXXNG_ROLLING_TIME_BASED_ROLLING_POLICY_H
 
 #include <log4cxxNG/portability.h>
 #include <log4cxxNG/rolling/rollingpolicybase.h>
@@ -31,7 +31,7 @@
 	#pragma warning ( disable: 4251 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 namespace rolling
@@ -48,7 +48,7 @@ namespace rolling
  * rolled log files. The value <code>FileNamePattern</code> should consist of
  * the name of the file, plus a suitably placed <code>%d</code> conversion
  * specifier. The <code>%d</code> conversion specifier may contain a date and
- * time pattern as specified by the {@link log4cxx::helpers::SimpleDateFormat} class. If
+ * time pattern as specified by the {@link log4cxxng::helpers::SimpleDateFormat} class. If
  * the date and time pattern is ommitted, then the default pattern of
  * "yyyy-MM-dd" is assumed. The following examples should clarify the point.
  *
@@ -143,21 +143,21 @@ namespace rolling
  * the {@link #activateOptions} method of the owning
  * <code>RollingFileAppender</code>.
  */
-class LOG4CXX_EXPORT TimeBasedRollingPolicy : public RollingPolicyBase,
+class LOG4CXXNG_EXPORT TimeBasedRollingPolicy : public RollingPolicyBase,
 	public TriggeringPolicy
 {
-		DECLARE_LOG4CXX_OBJECT(TimeBasedRollingPolicy)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(TimeBasedRollingPolicy)
-		LOG4CXX_CAST_ENTRY_CHAIN(RollingPolicyBase)
-		LOG4CXX_CAST_ENTRY_CHAIN(TriggeringPolicy)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(TimeBasedRollingPolicy)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(TimeBasedRollingPolicy)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(RollingPolicyBase)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(TriggeringPolicy)
+		END_LOG4CXXNG_CAST_MAP()
 
 	private:
 		/**
 		 * Time for next determination if time for rollover.
 		 */
-		log4cxx_time_t nextCheck;
+		log4cxxng_time_t nextCheck;
 
 		/**
 		 * File name at last rollover.
@@ -172,7 +172,7 @@ class LOG4CXX_EXPORT TimeBasedRollingPolicy : public RollingPolicyBase,
 		/*
 		 * pool for mmap handler
 		 * */
-		log4cxx::helpers::Pool* _mmapPool;
+		log4cxxng::helpers::Pool* _mmapPool;
 
 		/**
 		 * mmap file descriptor
@@ -218,25 +218,25 @@ class LOG4CXX_EXPORT TimeBasedRollingPolicy : public RollingPolicyBase,
 		TimeBasedRollingPolicy();
 		void addRef() const;
 		void releaseRef() const;
-		void activateOptions(log4cxx::helpers::Pool& );
+		void activateOptions(log4cxxng::helpers::Pool& );
 
-#ifdef LOG4CXX_MULTI_PROCESS
+#ifdef LOG4CXXNG_MULTI_PROCESS
 		virtual ~TimeBasedRollingPolicy();
 
 		/**
 		 * Generate mmap file
 		 */
-		int createMMapFile(const std::string& lastfilename, log4cxx::helpers::Pool& pool);
+		int createMMapFile(const std::string& lastfilename, log4cxxng::helpers::Pool& pool);
 
 		/**
 		 *  Detect if the mmap file is empty
 		 */
-		bool isMapFileEmpty(log4cxx::helpers::Pool& pool);
+		bool isMapFileEmpty(log4cxxng::helpers::Pool& pool);
 
 		/**
 		 *   init MMapFile
 		 */
-		void initMMapFile(const LogString& lastFileName, log4cxx::helpers::Pool& pool);
+		void initMMapFile(const LogString& lastFileName, log4cxxng::helpers::Pool& pool);
 
 		/**
 		 *   lock MMapFile
@@ -251,7 +251,7 @@ class LOG4CXX_EXPORT TimeBasedRollingPolicy : public RollingPolicyBase,
 		/**
 		 *   create MMapFile/lockFile
 		 */
-		const std::string createFile(const std::string& filename, const std::string& suffix, log4cxx::helpers::Pool& pool);
+		const std::string createFile(const std::string& filename, const std::string& suffix, log4cxxng::helpers::Pool& pool);
 #endif
 
 		/**
@@ -260,7 +260,7 @@ class LOG4CXX_EXPORT TimeBasedRollingPolicy : public RollingPolicyBase,
 		RolloverDescriptionPtr initialize(
 			const   LogString&              currentActiveFile,
 			const   bool                    append,
-			log4cxx::helpers::Pool& pool);
+			log4cxxng::helpers::Pool& pool);
 
 		/**
 		 * {@inheritDoc}
@@ -268,7 +268,7 @@ class LOG4CXX_EXPORT TimeBasedRollingPolicy : public RollingPolicyBase,
 		RolloverDescriptionPtr rollover(
 			const   LogString&              currentActiveFile,
 			const   bool                    append,
-			log4cxx::helpers::Pool& pool);
+			log4cxxng::helpers::Pool& pool);
 
 		/**
 		 * Determines if a rollover may be appropriate at this time.  If
@@ -283,16 +283,16 @@ class LOG4CXX_EXPORT TimeBasedRollingPolicy : public RollingPolicyBase,
 		 */
 		virtual bool isTriggeringEvent(
 			Appender* appender,
-			const log4cxx::spi::LoggingEventPtr& event,
+			const log4cxxng::spi::LoggingEventPtr& event,
 			const LogString& filename,
 			size_t fileLength);
 
 	protected:
-		log4cxx::pattern::PatternMap getFormatSpecifiers() const;
+		log4cxxng::pattern::PatternMap getFormatSpecifiers() const;
 
 };
 
-LOG4CXX_PTR_DEF(TimeBasedRollingPolicy);
+LOG4CXXNG_PTR_DEF(TimeBasedRollingPolicy);
 
 }
 }

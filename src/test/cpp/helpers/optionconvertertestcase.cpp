@@ -30,9 +30,9 @@
 #include <apr_env.h>
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::spi;
 
 #define MAX 1000
 
@@ -91,21 +91,21 @@ public:
 	void varSubstTest1()
 	{
 		envCheck();
-		LogString r(OptionConverter::substVars(LOG4CXX_STR("hello world."), nullProperties));
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("hello world."), r);
+		LogString r(OptionConverter::substVars(LOG4CXXNG_STR("hello world."), nullProperties));
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("hello world."), r);
 
-		r = OptionConverter::substVars(LOG4CXX_STR("hello ${TOTO} world."), nullProperties);
+		r = OptionConverter::substVars(LOG4CXXNG_STR("hello ${TOTO} world."), nullProperties);
 
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("hello wonderful world."), r);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("hello wonderful world."), r);
 	}
 
 
 	void varSubstTest2()
 	{
 		envCheck();
-		LogString r(OptionConverter::substVars(LOG4CXX_STR("Test2 ${key1} mid ${key2} end."),
+		LogString r(OptionConverter::substVars(LOG4CXXNG_STR("Test2 ${key1} mid ${key2} end."),
 				nullProperties));
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("Test2 value1 mid value2 end."), r);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("Test2 value1 mid value2 end."), r);
 	}
 
 
@@ -113,15 +113,15 @@ public:
 	{
 		envCheck();
 		LogString r(OptionConverter::substVars(
-				LOG4CXX_STR("Test3 ${unset} mid ${key1} end."), nullProperties));
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("Test3  mid value1 end."), r);
+				LOG4CXXNG_STR("Test3 ${unset} mid ${key1} end."), nullProperties));
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("Test3  mid value1 end."), r);
 	}
 
 
 	void varSubstTest4()
 	{
 		LogString res;
-		LogString val(LOG4CXX_STR("Test4 ${incomplete "));
+		LogString val(LOG4CXXNG_STR("Test4 ${incomplete "));
 
 		try
 		{
@@ -138,16 +138,16 @@ public:
 	void varSubstTest5()
 	{
 		Properties props1;
-		props1.setProperty(LOG4CXX_STR("p1"), LOG4CXX_STR("x1"));
-		props1.setProperty(LOG4CXX_STR("p2"), LOG4CXX_STR("${p1}"));
-		LogString res = OptionConverter::substVars(LOG4CXX_STR("${p2}"), props1);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("x1"), res);
+		props1.setProperty(LOG4CXXNG_STR("p1"), LOG4CXXNG_STR("x1"));
+		props1.setProperty(LOG4CXXNG_STR("p2"), LOG4CXXNG_STR("${p1}"));
+		LogString res = OptionConverter::substVars(LOG4CXXNG_STR("${p2}"), props1);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("x1"), res);
 	}
 
 	void testTmpDir()
 	{
 		LogString actual(OptionConverter::substVars(
-				LOG4CXX_STR("${java.io.tmpdir}"), nullProperties));
+				LOG4CXXNG_STR("${java.io.tmpdir}"), nullProperties));
 		Pool p;
 		const char* tmpdir = NULL;
 		apr_status_t stat = apr_temp_dir_get(&tmpdir, p.getAPRPool());
@@ -162,7 +162,7 @@ public:
 	void testUserHome()
 	{
 		LogString actual(OptionConverter::substVars(
-				LOG4CXX_STR("${user.home}"), nullProperties));
+				LOG4CXXNG_STR("${user.home}"), nullProperties));
 		Pool p;
 
 		apr_uid_t userid;
@@ -193,7 +193,7 @@ public:
 	void testUserName()
 	{
 		LogString actual(OptionConverter::substVars(
-				LOG4CXX_STR("${user.name}"), nullProperties));
+				LOG4CXXNG_STR("${user.name}"), nullProperties));
 		Pool p;
 		apr_uid_t userid;
 		apr_gid_t groupid;
@@ -217,7 +217,7 @@ public:
 	void testUserDir()
 	{
 		LogString actual(OptionConverter::substVars(
-				LOG4CXX_STR("${user.dir}"), nullProperties));
+				LOG4CXXNG_STR("${user.dir}"), nullProperties));
 		Pool p;
 
 		char* dirname = NULL;

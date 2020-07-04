@@ -25,8 +25,8 @@
 #include <apr_time.h>
 #include <sstream>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 using namespace std;
 
 #define LOCALE_US "C"
@@ -36,11 +36,11 @@ using namespace std;
 	#define LOCALE_FR "fr_FR"
 #endif
 
-#define LOG4CXX_TEST 1
+#define LOG4CXXNG_TEST 1
 #include <log4cxxNG/private/log4cxxNG_private.h>
 
 
-#if LOG4CXX_HAS_STD_LOCALE
+#if LOG4CXXNG_HAS_STD_LOCALE
 #include <locale>
 #include "localechanger.h"
 #define MAKE_LOCALE(ptr, id)     \
@@ -66,7 +66,7 @@ LOGUNIT_CLASS(DateTimeDateFormatTestCase)
 	LOGUNIT_TEST( test4 );
 	LOGUNIT_TEST( test5 );
 	LOGUNIT_TEST( test6 );
-#if LOG4CXX_HAS_STD_LOCALE
+#if LOG4CXXNG_HAS_STD_LOCALE
 	LOGUNIT_TEST( test7 );
 	LOGUNIT_TEST( test8 );
 #endif
@@ -106,7 +106,7 @@ public:
 		//
 		apr_time_t jan2 = MICROSECONDS_PER_DAY * 12419;
 		MAKE_LOCALE(localeUS, LOCALE_US);
-		assertFormattedTime( jan2, localeUS, TimeZone::getGMT(), LOG4CXX_STR("02 Jan 2004 00:00:00,000"));
+		assertFormattedTime( jan2, localeUS, TimeZone::getGMT(), LOG4CXXNG_STR("02 Jan 2004 00:00:00,000"));
 	}
 
 	/** Convert 03 Jan 2004 00:00:00 GMT for America/Chicago. */
@@ -117,8 +117,8 @@ public:
 		apr_time_t jan3 = MICROSECONDS_PER_DAY * 12420;
 		MAKE_LOCALE(localeUS, LOCALE_US);
 		assertFormattedTime( jan3, localeUS,
-			TimeZone::getTimeZone(LOG4CXX_STR("GMT-6")),
-			LOG4CXX_STR("02 Jan 2004 18:00:00,000"));
+			TimeZone::getTimeZone(LOG4CXXNG_STR("GMT-6")),
+			LOG4CXXNG_STR("02 Jan 2004 18:00:00,000"));
 	}
 
 
@@ -128,7 +128,7 @@ public:
 		apr_time_t jun30 = MICROSECONDS_PER_DAY * 12599;
 		MAKE_LOCALE(localeUS, LOCALE_US);
 		assertFormattedTime( jun30, localeUS, TimeZone::getGMT(),
-			LOG4CXX_STR("30 Jun 2004 00:00:00,000"));
+			LOG4CXXNG_STR("30 Jun 2004 00:00:00,000"));
 	}
 
 	/** Convert 29 Jun 2004 00:00:00 GMT for Chicago, daylight savings in effect. */
@@ -137,8 +137,8 @@ public:
 		apr_time_t jul1 = MICROSECONDS_PER_DAY * 12600;
 		MAKE_LOCALE(localeUS, LOCALE_US);
 		assertFormattedTime( jul1, localeUS,
-			TimeZone::getTimeZone(LOG4CXX_STR("GMT-5")),
-			LOG4CXX_STR("30 Jun 2004 19:00:00,000"));
+			TimeZone::getTimeZone(LOG4CXXNG_STR("GMT-5")),
+			LOG4CXXNG_STR("30 Jun 2004 19:00:00,000"));
 	}
 
 	/** Test multiple calls in close intervals. */
@@ -150,15 +150,15 @@ public:
 		apr_time_t ticks = MICROSECONDS_PER_DAY * 12601;
 		MAKE_LOCALE(localeUS, LOCALE_US);
 		assertFormattedTime( ticks, localeUS, TimeZone::getGMT(),
-			LOG4CXX_STR("02 Jul 2004 00:00:00,000"));
+			LOG4CXXNG_STR("02 Jul 2004 00:00:00,000"));
 		assertFormattedTime( ticks + 8000, localeUS, TimeZone::getGMT(),
-			LOG4CXX_STR("02 Jul 2004 00:00:00,008"));
+			LOG4CXXNG_STR("02 Jul 2004 00:00:00,008"));
 		assertFormattedTime( ticks + 17000, localeUS, TimeZone::getGMT(),
-			LOG4CXX_STR("02 Jul 2004 00:00:00,017"));
+			LOG4CXXNG_STR("02 Jul 2004 00:00:00,017"));
 		assertFormattedTime( ticks + 237000, localeUS, TimeZone::getGMT(),
-			LOG4CXX_STR("02 Jul 2004 00:00:00,237"));
+			LOG4CXXNG_STR("02 Jul 2004 00:00:00,237"));
 		assertFormattedTime( ticks + 1415000, localeUS, TimeZone::getGMT(),
-			LOG4CXX_STR("02 Jul 2004 00:00:01,415"));
+			LOG4CXXNG_STR("02 Jul 2004 00:00:01,415"));
 	}
 
 	/** Check that caching does not disregard timezone. This test would fail for revision 1.4 of DateTimeDateFormat.java. */
@@ -167,15 +167,15 @@ public:
 		apr_time_t jul3 = MICROSECONDS_PER_DAY * 12602;
 		MAKE_LOCALE(localeUS, LOCALE_US);
 		assertFormattedTime( jul3, localeUS, TimeZone::getGMT(),
-			LOG4CXX_STR("03 Jul 2004 00:00:00,000"));
+			LOG4CXXNG_STR("03 Jul 2004 00:00:00,000"));
 		assertFormattedTime( jul3, localeUS,
-			TimeZone::getTimeZone(LOG4CXX_STR("GMT-5")),
-			LOG4CXX_STR("02 Jul 2004 19:00:00,000"));
+			TimeZone::getTimeZone(LOG4CXXNG_STR("GMT-5")),
+			LOG4CXXNG_STR("02 Jul 2004 19:00:00,000"));
 		assertFormattedTime( jul3, localeUS, TimeZone::getGMT(),
-			LOG4CXX_STR("03 Jul 2004 00:00:00,000"));
+			LOG4CXXNG_STR("03 Jul 2004 00:00:00,000"));
 	}
 
-#if LOG4CXX_HAS_STD_LOCALE
+#if LOG4CXXNG_HAS_STD_LOCALE
 	LogString formatDate(const std::locale & locale, const tm & date, const LogString & fmt)
 	{
 		//
@@ -206,12 +206,12 @@ public:
 		{
 			LogString formatted;
 			Pool p;
-			SimpleDateFormat formatter(LOG4CXX_STR("MMM"));
+			SimpleDateFormat formatter(LOG4CXXNG_STR("MMM"));
 			formatter.format(formatted, avr11, p);
 
 			std::locale localeFR(LOCALE_FR);
 			struct tm avr11tm = { 0, 0, 0, 11, 03, 104 };
-			LogString expected(formatDate(localeFR, avr11tm, LOG4CXX_STR("%b")));
+			LogString expected(formatDate(localeFR, avr11tm, LOG4CXXNG_STR("%b")));
 
 			LOGUNIT_ASSERT_EQUAL(expected, formatted);
 		}
@@ -227,13 +227,13 @@ public:
 		{
 			LogString formatted;
 			Pool p;
-			SimpleDateFormat formatter(LOG4CXX_STR("MMM"));
+			SimpleDateFormat formatter(LOG4CXXNG_STR("MMM"));
 			formatter.setTimeZone(TimeZone::getGMT());
 			formatter.format(formatted, apr11, p);
 
 			std::locale localeUS(LOCALE_US);
 			struct tm apr11tm = { 0, 0, 0, 11, 03, 104 };
-			LogString expected(formatDate(localeUS, apr11tm, LOG4CXX_STR("%b")));
+			LogString expected(formatDate(localeUS, apr11tm, LOG4CXXNG_STR("%b")));
 
 			LOGUNIT_ASSERT_EQUAL(expected, formatted);
 		}

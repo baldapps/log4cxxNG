@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_BUFFEREDWRITER_H
-#define _LOG4CXX_HELPERS_BUFFEREDWRITER_H
+#ifndef _LOG4CXXNG_HELPERS_BUFFEREDWRITER_H
+#define _LOG4CXXNG_HELPERS_BUFFEREDWRITER_H
 
 #include <log4cxxNG/helpers/writer.h>
 
@@ -25,7 +25,7 @@
 	#pragma warning ( disable: 4251 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 namespace helpers
@@ -35,7 +35,7 @@ namespace helpers
 *   Writes text to a character-output stream buffering
 *       requests to increase efficiency.
 */
-class LOG4CXX_EXPORT BufferedWriter : public Writer
+class LOG4CXXNG_EXPORT BufferedWriter : public Writer
 {
 	private:
 		WriterPtr out;
@@ -43,11 +43,11 @@ class LOG4CXX_EXPORT BufferedWriter : public Writer
 		LogString buf;
 
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(BufferedWriter)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(BufferedWriter)
-		LOG4CXX_CAST_ENTRY_CHAIN(Writer)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(BufferedWriter)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(BufferedWriter)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(Writer)
+		END_LOG4CXXNG_CAST_MAP()
 
 		BufferedWriter(WriterPtr& out);
 		BufferedWriter(WriterPtr& out, size_t sz);
@@ -64,10 +64,10 @@ class LOG4CXX_EXPORT BufferedWriter : public Writer
 
 } // namespace helpers
 
-}  //namespace log4cxx
+}  //namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
-#endif //_LOG4CXX_HELPERS_BUFFEREDWRITER_H
+#endif //_LOG4CXXNG_HELPERS_BUFFEREDWRITER_H

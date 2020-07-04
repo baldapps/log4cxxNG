@@ -20,15 +20,15 @@
 #include <log4cxxNG/helpers/onlyonceerrorhandler.h>
 #include <log4cxxNG/helpers/loglog.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::spi;
 
-IMPLEMENT_LOG4CXX_OBJECT(OnlyOnceErrorHandler)
+IMPLEMENT_LOG4CXXNG_OBJECT(OnlyOnceErrorHandler)
 
 OnlyOnceErrorHandler::OnlyOnceErrorHandler() :
-	WARN_PREFIX(LOG4CXX_STR("log4cxx warning: ")),
-	ERROR_PREFIX(LOG4CXX_STR("log4cxx error: ")), firstTime(true)
+	WARN_PREFIX(LOG4CXXNG_STR("log4cxx warning: ")),
+	ERROR_PREFIX(LOG4CXXNG_STR("log4cxx error: ")), firstTime(true)
 {
 }
 
@@ -65,7 +65,7 @@ void OnlyOnceErrorHandler::error(const LogString& message, const std::exception&
 }
 
 void OnlyOnceErrorHandler::error(const LogString& message, const std::exception& e,
-	int errorCode, const log4cxx::spi::LoggingEventPtr&) const
+	int errorCode, const log4cxxng::spi::LoggingEventPtr&) const
 {
 	error(message, e, errorCode);
 }

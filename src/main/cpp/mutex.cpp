@@ -22,8 +22,8 @@
 #include <apr_thread_mutex.h>
 #include <apr_thread_rwlock.h>
 #include <assert.h>
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 #include <log4cxxNG/helpers/aprinitializer.h>
 
@@ -38,8 +38,8 @@
 
 #endif // NON_BLOCKING
 
-using namespace log4cxx::helpers;
-using namespace log4cxx;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng;
 
 
 Mutex::Mutex(Pool& p)
@@ -186,7 +186,7 @@ void RWMutex::wrUnlock() const
 
 #if defined(WIN32) || defined(_WIN32) || defined(_WIN64)
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -199,7 +199,7 @@ struct SemaphoreImpl
 
 static const LONG cMax = 10000; // arbitrary high value
 
-Semaphore::Semaphore(log4cxx::helpers::Pool& p)
+Semaphore::Semaphore(log4cxxng::helpers::Pool& p)
 	: impl(nullptr)
 {
 #if APR_HAS_THREADS
@@ -265,7 +265,7 @@ void Semaphore::signalAll() const
 #else
 // POSIX
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -276,7 +276,7 @@ struct SemaphoreImpl
 }
 }
 
-Semaphore::Semaphore(log4cxx::helpers::Pool& p)
+Semaphore::Semaphore(log4cxxng::helpers::Pool& p)
 	: impl(nullptr)
 {
 #if APR_HAS_THREADS

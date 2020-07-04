@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_FILTER_LEVEL_MATCH_FILTER_H
-#define _LOG4CXX_FILTER_LEVEL_MATCH_FILTER_H
+#ifndef _LOG4CXXNG_FILTER_LEVEL_MATCH_FILTER_H
+#define _LOG4CXXNG_FILTER_LEVEL_MATCH_FILTER_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -27,7 +27,7 @@
 #include <log4cxxNG/spi/filter.h>
 #include <log4cxxNG/level.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 class Level;
 
@@ -46,7 +46,7 @@ then {@link spi::Filter#DENY DENY} is returned. If there is no match,
 {@link spi::Filter#NEUTRAL NEUTRAL} is returned.
 */
 
-class LOG4CXX_EXPORT LevelMatchFilter : public spi::Filter
+class LOG4CXXNG_EXPORT LevelMatchFilter : public spi::Filter
 {
 	private:
 		bool acceptOnMatch;
@@ -54,11 +54,11 @@ class LOG4CXX_EXPORT LevelMatchFilter : public spi::Filter
 
 	public:
 		typedef spi::Filter BASE_CLASS;
-		DECLARE_LOG4CXX_OBJECT(LevelMatchFilter)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(LevelMatchFilter)
-		LOG4CXX_CAST_ENTRY_CHAIN(BASE_CLASS)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(LevelMatchFilter)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(LevelMatchFilter)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(BASE_CLASS)
+		END_LOG4CXXNG_CAST_MAP()
 
 		LevelMatchFilter();
 
@@ -95,12 +95,12 @@ class LOG4CXX_EXPORT LevelMatchFilter : public spi::Filter
 		*/
 		FilterDecision decide(const spi::LoggingEventPtr& event) const;
 }; // class LevelMatchFilter
-LOG4CXX_PTR_DEF(LevelMatchFilter);
+LOG4CXXNG_PTR_DEF(LevelMatchFilter);
 }  // namespace filter
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
 #endif
 
-#endif // _LOG4CXX_FILTER_LEVEL_MATCH_FILTER_H
+#endif // _LOG4CXXNG_FILTER_LEVEL_MATCH_FILTER_H

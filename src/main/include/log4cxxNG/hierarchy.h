@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HIERARCHY_H
-#define _LOG4CXX_HIERARCHY_H
+#ifndef _LOG4CXXNG_HIERARCHY_H
+#define _LOG4CXXNG_HIERARCHY_H
 
 #if defined(_MSC_VER)
 	#pragma warning (push)
@@ -32,7 +32,7 @@
 #include <log4cxxNG/spi/hierarchyeventlistener.h>
 #include <log4cxxNG/helpers/pool.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 /**
 This class is specialized in retrieving loggers by name and also
@@ -52,13 +52,13 @@ then it creates a provision node for the ancestor and adds itself
 to the provision node. Other descendants of the same ancestor add
 themselves to the previously created provision node.
 */
-class LOG4CXX_EXPORT Hierarchy :
+class LOG4CXXNG_EXPORT Hierarchy :
 	public virtual spi::LoggerRepository,
 	public virtual helpers::ObjectImpl
 {
 	private:
-		log4cxx::helpers::Pool pool;
-		log4cxx::helpers::Mutex mutex;
+		log4cxxng::helpers::Pool pool;
+		log4cxxng::helpers::Mutex mutex;
 		bool configured;
 
 		spi::LoggerFactoryPtr defaultFactory;
@@ -79,10 +79,10 @@ class LOG4CXX_EXPORT Hierarchy :
 		bool emittedNoResourceBundleWarning;
 
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(Hierarchy)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(spi::LoggerRepository)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(Hierarchy)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(spi::LoggerRepository)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		Create a new logger hierarchy.
@@ -273,11 +273,11 @@ class LOG4CXX_EXPORT Hierarchy :
 		void updateChildren(ProvisionNode& pn, LoggerPtr logger);
 };
 
-}  //namespace log4cxx
+}  //namespace log4cxxng
 
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
-#endif //_LOG4CXX_HIERARCHY_H
+#endif //_LOG4CXXNG_HIERARCHY_H

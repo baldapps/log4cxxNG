@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#if !defined(_LOG4CXX_ROLLING_GZ_COMPRESS_ACTION_H)
-#define _LOG4CXX_ROLLING_GZ_COMPRESS_ACTION_H
+#if !defined(_LOG4CXXNG_ROLLING_GZ_COMPRESS_ACTION_H)
+#define _LOG4CXXNG_ROLLING_GZ_COMPRESS_ACTION_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -26,7 +26,7 @@
 #include <log4cxxNG/rolling/action.h>
 #include <log4cxxNG/file.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace rolling
 {
@@ -38,11 +38,11 @@ class GZCompressAction : public Action
 		const File destination;
 		bool deleteSource;
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(GZCompressAction)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(GZCompressAction)
-		LOG4CXX_CAST_ENTRY_CHAIN(Action)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(GZCompressAction)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(GZCompressAction)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(Action)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		 * Constructor.
@@ -56,14 +56,14 @@ class GZCompressAction : public Action
 		 *
 		 * @return true if successful.
 		 */
-		virtual bool execute(log4cxx::helpers::Pool& pool) const;
+		virtual bool execute(log4cxxng::helpers::Pool& pool) const;
 
 	private:
 		GZCompressAction(const GZCompressAction&);
 		GZCompressAction& operator=(const GZCompressAction&);
 };
 
-LOG4CXX_PTR_DEF(GZCompressAction);
+LOG4CXXNG_PTR_DEF(GZCompressAction);
 
 }
 }

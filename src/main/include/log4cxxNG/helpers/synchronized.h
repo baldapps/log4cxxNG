@@ -15,22 +15,22 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_SYNCHRONIZED_H
-#define _LOG4CXX_HELPERS_SYNCHRONIZED_H
+#ifndef _LOG4CXXNG_HELPERS_SYNCHRONIZED_H
+#define _LOG4CXXNG_HELPERS_SYNCHRONIZED_H
 #include <log4cxxNG/log4cxxNG.h>
 
 extern "C" {
 	typedef struct apr_thread_mutex_t apr_thread_mutex_t;
 }
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
 class Mutex;
 
 /** utility class for objects multi-thread synchronization.*/
-class LOG4CXX_EXPORT synchronized
+class LOG4CXXNG_EXPORT synchronized
 {
 	public:
 		synchronized(const Mutex& mutex);
@@ -49,14 +49,14 @@ class LOG4CXX_EXPORT synchronized
 
 #if defined(RW_MUTEX)
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
 class RWMutex;
 
 // utility class for objects multi-thread synchronization.
-class LOG4CXX_EXPORT synchronized_read
+class LOG4CXXNG_EXPORT synchronized_read
 {
 	public:
 		synchronized_read(const RWMutex& mutex);
@@ -72,14 +72,14 @@ class LOG4CXX_EXPORT synchronized_read
 }
 }
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
 class RWMutex;
 
 // utility class for objects multi-thread synchronization.
-class LOG4CXX_EXPORT synchronized_write
+class LOG4CXXNG_EXPORT synchronized_write
 {
 	public:
 		synchronized_write(const RWMutex& mutex);
@@ -105,4 +105,4 @@ class LOG4CXX_EXPORT synchronized_write
 
 #endif // RW_MUTEX
 
-#endif //_LOG4CXX_HELPERS_SYNCHRONIZED_H
+#endif //_LOG4CXXNG_HELPERS_SYNCHRONIZED_H

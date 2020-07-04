@@ -22,12 +22,12 @@
 #include <log4cxxNG/helpers/optionconverter.h>
 #include <log4cxxNG/level.h>
 
-using namespace log4cxx;
-using namespace log4cxx::filter;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::filter;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(LevelMatchFilter)
+IMPLEMENT_LOG4CXXNG_OBJECT(LevelMatchFilter)
 
 
 LevelMatchFilter::LevelMatchFilter()
@@ -41,12 +41,12 @@ void LevelMatchFilter::setOption(const LogString& option,
 
 
 	if (StringHelper::equalsIgnoreCase(option,
-			LOG4CXX_STR("LEVELTOMATCH"), LOG4CXX_STR("leveltomatch")))
+			LOG4CXXNG_STR("LEVELTOMATCH"), LOG4CXXNG_STR("leveltomatch")))
 	{
 		setLevelToMatch(value);
 	}
 	else if (StringHelper::equalsIgnoreCase(option,
-			LOG4CXX_STR("ACCEPTONMATCH"), LOG4CXX_STR("acceptonmatch")))
+			LOG4CXXNG_STR("ACCEPTONMATCH"), LOG4CXXNG_STR("acceptonmatch")))
 	{
 		acceptOnMatch = OptionConverter::toBoolean(value, acceptOnMatch);
 	}
@@ -63,7 +63,7 @@ LogString LevelMatchFilter::getLevelToMatch() const
 }
 
 Filter::FilterDecision LevelMatchFilter::decide(
-	const log4cxx::spi::LoggingEventPtr& event) const
+	const log4cxxng::spi::LoggingEventPtr& event) const
 {
 	if (levelToMatch != 0 && levelToMatch->equals(event->getLevel()))
 	{

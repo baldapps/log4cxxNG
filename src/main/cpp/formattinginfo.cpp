@@ -19,10 +19,10 @@
 #include <log4cxxNG/pattern/formattinginfo.h>
 #include <limits.h>
 
-using namespace log4cxx;
-using namespace log4cxx::pattern;
+using namespace log4cxxng;
+using namespace log4cxxng::pattern;
 
-IMPLEMENT_LOG4CXX_OBJECT(FormattingInfo)
+IMPLEMENT_LOG4CXXNG_OBJECT(FormattingInfo)
 
 /**
  * Creates new instance.

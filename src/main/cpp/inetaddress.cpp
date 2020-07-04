@@ -26,10 +26,10 @@
 
 #include "apr_network_io.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(InetAddress)
+IMPLEMENT_LOG4CXXNG_OBJECT(InetAddress)
 
 UnknownHostException::UnknownHostException(const LogString& msg1)
 	: Exception(msg1)
@@ -58,7 +58,7 @@ InetAddress::InetAddress(const LogString& hostName, const LogString& hostAddr)
 */
 std::vector<InetAddressPtr> InetAddress::getAllByName(const LogString& host)
 {
-	LOG4CXX_ENCODE_CHAR(encodedHost, host);
+	LOG4CXXNG_ENCODE_CHAR(encodedHost, host);
 
 	// retrieve information about the given host
 	Pool addrPool;
@@ -70,7 +70,7 @@ std::vector<InetAddressPtr> InetAddress::getAllByName(const LogString& host)
 
 	if (status != APR_SUCCESS)
 	{
-		LogString msg(LOG4CXX_STR("Cannot get information about host: "));
+		LogString msg(LOG4CXXNG_STR("Cannot get information about host: "));
 		msg.append(host);
 		LogLog::error(msg);
 		throw UnknownHostException(msg);
@@ -136,14 +136,14 @@ LogString InetAddress::getHostName() const
 */
 InetAddressPtr InetAddress::getLocalHost()
 {
-	return getByName(LOG4CXX_STR("127.0.0.1"));
+	return getByName(LOG4CXXNG_STR("127.0.0.1"));
 }
 
 
 InetAddressPtr InetAddress::anyAddress()
 {
-	// APR_ANYADDR does not work with the LOG4CXX_STR macro
-	return getByName(LOG4CXX_STR("0.0.0.0"));
+	// APR_ANYADDR does not work with the LOG4CXXNG_STR macro
+	return getByName(LOG4CXXNG_STR("0.0.0.0"));
 }
 
 
@@ -152,7 +152,7 @@ InetAddressPtr InetAddress::anyAddress()
 LogString InetAddress::toString() const
 {
 	LogString rv(getHostName());
-	rv.append(LOG4CXX_STR("/"));
+	rv.append(LOG4CXXNG_STR("/"));
 	rv.append(getHostAddress());
 	return rv;
 }

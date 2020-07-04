@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_ISO_8601_DATE_FORMAT_H
-#define _LOG4CXX_HELPERS_ISO_8601_DATE_FORMAT_H
+#ifndef _LOG4CXXNG_HELPERS_ISO_8601_DATE_FORMAT_H
+#define _LOG4CXXNG_HELPERS_ISO_8601_DATE_FORMAT_H
 
 #include <log4cxxNG/helpers/simpledateformat.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -33,14 +33,14 @@ Formats a date in the format <b>yyyy-MM-dd HH:mm:ss,SSS</b> for example
 International Standard Date and Time Notation</a> for more
 information on this format.
 */
-class LOG4CXX_EXPORT ISO8601DateFormat : public SimpleDateFormat
+class LOG4CXXNG_EXPORT ISO8601DateFormat : public SimpleDateFormat
 {
 	public:
 		ISO8601DateFormat()
-			: SimpleDateFormat(LOG4CXX_STR("yyyy-MM-dd HH:mm:ss,SSS")) {}
+			: SimpleDateFormat(LOG4CXXNG_STR("yyyy-MM-dd HH:mm:ss,SSS")) {}
 };
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif // _LOG4CXX_HELPERS_ISO_8601_DATE_FORMAT_H
+#endif // _LOG4CXXNG_HELPERS_ISO_8601_DATE_FORMAT_H
 

@@ -18,12 +18,12 @@
 #include <log4cxxNG/defaultloggerfactory.h>
 #include <log4cxxNG/logger.h>
 
-using namespace log4cxx;
+using namespace log4cxxng;
 
-IMPLEMENT_LOG4CXX_OBJECT(DefaultLoggerFactory)
+IMPLEMENT_LOG4CXXNG_OBJECT(DefaultLoggerFactory)
 
 LoggerPtr DefaultLoggerFactory::makeNewLoggerInstance(
-	log4cxx::helpers::Pool& pool,
+	log4cxxng::helpers::Pool& pool,
 	const LogString& name) const
 {
 	return new Logger(pool, name);

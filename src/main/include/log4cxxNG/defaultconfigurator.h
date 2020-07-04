@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_DEFAULT_CONFIGURATOR_H
-#define _LOG4CXX_DEFAULT_CONFIGURATOR_H
+#ifndef _LOG4CXXNG_DEFAULT_CONFIGURATOR_H
+#define _LOG4CXXNG_DEFAULT_CONFIGURATOR_H
 
 #include <log4cxxNG/spi/configurator.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace spi
 {
@@ -32,7 +32,7 @@ typedef helpers::ObjectPtrT<LoggerRepository> LoggerRepositoryPtr;
  *   Configures the repository from environmental settings and files.
 *
 */
-class LOG4CXX_EXPORT DefaultConfigurator
+class LOG4CXXNG_EXPORT DefaultConfigurator
 {
 	private:
 		DefaultConfigurator() {}
@@ -42,7 +42,7 @@ class LOG4CXX_EXPORT DefaultConfigurator
 		Add a ConsoleAppender that uses PatternLayout
 		using the PatternLayout#TTCC_CONVERSION_PATTERN and
 		prints to <code>stdout</code> to the root logger.*/
-		static void configure(log4cxx::spi::LoggerRepository*);
+		static void configure(log4cxxng::spi::LoggerRepository*);
 
 	private:
 		static const LogString getConfigurationFileName();
@@ -51,6 +51,6 @@ class LOG4CXX_EXPORT DefaultConfigurator
 
 
 }; // class DefaultConfigurator
-}  // namespace log4cxx
+}  // namespace log4cxxng
 
-#endif //_LOG4CXX_DEFAULT_CONFIGURATOR_H
+#endif //_LOG4CXXNG_DEFAULT_CONFIGURATOR_H

@@ -23,8 +23,8 @@
 #include <log4cxxNG/helpers/transcoder.h>
 #include <log4cxxNG/helpers/pool.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 Exception::Exception(const LogString& msg1)
 {
@@ -80,7 +80,7 @@ const char* Exception::what() const throw()
 	return msg;
 }
 
-RuntimeException::RuntimeException(log4cxx_status_t stat)
+RuntimeException::RuntimeException(log4cxxng_status_t stat)
 	: Exception(formatMessage(stat))
 {
 }
@@ -101,9 +101,9 @@ RuntimeException& RuntimeException::operator=(const RuntimeException& src)
 	return *this;
 }
 
-LogString RuntimeException::formatMessage(log4cxx_status_t stat)
+LogString RuntimeException::formatMessage(log4cxxng_status_t stat)
 {
-	LogString s(LOG4CXX_STR("RuntimeException: return code = "));
+	LogString s(LOG4CXXNG_STR("RuntimeException: return code = "));
 	Pool p;
 	StringHelper::toString(stat, p, s);
 	return s;
@@ -142,11 +142,11 @@ IllegalArgumentException& IllegalArgumentException::operator=(const IllegalArgum
 }
 
 IOException::IOException()
-	: Exception(LOG4CXX_STR("IO exception"))
+	: Exception(LOG4CXXNG_STR("IO exception"))
 {
 }
 
-IOException::IOException(log4cxx_status_t stat)
+IOException::IOException(log4cxxng_status_t stat)
 	: Exception(formatMessage(stat))
 {
 }
@@ -168,9 +168,9 @@ IOException& IOException::operator=(const IOException& src)
 	return *this;
 }
 
-LogString IOException::formatMessage(log4cxx_status_t stat)
+LogString IOException::formatMessage(log4cxxng_status_t stat)
 {
-	LogString s(LOG4CXX_STR("IO Exception : status code = "));
+	LogString s(LOG4CXXNG_STR("IO Exception : status code = "));
 	Pool p;
 	StringHelper::toString(stat, p, s);
 	return s;
@@ -196,13 +196,13 @@ MissingResourceException& MissingResourceException::operator=(const MissingResou
 
 LogString MissingResourceException::formatMessage(const LogString& key)
 {
-	LogString s(LOG4CXX_STR("MissingResourceException: resource key = \""));
+	LogString s(LOG4CXXNG_STR("MissingResourceException: resource key = \""));
 	s.append(key);
-	s.append(LOG4CXX_STR("\"."));
+	s.append(LOG4CXXNG_STR("\"."));
 	return s;
 }
 
-PoolException::PoolException(log4cxx_status_t stat)
+PoolException::PoolException(log4cxxng_status_t stat)
 	: Exception(formatMessage(stat))
 {
 }
@@ -218,13 +218,13 @@ PoolException& PoolException::operator=(const PoolException& src)
 	return *this;
 }
 
-LogString PoolException::formatMessage(log4cxx_status_t)
+LogString PoolException::formatMessage(log4cxxng_status_t)
 {
-	return LOG4CXX_STR("Pool exception");
+	return LOG4CXXNG_STR("Pool exception");
 }
 
 
-TranscoderException::TranscoderException(log4cxx_status_t stat)
+TranscoderException::TranscoderException(log4cxxng_status_t stat)
 	: Exception(formatMessage(stat))
 {
 }
@@ -240,13 +240,13 @@ TranscoderException& TranscoderException::operator=(const TranscoderException& s
 	return *this;
 }
 
-LogString TranscoderException::formatMessage(log4cxx_status_t)
+LogString TranscoderException::formatMessage(log4cxxng_status_t)
 {
-	return LOG4CXX_STR("Transcoder exception");
+	return LOG4CXXNG_STR("Transcoder exception");
 }
 
 
-MutexException::MutexException(log4cxx_status_t stat)
+MutexException::MutexException(log4cxxng_status_t stat)
 	: Exception(formatMessage(stat))
 {
 }
@@ -262,19 +262,19 @@ MutexException& MutexException::operator=(const MutexException& src)
 	return *this;
 }
 
-LogString MutexException::formatMessage(log4cxx_status_t stat)
+LogString MutexException::formatMessage(log4cxxng_status_t stat)
 {
-	LogString s(LOG4CXX_STR("Mutex exception: stat = "));
+	LogString s(LOG4CXXNG_STR("Mutex exception: stat = "));
 	Pool p;
 	StringHelper::toString(stat, p, s);
 	return s;
 }
 
-InterruptedException::InterruptedException() : Exception(LOG4CXX_STR("Thread was interrupted"))
+InterruptedException::InterruptedException() : Exception(LOG4CXXNG_STR("Thread was interrupted"))
 {
 }
 
-InterruptedException::InterruptedException(log4cxx_status_t stat)
+InterruptedException::InterruptedException(log4cxxng_status_t stat)
 	: Exception(formatMessage(stat))
 {
 }
@@ -290,15 +290,15 @@ InterruptedException& InterruptedException::operator=(const InterruptedException
 	return *this;
 }
 
-LogString InterruptedException::formatMessage(log4cxx_status_t stat)
+LogString InterruptedException::formatMessage(log4cxxng_status_t stat)
 {
-	LogString s(LOG4CXX_STR("InterruptedException: stat = "));
+	LogString s(LOG4CXXNG_STR("InterruptedException: stat = "));
 	Pool p;
 	StringHelper::toString(stat, p, s);
 	return s;
 }
 
-ThreadException::ThreadException(log4cxx_status_t stat)
+ThreadException::ThreadException(log4cxxng_status_t stat)
 	: Exception(formatMessage(stat))
 {
 }
@@ -319,9 +319,9 @@ ThreadException& ThreadException::operator=(const ThreadException& src)
 	return *this;
 }
 
-LogString ThreadException::formatMessage(log4cxx_status_t stat)
+LogString ThreadException::formatMessage(log4cxxng_status_t stat)
 {
-	LogString s(LOG4CXX_STR("Thread exception: stat = "));
+	LogString s(LOG4CXXNG_STR("Thread exception: stat = "));
 	Pool p;
 	StringHelper::toString(stat, p, s);
 	return s;
@@ -378,14 +378,14 @@ ClassNotFoundException& ClassNotFoundException::operator=(const ClassNotFoundExc
 
 LogString ClassNotFoundException::formatMessage(const LogString& className)
 {
-	LogString s(LOG4CXX_STR("Class not found: "));
+	LogString s(LOG4CXXNG_STR("Class not found: "));
 	s.append(className);
 	return s;
 }
 
 
 NoSuchElementException::NoSuchElementException()
-	: Exception(LOG4CXX_STR("No such element"))
+	: Exception(LOG4CXXNG_STR("No such element"))
 {
 }
 
@@ -402,7 +402,7 @@ NoSuchElementException& NoSuchElementException::operator=(const NoSuchElementExc
 
 
 IllegalStateException::IllegalStateException()
-	: Exception(LOG4CXX_STR("Illegal state"))
+	: Exception(LOG4CXXNG_STR("Illegal state"))
 {
 }
 
@@ -421,7 +421,7 @@ SocketException::SocketException(const LogString& msg) : IOException(msg)
 {
 }
 
-SocketException::SocketException(log4cxx_status_t status) : IOException(status)
+SocketException::SocketException(log4cxxng_status_t status) : IOException(status)
 {
 }
 
@@ -436,7 +436,7 @@ SocketException& SocketException::operator=(const SocketException& src)
 	return *this;
 }
 
-ConnectException::ConnectException(log4cxx_status_t status) : SocketException(status)
+ConnectException::ConnectException(log4cxxng_status_t status) : SocketException(status)
 {
 }
 
@@ -451,7 +451,7 @@ ConnectException& ConnectException::operator=(const ConnectException& src)
 	return *this;
 }
 
-ClosedChannelException::ClosedChannelException() : SocketException(LOG4CXX_STR("Attempt to write to closed socket"))
+ClosedChannelException::ClosedChannelException() : SocketException(LOG4CXXNG_STR("Attempt to write to closed socket"))
 {
 }
 
@@ -466,7 +466,7 @@ ClosedChannelException& ClosedChannelException::operator=(const ClosedChannelExc
 	return *this;
 }
 
-BindException::BindException(log4cxx_status_t status) : SocketException(status)
+BindException::BindException(log4cxxng_status_t status) : SocketException(status)
 {
 }
 
@@ -497,7 +497,7 @@ InterruptedIOException& InterruptedIOException::operator=(const InterruptedIOExc
 }
 
 SocketTimeoutException::SocketTimeoutException()
-	: InterruptedIOException(LOG4CXX_STR("SocketTimeoutException"))
+	: InterruptedIOException(LOG4CXXNG_STR("SocketTimeoutException"))
 {
 }
 

@@ -24,8 +24,8 @@
 #include <assert.h>
 #include <log4cxxNG/helpers/exception.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 File::File()
 {
@@ -63,7 +63,7 @@ File::File(const char* name1)
 {
 }
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 File::File(const std::wstring& name1)
 	: path(decodeLS(name1))
 {
@@ -75,7 +75,7 @@ File::File(const wchar_t* name1)
 }
 #endif
 
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 File::File(const std::basic_string<UniChar>& name1)
 	: path(decodeLS(name1))
 {
@@ -87,7 +87,7 @@ File::File(const UniChar* name1)
 }
 #endif
 
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 File::File(const CFStringRef& name1)
 	: path(decodeLS(name1))
 {
@@ -159,7 +159,7 @@ char* File::getPath(Pool& p) const
 	return retval;
 }
 
-log4cxx_status_t File::open(apr_file_t** file, int flags,
+log4cxxng_status_t File::open(apr_file_t** file, int flags,
 	int perm, Pool& p) const
 {
 	return apr_file_open(file, getPath(p), flags, perm, p.getAPRPool());
@@ -219,7 +219,7 @@ size_t File::length(Pool& pool) const
 }
 
 
-log4cxx_time_t File::lastModified(Pool& pool) const
+log4cxxng_time_t File::lastModified(Pool& pool) const
 {
 	apr_finfo_t finfo;
 	apr_status_t rv = apr_stat(&finfo, getPath(pool),
@@ -279,8 +279,8 @@ std::vector<LogString> File::list(Pool& p) const
 
 LogString File::getParent(Pool&) const
 {
-	LogString::size_type slashPos = path.rfind(LOG4CXX_STR('/'));
-	LogString::size_type backPos = path.rfind(LOG4CXX_STR('\\'));
+	LogString::size_type slashPos = path.rfind(LOG4CXXNG_STR('/'));
+	LogString::size_type backPos = path.rfind(LOG4CXXNG_STR('\\'));
 
 	if (slashPos == LogString::npos)
 	{

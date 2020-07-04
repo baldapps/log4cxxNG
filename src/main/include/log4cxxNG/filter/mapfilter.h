@@ -14,8 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef _LOG4CXX_FILTER_MAPFILTER_H
-#define _LOG4CXX_FILTER_MAPFILTER_H
+#ifndef _LOG4CXXNG_FILTER_MAPFILTER_H
+#define _LOG4CXXNG_FILTER_MAPFILTER_H
 
 #include <log4cxxNG/spi/filter.h>
 
@@ -24,7 +24,7 @@
 	#pragma warning ( disable: 4251 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace filter
 {
@@ -40,7 +40,7 @@ namespace filter
  * &lt;/filter&gt;
  * </pre>
  */
-class LOG4CXX_EXPORT MapFilter: public log4cxx::spi::Filter
+class LOG4CXXNG_EXPORT MapFilter: public log4cxxng::spi::Filter
 {
 	typedef std::map < LogString, LogString > KeyVals;
 
@@ -50,11 +50,11 @@ class LOG4CXX_EXPORT MapFilter: public log4cxx::spi::Filter
 		KeyVals	keyVals;
 
 	public:
-		DECLARE_LOG4CXX_OBJECT(MapFilter)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(MapFilter)
-		LOG4CXX_CAST_ENTRY_CHAIN(log4cxx::spi::Filter)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(MapFilter)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(MapFilter)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(log4cxxng::spi::Filter)
+		END_LOG4CXXNG_CAST_MAP()
 
 		MapFilter();
 
@@ -98,19 +98,19 @@ class LOG4CXX_EXPORT MapFilter: public log4cxx::spi::Filter
 		}
 
 		/**
-		Returns {@link log4cxx::spi::Filter#NEUTRAL NEUTRAL}
+		Returns {@link log4cxxng::spi::Filter#NEUTRAL NEUTRAL}
 		is there is no string match.
 		*/
 		FilterDecision decide(const spi::LoggingEventPtr& event) const;
 }; // class MapFilter
 
-LOG4CXX_PTR_DEF(MapFilter);
+LOG4CXXNG_PTR_DEF(MapFilter);
 
 } // namespace filter
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
-#endif // _LOG4CXX_FILTER_MAPFILTER_H
+#endif // _LOG4CXXNG_FILTER_MAPFILTER_H

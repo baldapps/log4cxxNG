@@ -22,12 +22,12 @@
 #include <log4cxxNG/helpers/optionconverter.h>
 #include <log4cxxNG/level.h>
 
-using namespace log4cxx;
-using namespace log4cxx::filter;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::filter;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(LevelRangeFilter)
+IMPLEMENT_LOG4CXXNG_OBJECT(LevelRangeFilter)
 
 
 LevelRangeFilter::LevelRangeFilter()
@@ -40,17 +40,17 @@ void LevelRangeFilter::setOption(const LogString& option,
 {
 
 	if (StringHelper::equalsIgnoreCase(option,
-			LOG4CXX_STR("LEVELMIN"), LOG4CXX_STR("levelmin")))
+			LOG4CXXNG_STR("LEVELMIN"), LOG4CXXNG_STR("levelmin")))
 	{
 		levelMin = OptionConverter::toLevel(value, levelMin);
 	}
 	else if (StringHelper::equalsIgnoreCase(option,
-			LOG4CXX_STR("LEVELMAX"), LOG4CXX_STR("levelmax")))
+			LOG4CXXNG_STR("LEVELMAX"), LOG4CXXNG_STR("levelmax")))
 	{
 		levelMax = OptionConverter::toLevel(value, levelMax);
 	}
 	else if (StringHelper::equalsIgnoreCase(option,
-			LOG4CXX_STR("ACCEPTONMATCH"), LOG4CXX_STR("acceptonmatch")))
+			LOG4CXXNG_STR("ACCEPTONMATCH"), LOG4CXXNG_STR("acceptonmatch")))
 	{
 		acceptOnMatch = OptionConverter::toBoolean(value, acceptOnMatch);
 	}

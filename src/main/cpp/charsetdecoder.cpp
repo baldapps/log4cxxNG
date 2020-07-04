@@ -22,8 +22,8 @@
 #include <log4cxxNG/helpers/synchronized.h>
 #include <log4cxxNG/helpers/pool.h>
 #include <apr_xlate.h>
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 #include <log4cxxNG/private/log4cxxNG_private.h>
 #include <locale.h>
@@ -31,13 +31,13 @@
 #include <log4cxxNG/helpers/stringhelper.h>
 #include <log4cxxNG/helpers/transcoder.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(CharsetDecoder)
+IMPLEMENT_LOG4CXXNG_OBJECT(CharsetDecoder)
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -57,13 +57,13 @@ class APRCharsetDecoder : public CharsetDecoder
 		 */
 		APRCharsetDecoder(const LogString& frompage) : pool(), mutex(pool)
 		{
-#if LOG4CXX_LOGCHAR_IS_WCHAR
+#if LOG4CXXNG_LOGCHAR_IS_WCHAR
 			const char* topage = "WCHAR_T";
 #endif
-#if LOG4CXX_LOGCHAR_IS_UTF8
+#if LOG4CXXNG_LOGCHAR_IS_UTF8
 			const char* topage = "UTF-8";
 #endif
-#if LOG4CXX_LOGCHAR_IS_UNICHAR
+#if LOG4CXXNG_LOGCHAR_IS_UNICHAR
 			const char* topage = "UTF-16";
 #endif
 			std::string fpage(Transcoder::encodeCharsetName(frompage));
@@ -85,7 +85,7 @@ class APRCharsetDecoder : public CharsetDecoder
 		{
 		}
 
-		virtual log4cxx_status_t decode(ByteBuffer& in,
+		virtual log4cxxng_status_t decode(ByteBuffer& in,
 			LogString& out)
 		{
 			enum { BUFSIZE = 256 };
@@ -130,14 +130,14 @@ class APRCharsetDecoder : public CharsetDecoder
 	private:
 		APRCharsetDecoder(const APRCharsetDecoder&);
 		APRCharsetDecoder& operator=(const APRCharsetDecoder&);
-		log4cxx::helpers::Pool pool;
+		log4cxxng::helpers::Pool pool;
 		Mutex mutex;
 		apr_xlate_t* convset;
 };
 
 #endif
 
-#if LOG4CXX_LOGCHAR_IS_WCHAR && LOG4CXX_HAS_MBSRTOWCS
+#if LOG4CXXNG_LOGCHAR_IS_WCHAR && LOG4CXXNG_HAS_MBSRTOWCS
 /**
 *    Converts from the default multi-byte string to
 *        LogString using mbstowcs.
@@ -155,16 +155,16 @@ class MbstowcsCharsetDecoder : public CharsetDecoder
 		}
 
 	private:
-		inline log4cxx_status_t append(LogString& out, const wchar_t* buf)
+		inline log4cxxng_status_t append(LogString& out, const wchar_t* buf)
 		{
 			out.append(buf);
 			return APR_SUCCESS;
 		}
 
-		virtual log4cxx_status_t decode(ByteBuffer& in,
+		virtual log4cxxng_status_t decode(ByteBuffer& in,
 			LogString& out)
 		{
-			log4cxx_status_t stat = APR_SUCCESS;
+			log4cxxng_status_t stat = APR_SUCCESS;
 			enum { BUFSIZE = 256 };
 			wchar_t buf[BUFSIZE];
 
@@ -237,7 +237,7 @@ class TrivialCharsetDecoder : public CharsetDecoder
 		{
 		}
 
-		virtual log4cxx_status_t decode(ByteBuffer& in,
+		virtual log4cxxng_status_t decode(ByteBuffer& in,
 			LogString& out)
 		{
 			size_t remaining = in.remaining();
@@ -261,7 +261,7 @@ class TrivialCharsetDecoder : public CharsetDecoder
 };
 
 
-#if LOG4CXX_LOGCHAR_IS_UTF8
+#if LOG4CXXNG_LOGCHAR_IS_UTF8
 typedef TrivialCharsetDecoder UTF8CharsetDecoder;
 #else
 /**
@@ -280,7 +280,7 @@ class UTF8CharsetDecoder : public CharsetDecoder
 		}
 
 	private:
-		virtual log4cxx_status_t decode(ByteBuffer& in,
+		virtual log4cxxng_status_t decode(ByteBuffer& in,
 			LogString& out)
 		{
 			if (in.remaining() > 0)
@@ -332,7 +332,7 @@ class ISOLatinCharsetDecoder : public CharsetDecoder
 		}
 
 	private:
-		virtual log4cxx_status_t decode(ByteBuffer& in,
+		virtual log4cxxng_status_t decode(ByteBuffer& in,
 			LogString& out)
 		{
 			if (in.remaining() > 0)
@@ -378,10 +378,10 @@ class USASCIICharsetDecoder : public CharsetDecoder
 
 	private:
 
-		virtual log4cxx_status_t decode(ByteBuffer& in,
+		virtual log4cxxng_status_t decode(ByteBuffer& in,
 			LogString& out)
 		{
-			log4cxx_status_t stat = APR_SUCCESS;
+			log4cxxng_status_t stat = APR_SUCCESS;
 
 			if (in.remaining() > 0)
 			{
@@ -431,12 +431,12 @@ class LocaleCharsetDecoder : public CharsetDecoder
 		virtual ~LocaleCharsetDecoder()
 		{
 		}
-		virtual log4cxx_status_t decode(ByteBuffer& in,
+		virtual log4cxxng_status_t decode(ByteBuffer& in,
 			LogString& out)
 		{
 			const char* p = in.current();
 			size_t i = in.position();
-#if !LOG4CXX_CHARSET_EBCDIC
+#if !LOG4CXXNG_CHARSET_EBCDIC
 
 			for (; i < in.limit() && ((unsigned int) *p) < 0x80; i++, p++)
 			{
@@ -493,7 +493,7 @@ class LocaleCharsetDecoder : public CharsetDecoder
 
 } // namespace helpers
 
-}  //namespace log4cxx
+}  //namespace log4cxxng
 
 
 CharsetDecoder::CharsetDecoder()
@@ -507,13 +507,13 @@ CharsetDecoder::~CharsetDecoder()
 
 CharsetDecoder* CharsetDecoder::createDefaultDecoder()
 {
-#if LOG4CXX_CHARSET_UTF8
+#if LOG4CXXNG_CHARSET_UTF8
 	return new UTF8CharsetDecoder();
-#elif LOG4CXX_CHARSET_ISO88591 || defined(_WIN32_WCE)
+#elif LOG4CXXNG_CHARSET_ISO88591 || defined(_WIN32_WCE)
 	return new ISOLatinCharsetDecoder();
-#elif LOG4CXX_CHARSET_USASCII
+#elif LOG4CXXNG_CHARSET_USASCII
 	return new USASCIICharsetDecoder();
-#elif LOG4CXX_LOGCHAR_IS_WCHAR && LOG4CXX_HAS_MBSRTOWCS
+#elif LOG4CXXNG_LOGCHAR_IS_WCHAR && LOG4CXXNG_HAS_MBSRTOWCS
 	return new MbstowcsCharsetDecoder();
 #else
 	return new LocaleCharsetDecoder();
@@ -562,21 +562,21 @@ CharsetDecoderPtr CharsetDecoder::getISOLatinDecoder()
 
 CharsetDecoderPtr CharsetDecoder::getDecoder(const LogString& charset)
 {
-	if (StringHelper::equalsIgnoreCase(charset, LOG4CXX_STR("UTF-8"), LOG4CXX_STR("utf-8")) ||
-		StringHelper::equalsIgnoreCase(charset, LOG4CXX_STR("UTF8"), LOG4CXX_STR("utf8")))
+	if (StringHelper::equalsIgnoreCase(charset, LOG4CXXNG_STR("UTF-8"), LOG4CXXNG_STR("utf-8")) ||
+		StringHelper::equalsIgnoreCase(charset, LOG4CXXNG_STR("UTF8"), LOG4CXXNG_STR("utf8")))
 	{
 		return new UTF8CharsetDecoder();
 	}
-	else if (StringHelper::equalsIgnoreCase(charset, LOG4CXX_STR("C"), LOG4CXX_STR("c")) ||
-		charset == LOG4CXX_STR("646") ||
-		StringHelper::equalsIgnoreCase(charset, LOG4CXX_STR("US-ASCII"), LOG4CXX_STR("us-ascii")) ||
-		StringHelper::equalsIgnoreCase(charset, LOG4CXX_STR("ISO646-US"), LOG4CXX_STR("iso646-US")) ||
-		StringHelper::equalsIgnoreCase(charset, LOG4CXX_STR("ANSI_X3.4-1968"), LOG4CXX_STR("ansi_x3.4-1968")))
+	else if (StringHelper::equalsIgnoreCase(charset, LOG4CXXNG_STR("C"), LOG4CXXNG_STR("c")) ||
+		charset == LOG4CXXNG_STR("646") ||
+		StringHelper::equalsIgnoreCase(charset, LOG4CXXNG_STR("US-ASCII"), LOG4CXXNG_STR("us-ascii")) ||
+		StringHelper::equalsIgnoreCase(charset, LOG4CXXNG_STR("ISO646-US"), LOG4CXXNG_STR("iso646-US")) ||
+		StringHelper::equalsIgnoreCase(charset, LOG4CXXNG_STR("ANSI_X3.4-1968"), LOG4CXXNG_STR("ansi_x3.4-1968")))
 	{
 		return new USASCIICharsetDecoder();
 	}
-	else if (StringHelper::equalsIgnoreCase(charset, LOG4CXX_STR("ISO-8859-1"), LOG4CXX_STR("iso-8859-1")) ||
-		StringHelper::equalsIgnoreCase(charset, LOG4CXX_STR("ISO-LATIN-1"), LOG4CXX_STR("iso-latin-1")))
+	else if (StringHelper::equalsIgnoreCase(charset, LOG4CXXNG_STR("ISO-8859-1"), LOG4CXXNG_STR("iso-8859-1")) ||
+		StringHelper::equalsIgnoreCase(charset, LOG4CXXNG_STR("ISO-LATIN-1"), LOG4CXXNG_STR("iso-latin-1")))
 	{
 		return new ISOLatinCharsetDecoder();
 	}

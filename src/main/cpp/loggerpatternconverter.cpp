@@ -23,17 +23,17 @@
 #include <log4cxxNG/spi/loggingevent.h>
 #include <log4cxxNG/spi/location/locationinfo.h>
 
-using namespace log4cxx;
-using namespace log4cxx::pattern;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::pattern;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(LoggerPatternConverter)
+IMPLEMENT_LOG4CXXNG_OBJECT(LoggerPatternConverter)
 
 LoggerPatternConverter::LoggerPatternConverter(
 	const std::vector<LogString>& options) :
-	NamePatternConverter(LOG4CXX_STR("Logger"),
-		LOG4CXX_STR("logger"), options)
+	NamePatternConverter(LOG4CXXNG_STR("Logger"),
+		LOG4CXXNG_STR("logger"), options)
 {
 }
 

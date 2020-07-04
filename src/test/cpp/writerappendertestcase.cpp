@@ -20,8 +20,8 @@
 #include <log4cxxNG/writerappender.h>
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 AppenderSkeleton* WriterAppenderTestCase::createAppenderSkeleton() const
 {

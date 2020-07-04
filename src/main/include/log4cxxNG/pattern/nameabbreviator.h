@@ -15,20 +15,20 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_PATTERN_NAME_ABBREVIATOR
-#define _LOG4CXX_PATTERN_NAME_ABBREVIATOR
+#ifndef _LOG4CXXNG_PATTERN_NAME_ABBREVIATOR
+#define _LOG4CXXNG_PATTERN_NAME_ABBREVIATOR
 
 #include <log4cxxNG/logstring.h>
 #include <log4cxxNG/helpers/objectptr.h>
 #include <log4cxxNG/helpers/objectimpl.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace pattern
 {
 
 class NameAbbreviator;
-LOG4CXX_PTR_DEF(NameAbbreviator);
+LOG4CXXNG_PTR_DEF(NameAbbreviator);
 
 /**
  * NameAbbreviator generates abbreviated logger and class names.
@@ -36,13 +36,13 @@ LOG4CXX_PTR_DEF(NameAbbreviator);
  *
  *
  */
-class LOG4CXX_EXPORT NameAbbreviator : public log4cxx::helpers::ObjectImpl
+class LOG4CXXNG_EXPORT NameAbbreviator : public log4cxxng::helpers::ObjectImpl
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(NameAbbreviator)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(NameAbbreviator)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(NameAbbreviator)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(NameAbbreviator)
+		END_LOG4CXXNG_CAST_MAP()
 
 	protected:
 		NameAbbreviator();

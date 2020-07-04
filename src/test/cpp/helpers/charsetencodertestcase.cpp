@@ -27,8 +27,8 @@
 #include <apr_atomic.h>
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 
 LOGUNIT_CLASS(CharsetEncoderTestCase)
@@ -50,12 +50,12 @@ public:
 
 	void encode1()
 	{
-		const LogString greeting(LOG4CXX_STR("Hello, World"));
-		CharsetEncoderPtr enc(CharsetEncoder::getEncoder(LOG4CXX_STR("US-ASCII")));
+		const LogString greeting(LOG4CXXNG_STR("Hello, World"));
+		CharsetEncoderPtr enc(CharsetEncoder::getEncoder(LOG4CXXNG_STR("US-ASCII")));
 		char buf[BUFSIZE];
 		ByteBuffer out(buf, BUFSIZE);
 		LogString::const_iterator iter = greeting.begin();
-		log4cxx_status_t stat = enc->encode(greeting, iter, out);
+		log4cxxng_status_t stat = enc->encode(greeting, iter, out);
 		LOGUNIT_ASSERT_EQUAL(APR_SUCCESS, stat);
 		LOGUNIT_ASSERT(iter == greeting.end());
 
@@ -71,18 +71,18 @@ public:
 
 	void encode2()
 	{
-		LogString greeting(BUFSIZE - 3, LOG4CXX_STR('A'));
-		greeting.append(LOG4CXX_STR("Hello"));
+		LogString greeting(BUFSIZE - 3, LOG4CXXNG_STR('A'));
+		greeting.append(LOG4CXXNG_STR("Hello"));
 
-		CharsetEncoderPtr enc(CharsetEncoder::getEncoder(LOG4CXX_STR("US-ASCII")));
+		CharsetEncoderPtr enc(CharsetEncoder::getEncoder(LOG4CXXNG_STR("US-ASCII")));
 
 		char buf[BUFSIZE];
 		ByteBuffer out(buf, BUFSIZE);
 		LogString::const_iterator iter = greeting.begin();
-		log4cxx_status_t stat = enc->encode(greeting, iter, out);
+		log4cxxng_status_t stat = enc->encode(greeting, iter, out);
 		LOGUNIT_ASSERT_EQUAL(APR_SUCCESS, stat);
 		LOGUNIT_ASSERT_EQUAL((size_t) 0, out.remaining());
-		LOGUNIT_ASSERT_EQUAL(LOG4CXX_STR('o'), *(iter + 1));
+		LOGUNIT_ASSERT_EQUAL(LOG4CXXNG_STR('o'), *(iter + 1));
 
 		out.flip();
 		std::string encoded((char*) out.data(), out.limit());
@@ -106,13 +106,13 @@ public:
 
 	void encode3()
 	{
-#if LOG4CXX_LOGCHAR_IS_WCHAR || LOG4CXX_LOGCHAR_IS_UNICHAR
+#if LOG4CXXNG_LOGCHAR_IS_WCHAR || LOG4CXXNG_LOGCHAR_IS_UNICHAR
 		//   arbitrary, hopefully meaningless, characters from
 		//     Latin, Arabic, Armenian, Bengali, CJK and Cyrillic
 		const logchar greet[] = { L'A', 0x0605, 0x0530, 0x986, 0x4E03, 0x400, 0 };
 #endif
 
-#if LOG4CXX_LOGCHAR_IS_UTF8
+#if LOG4CXXNG_LOGCHAR_IS_UTF8
 		const char greet[] = { 'A',
 				(char) 0xD8, (char) 0x85,
 				(char) 0xD4, (char) 0xB0,
@@ -124,13 +124,13 @@ public:
 #endif
 		LogString greeting(greet);
 
-		CharsetEncoderPtr enc(CharsetEncoder::getEncoder(LOG4CXX_STR("US-ASCII")));
+		CharsetEncoderPtr enc(CharsetEncoder::getEncoder(LOG4CXXNG_STR("US-ASCII")));
 
 		char buf[BUFSIZE];
 		ByteBuffer out(buf, BUFSIZE);
 
 		LogString::const_iterator iter = greeting.begin();
-		log4cxx_status_t stat = enc->encode(greeting, iter, out);
+		log4cxxng_status_t stat = enc->encode(greeting, iter, out);
 		out.flip();
 		LOGUNIT_ASSERT_EQUAL(true, CharsetEncoder::isError(stat));
 		LOGUNIT_ASSERT_EQUAL((size_t) 1, out.limit());
@@ -149,23 +149,23 @@ public:
 				(char) 0xD0, (char) 0x80,
 				0
 			};
-#if LOG4CXX_LOGCHAR_IS_WCHAR || LOG4CXX_LOGCHAR_IS_UNICHAR
+#if LOG4CXXNG_LOGCHAR_IS_WCHAR || LOG4CXXNG_LOGCHAR_IS_UNICHAR
 		//   arbitrary, hopefully meaningless, characters from
 		//     Latin, Arabic, Armenian, Bengali, CJK and Cyrillic
 		const logchar greet[] = { L'A', 0x0605, 0x0530, 0x986, 0x4E03, 0x400, 0 };
 #endif
 
-#if LOG4CXX_LOGCHAR_IS_UTF8
+#if LOG4CXXNG_LOGCHAR_IS_UTF8
 		const logchar* greet = utf8_greet;
 #endif
 		LogString greeting(greet);
 
-		CharsetEncoderPtr enc(CharsetEncoder::getEncoder(LOG4CXX_STR("UTF-8")));
+		CharsetEncoderPtr enc(CharsetEncoder::getEncoder(LOG4CXXNG_STR("UTF-8")));
 
 		char buf[BUFSIZE];
 		ByteBuffer out(buf, BUFSIZE);
 		LogString::const_iterator iter = greeting.begin();
-		log4cxx_status_t stat = enc->encode(greeting, iter, out);
+		log4cxxng_status_t stat = enc->encode(greeting, iter, out);
 		LOGUNIT_ASSERT_EQUAL(false, CharsetEncoder::isError(stat));
 		stat = enc->encode(greeting, iter, out);
 		LOGUNIT_ASSERT_EQUAL(false, CharsetEncoder::isError(stat));
@@ -244,10 +244,10 @@ public:
 			int repetitions;
 	};
 
-	static void* LOG4CXX_THREAD_FUNC thread1Action(apr_thread_t* /* thread */, void* data)
+	static void* LOG4CXXNG_THREAD_FUNC thread1Action(apr_thread_t* /* thread */, void* data)
 	{
 		ThreadPackage* package = (ThreadPackage*) data;
-#if LOG4CXX_LOGCHAR_IS_UTF8
+#if LOG4CXXNG_LOGCHAR_IS_UTF8
 		const logchar greet[] = { 'H', 'e', 'l', 'l', 'o', ' ',
 				(char) 0xC2, (char) 0xA2,  //  cent sign
 				(char) 0xC2, (char) 0xA9,  //  copyright
@@ -255,7 +255,7 @@ public:
 				0
 			};
 #endif
-#if LOG4CXX_LOGCHAR_IS_WCHAR || LOG4CXX_LOGCHAR_IS_UNICHAR
+#if LOG4CXXNG_LOGCHAR_IS_WCHAR || LOG4CXXNG_LOGCHAR_IS_UNICHAR
 		//   arbitrary, hopefully meaningless, characters from
 		//     Latin, Arabic, Armenian, Bengali, CJK and Cyrillic
 		const logchar greet[] = { L'H', L'e', L'l', L'l', L'o', L' ',
@@ -277,7 +277,7 @@ public:
 			char buf[BUFSIZE];
 			ByteBuffer out(buf, BUFSIZE);
 			LogString::const_iterator iter = greeting.begin();
-			log4cxx_status_t stat = package->getEncoder()->encode(greeting, iter, out);
+			log4cxxng_status_t stat = package->getEncoder()->encode(greeting, iter, out);
 			pass = (false == CharsetEncoder::isError(stat));
 
 			if (pass)
@@ -316,7 +316,7 @@ public:
 	{
 		enum { THREAD_COUNT = 10, THREAD_REPS = 10000 };
 		Thread threads[THREAD_COUNT];
-		CharsetEncoderPtr enc(CharsetEncoder::getEncoder(LOG4CXX_STR("ISO-8859-1")));
+		CharsetEncoderPtr enc(CharsetEncoder::getEncoder(LOG4CXXNG_STR("ISO-8859-1")));
 		ThreadPackage* package = new ThreadPackage(enc, THREAD_REPS);
 		{
 			for (int i = 0; i < THREAD_COUNT; i++)

@@ -20,32 +20,32 @@
 #include "../logunit.h"
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 
 LOGUNIT_CLASS(TranscoderTestCase)
 {
 	LOGUNIT_TEST_SUITE(TranscoderTestCase);
 	LOGUNIT_TEST(decode1);
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 	LOGUNIT_TEST(decode2);
 #endif
 	LOGUNIT_TEST(decode3);
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 	LOGUNIT_TEST(decode4);
 #endif
 	LOGUNIT_TEST(decode7);
 	LOGUNIT_TEST(decode8);
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 	LOGUNIT_TEST(encode1);
 #endif
 	LOGUNIT_TEST(encode2);
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 	LOGUNIT_TEST(encode3);
 #endif
 	LOGUNIT_TEST(encode4);
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 	LOGUNIT_TEST(encode5);
 #endif
 	LOGUNIT_TEST(encode6);
@@ -53,14 +53,14 @@ LOGUNIT_CLASS(TranscoderTestCase)
 	LOGUNIT_TEST(testDecodeUTF8_2);
 	LOGUNIT_TEST(testDecodeUTF8_3);
 	LOGUNIT_TEST(testDecodeUTF8_4);
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 	LOGUNIT_TEST(udecode2);
 	LOGUNIT_TEST(udecode4);
 	LOGUNIT_TEST(uencode1);
 	LOGUNIT_TEST(uencode3);
 	LOGUNIT_TEST(uencode5);
 #endif
-#if LOG4CXX_LOGCHAR_IS_UTF8
+#if LOG4CXXNG_LOGCHAR_IS_UTF8
 	LOGUNIT_TEST(encodeCharsetName1);
 	LOGUNIT_TEST(encodeCharsetName2);
 	LOGUNIT_TEST(encodeCharsetName3);
@@ -72,36 +72,36 @@ public:
 	void decode1()
 	{
 		const char* greeting = "Hello, World";
-		LogString decoded(LOG4CXX_STR("foo\n"));
+		LogString decoded(LOG4CXXNG_STR("foo\n"));
 		Transcoder::decode(greeting, decoded);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("foo\nHello, World"), decoded);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("foo\nHello, World"), decoded);
 	}
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 	void decode2()
 	{
 		const wchar_t* greeting = L"Hello, World";
-		LogString decoded(LOG4CXX_STR("foo\n"));
+		LogString decoded(LOG4CXXNG_STR("foo\n"));
 		Transcoder::decode(greeting, decoded);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("foo\nHello, World"), decoded);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("foo\nHello, World"), decoded);
 	}
 #endif
 
 	void decode3()
 	{
 		const char* nothing = "";
-		LogString decoded(LOG4CXX_STR("foo\n"));
+		LogString decoded(LOG4CXXNG_STR("foo\n"));
 		Transcoder::decode(nothing, decoded);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("foo\n"), decoded);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("foo\n"), decoded);
 	}
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 	void decode4()
 	{
 		const wchar_t* nothing = L"";
-		LogString decoded(LOG4CXX_STR("foo\n"));
+		LogString decoded(LOG4CXXNG_STR("foo\n"));
 		Transcoder::decode(nothing, decoded);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("foo\n"), decoded);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("foo\n"), decoded);
 	}
 #endif
 
@@ -118,9 +118,9 @@ public:
 		LogString decoded;
 		Transcoder::decode(longMsg, decoded);
 		LOGUNIT_ASSERT_EQUAL((size_t) BUFSIZE + 3, decoded.length());
-		LOGUNIT_ASSERT_EQUAL(LogString(BUFSIZE - 2, LOG4CXX_STR('A')),
+		LOGUNIT_ASSERT_EQUAL(LogString(BUFSIZE - 2, LOG4CXXNG_STR('A')),
 			decoded.substr(0, BUFSIZE - 2));
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("Hello"),
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("Hello"),
 			decoded.substr(BUFSIZE - 2 ));
 	}
 
@@ -129,15 +129,15 @@ public:
 		std::string msg("Hello, World.");
 		LogString actual;
 		Transcoder::decode(msg, actual);
-		LogString expected(LOG4CXX_STR("Hello, World."));
+		LogString expected(LOG4CXXNG_STR("Hello, World."));
 		LOGUNIT_ASSERT_EQUAL(expected, actual);
 	}
 
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 	void encode1()
 	{
-		const LogString greeting(LOG4CXX_STR("Hello, World"));
+		const LogString greeting(LOG4CXXNG_STR("Hello, World"));
 		std::wstring encoded;
 		Transcoder::encode(greeting, encoded);
 		LOGUNIT_ASSERT_EQUAL((std::wstring) L"Hello, World", encoded);
@@ -146,17 +146,17 @@ public:
 
 	void encode2()
 	{
-		const LogString greeting(LOG4CXX_STR("Hello, World"));
+		const LogString greeting(LOG4CXXNG_STR("Hello, World"));
 		std::string encoded;
 		Transcoder::encode(greeting, encoded);
 		LOGUNIT_ASSERT_EQUAL((std::string) "Hello, World", encoded);
 	}
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 	void encode3()
 	{
-		LogString greeting(BUFSIZE - 3, LOG4CXX_STR('A'));
-		greeting.append(LOG4CXX_STR("Hello"));
+		LogString greeting(BUFSIZE - 3, LOG4CXXNG_STR('A'));
+		greeting.append(LOG4CXXNG_STR("Hello"));
 		std::wstring encoded;
 		Transcoder::encode(greeting, encoded);
 		std::wstring manyAs(BUFSIZE - 3, L'A');
@@ -167,8 +167,8 @@ public:
 
 	void encode4()
 	{
-		LogString greeting(BUFSIZE - 3, LOG4CXX_STR('A'));
-		greeting.append(LOG4CXX_STR("Hello"));
+		LogString greeting(BUFSIZE - 3, LOG4CXXNG_STR('A'));
+		greeting.append(LOG4CXXNG_STR("Hello"));
 		std::string encoded;
 		Transcoder::encode(greeting, encoded);
 		std::string manyAs(BUFSIZE - 3, 'A');
@@ -176,7 +176,7 @@ public:
 		LOGUNIT_ASSERT_EQUAL(std::string("Hello"), encoded.substr(BUFSIZE - 3));
 	}
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 	void encode5()
 	{
 		//   arbitrary, hopefully meaningless, characters from
@@ -201,13 +201,13 @@ public:
 
 	void encode6()
 	{
-#if LOG4CXX_LOGCHAR_IS_WCHAR || LOG4CXX_LOGCHAR_IS_UNICHAR
+#if LOG4CXXNG_LOGCHAR_IS_WCHAR || LOG4CXXNG_LOGCHAR_IS_UNICHAR
 		//   arbitrary, hopefully meaningless, characters from
 		//     Latin, Arabic, Armenian, Bengali, CJK and Cyrillic
 		const logchar greeting[] = { L'A', 0x0605, 0x0530, 0x984, 0x40E3, 0x400, 0 };
 #endif
 
-#if LOG4CXX_LOGCHAR_IS_UTF8
+#if LOG4CXXNG_LOGCHAR_IS_UTF8
 		const char greeting[] = { 'A',
 				(char) 0xD8, (char) 0x85,
 				(char) 0xD4, (char) 0xB0,
@@ -238,7 +238,7 @@ public:
 		std::string src("a");
 		LogString out;
 		Transcoder::decodeUTF8(src, out);
-		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXX_STR("a")), out);
+		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXXNG_STR("a")), out);
 	}
 
 	void testDecodeUTF8_2()
@@ -269,26 +269,26 @@ public:
 	}
 
 
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 	void udecode2()
 	{
 		const UniChar greeting[] = { 'H', 'e', 'l', 'l', 'o', ',', ' ', 'W', 'o', 'r', 'l', 'd', 0 };
-		LogString decoded(LOG4CXX_STR("foo\n"));
+		LogString decoded(LOG4CXXNG_STR("foo\n"));
 		Transcoder::decode(greeting, decoded);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("foo\nHello, World"), decoded);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("foo\nHello, World"), decoded);
 	}
 
 	void udecode4()
 	{
 		const UniChar nothing[] = { 0 };
-		LogString decoded(LOG4CXX_STR("foo\n"));
+		LogString decoded(LOG4CXXNG_STR("foo\n"));
 		Transcoder::decode(nothing, decoded);
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("foo\n"), decoded);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("foo\n"), decoded);
 	}
 
 	void uencode1()
 	{
-		const LogString greeting(LOG4CXX_STR("Hello, World"));
+		const LogString greeting(LOG4CXXNG_STR("Hello, World"));
 		std::basic_string<UniChar> encoded;
 		Transcoder::encode(greeting, encoded);
 		const UniChar expected[] = { 'H', 'e', 'l', 'l', 'o', ',', ' ', 'W', 'o', 'r', 'l', 'd', 0 };
@@ -297,8 +297,8 @@ public:
 
 	void uencode3()
 	{
-		LogString greeting(BUFSIZE - 3, LOG4CXX_STR('A'));
-		greeting.append(LOG4CXX_STR("Hello"));
+		LogString greeting(BUFSIZE - 3, LOG4CXXNG_STR('A'));
+		greeting.append(LOG4CXXNG_STR("Hello"));
 		std::basic_string<UniChar> encoded;
 		Transcoder::encode(greeting, encoded);
 		std::basic_string<UniChar> manyAs(BUFSIZE - 3, 'A');
@@ -329,7 +329,7 @@ public:
 	}
 #endif
 
-#if LOG4CXX_LOGCHAR_IS_UTF8
+#if LOG4CXXNG_LOGCHAR_IS_UTF8
 	void encodeCharsetName1()
 	{
 		const logchar utf8[] = { 0x75, 0x74, 0x66, 0x2D, 0x38, 0x00 };

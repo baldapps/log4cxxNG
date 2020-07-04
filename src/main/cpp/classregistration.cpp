@@ -18,8 +18,8 @@
 #include <log4cxxNG/helpers/classregistration.h>
 #include <log4cxxNG/helpers/class.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 ClassRegistration::ClassRegistration(ClassAccessor accessor)
 {

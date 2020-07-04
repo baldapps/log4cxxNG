@@ -22,8 +22,8 @@
 
 #include <apr_thread_mutex.h>
 
-using namespace log4cxx::helpers;
-using namespace log4cxx;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng;
 
 synchronized::synchronized(const Mutex& mutex1)
 	: mutex(mutex1.getAPRMutex())

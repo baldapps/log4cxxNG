@@ -17,8 +17,8 @@
 
 #include "linenumberfilter.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 LineNumberFilter::LineNumberFilter()
 {

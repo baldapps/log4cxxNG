@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_DB_ODBC_APPENDER_H
-#define _LOG4CXX_DB_ODBC_APPENDER_H
+#ifndef _LOG4CXXNG_DB_ODBC_APPENDER_H
+#define _LOG4CXXNG_DB_ODBC_APPENDER_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -31,22 +31,22 @@
 #include <log4cxxNG/spi/loggingevent.h>
 #include <list>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace db
 {
-class LOG4CXX_EXPORT SQLException : public log4cxx::helpers::Exception
+class LOG4CXXNG_EXPORT SQLException : public log4cxxng::helpers::Exception
 {
 	public:
 		SQLException(short fHandleType,
 			void* hInput, const char* prolog,
-			log4cxx::helpers::Pool& p);
+			log4cxxng::helpers::Pool& p);
 		SQLException(const char* msg);
 		SQLException(const SQLException& src);
 	private:
 		const char* formatMessage(short fHandleType,
 			void* hInput, const char* prolog,
-			log4cxx::helpers::Pool& p);
+			log4cxxng::helpers::Pool& p);
 };
 
 /**
@@ -95,7 +95,7 @@ sql option value.
 </ul>
 */
 
-class LOG4CXX_EXPORT ODBCAppender : public AppenderSkeleton
+class LOG4CXXNG_EXPORT ODBCAppender : public AppenderSkeleton
 {
 	protected:
 		/**
@@ -151,11 +151,11 @@ class LOG4CXX_EXPORT ODBCAppender : public AppenderSkeleton
 		std::list<spi::LoggingEventPtr> buffer;
 
 	public:
-		DECLARE_LOG4CXX_OBJECT(ODBCAppender)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(ODBCAppender)
-		LOG4CXX_CAST_ENTRY_CHAIN(AppenderSkeleton)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(ODBCAppender)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(ODBCAppender)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(AppenderSkeleton)
+		END_LOG4CXXNG_CAST_MAP()
 
 		ODBCAppender();
 		virtual ~ODBCAppender();
@@ -168,12 +168,12 @@ class LOG4CXX_EXPORT ODBCAppender : public AppenderSkeleton
 		/**
 		Activate the specified options.
 		*/
-		virtual void activateOptions(log4cxx::helpers::Pool& p);
+		virtual void activateOptions(log4cxxng::helpers::Pool& p);
 
 		/**
 		* Adds the event to the buffer.  When full the buffer is flushed.
 		*/
-		void append(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool&);
+		void append(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool&);
 
 		/**
 		* By default getLogStatement sends the event to the required Layout object.
@@ -196,7 +196,7 @@ class LOG4CXX_EXPORT ODBCAppender : public AppenderSkeleton
 		* accessed in an override of this method.
 		* */
 		virtual void execute(const LogString& sql,
-			log4cxx::helpers::Pool& p) /*throw(SQLException)*/;
+			log4cxxng::helpers::Pool& p) /*throw(SQLException)*/;
 
 		/**
 		* Override this to return the connection to a pool, or to clean up the
@@ -213,7 +213,7 @@ class LOG4CXX_EXPORT ODBCAppender : public AppenderSkeleton
 		* By default this creates a single connection which is held open
 		* until the object is garbage collected.
 		*/
-		virtual SQLHDBC getConnection(log4cxx::helpers::Pool& p) /*throw(SQLException)*/;
+		virtual SQLHDBC getConnection(log4cxxng::helpers::Pool& p) /*throw(SQLException)*/;
 
 		/**
 		* Closes the appender, flushing the buffer first then closing the default
@@ -229,7 +229,7 @@ class LOG4CXX_EXPORT ODBCAppender : public AppenderSkeleton
 		*
 		* If a statement fails the LoggingEvent stays in the buffer!
 		*/
-		virtual void flushBuffer(log4cxx::helpers::Pool& p);
+		virtual void flushBuffer(log4cxxng::helpers::Pool& p);
 
 		/**
 		* ODBCAppender requires a layout.
@@ -301,17 +301,17 @@ class LOG4CXX_EXPORT ODBCAppender : public AppenderSkeleton
 		ODBCAppender(const ODBCAppender&);
 		ODBCAppender& operator=(const ODBCAppender&);
 		static void encode(wchar_t** dest, const LogString& src,
-			log4cxx::helpers::Pool& p);
+			log4cxxng::helpers::Pool& p);
 		static void encode(unsigned short** dest, const LogString& src,
-			log4cxx::helpers::Pool& p);
+			log4cxxng::helpers::Pool& p);
 }; // class ODBCAppender
-LOG4CXX_PTR_DEF(ODBCAppender);
+LOG4CXXNG_PTR_DEF(ODBCAppender);
 
 } // namespace db
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
 #endif
 
-#endif // _LOG4CXX_DB_ODBC_APPENDER_H
+#endif // _LOG4CXXNG_DB_ODBC_APPENDER_H

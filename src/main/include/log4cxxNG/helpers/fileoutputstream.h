@@ -15,15 +15,15 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_FILEOUTPUTSTREAM_H
-#define _LOG4CXX_HELPERS_FILEOUTPUTSTREAM_H
+#ifndef _LOG4CXXNG_HELPERS_FILEOUTPUTSTREAM_H
+#define _LOG4CXXNG_HELPERS_FILEOUTPUTSTREAM_H
 
 #include <log4cxxNG/helpers/outputstream.h>
 #include <log4cxxNG/file.h>
 #include <log4cxxNG/helpers/pool.h>
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 namespace helpers
@@ -32,18 +32,18 @@ namespace helpers
 /**
 *   OutputStream implemented on top of APR file IO.
 */
-class LOG4CXX_EXPORT FileOutputStream : public OutputStream
+class LOG4CXXNG_EXPORT FileOutputStream : public OutputStream
 {
 	private:
 		Pool pool;
 		apr_file_t* fileptr;
 
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(FileOutputStream)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(FileOutputStream)
-		LOG4CXX_CAST_ENTRY_CHAIN(OutputStream)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(FileOutputStream)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(FileOutputStream)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(OutputStream)
+		END_LOG4CXXNG_CAST_MAP()
 
 		FileOutputStream(const LogString& filename, bool append = false);
 		FileOutputStream(const logchar* filename, bool append = false);
@@ -53,7 +53,7 @@ class LOG4CXX_EXPORT FileOutputStream : public OutputStream
 		virtual void flush(Pool& p);
 		virtual void write(ByteBuffer& buf, Pool& p);
 
-#ifdef LOG4CXX_MULTI_PROCESS
+#ifdef LOG4CXXNG_MULTI_PROCESS
 		apr_file_t* getFilePtr()
 		{
 			return fileptr;
@@ -63,12 +63,12 @@ class LOG4CXX_EXPORT FileOutputStream : public OutputStream
 		FileOutputStream(const FileOutputStream&);
 		FileOutputStream& operator=(const FileOutputStream&);
 		static apr_file_t* open(const LogString& fn, bool append,
-			log4cxx::helpers::Pool& p);
+			log4cxxng::helpers::Pool& p);
 };
 
-LOG4CXX_PTR_DEF(FileOutputStream);
+LOG4CXXNG_PTR_DEF(FileOutputStream);
 } // namespace helpers
 
-}  //namespace log4cxx
+}  //namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_FILEOUTPUTSTREAM_H
+#endif //_LOG4CXXNG_HELPERS_FILEOUTPUTSTREAM_H

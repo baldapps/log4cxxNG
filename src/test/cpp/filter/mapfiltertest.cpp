@@ -20,10 +20,10 @@
 #include <log4cxxNG/spi/loggingevent.h>
 #include "../logunit.h"
 
-using namespace log4cxx;
-using namespace log4cxx::filter;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::filter;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
 /**
  * Unit tests for MapFilter.
@@ -46,10 +46,10 @@ public:
 	void test1()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("MapFilterTest"),
+				LOG4CXXNG_STR("MapFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		FilterPtr filter(new MapFilter());
 		Pool p;
 		filter->activateOptions(p);
@@ -63,13 +63,13 @@ public:
 	void test2()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("MapFilterTest"),
+				LOG4CXXNG_STR("MapFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
-		MDC::put(LOG4CXX_STR("my.ip"), LOG4CXX_STR("localhost"));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
+		MDC::put(LOG4CXXNG_STR("my.ip"), LOG4CXXNG_STR("localhost"));
 		MapFilterPtr filter(new MapFilter());
-		filter->setKeyValue(LOG4CXX_STR("my.ip"), LOG4CXX_STR("127.0.0.1"));
+		filter->setKeyValue(LOG4CXXNG_STR("my.ip"), LOG4CXXNG_STR("127.0.0.1"));
 		Pool p;
 		filter->activateOptions(p);
 
@@ -87,13 +87,13 @@ public:
 	void test3()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("MapFilterTest"),
+				LOG4CXXNG_STR("MapFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
-		MDC::put(LOG4CXX_STR("my.ip"), LOG4CXX_STR("127.0.0.1"));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
+		MDC::put(LOG4CXXNG_STR("my.ip"), LOG4CXXNG_STR("127.0.0.1"));
 		MapFilterPtr filter(new MapFilter());
-		filter->setKeyValue(LOG4CXX_STR("my.ip"), LOG4CXX_STR("127.0.0.1"));
+		filter->setKeyValue(LOG4CXXNG_STR("my.ip"), LOG4CXXNG_STR("127.0.0.1"));
 		Pool p;
 		filter->activateOptions(p);
 
@@ -111,15 +111,15 @@ public:
 	void test4()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("MapFilterTest"),
+				LOG4CXXNG_STR("MapFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
-		MDC::put(LOG4CXX_STR("my.ip"), LOG4CXX_STR("127.0.0.1"));
-		MDC::put(LOG4CXX_STR("my.name"), LOG4CXX_STR("Test"));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
+		MDC::put(LOG4CXXNG_STR("my.ip"), LOG4CXXNG_STR("127.0.0.1"));
+		MDC::put(LOG4CXXNG_STR("my.name"), LOG4CXXNG_STR("Test"));
 		MapFilterPtr filter(new MapFilter());
-		filter->setKeyValue(LOG4CXX_STR("my.ip"), LOG4CXX_STR("127.0.0.1"));
-		filter->setKeyValue(LOG4CXX_STR("my.name"), LOG4CXX_STR("Unknown"));
+		filter->setKeyValue(LOG4CXXNG_STR("my.ip"), LOG4CXXNG_STR("127.0.0.1"));
+		filter->setKeyValue(LOG4CXXNG_STR("my.name"), LOG4CXXNG_STR("Unknown"));
 		filter->setAcceptOnMatch(true);
 		Pool p;
 		filter->activateOptions(p);
@@ -130,7 +130,7 @@ public:
 		filter->setMustMatchAll(false); // OR T/F
 		LOGUNIT_ASSERT_EQUAL(Filter::ACCEPT, filter->decide(event));    // matches first
 
-		filter->setKeyValue(LOG4CXX_STR("my.name"), LOG4CXX_STR("Test"));
+		filter->setKeyValue(LOG4CXXNG_STR("my.name"), LOG4CXXNG_STR("Test"));
 
 		filter->setMustMatchAll(true);      // AND T/T
 		LOGUNIT_ASSERT_EQUAL(Filter::ACCEPT, filter->decide(event));    // matches all
@@ -138,7 +138,7 @@ public:
 		filter->setMustMatchAll(false); // OR T/T
 		LOGUNIT_ASSERT_EQUAL(Filter::ACCEPT, filter->decide(event));    // matches first
 
-		filter->setKeyValue(LOG4CXX_STR("my.ip"), LOG4CXX_STR("localhost"));
+		filter->setKeyValue(LOG4CXXNG_STR("my.ip"), LOG4CXXNG_STR("localhost"));
 
 		filter->setMustMatchAll(true);      // AND F/T
 		LOGUNIT_ASSERT_EQUAL(Filter::DENY, filter->decide(event));      // does not match first
@@ -146,7 +146,7 @@ public:
 		filter->setMustMatchAll(false); // OR F/T
 		LOGUNIT_ASSERT_EQUAL(Filter::ACCEPT, filter->decide(event));    // matches second
 
-		filter->setKeyValue(LOG4CXX_STR("my.name"), LOG4CXX_STR("Unkonwn"));
+		filter->setKeyValue(LOG4CXXNG_STR("my.name"), LOG4CXXNG_STR("Unkonwn"));
 
 		filter->setMustMatchAll(true);      // AND F/F
 		LOGUNIT_ASSERT_EQUAL(Filter::DENY, filter->decide(event));      // does not match first

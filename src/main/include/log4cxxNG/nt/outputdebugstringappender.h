@@ -15,23 +15,23 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_NT_OUTPUTDEBUGSTRING_APPENDER_HEADER_
-#define _LOG4CXX_NT_OUTPUTDEBUGSTRING_APPENDER_HEADER_
+#ifndef _LOG4CXXNG_NT_OUTPUTDEBUGSTRING_APPENDER_HEADER_
+#define _LOG4CXXNG_NT_OUTPUTDEBUGSTRING_APPENDER_HEADER_
 
 #include <log4cxxNG/appenderskeleton.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace nt
 {
-class LOG4CXX_EXPORT OutputDebugStringAppender : public AppenderSkeleton
+class LOG4CXXNG_EXPORT OutputDebugStringAppender : public AppenderSkeleton
 {
 	public:
-		DECLARE_LOG4CXX_OBJECT(OutputDebugStringAppender)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(OutputDebugStringAppender)
-		LOG4CXX_CAST_ENTRY_CHAIN(AppenderSkeleton)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(OutputDebugStringAppender)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(OutputDebugStringAppender)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(AppenderSkeleton)
+		END_LOG4CXXNG_CAST_MAP()
 
 		OutputDebugStringAppender();
 
@@ -42,9 +42,9 @@ class LOG4CXX_EXPORT OutputDebugStringAppender : public AppenderSkeleton
 
 		virtual void close() {}
 
-		virtual void append(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& p);
+		virtual void append(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& p);
 };
 }
 }
 
-#endif //_LOG4CXX_NT_OUTPUTDEBUGSTRING_APPENDER_HEADER_
+#endif //_LOG4CXXNG_NT_OUTPUTDEBUGSTRING_APPENDER_HEADER_

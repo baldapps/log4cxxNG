@@ -18,8 +18,8 @@
 #include <log4cxxNG/logstring.h>
 #include <log4cxxNG/helpers/transform.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 
 
@@ -48,19 +48,19 @@ void Transform::appendEscapingTags(
 		switch (input[special])
 		{
 			case 0x22:
-				buf.append(LOG4CXX_STR("&quot;"));
+				buf.append(LOG4CXXNG_STR("&quot;"));
 				break;
 
 			case 0x26:
-				buf.append(LOG4CXX_STR("&amp;"));
+				buf.append(LOG4CXXNG_STR("&amp;"));
 				break;
 
 			case 0x3C:
-				buf.append(LOG4CXX_STR("&lt;"));
+				buf.append(LOG4CXXNG_STR("&lt;"));
 				break;
 
 			case 0x3E:
-				buf.append(LOG4CXX_STR("&gt;"));
+				buf.append(LOG4CXXNG_STR("&gt;"));
 				break;
 
 			default:
@@ -89,8 +89,8 @@ void Transform::appendEscapingTags(
 void Transform::appendEscapingCDATA(
 	LogString& buf, const LogString& input)
 {
-	static const LogString CDATA_END(LOG4CXX_STR("]]>"));
-	static const LogString CDATA_EMBEDED_END(LOG4CXX_STR("]]>]]&gt;<![CDATA["));
+	static const LogString CDATA_END(LOG4CXXNG_STR("]]>"));
+	static const LogString CDATA_EMBEDED_END(LOG4CXXNG_STR("]]>]]&gt;<![CDATA["));
 
 	const LogString::size_type CDATA_END_LEN = 3;
 

@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_ASYNC_APPENDER_H
-#define _LOG4CXX_ASYNC_APPENDER_H
+#ifndef _LOG4CXXNG_ASYNC_APPENDER_H
+#define _LOG4CXXNG_ASYNC_APPENDER_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -36,9 +36,9 @@
 	#include <boost/lockfree/queue.hpp>
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
-LOG4CXX_LIST_DEF(LoggingEventList, log4cxx::spi::LoggingEventPtr);
+LOG4CXXNG_LIST_DEF(LoggingEventList, log4cxxng::spi::LoggingEventPtr);
 
 /**
 The AsyncAppender lets users log events asynchronously. It uses a
@@ -54,17 +54,17 @@ its bounded buffer.
 <p><b>Important note:</b> The <code>AsyncAppender</code> can only
 be script configured using the {@link xml::DOMConfigurator DOMConfigurator}.
 */
-class LOG4CXX_EXPORT AsyncAppender :
+class LOG4CXXNG_EXPORT AsyncAppender :
 	public virtual spi::AppenderAttachable,
 	public virtual AppenderSkeleton
 {
 	public:
-		DECLARE_LOG4CXX_OBJECT(AsyncAppender)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(AsyncAppender)
-		LOG4CXX_CAST_ENTRY_CHAIN(AppenderSkeleton)
-		LOG4CXX_CAST_ENTRY(spi::AppenderAttachable)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(AsyncAppender)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(AsyncAppender)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(AppenderSkeleton)
+		LOG4CXXNG_CAST_ENTRY(spi::AppenderAttachable)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		 * Create new instance.
@@ -87,9 +87,9 @@ class LOG4CXX_EXPORT AsyncAppender :
 		void addAppender(const AppenderPtr& newAppender);
 
 		virtual void doAppend(const spi::LoggingEventPtr& event,
-			log4cxx::helpers::Pool& pool1);
+			log4cxxng::helpers::Pool& pool1);
 
-		void append(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& p);
+		void append(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& p);
 
 		/**
 		Close this <code>AsyncAppender</code> by interrupting the
@@ -202,7 +202,7 @@ class LOG4CXX_EXPORT AsyncAppender :
 		 * Event buffer.
 		*/
 #if defined(NON_BLOCKING)
-		boost::lockfree::queue<log4cxx::spi::LoggingEvent* > buffer;
+		boost::lockfree::queue<log4cxxng::spi::LoggingEvent* > buffer;
 		std::atomic<size_t> discardedCount;
 #else
 		LoggingEventList buffer;
@@ -214,11 +214,11 @@ class LOG4CXX_EXPORT AsyncAppender :
 		SHARED_MUTEX bufferMutex;
 
 #if defined(NON_BLOCKING)
-		::log4cxx::helpers::Semaphore bufferNotFull;
-		::log4cxx::helpers::Semaphore bufferNotEmpty;
+		::log4cxxng::helpers::Semaphore bufferNotFull;
+		::log4cxxng::helpers::Semaphore bufferNotEmpty;
 #else
-		::log4cxx::helpers::Condition bufferNotFull;
-		::log4cxx::helpers::Condition bufferNotEmpty;
+		::log4cxxng::helpers::Condition bufferNotFull;
+		::log4cxxng::helpers::Condition bufferNotEmpty;
 #endif
 		class DiscardSummary
 		{
@@ -226,7 +226,7 @@ class LOG4CXX_EXPORT AsyncAppender :
 				/**
 				 * First event of the highest severity.
 				*/
-				::log4cxx::spi::LoggingEventPtr maxEvent;
+				::log4cxxng::spi::LoggingEventPtr maxEvent;
 
 				/**
 				* Total count of messages discarded.
@@ -239,7 +239,7 @@ class LOG4CXX_EXPORT AsyncAppender :
 				 *
 				 * @param event event, may not be null.
 				*/
-				DiscardSummary(const ::log4cxx::spi::LoggingEventPtr& event);
+				DiscardSummary(const ::log4cxxng::spi::LoggingEventPtr& event);
 				/** Copy constructor.  */
 				DiscardSummary(const DiscardSummary& src);
 				/** Assignment operator. */
@@ -250,17 +250,17 @@ class LOG4CXX_EXPORT AsyncAppender :
 				 *
 				 * @param event event, may not be null.
 				*/
-				void add(const ::log4cxx::spi::LoggingEventPtr& event);
+				void add(const ::log4cxxng::spi::LoggingEventPtr& event);
 
 				/**
 				 * Create event with summary information.
 				 *
 				 * @return new event.
 				 */
-				::log4cxx::spi::LoggingEventPtr createEvent(::log4cxx::helpers::Pool& p);
+				::log4cxxng::spi::LoggingEventPtr createEvent(::log4cxxng::helpers::Pool& p);
 
 				static
-				::log4cxx::spi::LoggingEventPtr createEvent(::log4cxx::helpers::Pool& p,
+				::log4cxxng::spi::LoggingEventPtr createEvent(::log4cxxng::helpers::Pool& p,
 					size_t discardedCount);
 		};
 
@@ -298,16 +298,16 @@ class LOG4CXX_EXPORT AsyncAppender :
 		/**
 		 *  Dispatch routine.
 		 */
-		static void* LOG4CXX_THREAD_FUNC dispatch(apr_thread_t* thread, void* data);
+		static void* LOG4CXXNG_THREAD_FUNC dispatch(apr_thread_t* thread, void* data);
 
 }; // class AsyncAppender
-LOG4CXX_PTR_DEF(AsyncAppender);
-}  //  namespace log4cxx
+LOG4CXXNG_PTR_DEF(AsyncAppender);
+}  //  namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
 #endif
 
 
-#endif//  _LOG4CXX_ASYNC_APPENDER_H
+#endif//  _LOG4CXXNG_ASYNC_APPENDER_H
 

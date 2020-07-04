@@ -19,16 +19,16 @@
 #include <log4cxxNG/helpers/loglog.h>
 #include <log4cxxNG/helpers/transcoder.h>
 #include <iostream>
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 #include <log4cxxNG/private/log4cxxNG_private.h>
 #include <log4cxxNG/helpers/synchronized.h>
 #include <log4cxxNG/helpers/aprinitializer.h>
 #include <log4cxxNG/helpers/systemerrwriter.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 LogLog::LogLog() : mutex(APRInitializer::getRootPool())
 {
@@ -116,7 +116,7 @@ void LogLog::warn(const LogString& msg, const std::exception& e)
 
 void LogLog::emit(const LogString& msg)
 {
-	LogString out(LOG4CXX_STR("log4cxx: "));
+	LogString out(LOG4CXXNG_STR("log4cxx: "));
 
 	out.append(msg);
 	out.append(1, (logchar) 0x0A);
@@ -126,7 +126,7 @@ void LogLog::emit(const LogString& msg)
 
 void LogLog::emit(const std::exception& ex)
 {
-	LogString out(LOG4CXX_STR("log4cxx: "));
+	LogString out(LOG4CXXNG_STR("log4cxx: "));
 	const char* raw = ex.what();
 
 	if (raw != 0)
@@ -135,7 +135,7 @@ void LogLog::emit(const std::exception& ex)
 	}
 	else
 	{
-		out.append(LOG4CXX_STR("std::exception::what() == null"));
+		out.append(LOG4CXXNG_STR("std::exception::what() == null"));
 	}
 
 	out.append(1, (logchar) 0x0A);

@@ -21,7 +21,7 @@
 #include "logunit.h"
 #include "insertwide.h"
 
-using namespace log4cxx;
+using namespace log4cxxng;
 
 /**
  * Tests hierarchy.
@@ -43,13 +43,13 @@ public:
 		//  Note: test inspired by LOGCXX-118.
 		//
 		LoggerPtr logger1(Logger::getLogger("HierarchyTest_testGetParent.logger1"));
-		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXX_STR("root")), logger1->getParent()->getName());
+		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXXNG_STR("root")), logger1->getParent()->getName());
 		LoggerPtr logger2(Logger::getLogger("HierarchyTest_testGetParent.logger2"));
-		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXX_STR("root")), logger1->getParent()->getName());
+		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXXNG_STR("root")), logger1->getParent()->getName());
 		LoggerPtr logger3(Logger::getLogger("HierarchyTest_testGetParent"));
-		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXX_STR("HierarchyTest_testGetParent")),
+		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXXNG_STR("HierarchyTest_testGetParent")),
 			logger1->getParent()->getName());
-		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXX_STR("HierarchyTest_testGetParent")),
+		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXXNG_STR("HierarchyTest_testGetParent")),
 			logger2->getParent()->getName());
 	}
 

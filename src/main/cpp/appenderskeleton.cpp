@@ -25,11 +25,11 @@
 #include <apr_atomic.h>
 
 
-using namespace log4cxx;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(AppenderSkeleton)
+IMPLEMENT_LOG4CXXNG_OBJECT(AppenderSkeleton)
 
 
 AppenderSkeleton::AppenderSkeleton()
@@ -119,8 +119,8 @@ void AppenderSkeleton::doAppendImpl(const spi::LoggingEventPtr& event, Pool& poo
 {
 	if (closed)
 	{
-		LogLog::error(((LogString) LOG4CXX_STR("Attempted to append to closed appender named ["))
-			+ name + LOG4CXX_STR("]."));
+		LogLog::error(((LogString) LOG4CXXNG_STR("Attempted to append to closed appender named ["))
+			+ name + LOG4CXXNG_STR("]."));
 		return;
 	}
 
@@ -159,7 +159,7 @@ void AppenderSkeleton::setErrorHandler(const spi::ErrorHandlerPtr& errorHandler1
 	{
 		// We do not throw exception here since the cause is probably a
 		// bad config file.
-		LogLog::warn(LOG4CXX_STR("You have tried to set a null error-handler."));
+		LogLog::warn(LOG4CXXNG_STR("You have tried to set a null error-handler."));
 	}
 	else
 	{
@@ -177,7 +177,7 @@ void AppenderSkeleton::setOption(const LogString& option,
 	const LogString& value)
 {
 	if (StringHelper::equalsIgnoreCase(option,
-			LOG4CXX_STR("THRESHOLD"), LOG4CXX_STR("threshold")))
+			LOG4CXXNG_STR("THRESHOLD"), LOG4CXXNG_STR("threshold")))
 	{
 		setThreshold(Level::toLevelLS(value));
 	}

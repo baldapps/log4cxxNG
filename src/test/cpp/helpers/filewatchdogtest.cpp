@@ -19,8 +19,8 @@
 #include "../logunit.h"
 #include "apr_time.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 
 /**
@@ -56,7 +56,7 @@ public:
 	{
 		apr_time_t start = apr_time_now();
 		{
-			MockWatchdog dog(File(LOG4CXX_STR("input/patternlayout1.properties")));
+			MockWatchdog dog(File(LOG4CXXNG_STR("input/patternlayout1.properties")));
 			dog.start();
 			//   wait 50 ms for thread to get rolling
 			apr_sleep(50000);

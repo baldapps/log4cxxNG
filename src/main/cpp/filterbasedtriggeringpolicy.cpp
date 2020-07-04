@@ -19,11 +19,11 @@
 #include <log4cxxNG/rolling/filterbasedtriggeringpolicy.h>
 #include <log4cxxNG/spi/filter.h>
 
-using namespace log4cxx;
-using namespace log4cxx::rolling;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::rolling;
+using namespace log4cxxng::spi;
 
-IMPLEMENT_LOG4CXX_OBJECT(FilterBasedTriggeringPolicy)
+IMPLEMENT_LOG4CXXNG_OBJECT(FilterBasedTriggeringPolicy)
 
 FilterBasedTriggeringPolicy::FilterBasedTriggeringPolicy()
 {
@@ -37,7 +37,7 @@ FilterBasedTriggeringPolicy::~FilterBasedTriggeringPolicy()
 
 bool FilterBasedTriggeringPolicy::isTriggeringEvent(
 	Appender* /* appender */,
-	const log4cxx::spi::LoggingEventPtr& event,
+	const log4cxxng::spi::LoggingEventPtr& event,
 	const LogString& /* filename */,
 	size_t /* fileLength */ )
 {
@@ -46,7 +46,7 @@ bool FilterBasedTriggeringPolicy::isTriggeringEvent(
 		return false;
 	}
 
-	for (log4cxx::spi::FilterPtr f = headFilter; f != NULL; f = f->getNext())
+	for (log4cxxng::spi::FilterPtr f = headFilter; f != NULL; f = f->getNext())
 	{
 		switch (f->decide(event))
 		{
@@ -68,7 +68,7 @@ bool FilterBasedTriggeringPolicy::isTriggeringEvent(
  * Add a filter to end of the filter list.
  * @param newFilter filter to add to end of list.
  */
-void FilterBasedTriggeringPolicy::addFilter(const log4cxx::spi::FilterPtr& newFilter)
+void FilterBasedTriggeringPolicy::addFilter(const log4cxxng::spi::FilterPtr& newFilter)
 {
 	if (headFilter == NULL)
 	{
@@ -84,12 +84,12 @@ void FilterBasedTriggeringPolicy::addFilter(const log4cxx::spi::FilterPtr& newFi
 
 void FilterBasedTriggeringPolicy::clearFilters()
 {
-	log4cxx::spi::FilterPtr empty;
+	log4cxxng::spi::FilterPtr empty;
 	headFilter = empty;
 	tailFilter = empty;
 }
 
-log4cxx::spi::FilterPtr& FilterBasedTriggeringPolicy::getFilter()
+log4cxxng::spi::FilterPtr& FilterBasedTriggeringPolicy::getFilter()
 {
 	return headFilter;
 }
@@ -97,9 +97,9 @@ log4cxx::spi::FilterPtr& FilterBasedTriggeringPolicy::getFilter()
 /**
  *  Prepares the instance for use.
  */
-void FilterBasedTriggeringPolicy::activateOptions(log4cxx::helpers::Pool& p)
+void FilterBasedTriggeringPolicy::activateOptions(log4cxxng::helpers::Pool& p)
 {
-	for (log4cxx::spi::FilterPtr f = headFilter; f != NULL; f = f->getNext())
+	for (log4cxxng::spi::FilterPtr f = headFilter; f != NULL; f = f->getNext())
 	{
 		f->activateOptions(p);
 	}

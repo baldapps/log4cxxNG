@@ -16,8 +16,8 @@
  */
 
 
-#ifndef _LOG4CXX_HELPER_PATTERN_CONVERTER_H
-#define _LOG4CXX_HELPER_PATTERN_CONVERTER_H
+#ifndef _LOG4CXXNG_HELPER_PATTERN_CONVERTER_H
+#define _LOG4CXXNG_HELPER_PATTERN_CONVERTER_H
 
 #if defined(_MSC_VER)
 	#pragma warning (push)
@@ -32,7 +32,7 @@
 #include <log4cxxNG/pattern/patternconverter.h>
 #include <log4cxxNG/pattern/formattinginfo.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace pattern
 {
@@ -46,14 +46,14 @@ typedef std::map<LogString, PatternConstructor> PatternMap;
 //                 Reinhard Deschler <reinhard.deschler@web.de>
 
 /**
- * Most of the work of the {@link log4cxx::PatternLayout PatternLayout} class
+ * Most of the work of the {@link log4cxxng::PatternLayout PatternLayout} class
  * is delegated to the PatternParser class.
  * <p>It is this class that parses conversion patterns and creates
  * a chained list of {@link PatternConverter PatternConverters}.
  *
  *
 */
-class LOG4CXX_EXPORT PatternParser
+class LOG4CXXNG_EXPORT PatternParser
 {
 		/**
 		 * Escape character for format specifier.

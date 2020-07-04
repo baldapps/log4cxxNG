@@ -20,10 +20,10 @@
 #include <log4cxxNG/spi/loggingevent.h>
 #include "../logunit.h"
 
-using namespace log4cxx;
-using namespace log4cxx::filter;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::filter;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
 
 /**
@@ -47,10 +47,10 @@ public:
 	void test1()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.filter.StringMatchFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.filter.StringMatchFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		FilterPtr filter(new StringMatchFilter());
 		Pool p;
 		filter->activateOptions(p);
@@ -64,12 +64,12 @@ public:
 	void test2()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.filter.StringMatchFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.filter.StringMatchFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		StringMatchFilterPtr filter(new StringMatchFilter());
-		filter->setStringToMatch(LOG4CXX_STR("Monde"));
+		filter->setStringToMatch(LOG4CXXNG_STR("Monde"));
 		Pool p;
 		filter->activateOptions(p);
 		LOGUNIT_ASSERT_EQUAL(Filter::NEUTRAL, filter->decide(event));
@@ -82,12 +82,12 @@ public:
 	void test3()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.filter.StringMatchFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.filter.StringMatchFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		StringMatchFilterPtr filter(new StringMatchFilter());
-		filter->setStringToMatch(LOG4CXX_STR("World"));
+		filter->setStringToMatch(LOG4CXXNG_STR("World"));
 		Pool p;
 		filter->activateOptions(p);
 		LOGUNIT_ASSERT_EQUAL(Filter::ACCEPT, filter->decide(event));
@@ -101,12 +101,12 @@ public:
 	void test4()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.filter.StringMatchFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.filter.StringMatchFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		StringMatchFilterPtr filter(new StringMatchFilter());
-		filter->setStringToMatch(LOG4CXX_STR("World"));
+		filter->setStringToMatch(LOG4CXXNG_STR("World"));
 		filter->setAcceptOnMatch(false);
 		Pool p;
 		filter->activateOptions(p);
@@ -120,12 +120,12 @@ public:
 	void test5()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.filter.StringMatchFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.filter.StringMatchFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		StringMatchFilterPtr filter(new StringMatchFilter());
-		filter->setStringToMatch(LOG4CXX_STR("world"));
+		filter->setStringToMatch(LOG4CXXNG_STR("world"));
 		Pool p;
 		filter->activateOptions(p);
 		LOGUNIT_ASSERT_EQUAL(Filter::NEUTRAL, filter->decide(event));

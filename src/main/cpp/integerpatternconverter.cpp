@@ -24,15 +24,15 @@
 #include <log4cxxNG/helpers/integer.h>
 #include <log4cxxNG/helpers/stringhelper.h>
 
-using namespace log4cxx;
-using namespace log4cxx::pattern;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::pattern;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(IntegerPatternConverter)
+IMPLEMENT_LOG4CXXNG_OBJECT(IntegerPatternConverter)
 
 IntegerPatternConverter::IntegerPatternConverter() :
-	PatternConverter(LOG4CXX_STR("Integer"),
-		LOG4CXX_STR("integer"))
+	PatternConverter(LOG4CXXNG_STR("Integer"),
+		LOG4CXXNG_STR("integer"))
 {
 }
 

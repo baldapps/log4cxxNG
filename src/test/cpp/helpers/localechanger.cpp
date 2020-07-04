@@ -14,14 +14,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define LOG4CXX_TEST
+#define LOG4CXXNG_TEST
 #include <log4cxxNG/private/log4cxxNG_private.h>
-#if LOG4CXX_HAS_STD_LOCALE
+#if LOG4CXXNG_HAS_STD_LOCALE
 
 #include "localechanger.h"
 #include <stdexcept>
 
-using namespace log4cxx::helpers;
+using namespace log4cxxng::helpers;
 
 /**
 *   Construction attemtps to change default locale.

@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_PATTERN_INTEGER_PATTERN_CONVERTER
-#define _LOG4CXX_PATTERN_INTEGER_PATTERN_CONVERTER
+#ifndef _LOG4CXXNG_PATTERN_INTEGER_PATTERN_CONVERTER
+#define _LOG4CXXNG_PATTERN_INTEGER_PATTERN_CONVERTER
 
 #include <log4cxxNG/pattern/patternconverter.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace pattern
 {
@@ -32,7 +32,7 @@ namespace pattern
  *
  *
  */
-class LOG4CXX_EXPORT IntegerPatternConverter : public PatternConverter
+class LOG4CXXNG_EXPORT IntegerPatternConverter : public PatternConverter
 {
 
 		/**
@@ -41,11 +41,11 @@ class LOG4CXX_EXPORT IntegerPatternConverter : public PatternConverter
 		IntegerPatternConverter();
 
 	public:
-		DECLARE_LOG4CXX_PATTERN(IntegerPatternConverter)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(IntegerPatternConverter)
-		LOG4CXX_CAST_ENTRY_CHAIN(PatternConverter)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_PATTERN(IntegerPatternConverter)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(IntegerPatternConverter)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(PatternConverter)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		 * Obtains an instance of pattern converter.
@@ -55,12 +55,12 @@ class LOG4CXX_EXPORT IntegerPatternConverter : public PatternConverter
 		static PatternConverterPtr newInstance(
 			const std::vector<LogString>& options);
 
-		void format(const log4cxx::helpers::ObjectPtr& obj,
+		void format(const log4cxxng::helpers::ObjectPtr& obj,
 			LogString& toAppendTo,
-			log4cxx::helpers::Pool& p) const;
+			log4cxxng::helpers::Pool& p) const;
 };
 
-LOG4CXX_PTR_DEF(IntegerPatternConverter);
+LOG4CXXNG_PTR_DEF(IntegerPatternConverter);
 
 }
 }

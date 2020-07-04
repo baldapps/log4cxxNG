@@ -28,12 +28,12 @@
 #include <log4cxxNG/helpers/inputstreamreader.h>
 #include <log4cxxNG/helpers/fileinputstream.h>
 
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 	#include <CoreFoundation/CFString.h>
 #endif
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 
 LOGUNIT_CLASS(FileTestCase)
@@ -45,13 +45,13 @@ LOGUNIT_CLASS(FileTestCase)
 	LOGUNIT_TEST(propertyRead);
 	LOGUNIT_TEST(propertyExists);
 	LOGUNIT_TEST(fileWrite1);
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 	LOGUNIT_TEST(wcharConstructor);
 #endif
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 	LOGUNIT_TEST(unicharConstructor);
 #endif
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 	LOGUNIT_TEST(cfstringConstructor);
 #endif
 	LOGUNIT_TEST(copyConstructor);
@@ -63,7 +63,7 @@ public:
 	void defaultConstructor()
 	{
 		File defFile;
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR(""), defFile.getPath());
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR(""), defFile.getPath());
 	}
 
 
@@ -96,7 +96,7 @@ public:
 	}
 
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 	void wcharConstructor()
 	{
 		File propFile(L"input/patternLayout1.properties");
@@ -106,10 +106,10 @@ public:
 	}
 #endif
 
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 	void unicharConstructor()
 	{
-		const log4cxx::UniChar filename[] = { 'i', 'n', 'p', 'u', 't', '/',
+		const log4cxxng::UniChar filename[] = { 'i', 'n', 'p', 'u', 't', '/',
 				'p', 'a', 't', 't', 'e', 'r', 'n', 'L', 'a', 'y', 'o', 'u', 't', '1', '.',
 				'p', 'r', 'o', 'p', 'e', 'r', 't', 'i', 'e', 's', 0
 			};
@@ -120,7 +120,7 @@ public:
 	}
 #endif
 
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 	void cfstringConstructor()
 	{
 		File propFile(CFSTR("input/patternLayout.properties"));
@@ -155,7 +155,7 @@ public:
 		InputStreamPtr propStream = new FileInputStream(propFile);
 		InputStreamReaderPtr propReader = new InputStreamReader(propStream);
 		LogString props(propReader->read(pool));
-		LogString line1(LOG4CXX_STR("# Licensed to the Apache Software Foundation (ASF) under one or more"));
+		LogString line1(LOG4CXXNG_STR("# Licensed to the Apache Software Foundation (ASF) under one or more"));
 		LOGUNIT_ASSERT_EQUAL(line1, props.substr(0, line1.length()));
 	}
 
@@ -170,16 +170,16 @@ public:
 	void fileWrite1()
 	{
 		OutputStreamPtr fos =
-			new FileOutputStream(LOG4CXX_STR("output/fileWrite1.txt"));
+			new FileOutputStream(LOG4CXXNG_STR("output/fileWrite1.txt"));
 		OutputStreamWriterPtr osw = new OutputStreamWriter(fos);
 
 		Pool pool;
-		LogString greeting(LOG4CXX_STR("Hello, World"));
-		greeting.append(LOG4CXX_EOL);
+		LogString greeting(LOG4CXXNG_STR("Hello, World"));
+		greeting.append(LOG4CXXNG_EOL);
 		osw->write(greeting, pool);
 
 		InputStreamPtr is =
-			new FileInputStream(LOG4CXX_STR("output/fileWrite1.txt"));
+			new FileInputStream(LOG4CXXNG_STR("output/fileWrite1.txt"));
 		InputStreamReaderPtr isr = new InputStreamReader(is);
 		LogString reply = isr->read(pool);
 

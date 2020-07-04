@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_CONDITION_H
-#define _LOG4CXX_HELPERS_CONDITION_H
+#ifndef _LOG4CXXNG_HELPERS_CONDITION_H
+#define _LOG4CXXNG_HELPERS_CONDITION_H
 
 #include <log4cxxNG/log4cxxNG.h>
 #include <log4cxxNG/helpers/mutex.h>
@@ -25,7 +25,7 @@ extern "C" {
 	struct apr_thread_cond_t;
 }
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -36,7 +36,7 @@ class Pool;
  *   notified by another thread to resume.  This class should have
  *   similar semantics to java.util.concurrent.locks.Condition.
  */
-class LOG4CXX_EXPORT Condition
+class LOG4CXXNG_EXPORT Condition
 {
 	public:
 		/**
@@ -44,7 +44,7 @@ class LOG4CXX_EXPORT Condition
 		 *  @param p pool on which condition will be created.  Needs to be
 		 *  longer-lived than created instance.
 		 */
-		Condition(log4cxx::helpers::Pool& p);
+		Condition(log4cxxng::helpers::Pool& p);
 		/**
 		 *  Destructor.
 		 */
@@ -52,7 +52,7 @@ class LOG4CXX_EXPORT Condition
 		/**
 		 *   Signal all waiting threads.
 		 */
-		log4cxx_status_t signalAll();
+		log4cxxng_status_t signalAll();
 		/**
 		 *  Await signaling of condition.
 		 *  @param lock lock associated with condition, calling thread must
@@ -68,6 +68,6 @@ class LOG4CXX_EXPORT Condition
 		Condition& operator=(const Condition&);
 };
 } // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_CONDITION_H
+#endif //_LOG4CXXNG_HELPERS_CONDITION_H

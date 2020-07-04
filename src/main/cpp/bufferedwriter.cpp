@@ -18,10 +18,10 @@
 #include <log4cxxNG/helpers/bufferedwriter.h>
 #include <log4cxxNG/helpers/pool.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(BufferedWriter)
+IMPLEMENT_LOG4CXXNG_OBJECT(BufferedWriter)
 
 BufferedWriter::BufferedWriter(WriterPtr& out1)
 	: out(out1), sz(1024)

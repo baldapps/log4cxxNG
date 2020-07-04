@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-#if !defined(_LOG4CXX_ROLLING_FILE_RENAME_ACTION_H)
-#define _LOG4CXX_ROLLING_FILE_RENAME_ACTION_H
+#if !defined(_LOG4CXXNG_ROLLING_FILE_RENAME_ACTION_H)
+#define _LOG4CXXNG_ROLLING_FILE_RENAME_ACTION_H
 
 #include <log4cxxNG/rolling/action.h>
 #include <log4cxxNG/file.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace rolling
 {
@@ -33,11 +33,11 @@ class FileRenameAction : public Action
 		const File destination;
 		bool renameEmptyFile;
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(FileRenameAction)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(FileRenameAction)
-		LOG4CXX_CAST_ENTRY_CHAIN(Action)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(FileRenameAction)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(FileRenameAction)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(Action)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		 * Constructor.
@@ -51,10 +51,10 @@ class FileRenameAction : public Action
 		 *
 		 * @return true if successful.
 		 */
-		virtual bool execute(log4cxx::helpers::Pool& pool) const;
+		virtual bool execute(log4cxxng::helpers::Pool& pool) const;
 };
 
-LOG4CXX_PTR_DEF(FileRenameAction);
+LOG4CXXNG_PTR_DEF(FileRenameAction);
 
 }
 }

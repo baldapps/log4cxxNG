@@ -21,11 +21,11 @@
 #include <log4cxxNG/layout.h>
 #include <log4cxxNG/helpers/stringhelper.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::spi;
 
-IMPLEMENT_LOG4CXX_OBJECT(WriterAppender)
+IMPLEMENT_LOG4CXXNG_OBJECT(WriterAppender)
 
 WriterAppender::WriterAppender()
 {
@@ -34,7 +34,7 @@ WriterAppender::WriterAppender()
 }
 
 WriterAppender::WriterAppender(const LayoutPtr& layout1,
-	log4cxx::helpers::WriterPtr& writer1)
+	log4cxxng::helpers::WriterPtr& writer1)
 	: AppenderSkeleton(layout1), writer(writer1)
 {
 	Pool p;
@@ -63,16 +63,16 @@ void WriterAppender::activateOptions(Pool& p)
 	if (layout == 0)
 	{
 		errorHandler->error(
-			((LogString) LOG4CXX_STR("No layout set for the appender named ["))
-			+ name + LOG4CXX_STR("]."));
+			((LogString) LOG4CXXNG_STR("No layout set for the appender named ["))
+			+ name + LOG4CXXNG_STR("]."));
 		errors++;
 	}
 
 	if (writer == 0)
 	{
 		errorHandler->error(
-			((LogString) LOG4CXX_STR("No writer set for the appender named ["))
-			+ name + LOG4CXX_STR("]."));
+			((LogString) LOG4CXXNG_STR("No writer set for the appender named ["))
+			+ name + LOG4CXXNG_STR("]."));
 		errors++;
 	}
 
@@ -110,7 +110,7 @@ bool WriterAppender::checkEntryConditions() const
 	{
 		if (!warnedClosed)
 		{
-			LogLog::warn(LOG4CXX_STR("Not allowed to write to a closed appender."));
+			LogLog::warn(LOG4CXXNG_STR("Not allowed to write to a closed appender."));
 			warnedClosed = true;
 		}
 
@@ -122,8 +122,8 @@ bool WriterAppender::checkEntryConditions() const
 		if (warnedNoWriter)
 		{
 			errorHandler->error(
-				LogString(LOG4CXX_STR("No output stream or file set for the appender named [")) +
-				name + LOG4CXX_STR("]."));
+				LogString(LOG4CXXNG_STR("No output stream or file set for the appender named [")) +
+				name + LOG4CXXNG_STR("]."));
 			warnedNoWriter = true;
 		}
 
@@ -133,8 +133,8 @@ bool WriterAppender::checkEntryConditions() const
 	if (layout == 0)
 	{
 		errorHandler->error(
-			LogString(LOG4CXX_STR("No layout set for the appender named [")) +
-			name + LOG4CXX_STR("]."));
+			LogString(LOG4CXXNG_STR("No layout set for the appender named [")) +
+			name + LOG4CXXNG_STR("]."));
 		return false;
 	}
 
@@ -185,7 +185,7 @@ void WriterAppender::closeWriter()
 		}
 		catch (IOException& e)
 		{
-			LogLog::error(LogString(LOG4CXX_STR("Could not close writer for WriterAppender named ")) + name, e);
+			LogLog::error(LogString(LOG4CXXNG_STR("Could not close writer for WriterAppender named ")) + name, e);
 		}
 	}
 
@@ -211,9 +211,9 @@ WriterPtr WriterAppender::createWriter(OutputStreamPtr& os)
 	else
 	{
 		if (StringHelper::equalsIgnoreCase(enc,
-				LOG4CXX_STR("utf-16"), LOG4CXX_STR("UTF-16")))
+				LOG4CXXNG_STR("utf-16"), LOG4CXXNG_STR("UTF-16")))
 		{
-			encoder = CharsetEncoder::getEncoder(LOG4CXX_STR("UTF-16BE"));
+			encoder = CharsetEncoder::getEncoder(LOG4CXXNG_STR("UTF-16BE"));
 		}
 		else
 		{
@@ -223,8 +223,8 @@ WriterPtr WriterAppender::createWriter(OutputStreamPtr& os)
 		if (encoder == NULL)
 		{
 			encoder = CharsetEncoder::getDefaultEncoder();
-			LogLog::warn(LOG4CXX_STR("Error initializing output writer."));
-			LogLog::warn(LOG4CXX_STR("Unsupported encoding?"));
+			LogLog::warn(LOG4CXXNG_STR("Error initializing output writer."));
+			LogLog::warn(LOG4CXXNG_STR("Unsupported encoding?"));
 		}
 	}
 
@@ -298,7 +298,7 @@ bool WriterAppender::requiresLayout() const
 
 void WriterAppender::setOption(const LogString& option, const LogString& value)
 {
-	if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("ENCODING"), LOG4CXX_STR("encoding")))
+	if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("ENCODING"), LOG4CXXNG_STR("encoding")))
 	{
 		setEncoding(value);
 	}

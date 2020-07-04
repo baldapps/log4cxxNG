@@ -30,11 +30,11 @@
 #include <apr_thread_proc.h>
 #include <log4cxxNG/helpers/socketoutputstream.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::net;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::net;
 
-IMPLEMENT_LOG4CXX_OBJECT(SocketAppender)
+IMPLEMENT_LOG4CXXNG_OBJECT(SocketAppender)
 
 
 // The default port number of remote logging server (4560)
@@ -77,7 +77,7 @@ int SocketAppender::getDefaultPort() const
 	return DEFAULT_PORT;
 }
 
-void SocketAppender::setSocket(log4cxx::helpers::SocketPtr& socket, Pool& p)
+void SocketAppender::setSocket(log4cxxng::helpers::SocketPtr& socket, Pool& p)
 {
 	LOCK_W sync(mutex);
 
@@ -100,7 +100,7 @@ void SocketAppender::cleanUp(Pool& p)
 	{}
 }
 
-void SocketAppender::append(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& p)
+void SocketAppender::append(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& p)
 {
 	if (oos == 0)
 	{
@@ -120,7 +120,7 @@ void SocketAppender::append(const spi::LoggingEventPtr& event, log4cxx::helpers:
 	catch (std::exception& e)
 	{
 		oos = 0;
-		LogLog::warn(LOG4CXX_STR("Detected problem with connection: "), e);
+		LogLog::warn(LOG4CXXNG_STR("Detected problem with connection: "), e);
 
 		if (getReconnectionDelay() > 0)
 		{

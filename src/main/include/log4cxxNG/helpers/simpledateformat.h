@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_SIMPLE_DATE_FORMAT_H
-#define _LOG4CXX_HELPERS_SIMPLE_DATE_FORMAT_H
+#ifndef _LOG4CXXNG_HELPERS_SIMPLE_DATE_FORMAT_H
+#define _LOG4CXXNG_HELPERS_SIMPLE_DATE_FORMAT_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -33,7 +33,7 @@
 
 using std::locale;
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -42,14 +42,14 @@ namespace SimpleDateFormatImpl
 class PatternToken;
 }
 
-LOG4CXX_LIST_DEF(PatternTokenList, log4cxx::helpers::SimpleDateFormatImpl::PatternToken*);
+LOG4CXXNG_LIST_DEF(PatternTokenList, log4cxxng::helpers::SimpleDateFormatImpl::PatternToken*);
 
 
 /**
  * Concrete class for formatting and parsing dates in a
  * locale-sensitive manner.
  */
-class LOG4CXX_EXPORT SimpleDateFormat : public DateFormat
+class LOG4CXXNG_EXPORT SimpleDateFormat : public DateFormat
 {
 	public:
 		/**
@@ -63,8 +63,8 @@ class LOG4CXX_EXPORT SimpleDateFormat : public DateFormat
 		~SimpleDateFormat();
 
 		virtual void format(LogString& s,
-			log4cxx_time_t tm,
-			log4cxx::helpers::Pool& p) const;
+			log4cxxng_time_t tm,
+			log4cxxng::helpers::Pool& p) const;
 
 		/**
 		 * Set time zone.
@@ -89,7 +89,7 @@ class LOG4CXX_EXPORT SimpleDateFormat : public DateFormat
 
 
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
@@ -97,4 +97,4 @@ class LOG4CXX_EXPORT SimpleDateFormat : public DateFormat
 
 
 
-#endif // _LOG4CXX_HELPERS_SIMPLE_DATE_FORMAT_H
+#endif // _LOG4CXXNG_HELPERS_SIMPLE_DATE_FORMAT_H

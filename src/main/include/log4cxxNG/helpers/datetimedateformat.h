@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_DATE_TIME_DATE_FORMAT_H
-#define _LOG4CXX_HELPERS_DATE_TIME_DATE_FORMAT_H
+#ifndef _LOG4CXXNG_HELPERS_DATE_TIME_DATE_FORMAT_H
+#define _LOG4CXXNG_HELPERS_DATE_TIME_DATE_FORMAT_H
 
 #include <log4cxxNG/helpers/simpledateformat.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -28,15 +28,15 @@ namespace helpers
 Formats a date in the format <b>dd MMM yyyy HH:mm:ss,SSS</b> for example,
 "06 Nov 1994 15:49:37,459".
 */
-class LOG4CXX_EXPORT DateTimeDateFormat : public SimpleDateFormat
+class LOG4CXXNG_EXPORT DateTimeDateFormat : public SimpleDateFormat
 {
 	public:
 		DateTimeDateFormat()
-			: SimpleDateFormat(LOG4CXX_STR("dd MMM yyyy HH:mm:ss,SSS")) {}
+			: SimpleDateFormat(LOG4CXXNG_STR("dd MMM yyyy HH:mm:ss,SSS")) {}
 		DateTimeDateFormat(const std::locale* locale)
-			: SimpleDateFormat(LOG4CXX_STR("dd MMM yyyy HH:mm:ss,SSS"), locale) {}
+			: SimpleDateFormat(LOG4CXXNG_STR("dd MMM yyyy HH:mm:ss,SSS"), locale) {}
 };
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif // _LOG4CXX_HELPERS_DATE_TIME_DATE_FORMAT_H
+#endif // _LOG4CXXNG_HELPERS_DATE_TIME_DATE_FORMAT_H

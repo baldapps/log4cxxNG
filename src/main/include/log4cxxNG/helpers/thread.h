@@ -15,21 +15,21 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_THREAD_H
-#define _LOG4CXX_HELPERS_THREAD_H
+#ifndef _LOG4CXXNG_HELPERS_THREAD_H
+#define _LOG4CXXNG_HELPERS_THREAD_H
 
 #include <log4cxxNG/log4cxxNG.h>
 #include <log4cxxNG/helpers/pool.h>
 
-#if !defined(LOG4CXX_THREAD_FUNC)
+#if !defined(LOG4CXXNG_THREAD_FUNC)
 	#if defined(_WIN32)
 		#if defined(__MINGW32__)
-			#define LOG4CXX_THREAD_FUNC
+			#define LOG4CXXNG_THREAD_FUNC
 		#else
-			#define LOG4CXX_THREAD_FUNC __stdcall
+			#define LOG4CXXNG_THREAD_FUNC __stdcall
 		#endif
 	#else
-		#define LOG4CXX_THREAD_FUNC
+		#define LOG4CXXNG_THREAD_FUNC
 	#endif
 #endif
 
@@ -40,23 +40,23 @@ extern "C" {
 }
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
 class Pool;
 class ThreadLocal;
 
-typedef void* (LOG4CXX_THREAD_FUNC* Runnable)(apr_thread_t* thread, void* data);
+typedef void* (LOG4CXXNG_THREAD_FUNC* Runnable)(apr_thread_t* thread, void* data);
 namespace ThreadLaunch
 {
-extern "C" void* LOG4CXX_THREAD_FUNC launcher(apr_thread_t* thread, void* data);
+extern "C" void* LOG4CXXNG_THREAD_FUNC launcher(apr_thread_t* thread, void* data);
 }
 
 /**
  *  This class implements an approximation of java.util.Thread.
  */
-class LOG4CXX_EXPORT Thread
+class LOG4CXXNG_EXPORT Thread
 {
 	public:
 		/**
@@ -114,9 +114,9 @@ class LOG4CXX_EXPORT Thread
 		apr_thread_cond_t* interruptedCondition;
 		Thread(const Thread&);
 		Thread& operator=(const Thread&);
-		friend void* LOG4CXX_THREAD_FUNC ThreadLaunch::launcher(apr_thread_t* thread, void* data);
+		friend void* LOG4CXXNG_THREAD_FUNC ThreadLaunch::launcher(apr_thread_t* thread, void* data);
 };
 } // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_THREAD_H
+#endif //_LOG4CXXNG_HELPERS_THREAD_H

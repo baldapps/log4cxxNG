@@ -15,24 +15,24 @@
  * limitations under the License.
  */
 
-#if !defined(_LOG4CXX_ROLLING_ROLLOVER_DESCRIPTION_H)
-#define _LOG4CXX_ROLLING_ROLLOVER_DESCRIPTION_H
+#if !defined(_LOG4CXXNG_ROLLING_ROLLOVER_DESCRIPTION_H)
+#define _LOG4CXXNG_ROLLING_ROLLOVER_DESCRIPTION_H
 
 #include <log4cxxNG/portability.h>
 #include <log4cxxNG/rolling/action.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace rolling
 {
 
 
-class RolloverDescription : public log4cxx::helpers::ObjectImpl
+class RolloverDescription : public log4cxxng::helpers::ObjectImpl
 {
-		DECLARE_LOG4CXX_OBJECT(RolloverDescription)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(RolloverDescription)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(RolloverDescription)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(RolloverDescription)
+		END_LOG4CXXNG_CAST_MAP()
 		/**
 		 * Active log file name after rollover.
 		 */
@@ -96,7 +96,7 @@ class RolloverDescription : public log4cxx::helpers::ObjectImpl
 		ActionPtr getAsynchronous() const;
 };
 
-LOG4CXX_PTR_DEF(RolloverDescription);
+LOG4CXXNG_PTR_DEF(RolloverDescription);
 
 }
 }

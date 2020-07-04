@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_NET_TELNET_APPENDER_H
-#define _LOG4CXX_NET_TELNET_APPENDER_H
+#ifndef _LOG4CXXNG_NET_TELNET_APPENDER_H
+#define _LOG4CXXNG_NET_TELNET_APPENDER_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -32,7 +32,7 @@
 #include <vector>
 #include <log4cxxNG/helpers/charsetencoder.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -40,8 +40,8 @@ class ByteBuffer;
 }
 namespace net
 {
-typedef log4cxx::helpers::SocketPtr Connection;
-LOG4CXX_LIST_DEF(ConnectionList, Connection);
+typedef log4cxxng::helpers::SocketPtr Connection;
+LOG4CXXNG_LIST_DEF(ConnectionList, Connection);
 
 /**
 <p>The TelnetAppender is a log4cxx appender that specializes in
@@ -68,7 +68,7 @@ servlet.
 <td>5875</td>
 </table>
 */
-class LOG4CXX_EXPORT TelnetAppender : public AppenderSkeleton
+class LOG4CXXNG_EXPORT TelnetAppender : public AppenderSkeleton
 {
 		class SocketHandler;
 		friend class SocketHandler;
@@ -78,11 +78,11 @@ class LOG4CXX_EXPORT TelnetAppender : public AppenderSkeleton
 		int port;
 
 	public:
-		DECLARE_LOG4CXX_OBJECT(TelnetAppender)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(TelnetAppender)
-		LOG4CXX_CAST_ENTRY_CHAIN(AppenderSkeleton)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(TelnetAppender)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(TelnetAppender)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(AppenderSkeleton)
+		END_LOG4CXXNG_CAST_MAP()
 
 		TelnetAppender();
 		~TelnetAppender();
@@ -101,7 +101,7 @@ class LOG4CXX_EXPORT TelnetAppender : public AppenderSkeleton
 
 		/** all of the options have been set, create the socket handler and
 		wait for connections. */
-		void activateOptions(log4cxx::helpers::Pool& p);
+		void activateOptions(log4cxxng::helpers::Pool& p);
 
 		/**
 		Set options
@@ -132,7 +132,7 @@ class LOG4CXX_EXPORT TelnetAppender : public AppenderSkeleton
 	protected:
 		/** Handles a log event.  For this appender, that means writing the
 		message to each connected client.  */
-		virtual void append(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& p) ;
+		virtual void append(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& p) ;
 
 		//---------------------------------------------------------- SocketHandler:
 
@@ -141,25 +141,25 @@ class LOG4CXX_EXPORT TelnetAppender : public AppenderSkeleton
 		TelnetAppender(const TelnetAppender&);
 		TelnetAppender& operator=(const TelnetAppender&);
 
-		void write(log4cxx::helpers::ByteBuffer&);
-		void writeStatus(const log4cxx::helpers::SocketPtr& socket, const LogString& msg, log4cxx::helpers::Pool& p);
+		void write(log4cxxng::helpers::ByteBuffer&);
+		void writeStatus(const log4cxxng::helpers::SocketPtr& socket, const LogString& msg, log4cxxng::helpers::Pool& p);
 		ConnectionList connections;
 		LogString encoding;
-		log4cxx::helpers::CharsetEncoderPtr encoder;
+		log4cxxng::helpers::CharsetEncoderPtr encoder;
 		helpers::ServerSocket* serverSocket;
 		helpers::Thread sh;
 		size_t activeConnections;
-		static void* LOG4CXX_THREAD_FUNC acceptConnections(apr_thread_t* thread, void* data);
+		static void* LOG4CXXNG_THREAD_FUNC acceptConnections(apr_thread_t* thread, void* data);
 }; // class TelnetAppender
 
-LOG4CXX_PTR_DEF(TelnetAppender);
+LOG4CXXNG_PTR_DEF(TelnetAppender);
 } // namespace net
-} // namespace log4cxx
+} // namespace log4cxxng
 
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
 #endif
 
-#endif // _LOG4CXX_NET_TELNET_APPENDER_H
+#endif // _LOG4CXXNG_NET_TELNET_APPENDER_H
 

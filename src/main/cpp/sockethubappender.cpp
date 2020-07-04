@@ -32,14 +32,14 @@
 #include <log4cxxNG/helpers/socketoutputstream.h>
 #include <log4cxxNG/helpers/exception.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::net;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::net;
+using namespace log4cxxng::spi;
 
 #if APR_HAS_THREADS
 
-IMPLEMENT_LOG4CXX_OBJECT(SocketHubAppender)
+IMPLEMENT_LOG4CXXNG_OBJECT(SocketHubAppender)
 
 int SocketHubAppender::DEFAULT_PORT = 4560;
 
@@ -67,11 +67,11 @@ void SocketHubAppender::activateOptions(Pool& /* p */ )
 void SocketHubAppender::setOption(const LogString& option,
 	const LogString& value)
 {
-	if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("PORT"), LOG4CXX_STR("port")))
+	if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("PORT"), LOG4CXXNG_STR("port")))
 	{
 		setPort(OptionConverter::toInt(value, DEFAULT_PORT));
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("LOCATIONINFO"), LOG4CXX_STR("locationinfo")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("LOCATIONINFO"), LOG4CXXNG_STR("locationinfo")))
 	{
 		setLocationInfo(OptionConverter::toBoolean(value, true));
 	}
@@ -95,7 +95,7 @@ void SocketHubAppender::close()
 		closed = true;
 	}
 
-	LogLog::debug(LOG4CXX_STR("closing SocketHubAppender ") + getName());
+	LogLog::debug(LOG4CXXNG_STR("closing SocketHubAppender ") + getName());
 	//
 	//  wait until the server thread completes
 	//
@@ -103,7 +103,7 @@ void SocketHubAppender::close()
 
 	LOCK_W sync(mutex);
 	// close all of the connections
-	LogLog::debug(LOG4CXX_STR("closing client connections"));
+	LogLog::debug(LOG4CXXNG_STR("closing client connections"));
 
 	for (std::vector<helpers::ObjectOutputStreamPtr>::iterator iter = streams.begin();
 		iter != streams.end();
@@ -117,7 +117,7 @@ void SocketHubAppender::close()
 			}
 			catch (SocketException& e)
 			{
-				LogLog::error(LOG4CXX_STR("could not close socket: "), e);
+				LogLog::error(LOG4CXXNG_STR("could not close socket: "), e);
 			}
 		}
 	}
@@ -125,8 +125,8 @@ void SocketHubAppender::close()
 	streams.erase(streams.begin(), streams.end());
 
 
-	LogLog::debug(LOG4CXX_STR("SocketHubAppender ")
-		+ getName() + LOG4CXX_STR(" closed"));
+	LogLog::debug(LOG4CXXNG_STR("SocketHubAppender ")
+		+ getName() + LOG4CXXNG_STR(" closed"));
 }
 
 void SocketHubAppender::append(const spi::LoggingEventPtr& event, Pool& p)
@@ -168,7 +168,7 @@ void SocketHubAppender::append(const spi::LoggingEventPtr& event, Pool& p)
 			// there was an io exception so just drop the connection
 			it = streams.erase(it);
 			itEnd = streams.end();
-			LogLog::debug(LOG4CXX_STR("dropped connection"), e);
+			LogLog::debug(LOG4CXXNG_STR("dropped connection"), e);
 		}
 	}
 }
@@ -191,7 +191,7 @@ void* APR_THREAD_FUNC SocketHubAppender::monitor(apr_thread_t* /* thread */, voi
 	}
 	catch (SocketException& e)
 	{
-		LogLog::error(LOG4CXX_STR("exception setting timeout, shutting down server socket."), e);
+		LogLog::error(LOG4CXXNG_STR("exception setting timeout, shutting down server socket."), e);
 		delete serverSocket;
 		return NULL;
 	}
@@ -212,12 +212,12 @@ void* APR_THREAD_FUNC SocketHubAppender::monitor(apr_thread_t* /* thread */, voi
 		}
 		catch (SocketException& e)
 		{
-			LogLog::error(LOG4CXX_STR("exception accepting socket, shutting down server socket."), e);
+			LogLog::error(LOG4CXXNG_STR("exception accepting socket, shutting down server socket."), e);
 			stopRunning = true;
 		}
 		catch (IOException& e)
 		{
-			LogLog::error(LOG4CXX_STR("exception accepting socket."), e);
+			LogLog::error(LOG4CXXNG_STR("exception accepting socket."), e);
 		}
 
 		// if there was a socket accepted
@@ -226,11 +226,11 @@ void* APR_THREAD_FUNC SocketHubAppender::monitor(apr_thread_t* /* thread */, voi
 			try
 			{
 				InetAddressPtr remoteAddress = socket->getInetAddress();
-				LogLog::debug(LOG4CXX_STR("accepting connection from ")
+				LogLog::debug(LOG4CXXNG_STR("accepting connection from ")
 					+ remoteAddress->getHostName()
-					+ LOG4CXX_STR(" (")
+					+ LOG4CXXNG_STR(" (")
 					+ remoteAddress->getHostAddress()
-					+ LOG4CXX_STR(")"));
+					+ LOG4CXXNG_STR(")"));
 
 				// add it to the oosList.
 				LOCK_W sync(pThis->mutex);
@@ -241,7 +241,7 @@ void* APR_THREAD_FUNC SocketHubAppender::monitor(apr_thread_t* /* thread */, voi
 			}
 			catch (IOException& e)
 			{
-				LogLog::error(LOG4CXX_STR("exception creating output stream on socket."), e);
+				LogLog::error(LOG4CXXNG_STR("exception creating output stream on socket."), e);
 			}
 		}
 

@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_FILTER_ANDFILTER_H
-#define _LOG4CXX_FILTER_ANDFILTER_H
+#ifndef _LOG4CXXNG_FILTER_ANDFILTER_H
+#define _LOG4CXXNG_FILTER_ANDFILTER_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -26,7 +26,7 @@
 
 #include <log4cxxNG/spi/filter.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace filter
 {
@@ -74,31 +74,31 @@ namespace filter
  *
  *
  */
-class LOG4CXX_EXPORT AndFilter: public log4cxx::spi::Filter
+class LOG4CXXNG_EXPORT AndFilter: public log4cxxng::spi::Filter
 {
 	private:
-		log4cxx::spi::FilterPtr headFilter;
-		log4cxx::spi::FilterPtr tailFilter;
+		log4cxxng::spi::FilterPtr headFilter;
+		log4cxxng::spi::FilterPtr tailFilter;
 		bool acceptOnMatch;
 		AndFilter(const AndFilter&);
 		AndFilter& operator=(const AndFilter&);
 
 
 	public:
-		DECLARE_LOG4CXX_OBJECT(AndFilter)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(log4cxx::spi::Filter)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(AndFilter)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(log4cxxng::spi::Filter)
+		END_LOG4CXXNG_CAST_MAP()
 
 		AndFilter();
 
-		void addFilter(const log4cxx::spi::FilterPtr& filter);
+		void addFilter(const log4cxxng::spi::FilterPtr& filter);
 
 		void setAcceptOnMatch(bool acceptOnMatch);
 
 		FilterDecision decide(const spi::LoggingEventPtr& event) const;
 };
-LOG4CXX_PTR_DEF(AndFilter);
+LOG4CXXNG_PTR_DEF(AndFilter);
 
 }
 }

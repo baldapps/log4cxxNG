@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_SPI_LOGGERFACTORY_H
-#define _LOG4CXX_SPI_LOGGERFACTORY_H
+#ifndef _LOG4CXXNG_SPI_LOGGERFACTORY_H
+#define _LOG4CXXNG_SPI_LOGGERFACTORY_H
 
 #include <log4cxxNG/logger.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 namespace spi
@@ -29,13 +29,13 @@ namespace spi
 Implement this interface to create new instances of Logger or
 a sub-class of Logger.
 */
-class LOG4CXX_EXPORT LoggerFactory : public virtual helpers::Object
+class LOG4CXXNG_EXPORT LoggerFactory : public virtual helpers::Object
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(LoggerFactory)
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(LoggerFactory)
 		virtual ~LoggerFactory() {}
 		virtual LoggerPtr makeNewLoggerInstance(
-			log4cxx::helpers::Pool& pool,
+			log4cxxng::helpers::Pool& pool,
 			const LogString& name) const = 0;
 };
 
@@ -43,4 +43,4 @@ class LOG4CXX_EXPORT LoggerFactory : public virtual helpers::Object
 }  // namespace spi
 } // namesapce log4cxx
 
-#endif //_LOG4CXX_SPI_LOGGERFACTORY_H
+#endif //_LOG4CXXNG_SPI_LOGGERFACTORY_H

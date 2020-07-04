@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_FILE_H
-#define _LOG4CXX_FILE_H
+#ifndef _LOG4CXXNG_FILE_H
+#define _LOG4CXXNG_FILE_H
 
 #include <log4cxxNG/logger.h>
 #include <log4cxxNG/logstring.h>
@@ -31,7 +31,7 @@ extern "C" {
 	struct apr_finfo_t;
 }
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -42,7 +42,7 @@ class Pool;
 /**
 * An abstract representation of file and directory path names.
 */
-class LOG4CXX_EXPORT File
+class LOG4CXXNG_EXPORT File
 {
 	public:
 		/**
@@ -59,7 +59,7 @@ class LOG4CXX_EXPORT File
 		* @param path file path in current encoding.
 		*/
 		File(const std::string& path);
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 		/**
 		*   Construct a new instance.  Use setPath to specify path using a LogString.
 		* @param path file path.
@@ -71,7 +71,7 @@ class LOG4CXX_EXPORT File
 		*/
 		File(const std::wstring& path);
 #endif
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 		/**
 		*   Construct a new instance.  Use setPath to specify path using a LogString.
 		* @param path file path.
@@ -83,7 +83,7 @@ class LOG4CXX_EXPORT File
 		*/
 		File(const std::basic_string<UniChar>& path);
 #endif
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		/**
 		*   Construct a new instance.  Use setPath to specify path using a LogString.
 		* @param path file path.
@@ -108,19 +108,19 @@ class LOG4CXX_EXPORT File
 		 *  @param p pool.
 		 *  @return true if file exists.
 		 */
-		bool exists(log4cxx::helpers::Pool& p) const;
+		bool exists(log4cxxng::helpers::Pool& p) const;
 		/**
 		 *  Determines length of file.  May not be accurate if file is current open.
 		 *  @param p pool.
 		 *  @return length of file.
 		 */
-		size_t length(log4cxx::helpers::Pool& p) const;
+		size_t length(log4cxxng::helpers::Pool& p) const;
 		/**
 		 *  Determines last modification date.
 		 *  @param p pool.
 		 *  @return length of file.
 		 */
-		log4cxx_time_t lastModified(log4cxx::helpers::Pool& p) const;
+		log4cxxng_time_t lastModified(log4cxxng::helpers::Pool& p) const;
 		/**
 		 *  Get final portion of file path.
 		 *  @return file name.
@@ -144,55 +144,55 @@ class LOG4CXX_EXPORT File
 		 *  @param p pool.
 		 *  @return APR_SUCCESS if successful.
 		 */
-		log4cxx_status_t open(apr_file_t** file, int flags,
-			int perm, log4cxx::helpers::Pool& p) const;
+		log4cxxng_status_t open(apr_file_t** file, int flags,
+			int perm, log4cxxng::helpers::Pool& p) const;
 
 		/**
 		 *   List files if current file is a directory.
 		 *   @param p pool.
 		 *   @return list of files in this directory, operation of non-directory returns empty list.
 		 */
-		std::vector<LogString> list(log4cxx::helpers::Pool& p) const;
+		std::vector<LogString> list(log4cxxng::helpers::Pool& p) const;
 
 		/**
 		 *   Delete file.
 		 *   @param p pool.
 		 *   @return true if file successfully deleted.
 		 */
-		bool deleteFile(log4cxx::helpers::Pool& p) const;
+		bool deleteFile(log4cxxng::helpers::Pool& p) const;
 		/**
 		 *   Rename file.
 		 *   @param dest new path for file.
 		 *   @param p pool.
 		 *   @return true if file successfully renamed.
 		 */
-		bool renameTo(const File& dest, log4cxx::helpers::Pool& p) const;
+		bool renameTo(const File& dest, log4cxxng::helpers::Pool& p) const;
 
 		/**
 		 *   Get path of parent directory.
 		 *   @param p pool.
 		 *   @return path of parent directory.
 		 */
-		LogString getParent(log4cxx::helpers::Pool& p) const;
+		LogString getParent(log4cxxng::helpers::Pool& p) const;
 		/**
 		 *  Make directories recursively.
 		 *  @param p pool.
 		 *  @return true if all requested directories existed or have been created.
 		 */
-		bool mkdirs(log4cxx::helpers::Pool& p) const;
+		bool mkdirs(log4cxxng::helpers::Pool& p) const;
 
 	private:
 		LogString path;
 		static char* convertBackSlashes(char*);
-		char* getPath(log4cxx::helpers::Pool& p) const;
+		char* getPath(log4cxxng::helpers::Pool& p) const;
 };
-} // namespace log4cxx
+} // namespace log4cxxng
 
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
-#define LOG4CXX_FILE(name) log4cxx::File(name)
+#define LOG4CXXNG_FILE(name) log4cxxng::File(name)
 
-#endif // _LOG4CXX_FILE_H
+#endif // _LOG4CXXNG_FILE_H

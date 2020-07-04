@@ -20,8 +20,8 @@
 #include "../insertwide.h"
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 LOGUNIT_CLASS(StringTokenizerTestCase)
 {
@@ -42,7 +42,7 @@ public:
 	void testNextTokenEmptyString()
 	{
 		LogString src;
-		LogString delim(LOG4CXX_STR(" "));
+		LogString delim(LOG4CXXNG_STR(" "));
 		StringTokenizer tokenizer(src, delim);
 
 		try
@@ -60,15 +60,15 @@ public:
 	void testHasMoreTokensEmptyString()
 	{
 		LogString src;
-		LogString delim(LOG4CXX_STR(" "));
+		LogString delim(LOG4CXXNG_STR(" "));
 		StringTokenizer tokenizer(src, delim);
 		LOGUNIT_ASSERT_EQUAL(false, tokenizer.hasMoreTokens());
 	}
 
 	void testNextTokenAllDelim()
 	{
-		LogString src(LOG4CXX_STR("==="));
-		LogString delim(LOG4CXX_STR("="));
+		LogString src(LOG4CXXNG_STR("==="));
+		LogString delim(LOG4CXXNG_STR("="));
 		StringTokenizer tokenizer(src, delim);
 
 		try
@@ -85,8 +85,8 @@ public:
 
 	void testHasMoreTokensAllDelim()
 	{
-		LogString src(LOG4CXX_STR("==="));
-		LogString delim(LOG4CXX_STR("="));
+		LogString src(LOG4CXXNG_STR("==="));
+		LogString delim(LOG4CXXNG_STR("="));
 		StringTokenizer tokenizer(src, delim);
 		LOGUNIT_ASSERT_EQUAL(false, tokenizer.hasMoreTokens());
 	}
@@ -95,11 +95,11 @@ public:
 	{
 		StringTokenizer tokenizer(src, delim);
 		LOGUNIT_ASSERT_EQUAL(true, tokenizer.hasMoreTokens());
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("log4j"), tokenizer.nextToken());
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("log4j"), tokenizer.nextToken());
 		LOGUNIT_ASSERT_EQUAL(true, tokenizer.hasMoreTokens());
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("properties"), tokenizer.nextToken());
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("properties"), tokenizer.nextToken());
 		LOGUNIT_ASSERT_EQUAL(true, tokenizer.hasMoreTokens());
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("txt"), tokenizer.nextToken());
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("txt"), tokenizer.nextToken());
 		LOGUNIT_ASSERT_EQUAL(false, tokenizer.hasMoreTokens());
 
 		try
@@ -116,43 +116,43 @@ public:
 
 	void test1()
 	{
-		LogString src(LOG4CXX_STR("log4j.properties.txt"));
-		LogString delim(LOG4CXX_STR("."));
+		LogString src(LOG4CXXNG_STR("log4j.properties.txt"));
+		LogString delim(LOG4CXXNG_STR("."));
 		testBody(src, delim);
 	}
 
 	void test2()
 	{
-		LogString src(LOG4CXX_STR(".log4j.properties.txt"));
-		LogString delim(LOG4CXX_STR("."));
+		LogString src(LOG4CXXNG_STR(".log4j.properties.txt"));
+		LogString delim(LOG4CXXNG_STR("."));
 		testBody(src, delim);
 	}
 
 	void test3()
 	{
-		LogString src(LOG4CXX_STR("log4j.properties.txt."));
-		LogString delim(LOG4CXX_STR("."));
+		LogString src(LOG4CXXNG_STR("log4j.properties.txt."));
+		LogString delim(LOG4CXXNG_STR("."));
 		testBody(src, delim);
 	}
 
 	void test4()
 	{
-		LogString src(LOG4CXX_STR("log4j..properties....txt"));
-		LogString delim(LOG4CXX_STR("."));
+		LogString src(LOG4CXXNG_STR("log4j..properties....txt"));
+		LogString delim(LOG4CXXNG_STR("."));
 		testBody(src, delim);
 	}
 
 	void test5()
 	{
-		LogString src(LOG4CXX_STR("log4j properties,txt"));
-		LogString delim(LOG4CXX_STR(" ,"));
+		LogString src(LOG4CXXNG_STR("log4j properties,txt"));
+		LogString delim(LOG4CXXNG_STR(" ,"));
 		testBody(src, delim);
 	}
 
 	void test6()
 	{
-		LogString src(LOG4CXX_STR(" log4j properties,txt "));
-		LogString delim(LOG4CXX_STR(" ,"));
+		LogString src(LOG4CXXNG_STR(" log4j properties,txt "));
+		LogString delim(LOG4CXXNG_STR(" ,"));
 		testBody(src, delim);
 	}
 

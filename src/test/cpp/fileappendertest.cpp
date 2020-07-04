@@ -19,8 +19,8 @@
 #include <log4cxxNG/patternlayout.h>
 #include "logunit.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 
 /**
@@ -42,19 +42,19 @@ public:
 	 */
 	void testDirectoryCreation()
 	{
-		File newFile(LOG4CXX_STR("output/newdir/temp.log"));
+		File newFile(LOG4CXXNG_STR("output/newdir/temp.log"));
 		Pool p;
 		newFile.deleteFile(p);
 
-		File newDir(LOG4CXX_STR("output/newdir"));
+		File newDir(LOG4CXXNG_STR("output/newdir"));
 		newDir.deleteFile(p);
 
 		FileAppenderPtr wa(new FileAppender());
-		wa->setFile(LOG4CXX_STR("output/newdir/temp.log"));
-		wa->setLayout(new PatternLayout(LOG4CXX_STR("%m%n")));
+		wa->setFile(LOG4CXXNG_STR("output/newdir/temp.log"));
+		wa->setLayout(new PatternLayout(LOG4CXXNG_STR("%m%n")));
 		wa->activateOptions(p);
 
-		LOGUNIT_ASSERT(File(LOG4CXX_STR("output/newdir/temp.log")).exists(p));
+		LOGUNIT_ASSERT(File(LOG4CXXNG_STR("output/newdir/temp.log")).exists(p));
 	}
 
 	/**

@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#define LOG4CXX_TEST 1
-#include <log4cxxNG/private/log4cxx_private.h>
+#define LOG4CXXNG_TEST 1
+#include <log4cxxNG/private/log4cxxng_private.h>
 
 
 
@@ -32,9 +32,9 @@
 #include "xlevel.h"
 #include "../testchar.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::xml;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::xml;
 
 
 LOGUNIT_CLASS(CustomLevelTestCase)
@@ -54,22 +54,22 @@ public:
 	void setUp()
 	{
 		root = Logger::getRootLogger();
-		logger = Logger::getLogger(LOG4CXX_TEST_STR("xml.CustomLevelTestCase"));
+		logger = Logger::getLogger(LOG4CXXNG_TEST_STR("xml.CustomLevelTestCase"));
 	}
 
 	void tearDown()
 	{
 		root->getLoggerRepository()->resetConfiguration();
 
-		LoggerPtr logger1 = Logger::getLogger(LOG4CXX_TEST_STR("LOG4J"));
+		LoggerPtr logger1 = Logger::getLogger(LOG4CXXNG_TEST_STR("LOG4J"));
 		logger1->setAdditivity(false);
 		logger1->addAppender(
-			new ConsoleAppender(new PatternLayout(LOG4CXX_STR("log4j: %-22c{2} - %m%n"))));
+			new ConsoleAppender(new PatternLayout(LOG4CXXNG_STR("log4j: %-22c{2} - %m%n"))));
 	}
 
 	void test1()
 	{
-		DOMConfigurator::configure(LOG4CXX_TEST_STR("input/xml/customLevel1.xml"));
+		DOMConfigurator::configure(LOG4CXXNG_TEST_STR("input/xml/customLevel1.xml"));
 		common();
 		const File witness("witness/customLevel.1");
 		LOGUNIT_ASSERT(Compare::compare(TEMP, witness));
@@ -77,7 +77,7 @@ public:
 
 	void test2()
 	{
-		DOMConfigurator::configure(LOG4CXX_TEST_STR("input/xml/customLevel2.xml"));
+		DOMConfigurator::configure(LOG4CXXNG_TEST_STR("input/xml/customLevel2.xml"));
 		common();
 		const File witness("witness/customLevel.2");
 		LOGUNIT_ASSERT(Compare::compare(TEMP, witness));
@@ -85,7 +85,7 @@ public:
 
 	void test3()
 	{
-		DOMConfigurator::configure(LOG4CXX_TEST_STR("input/xml/customLevel3.xml"));
+		DOMConfigurator::configure(LOG4CXXNG_TEST_STR("input/xml/customLevel3.xml"));
 		common();
 		const File witness("witness/customLevel.3");
 		LOGUNIT_ASSERT(Compare::compare(TEMP, witness));
@@ -93,7 +93,7 @@ public:
 
 	void test4()
 	{
-		DOMConfigurator::configure(LOG4CXX_TEST_STR("input/xml/customLevel4.xml"));
+		DOMConfigurator::configure(LOG4CXXNG_TEST_STR("input/xml/customLevel4.xml"));
 		common();
 		const File witness("witness/customLevel.4");
 		LOGUNIT_ASSERT(Compare::compare(TEMP, witness));
@@ -104,19 +104,19 @@ public:
 		int i = 0;
 		std::ostringstream os;
 		os << "Message " << ++i;
-		LOG4CXX_DEBUG(logger, os.str());
+		LOG4CXXNG_DEBUG(logger, os.str());
 		os.str("");
 		os << "Message " <<  ++i;
-		LOG4CXX_INFO(logger, os.str());
+		LOG4CXXNG_INFO(logger, os.str());
 		os.str("");
 		os << "Message " <<  ++i;
-		LOG4CXX_WARN(logger, os.str());
+		LOG4CXXNG_WARN(logger, os.str());
 		os.str("");
 		os << "Message " <<  ++i;
-		LOG4CXX_ERROR(logger, os.str());
+		LOG4CXXNG_ERROR(logger, os.str());
 		os.str("");
 		os << "Message " <<  ++i;
-		LOG4CXX_LOG(logger, XLevel::getTrace(), os.str());
+		LOG4CXXNG_LOG(logger, XLevel::getTrace(), os.str());
 	}
 };
 

@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_PATTERN_LITERAL_PATTERN_CONVERTER_H
-#define _LOG4CXX_PATTERN_LITERAL_PATTERN_CONVERTER_H
+#ifndef _LOG4CXXNG_PATTERN_LITERAL_PATTERN_CONVERTER_H
+#define _LOG4CXXNG_PATTERN_LITERAL_PATTERN_CONVERTER_H
 
 #include <log4cxxNG/pattern/loggingeventpatternconverter.h>
 
@@ -25,7 +25,7 @@
 	#pragma warning ( disable: 4251 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace pattern
 {
@@ -37,7 +37,7 @@ namespace pattern
  *
  *
  */
-class LOG4CXX_EXPORT LiteralPatternConverter : public LoggingEventPatternConverter
+class LOG4CXXNG_EXPORT LiteralPatternConverter : public LoggingEventPatternConverter
 {
 		/**
 		 * String literal.
@@ -52,23 +52,23 @@ class LOG4CXX_EXPORT LiteralPatternConverter : public LoggingEventPatternConvert
 
 
 	public:
-		DECLARE_LOG4CXX_PATTERN(LiteralPatternConverter)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(LiteralPatternConverter)
-		LOG4CXX_CAST_ENTRY_CHAIN(LoggingEventPatternConverter)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_PATTERN(LiteralPatternConverter)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(LiteralPatternConverter)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(LoggingEventPatternConverter)
+		END_LOG4CXXNG_CAST_MAP()
 
 		static PatternConverterPtr newInstance(const LogString& literal);
 
 		using LoggingEventPatternConverter::format;
 
-		void format(const log4cxx::spi::LoggingEventPtr& event,
+		void format(const log4cxxng::spi::LoggingEventPtr& event,
 			LogString& toAppendTo,
-			log4cxx::helpers::Pool& p) const;
+			log4cxxng::helpers::Pool& p) const;
 
-		void format(const log4cxx::helpers::ObjectPtr& obj,
+		void format(const log4cxxng::helpers::ObjectPtr& obj,
 			LogString& toAppendTo,
-			log4cxx::helpers::Pool& p) const;
+			log4cxxng::helpers::Pool& p) const;
 };
 
 }

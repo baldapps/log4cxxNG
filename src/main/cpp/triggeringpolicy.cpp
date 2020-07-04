@@ -17,11 +17,11 @@
 
 #include <log4cxxNG/rolling/triggeringpolicy.h>
 
-using namespace log4cxx;
-using namespace log4cxx::rolling;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::rolling;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(TriggeringPolicy)
+IMPLEMENT_LOG4CXXNG_OBJECT(TriggeringPolicy)
 
 TriggeringPolicy::~TriggeringPolicy()
 {

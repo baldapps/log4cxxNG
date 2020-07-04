@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_SPI_LOGGING_EVENT_H
-#define _LOG4CXX_SPI_LOGGING_EVENT_H
+#ifndef _LOG4CXXNG_SPI_LOGGING_EVENT_H
+#define _LOG4CXXNG_SPI_LOGGING_EVENT_H
 
 #if defined(_MSC_VER)
 	#pragma warning (push)
@@ -34,7 +34,7 @@
 #include <vector>
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -43,7 +43,7 @@ class ObjectOutputStream;
 
 namespace spi
 {
-LOG4CXX_LIST_DEF(KeySet, LogString);
+LOG4CXXNG_LIST_DEF(KeySet, LogString);
 
 /**
 The internal representation of logging events. When an affirmative
@@ -53,14 +53,14 @@ components.
 
 <p>This class is of concern to those wishing to extend log4cxx.
 */
-class LOG4CXX_EXPORT LoggingEvent :
+class LOG4CXXNG_EXPORT LoggingEvent :
 	public virtual helpers::ObjectImpl
 {
 	public:
-		DECLARE_LOG4CXX_OBJECT(LoggingEvent)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(LoggingEvent)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(LoggingEvent)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(LoggingEvent)
+		END_LOG4CXXNG_CAST_MAP()
 
 		typedef spi::KeySet KeySet;
 
@@ -81,7 +81,7 @@ class LOG4CXX_EXPORT LoggingEvent :
 		*/
 		LoggingEvent(const LogString& logger,
 			const LevelPtr& level,   const LogString& message,
-			const log4cxx::spi::LocationInfo& location);
+			const log4cxxng::spi::LocationInfo& location);
 
 		~LoggingEvent();
 
@@ -112,7 +112,7 @@ class LOG4CXX_EXPORT LoggingEvent :
 		/**Returns the time when the application started,
 		in microseconds elapsed since 01.01.1970.
 		*/
-		static log4cxx_time_t getStartTime();
+		static log4cxxng_time_t getStartTime();
 
 		/** Return the threadName of this event. */
 		inline const LogString& getThreadName() const
@@ -122,13 +122,13 @@ class LOG4CXX_EXPORT LoggingEvent :
 
 		/** The number of microseconds elapsed from 01.01.1970 until logging event
 		 was created. */
-		inline log4cxx_time_t getTimeStamp() const
+		inline log4cxxng_time_t getTimeStamp() const
 		{
 			return timeStamp;
 		}
 
 		/* Return the file where this log statement was written. */
-		inline const log4cxx::spi::LocationInfo& getLocationInformation() const
+		inline const log4cxxng::spi::LocationInfo& getLocationInformation() const
 		{
 			return locationInfo;
 		}
@@ -243,10 +243,10 @@ class LOG4CXX_EXPORT LoggingEvent :
 
 		/** The number of microseconds elapsed from 01.01.1970 until logging event
 		 was created. */
-		log4cxx_time_t timeStamp;
+		log4cxxng_time_t timeStamp;
 
 		/** The is the location where this log statement was written. */
-		const log4cxx::spi::LocationInfo locationInfo;
+		const log4cxxng::spi::LocationInfo locationInfo;
 
 
 		/** The identifier of thread in which this logging event
@@ -261,12 +261,12 @@ class LOG4CXX_EXPORT LoggingEvent :
 		LoggingEvent& operator=(const LoggingEvent&);
 		static const LogString getCurrentThreadName();
 
-		static void writeProlog(log4cxx::helpers::ObjectOutputStream& os, log4cxx::helpers::Pool& p);
+		static void writeProlog(log4cxxng::helpers::ObjectOutputStream& os, log4cxxng::helpers::Pool& p);
 
 };
 
-LOG4CXX_PTR_DEF(LoggingEvent);
-LOG4CXX_LIST_DEF(LoggingEventList, LoggingEventPtr);
+LOG4CXXNG_PTR_DEF(LoggingEvent);
+LOG4CXXNG_LIST_DEF(LoggingEventList, LoggingEventPtr);
 }
 }
 
@@ -275,4 +275,4 @@ LOG4CXX_LIST_DEF(LoggingEventList, LoggingEventPtr);
 #endif
 
 
-#endif //_LOG4CXX_SPI_LOGGING_EVENT_H
+#endif //_LOG4CXXNG_SPI_LOGGING_EVENT_H

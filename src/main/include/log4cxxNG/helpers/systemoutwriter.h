@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_SYSTEMOUTWRITER_H
-#define _LOG4CXX_HELPERS_SYSTEMOUTWRITER_H
+#ifndef _LOG4CXXNG_HELPERS_SYSTEMOUTWRITER_H
+#define _LOG4CXXNG_HELPERS_SYSTEMOUTWRITER_H
 
 #include <log4cxxNG/helpers/writer.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -28,14 +28,14 @@ namespace helpers
 /**
 *   Abstract class for writing to character streams.
 */
-class LOG4CXX_EXPORT SystemOutWriter : public Writer
+class LOG4CXXNG_EXPORT SystemOutWriter : public Writer
 {
 	public:
-		DECLARE_LOG4CXX_OBJECT(SystemOutWriter)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(SystemOutWriter)
-		LOG4CXX_CAST_ENTRY_CHAIN(Writer)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(SystemOutWriter)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(SystemOutWriter)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(Writer)
+		END_LOG4CXXNG_CAST_MAP()
 
 		SystemOutWriter();
 		~SystemOutWriter();
@@ -54,6 +54,6 @@ class LOG4CXX_EXPORT SystemOutWriter : public Writer
 
 } // namespace helpers
 
-}  //namespace log4cxx
+}  //namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_SYSTEMOUTWRITER_H
+#endif //_LOG4CXXNG_HELPERS_SYSTEMOUTWRITER_H

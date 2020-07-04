@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_DATE_FORMAT_H
-#define _LOG4CXX_HELPERS_DATE_FORMAT_H
+#ifndef _LOG4CXXNG_HELPERS_DATE_FORMAT_H
+#define _LOG4CXXNG_HELPERS_DATE_FORMAT_H
 
 #include <log4cxxNG/helpers/timezone.h>
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -30,13 +30,13 @@ namespace helpers
 *  DateFormat is an abstract class for date/time formatting
 * patterned after java.text.DateFormat.
 */
-class LOG4CXX_EXPORT DateFormat : public ObjectImpl
+class LOG4CXXNG_EXPORT DateFormat : public ObjectImpl
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(DateFormat)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(DateFormat)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(DateFormat)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(DateFormat)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		*  Destructor
@@ -44,12 +44,12 @@ class LOG4CXX_EXPORT DateFormat : public ObjectImpl
 		virtual ~DateFormat();
 
 		/**
-		* Formats an log4cxx_time_t into a date/time string.
+		* Formats an log4cxxng_time_t into a date/time string.
 		* @param s string to which the date/time string is appended.
 		* @param tm date to be formatted.
 		* @param p memory pool used during formatting.
 		*/
-		virtual void format(LogString& s, log4cxx_time_t tm, log4cxx::helpers::Pool& p) const = 0;
+		virtual void format(LogString& s, log4cxxng_time_t tm, log4cxxng::helpers::Pool& p) const = 0;
 
 		/**
 		* Sets the time zone.
@@ -65,7 +65,7 @@ class LOG4CXX_EXPORT DateFormat : public ObjectImpl
 		* @remarks This method is used by CachedDateFormat to
 		* format the milliseconds.
 		*/
-		virtual void numberFormat(LogString& s, int n, log4cxx::helpers::Pool& p) const;
+		virtual void numberFormat(LogString& s, int n, log4cxxng::helpers::Pool& p) const;
 
 
 	protected:
@@ -84,10 +84,10 @@ class LOG4CXX_EXPORT DateFormat : public ObjectImpl
 		*/
 		DateFormat& operator=(const DateFormat&);
 };
-LOG4CXX_PTR_DEF(DateFormat);
+LOG4CXXNG_PTR_DEF(DateFormat);
 
 
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_DATE_FORMAT_H
+#endif //_LOG4CXXNG_HELPERS_DATE_FORMAT_H

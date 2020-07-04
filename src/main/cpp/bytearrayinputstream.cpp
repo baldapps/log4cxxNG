@@ -22,11 +22,11 @@
 #include <log4cxxNG/helpers/transcoder.h>
 #include <algorithm>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 using namespace std;
 
-IMPLEMENT_LOG4CXX_OBJECT(ByteArrayInputStream)
+IMPLEMENT_LOG4CXXNG_OBJECT(ByteArrayInputStream)
 
 ByteArrayInputStream::ByteArrayInputStream(const std::vector<unsigned char>& bytes) :
 	buf(bytes), pos(0)

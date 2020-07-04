@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_SYSTEMERRWRITER_H
-#define _LOG4CXX_HELPERS_SYSTEMERRWRITER_H
+#ifndef _LOG4CXXNG_HELPERS_SYSTEMERRWRITER_H
+#define _LOG4CXXNG_HELPERS_SYSTEMERRWRITER_H
 
 #include <log4cxxNG/helpers/writer.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -28,14 +28,14 @@ namespace helpers
 /**
 *   Abstract class for writing to character streams.
 */
-class LOG4CXX_EXPORT SystemErrWriter : public Writer
+class LOG4CXXNG_EXPORT SystemErrWriter : public Writer
 {
 	public:
-		DECLARE_LOG4CXX_OBJECT(SystemErrWriter)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(SystemErrWriter)
-		LOG4CXX_CAST_ENTRY_CHAIN(Writer)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(SystemErrWriter)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(SystemErrWriter)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(Writer)
+		END_LOG4CXXNG_CAST_MAP()
 
 		SystemErrWriter();
 		virtual ~SystemErrWriter();
@@ -55,6 +55,6 @@ class LOG4CXX_EXPORT SystemErrWriter : public Writer
 
 } // namespace helpers
 
-}  //namespace log4cxx
+}  //namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_SYSTEMERRWRITER_H
+#endif //_LOG4CXXNG_HELPERS_SYSTEMERRWRITER_H

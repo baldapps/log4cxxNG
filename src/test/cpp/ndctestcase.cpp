@@ -26,7 +26,7 @@
 
 
 
-using namespace log4cxx;
+using namespace log4cxxng;
 
 LOGUNIT_CLASS(NDCTestCase)
 {
@@ -57,7 +57,7 @@ public:
 	{
 		NDC::push("trivial context");
 		LogString actual(NDC::pop());
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("trivial context"), actual);
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("trivial context"), actual);
 	}
 
 
@@ -84,11 +84,11 @@ public:
 
 	static void commonLog()
 	{
-		LOG4CXX_DEBUG(logger, "m1");
-		LOG4CXX_INFO(logger, "m2");
-		LOG4CXX_WARN(logger, "m3");
-		LOG4CXX_ERROR(logger, "m4");
-		LOG4CXX_FATAL(logger, "m5");
+		LOG4CXXNG_DEBUG(logger, "m1");
+		LOG4CXXNG_INFO(logger, "m2");
+		LOG4CXXNG_WARN(logger, "m3");
+		LOG4CXXNG_ERROR(logger, "m4");
+		LOG4CXXNG_FATAL(logger, "m5");
 	}
 
 	void testInherit()
@@ -99,9 +99,9 @@ public:
 		NDC::clear();
 		NDC::push("discard");
 		NDC::inherit(clone);
-		LogString expected1(LOG4CXX_STR("world"));
+		LogString expected1(LOG4CXXNG_STR("world"));
 		LOGUNIT_ASSERT_EQUAL(expected1, NDC::pop());
-		LogString expected2(LOG4CXX_STR("hello"));
+		LogString expected2(LOG4CXXNG_STR("hello"));
 		LOGUNIT_ASSERT_EQUAL(expected2, NDC::pop());
 		LogString expected3;
 		LOGUNIT_ASSERT_EQUAL(expected3, NDC::pop());

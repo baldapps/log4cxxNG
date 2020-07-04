@@ -15,10 +15,10 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_APRINITIALIZER_H
-#define _LOG4CXX_HELPERS_APRINITIALIZER_H
+#ifndef _LOG4CXXNG_HELPERS_APRINITIALIZER_H
+#define _LOG4CXXNG_HELPERS_APRINITIALIZER_H
 
-#ifndef LOG4CXX
+#ifndef LOG4CXXNG
 	#error "aprinitializer.h should only be included by log4cxx implementation"
 #endif
 
@@ -31,7 +31,7 @@ extern "C" {
 
 #include <apr_time.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -40,7 +40,7 @@ class FileWatchdog;
 class APRInitializer
 {
 	public:
-		static log4cxx_time_t initialize();
+		static log4cxxng_time_t initialize();
 		static apr_pool_t* getRootPool();
 		static apr_threadkey_t* getTlsKey();
 		static bool isDestructed;
@@ -68,6 +68,6 @@ class APRInitializer
 		~APRInitializer();
 };
 } // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_APRINITIALIZER_H
+#endif //_LOG4CXXNG_HELPERS_APRINITIALIZER_H

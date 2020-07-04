@@ -18,14 +18,14 @@
 #include <log4cxxNG/pattern/loggingeventpatternconverter.h>
 #include <vector>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace pattern
 {
 class Num343PatternConverter : public LoggingEventPatternConverter
 {
 	public:
-		DECLARE_LOG4CXX_OBJECT(Num343PatternConverter)
+		DECLARE_LOG4CXXNG_OBJECT(Num343PatternConverter)
 
 		Num343PatternConverter();
 		static PatternConverterPtr newInstance(
@@ -33,9 +33,9 @@ class Num343PatternConverter : public LoggingEventPatternConverter
 
 	protected:
 		void format(
-			const log4cxx::spi::LoggingEventPtr& event,
+			const log4cxxng::spi::LoggingEventPtr& event,
 			LogString& toAppendTo,
-			log4cxx::helpers::Pool& pool) const;
+			log4cxxng::helpers::Pool& pool) const;
 };
 }
 }

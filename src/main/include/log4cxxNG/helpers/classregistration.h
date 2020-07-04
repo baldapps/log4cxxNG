@@ -15,17 +15,17 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_CLASSREGISTRATION_H
-#define _LOG4CXX_HELPERS_CLASSREGISTRATION_H
+#ifndef _LOG4CXXNG_HELPERS_CLASSREGISTRATION_H
+#define _LOG4CXXNG_HELPERS_CLASSREGISTRATION_H
 
 #include <log4cxxNG/log4cxxNG.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
 class Class;
-class LOG4CXX_EXPORT ClassRegistration
+class LOG4CXXNG_EXPORT ClassRegistration
 {
 	public:
 		typedef const Class& (*ClassAccessor)();
@@ -35,7 +35,7 @@ class LOG4CXX_EXPORT ClassRegistration
 		ClassRegistration(const ClassRegistration&);
 		ClassRegistration& operator=(const ClassRegistration&);
 };
-}  // namespace log4cxx
+}  // namespace log4cxxng
 } // namespace helper
 
-#endif //_LOG4CXX_HELPERS_CLASSREGISTRATION_H
+#endif //_LOG4CXXNG_HELPERS_CLASSREGISTRATION_H

@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_POOL_H
-#define _LOG4CXX_HELPERS_POOL_H
+#ifndef _LOG4CXXNG_HELPERS_POOL_H
+#define _LOG4CXXNG_HELPERS_POOL_H
 
 #include <log4cxxNG/log4cxxNG.h>
 #include <string>
@@ -25,11 +25,11 @@ extern "C" {
 	struct apr_pool_t;
 }
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
-class LOG4CXX_EXPORT Pool
+class LOG4CXXNG_EXPORT Pool
 {
 	public:
 		Pool();
@@ -50,10 +50,10 @@ class LOG4CXX_EXPORT Pool
 		const bool release;
 
 	private:
-		Pool(const log4cxx::helpers::Pool&);
+		Pool(const log4cxxng::helpers::Pool&);
 		Pool& operator=(const Pool&);
 };
 } // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_POOL_H
+#endif //_LOG4CXXNG_HELPERS_POOL_H

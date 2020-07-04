@@ -20,7 +20,7 @@
 #include <log4cxxNG/spi/loggerfactory.h>
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace spi
 {
@@ -36,15 +36,15 @@ class XFactory :
 	public virtual helpers::ObjectImpl
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(XFactory)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(XFactory)
-		LOG4CXX_CAST_ENTRY(spi::LoggerFactory)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(XFactory)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(XFactory)
+		LOG4CXXNG_CAST_ENTRY(spi::LoggerFactory)
+		END_LOG4CXXNG_CAST_MAP()
 
 		XFactory();
 		virtual LoggerPtr makeNewLoggerInstance(
-			log4cxx::helpers::Pool& pool,
+			log4cxxng::helpers::Pool& pool,
 			const LogString& name) const;
 };
 
@@ -63,16 +63,16 @@ class XLogger : public Logger
 		LogString suffix;
 
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(XLogger)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(XLogger)
-		LOG4CXX_CAST_ENTRY_CHAIN(Logger)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(XLogger)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(XLogger)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(Logger)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		        Just calls the parent constuctor.
 		*/
-		XLogger(log4cxx::helpers::Pool& pool,
+		XLogger(log4cxxng::helpers::Pool& pool,
 			const LogString& name1) : Logger(pool, name1) {}
 
 		/**
@@ -84,7 +84,7 @@ class XLogger : public Logger
 		/**
 		        We introduce a new printing method in order to support {@link
 		        XLevel#LETHAL}.  */
-		void lethal(const LogString& message, const log4cxx::spi::LocationInfo& location);
+		void lethal(const LogString& message, const log4cxxng::spi::LocationInfo& location);
 
 		/**
 		        We introduce a new printing method in order to support {@link
@@ -108,7 +108,7 @@ class XLogger : public Logger
 		/**
 		        We introduce a new printing method that takes the TRACE level.
 		*/
-		void trace(const LogString& message, const log4cxx::spi::LocationInfo& location);
+		void trace(const LogString& message, const log4cxxng::spi::LocationInfo& location);
 
 		/**
 		        We introduce a new printing method that takes the TRACE level.

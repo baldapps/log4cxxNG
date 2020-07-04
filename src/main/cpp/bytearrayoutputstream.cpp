@@ -21,10 +21,10 @@
 #include <log4cxxNG/helpers/bytebuffer.h>
 #include <string.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(ByteArrayOutputStream)
+IMPLEMENT_LOG4CXXNG_OBJECT(ByteArrayOutputStream)
 
 ByteArrayOutputStream::ByteArrayOutputStream()
 {

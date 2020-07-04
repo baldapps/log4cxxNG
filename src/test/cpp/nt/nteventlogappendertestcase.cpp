@@ -26,13 +26,13 @@
 #include "../logunit.h"
 #include <log4cxxNG/helpers/date.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::nt;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::nt;
+using namespace log4cxxng::spi;
 
 /**
-   Unit tests of log4cxx::nt::NTEventLogAppender
+   Unit tests of log4cxxng::nt::NTEventLogAppender
  */
 class NTEventLogAppenderTestCase : public AppenderSkeletonTestCase
 {
@@ -51,13 +51,13 @@ class NTEventLogAppenderTestCase : public AppenderSkeletonTestCase
 
 		AppenderSkeleton* createAppenderSkeleton() const
 		{
-			return new log4cxx::nt::NTEventLogAppender();
+			return new log4cxxng::nt::NTEventLogAppender();
 		}
 
 		void testHelloWorld()
 		{
 			DWORD expectedId = 1;
-			HANDLE hEventLog = ::OpenEventLogW(NULL, L"log4cxx_test");
+			HANDLE hEventLog = ::OpenEventLogW(NULL, L"log4cxxng_test");
 
 			if (hEventLog != NULL)
 			{
@@ -80,16 +80,16 @@ class NTEventLogAppenderTestCase : public AppenderSkeletonTestCase
 			DWORD expectedTime = now.getTime() / Date::getMicrosecondsPerSecond();
 			{
 				NTEventLogAppenderPtr appender(new NTEventLogAppender());
-				appender->setSource(LOG4CXX_STR("log4cxx_test"));
-				LayoutPtr layout(new PatternLayout(LOG4CXX_STR("%c - %m%n")));
+				appender->setSource(LOG4CXXNG_STR("log4cxxng_test"));
+				LayoutPtr layout(new PatternLayout(LOG4CXXNG_STR("%c - %m%n")));
 				appender->setLayout(layout);
 				appender->activateOptions(p);
 
 				LoggingEventPtr event(new LoggingEvent(
-						LOG4CXX_STR("org.foobar"), Level::getInfo(), LOG4CXX_STR("Hello,  World"), LOG4CXX_LOCATION));
+						LOG4CXXNG_STR("org.foobar"), Level::getInfo(), LOG4CXXNG_STR("Hello,  World"), LOG4CXXNG_LOCATION));
 				appender->doAppend(event, p);
 			}
-			hEventLog = ::OpenEventLogW(NULL, L"log4cxx_test");
+			hEventLog = ::OpenEventLogW(NULL, L"log4cxxng_test");
 			LOGUNIT_ASSERT(hEventLog != NULL);
 			DWORD actualId;
 			BOOL stat = GetNumberOfEventLogRecords(hEventLog, &actualId);

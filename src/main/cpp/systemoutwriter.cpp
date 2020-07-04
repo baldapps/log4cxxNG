@@ -19,15 +19,15 @@
 #include <log4cxxNG/helpers/systemoutwriter.h>
 #include <log4cxxNG/helpers/transcoder.h>
 #include <stdio.h>
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 #include <log4cxxNG/private/log4cxxNG_private.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(SystemOutWriter)
+IMPLEMENT_LOG4CXXNG_OBJECT(SystemOutWriter)
 
 SystemOutWriter::SystemOutWriter()
 {
@@ -53,9 +53,9 @@ void SystemOutWriter::write(const LogString& str, Pool& /* p */ )
 
 bool SystemOutWriter::isWide()
 {
-#if LOG4CXX_FORCE_WIDE_CONSOLE
+#if LOG4CXXNG_FORCE_WIDE_CONSOLE
 	return true;
-#elif LOG4CXX_FORCE_BYTE_CONSOLE || !LOG4CXX_HAS_FWIDE
+#elif LOG4CXXNG_FORCE_BYTE_CONSOLE || !LOG4CXXNG_HAS_FWIDE
 	return false;
 #else
 	return fwide(stdout, 0) > 0;
@@ -64,17 +64,17 @@ bool SystemOutWriter::isWide()
 
 void SystemOutWriter::write(const LogString& str)
 {
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 
 	if (isWide())
 	{
-		LOG4CXX_ENCODE_WCHAR(msg, str);
+		LOG4CXXNG_ENCODE_WCHAR(msg, str);
 		fputws(msg.c_str(), stdout);
 		return;
 	}
 
 #endif
-	LOG4CXX_ENCODE_CHAR(msg, str);
+	LOG4CXXNG_ENCODE_CHAR(msg, str);
 	fputs(msg.c_str(), stdout);
 }
 

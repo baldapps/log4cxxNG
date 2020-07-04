@@ -21,8 +21,8 @@
 #include "../logunit.h"
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 /**
    Unit test for StringHelper.
@@ -52,7 +52,7 @@ public:
 	 */
 	void testStartsWith1()
 	{
-		LOGUNIT_ASSERT_EQUAL(true, StringHelper::startsWith(LOG4CXX_STR("foobar"), LOG4CXX_STR("foo")));
+		LOGUNIT_ASSERT_EQUAL(true, StringHelper::startsWith(LOG4CXXNG_STR("foobar"), LOG4CXXNG_STR("foo")));
 	}
 
 	/**
@@ -60,7 +60,7 @@ public:
 	 */
 	void testStartsWith2()
 	{
-		LOGUNIT_ASSERT_EQUAL(false, StringHelper::startsWith(LOG4CXX_STR("foo"), LOG4CXX_STR("foobar")));
+		LOGUNIT_ASSERT_EQUAL(false, StringHelper::startsWith(LOG4CXXNG_STR("foo"), LOG4CXXNG_STR("foobar")));
 	}
 
 	/**
@@ -68,7 +68,7 @@ public:
 	 */
 	void testStartsWith3()
 	{
-		LOGUNIT_ASSERT_EQUAL(true, StringHelper::startsWith(LOG4CXX_STR("foobar"), LOG4CXX_STR("foobar")));
+		LOGUNIT_ASSERT_EQUAL(true, StringHelper::startsWith(LOG4CXXNG_STR("foobar"), LOG4CXXNG_STR("foobar")));
 	}
 
 	/**
@@ -76,7 +76,7 @@ public:
 	 */
 	void testStartsWith4()
 	{
-		LOGUNIT_ASSERT_EQUAL(true, StringHelper::startsWith(LOG4CXX_STR("foobar"), LOG4CXX_STR("")));
+		LOGUNIT_ASSERT_EQUAL(true, StringHelper::startsWith(LOG4CXXNG_STR("foobar"), LOG4CXXNG_STR("")));
 	}
 
 	/**
@@ -84,7 +84,7 @@ public:
 	 */
 	void testStartsWith5()
 	{
-		LOGUNIT_ASSERT_EQUAL(false, StringHelper::startsWith(LOG4CXX_STR("foobar"), LOG4CXX_STR("abc")));
+		LOGUNIT_ASSERT_EQUAL(false, StringHelper::startsWith(LOG4CXXNG_STR("foobar"), LOG4CXXNG_STR("abc")));
 	}
 
 
@@ -94,7 +94,7 @@ public:
 	 */
 	void testEndsWith1()
 	{
-		LOGUNIT_ASSERT_EQUAL(true, StringHelper::endsWith(LOG4CXX_STR("foobar"), LOG4CXX_STR("bar")));
+		LOGUNIT_ASSERT_EQUAL(true, StringHelper::endsWith(LOG4CXXNG_STR("foobar"), LOG4CXXNG_STR("bar")));
 	}
 
 	/**
@@ -102,7 +102,7 @@ public:
 	 */
 	void testEndsWith2()
 	{
-		LOGUNIT_ASSERT_EQUAL(false, StringHelper::endsWith(LOG4CXX_STR("bar"), LOG4CXX_STR("foobar")));
+		LOGUNIT_ASSERT_EQUAL(false, StringHelper::endsWith(LOG4CXXNG_STR("bar"), LOG4CXXNG_STR("foobar")));
 	}
 
 	/**
@@ -110,7 +110,7 @@ public:
 	 */
 	void testEndsWith3()
 	{
-		LOGUNIT_ASSERT_EQUAL(true, StringHelper::endsWith(LOG4CXX_STR("foobar"), LOG4CXX_STR("foobar")));
+		LOGUNIT_ASSERT_EQUAL(true, StringHelper::endsWith(LOG4CXXNG_STR("foobar"), LOG4CXXNG_STR("foobar")));
 	}
 
 	/**
@@ -118,7 +118,7 @@ public:
 	 */
 	void testEndsWith4()
 	{
-		LOGUNIT_ASSERT_EQUAL(true, StringHelper::endsWith(LOG4CXX_STR("foobar"), LOG4CXX_STR("")));
+		LOGUNIT_ASSERT_EQUAL(true, StringHelper::endsWith(LOG4CXXNG_STR("foobar"), LOG4CXXNG_STR("")));
 	}
 
 	/**
@@ -126,7 +126,7 @@ public:
 	 */
 	void testEndsWith5()
 	{
-		LOGUNIT_ASSERT_EQUAL(false, StringHelper::startsWith(LOG4CXX_STR("foobar"), LOG4CXX_STR("abc")));
+		LOGUNIT_ASSERT_EQUAL(false, StringHelper::startsWith(LOG4CXXNG_STR("foobar"), LOG4CXXNG_STR("abc")));
 	}
 
 

@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_STRFTIME_DATE_FORMAT_H
-#define _LOG4CXX_HELPERS_STRFTIME_DATE_FORMAT_H
+#ifndef _LOG4CXXNG_HELPERS_STRFTIME_DATE_FORMAT_H
+#define _LOG4CXXNG_HELPERS_STRFTIME_DATE_FORMAT_H
 
 #include <log4cxxNG/helpers/dateformat.h>
 
@@ -25,7 +25,7 @@
 	#pragma warning ( disable: 4251 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -35,7 +35,7 @@ Concrete class for formatting and parsing dates in a
 locale-sensitive manner.
 
 */
-class LOG4CXX_EXPORT StrftimeDateFormat : public DateFormat
+class LOG4CXXNG_EXPORT StrftimeDateFormat : public DateFormat
 {
 	public:
 		/**
@@ -48,8 +48,8 @@ class LOG4CXX_EXPORT StrftimeDateFormat : public DateFormat
 		~StrftimeDateFormat();
 
 		virtual void format(LogString& s,
-			log4cxx_time_t tm,
-			log4cxx::helpers::Pool& p) const;
+			log4cxxng_time_t tm,
+			log4cxxng::helpers::Pool& p) const;
 
 		/**
 		*    Set time zone.
@@ -68,10 +68,10 @@ class LOG4CXX_EXPORT StrftimeDateFormat : public DateFormat
 
 
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
-#endif // _LOG4CXX_HELPERS_STRFTIME_DATE_FORMAT_H
+#endif // _LOG4CXXNG_HELPERS_STRFTIME_DATE_FORMAT_H

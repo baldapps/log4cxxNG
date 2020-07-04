@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_NET_SYSLOG_APPENDER_H
-#define _LOG4CXX_NET_SYSLOG_APPENDER_H
+#ifndef _LOG4CXXNG_NET_SYSLOG_APPENDER_H
+#define _LOG4CXXNG_NET_SYSLOG_APPENDER_H
 
 #include <log4cxxNG/appenderskeleton.h>
 #include <log4cxxNG/helpers/syslogwriter.h>
@@ -26,19 +26,19 @@
 	#pragma warning ( disable: 4251 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace net
 {
 /** Use SyslogAppender to send log messages to a remote syslog daemon.*/
-class LOG4CXX_EXPORT SyslogAppender : public AppenderSkeleton
+class LOG4CXXNG_EXPORT SyslogAppender : public AppenderSkeleton
 {
 	public:
-		DECLARE_LOG4CXX_OBJECT(SyslogAppender)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(SyslogAppender)
-		LOG4CXX_CAST_ENTRY_CHAIN(AppenderSkeleton)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(SyslogAppender)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(SyslogAppender)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(AppenderSkeleton)
+		END_LOG4CXXNG_CAST_MAP()
 
 
 
@@ -66,13 +66,13 @@ class LOG4CXX_EXPORT SyslogAppender : public AppenderSkeleton
 		*/
 		static int getFacility(const LogString& facilityName);
 
-		void append(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& p);
+		void append(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& p);
 
 		/**
 		This method returns immediately as options are activated when they
 		are set.
 		*/
-		void activateOptions(log4cxx::helpers::Pool& p);
+		void activateOptions(log4cxxng::helpers::Pool& p);
 		void setOption(const LogString& option, const LogString& value);
 
 		/**
@@ -149,13 +149,13 @@ class LOG4CXX_EXPORT SyslogAppender : public AppenderSkeleton
 		SyslogAppender(const SyslogAppender&);
 		SyslogAppender& operator=(const SyslogAppender&);
 }; // class SyslogAppender
-LOG4CXX_PTR_DEF(SyslogAppender);
+LOG4CXXNG_PTR_DEF(SyslogAppender);
 } // namespace net
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
-#endif // _LOG4CXX_NET_SYSLOG_APPENDER_H
+#endif // _LOG4CXXNG_NET_SYSLOG_APPENDER_H
 

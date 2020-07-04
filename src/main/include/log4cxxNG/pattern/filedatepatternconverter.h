@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_PATTERN_FILE_DATE_PATTERN_CONVERTER
-#define _LOG4CXX_PATTERN_FILE_DATE_PATTERN_CONVERTER
+#ifndef _LOG4CXXNG_PATTERN_FILE_DATE_PATTERN_CONVERTER
+#define _LOG4CXXNG_PATTERN_FILE_DATE_PATTERN_CONVERTER
 
 #include <log4cxxNG/pattern/patternconverter.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace pattern
 {
@@ -34,7 +34,7 @@ namespace pattern
  *
  *
  */
-class LOG4CXX_EXPORT FileDatePatternConverter
+class LOG4CXXNG_EXPORT FileDatePatternConverter
 {
 		/**
 		 * Private constructor.

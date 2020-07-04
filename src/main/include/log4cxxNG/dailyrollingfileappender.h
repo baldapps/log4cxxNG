@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_DAILYROLLINGFILEAPPENDER_H
-#define _LOG4CXX_DAILYROLLINGFILEAPPENDER_H
+#ifndef _LOG4CXXNG_DAILYROLLINGFILEAPPENDER_H
+#define _LOG4CXXNG_DAILYROLLINGFILEAPPENDER_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -29,7 +29,7 @@
 #include <log4cxxNG/spi/optionhandler.h>
 #include <log4cxxNG/rolling/rollingfileappenderskeleton.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -39,17 +39,17 @@ class Pool;
 namespace spi
 {
 class ErrorHandler;
-typedef log4cxx::helpers::ObjectPtrT<ErrorHandler> ErrorHandlerPtr;
+typedef log4cxxng::helpers::ObjectPtrT<ErrorHandler> ErrorHandlerPtr;
 }
 
 
 /**
-   DailyRollingFileAppender extends {@link log4cxx::FileAppender FileAppender} so that the
+   DailyRollingFileAppender extends {@link log4cxxng::FileAppender FileAppender} so that the
    underlying file is rolled over at a user chosen frequency.
 
    <p>The rolling schedule is specified by the <b>DatePattern</b>
    option. This pattern should follow the
-   {@link log4cxx::helpers::SimpleDateFormat SimpleDateFormat}
+   {@link log4cxxng::helpers::SimpleDateFormat SimpleDateFormat}
    conventions. In particular, you <em>must</em> escape literal text
    within a pair of single quotes. A formatted version of the date
    pattern is used as the suffix for the rolled file name.
@@ -143,13 +143,13 @@ typedef log4cxx::helpers::ObjectPtrT<ErrorHandler> ErrorHandlerPtr;
    you want.
 */
 
-class LOG4CXX_EXPORT DailyRollingFileAppender : public log4cxx::rolling::RollingFileAppenderSkeleton
+class LOG4CXXNG_EXPORT DailyRollingFileAppender : public log4cxxng::rolling::RollingFileAppenderSkeleton
 {
-		DECLARE_LOG4CXX_OBJECT(DailyRollingFileAppender)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(DailyRollingFileAppender)
-		LOG4CXX_CAST_ENTRY_CHAIN(FileAppender)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(DailyRollingFileAppender)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(DailyRollingFileAppender)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(FileAppender)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		   The date pattern used to initiate rollover.
@@ -177,7 +177,7 @@ class LOG4CXX_EXPORT DailyRollingFileAppender : public log4cxx::rolling::Rolling
 
 		/**
 		   The <b>DatePattern</b> takes a string in the same format as
-		   expected by {@link log4cxx::helpers::SimpleDateFormat SimpleDateFormat}. This options determines the
+		   expected by {@link log4cxxng::helpers::SimpleDateFormat SimpleDateFormat}. This options determines the
 		   rollover schedule.
 		 */
 		void setDatePattern(const LogString& pattern);
@@ -191,11 +191,11 @@ class LOG4CXX_EXPORT DailyRollingFileAppender : public log4cxx::rolling::Rolling
 		/**
 		 * Prepares DailyRollingFileAppender for use.
 		 */
-		void activateOptions(log4cxx::helpers::Pool&);
+		void activateOptions(log4cxxng::helpers::Pool&);
 
 };
 
-LOG4CXX_PTR_DEF(DailyRollingFileAppender);
+LOG4CXXNG_PTR_DEF(DailyRollingFileAppender);
 
 }
 

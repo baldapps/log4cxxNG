@@ -20,12 +20,12 @@
 #include <log4cxxNG/level.h>
 #include <log4cxxNG/appender.h>
 
-using namespace log4cxx;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
 RootLogger::RootLogger(Pool& pool, const LevelPtr& level1) :
-	Logger(pool, LOG4CXX_STR("root"))
+	Logger(pool, LOG4CXXNG_STR("root"))
 {
 	setLevel(level1);
 }
@@ -39,7 +39,7 @@ void RootLogger::setLevel(const LevelPtr& level1)
 {
 	if (level1 == 0)
 	{
-		LogLog::error(LOG4CXX_STR("You have tried to set a null level to root."));
+		LogLog::error(LOG4CXXNG_STR("You have tried to set a null level to root."));
 	}
 	else
 	{

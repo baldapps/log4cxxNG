@@ -48,12 +48,12 @@
 #include <log4cxxNG/pattern/throwableinformationpatternconverter.h>
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::spi;
-using namespace log4cxx::pattern;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::pattern;
 
-IMPLEMENT_LOG4CXX_OBJECT(PatternLayout)
+IMPLEMENT_LOG4CXXNG_OBJECT(PatternLayout)
 
 
 PatternLayout::PatternLayout()
@@ -99,8 +99,8 @@ void PatternLayout::format(LogString& output,
 void PatternLayout::setOption(const LogString& option, const LogString& value)
 {
 	if (StringHelper::equalsIgnoreCase(option,
-			LOG4CXX_STR("CONVERSIONPATTERN"),
-			LOG4CXX_STR("conversionpattern")))
+			LOG4CXXNG_STR("CONVERSIONPATTERN"),
+			LOG4CXXNG_STR("conversionpattern")))
 	{
 		conversionPattern = OptionConverter::convertSpecialChars(value);
 	}
@@ -112,7 +112,7 @@ void PatternLayout::activateOptions(Pool&)
 
 	if (pat.empty())
 	{
-		pat = LOG4CXX_STR("%m%n");
+		pat = LOG4CXXNG_STR("%m%n");
 	}
 
 	patternConverters.erase(patternConverters.begin(), patternConverters.end());
@@ -141,10 +141,10 @@ void PatternLayout::activateOptions(Pool&)
 }
 
 #define RULES_PUT(spec, cls) \
-	specs.insert(PatternMap::value_type(LogString(LOG4CXX_STR(spec)), (PatternConstructor) cls ::newInstance))
+	specs.insert(PatternMap::value_type(LogString(LOG4CXXNG_STR(spec)), (PatternConstructor) cls ::newInstance))
 
 
-log4cxx::pattern::PatternMap PatternLayout::getFormatSpecifiers()
+log4cxxng::pattern::PatternMap PatternLayout::getFormatSpecifiers()
 {
 	PatternMap specs;
 	RULES_PUT("c", LoggerPatternConverter);

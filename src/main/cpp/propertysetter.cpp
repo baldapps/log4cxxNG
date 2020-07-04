@@ -26,10 +26,10 @@
 #include <log4cxxNG/layout.h>
 #include <log4cxxNG/helpers/pool.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::spi;
-using namespace log4cxx::config;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::config;
 
 PropertySetter::PropertySetter(const helpers::ObjectPtr& obj1) : obj(obj1)
 {
@@ -69,7 +69,7 @@ void PropertySetter::setProperties(helpers::Properties& properties,
 			LogString value = OptionConverter::findAndSubst(key, properties);
 			key = key.substr(len);
 
-			if (key == LOG4CXX_STR("layout")
+			if (key == LOG4CXXNG_STR("layout")
 				&& obj != 0
 				&& obj->instanceof(Appender::getStaticClass()))
 			{
@@ -94,8 +94,8 @@ void PropertySetter::setProperty(const LogString& option,
 
 	if (obj != 0 && obj->instanceof(OptionHandler::getStaticClass()))
 	{
-		LogLog::debug(LOG4CXX_STR("Setting option name=[") +
-			option + LOG4CXX_STR("], value=[") + value + LOG4CXX_STR("]"));
+		LogLog::debug(LOG4CXXNG_STR("Setting option name=[") +
+			option + LOG4CXXNG_STR("], value=[") + value + LOG4CXXNG_STR("]"));
 		OptionHandlerPtr(obj)->setOption(option, value);
 	}
 }

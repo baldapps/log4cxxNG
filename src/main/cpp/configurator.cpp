@@ -20,10 +20,10 @@
 #include <assert.h>
 #include <log4cxxNG/logger.h>
 
-using namespace log4cxx;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::spi;
 
-IMPLEMENT_LOG4CXX_OBJECT(Configurator)
+IMPLEMENT_LOG4CXXNG_OBJECT(Configurator)
 
 
 

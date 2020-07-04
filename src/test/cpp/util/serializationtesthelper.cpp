@@ -23,10 +23,10 @@
 #include <log4cxxNG/file.h>
 #include "apr_pools.h"
 
-using namespace log4cxx;
-using namespace log4cxx::util;
-using namespace log4cxx::helpers;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::util;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::spi;
 
 
 

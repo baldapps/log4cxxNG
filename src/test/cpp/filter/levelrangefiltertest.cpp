@@ -20,10 +20,10 @@
 #include <log4cxxNG/spi/loggingevent.h>
 #include "../logunit.h"
 
-using namespace log4cxx;
-using namespace log4cxx::filter;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::filter;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
 
 /**
@@ -48,10 +48,10 @@ public:
 	void test1()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.Filter::LevelRangeFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.Filter::LevelRangeFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		LevelRangeFilterPtr filter(new LevelRangeFilter());
 		filter->setLevelMin(Level::getWarn());
 		Pool p;
@@ -66,10 +66,10 @@ public:
 	void test2()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.Filter::LevelRangeFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.Filter::LevelRangeFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		LevelRangeFilterPtr filter(new LevelRangeFilter());
 		filter->setLevelMax(Level::getDebug());
 		Pool p;
@@ -84,10 +84,10 @@ public:
 	void test3()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.Filter::LevelRangeFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.Filter::LevelRangeFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		LevelRangeFilterPtr filter(new LevelRangeFilter());
 		filter->setLevelMin(Level::getDebug());
 		filter->setAcceptOnMatch(true);
@@ -103,10 +103,10 @@ public:
 	void test4()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.Filter::LevelRangeFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.Filter::LevelRangeFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		LevelRangeFilterPtr filter(new LevelRangeFilter());
 		filter->setLevelMax(Level::getError());
 		filter->setAcceptOnMatch(true);
@@ -122,10 +122,10 @@ public:
 	void test5()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.Filter::LevelRangeFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.Filter::LevelRangeFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		LevelRangeFilterPtr filter(new LevelRangeFilter());
 		filter->setLevelMin(Level::getDebug());
 		Pool p;
@@ -140,10 +140,10 @@ public:
 	void test6()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.Filter::LevelRangeFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.Filter::LevelRangeFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		LevelRangeFilterPtr filter(new LevelRangeFilter());
 		filter->setLevelMax(Level::getError());
 		Pool p;

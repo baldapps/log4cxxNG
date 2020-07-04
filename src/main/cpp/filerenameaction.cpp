@@ -18,11 +18,11 @@
 #include <log4cxxNG/logstring.h>
 #include <log4cxxNG/rolling/filerenameaction.h>
 
-using namespace log4cxx;
-using namespace log4cxx::rolling;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::rolling;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(FileRenameAction)
+IMPLEMENT_LOG4CXXNG_OBJECT(FileRenameAction)
 
 FileRenameAction::FileRenameAction(const File& toRename,
 	const File& renameTo,
@@ -31,7 +31,7 @@ FileRenameAction::FileRenameAction(const File& toRename,
 {
 }
 
-bool FileRenameAction::execute(log4cxx::helpers::Pool& pool1) const
+bool FileRenameAction::execute(log4cxxng::helpers::Pool& pool1) const
 {
 	return source.renameTo(destination, pool1);
 }

@@ -25,8 +25,8 @@
 #include <log4cxxNG/helpers/synchronized.h>
 #include <apr_thread_cond.h>
 
-using namespace log4cxx::helpers;
-using namespace log4cxx;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng;
 
 #if APR_HAS_THREADS
 namespace
@@ -136,7 +136,7 @@ ThreadLocal& getThreadLocal()
 
 }
 
-void* LOG4CXX_THREAD_FUNC ThreadLaunch::launcher(apr_thread_t* thread, void* data)
+void* LOG4CXXNG_THREAD_FUNC ThreadLaunch::launcher(apr_thread_t* thread, void* data)
 {
 	LaunchPackage* package = (LaunchPackage*) data;
 	ThreadLocal& tls = getThreadLocal();
@@ -219,7 +219,7 @@ void Thread::run(Runnable start, void* data)
 	// if run() has been called in a thread-safe way.
 	apr_atomic_set32(&alive, 0xFFFFFFFF);
 #else
-	throw ThreadException(LOG4CXX_STR("APR_HAS_THREADS is not true"));
+	throw ThreadException(LOG4CXXNG_STR("APR_HAS_THREADS is not true"));
 #endif
 }
 

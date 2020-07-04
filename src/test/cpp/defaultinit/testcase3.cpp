@@ -22,7 +22,7 @@
 #include "../insertwide.h"
 #include "../logunit.h"
 
-using namespace log4cxx;
+using namespace log4cxxng;
 
 LOGUNIT_CLASS(TestCase3)
 {
@@ -47,13 +47,13 @@ public:
 	void testProperties()
 	{
 		LoggerPtr root = Logger::getRootLogger();
-		LOG4CXX_DEBUG(root, "Hello, world");
+		LOG4CXXNG_DEBUG(root, "Hello, world");
 		bool rootIsConfigured = !root->getAllAppenders().empty();
 		LOGUNIT_ASSERT(rootIsConfigured);
 
 		AppenderList list = root->getAllAppenders();
 		AppenderPtr appender = list.front();
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("D3"), appender->getName());
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("D3"), appender->getName());
 	}
 
 };

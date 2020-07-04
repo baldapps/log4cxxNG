@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_VARIA_FALLBACK_ERROR_HANDLER_H
-#define _LOG4CXX_VARIA_FALLBACK_ERROR_HANDLER_H
+#ifndef _LOG4CXXNG_VARIA_FALLBACK_ERROR_HANDLER_H
+#define _LOG4CXXNG_VARIA_FALLBACK_ERROR_HANDLER_H
 
 #include <log4cxxNG/spi/errorhandler.h>
 #include <log4cxxNG/helpers/objectimpl.h>
@@ -24,7 +24,7 @@
 #include <log4cxxNG/logger.h>
 #include <vector>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace varia
 {
@@ -37,7 +37,7 @@ whatever reason.
 <p>The error message is printed on <code>System.err</code>, and
 logged in the new secondary appender.
 */
-class LOG4CXX_EXPORT FallbackErrorHandler :
+class LOG4CXXNG_EXPORT FallbackErrorHandler :
 	public virtual spi::ErrorHandler,
 	public virtual helpers::ObjectImpl
 {
@@ -47,11 +47,11 @@ class LOG4CXX_EXPORT FallbackErrorHandler :
 		std::vector<LoggerPtr> loggers;
 
 	public:
-		DECLARE_LOG4CXX_OBJECT(FallbackErrorHandler)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(FallbackErrorHandler)
-		LOG4CXX_CAST_ENTRY_CHAIN(spi::ErrorHandler)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(FallbackErrorHandler)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(FallbackErrorHandler)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(spi::ErrorHandler)
+		END_LOG4CXXNG_CAST_MAP()
 
 		FallbackErrorHandler();
 		void addRef() const;
@@ -68,7 +68,7 @@ class LOG4CXX_EXPORT FallbackErrorHandler :
 		/**
 		No options to activate.
 		*/
-		void activateOptions(log4cxx::helpers::Pool& p);
+		void activateOptions(log4cxxng::helpers::Pool& p);
 		void setOption(const LogString& option, const LogString& value);
 
 
@@ -111,10 +111,10 @@ class LOG4CXX_EXPORT FallbackErrorHandler :
 		*/
 		void setBackupAppender(const AppenderPtr& backup);
 };
-LOG4CXX_PTR_DEF(FallbackErrorHandler);
+LOG4CXXNG_PTR_DEF(FallbackErrorHandler);
 
 }  // namespace varia
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif //_LOG4CXX_VARIA_FALLBACK_ERROR_HANDLER_H
+#endif //_LOG4CXXNG_VARIA_FALLBACK_ERROR_HANDLER_H
 

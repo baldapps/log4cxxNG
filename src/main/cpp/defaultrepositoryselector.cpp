@@ -17,9 +17,9 @@
 
 #include <log4cxxNG/spi/defaultrepositoryselector.h>
 
-using namespace log4cxx;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
 
 DefaultRepositorySelector::DefaultRepositorySelector(const LoggerRepositoryPtr& repository1)

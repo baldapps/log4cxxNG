@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_MESSAGE_BUFFER_H
-#define _LOG4CXX_MESSAGE_BUFFER_H
+#ifndef _LOG4CXXNG_MESSAGE_BUFFER_H
+#define _LOG4CXXNG_MESSAGE_BUFFER_H
 
 #include <log4cxxNG/log4cxxNG.h>
 #include <log4cxxNG/logstring.h>
@@ -27,7 +27,7 @@
 	#pragma warning ( disable: 4251 4275 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 
@@ -39,11 +39,11 @@ void MessageBufferUseStaticStream();
 typedef std::ios_base& (*ios_base_manip)(std::ios_base&);
 
 /**
- *   This class is used by the LOG4CXX_INFO and similar
+ *   This class is used by the LOG4CXXNG_INFO and similar
  *   macros to support insertion operators in the message parameter.
  *   The class is not intended for use outside of that context.
  */
-class LOG4CXX_EXPORT CharMessageBuffer
+class LOG4CXXNG_EXPORT CharMessageBuffer
 {
 	public:
 		/**
@@ -201,13 +201,13 @@ std::basic_ostream<char>& operator<<(CharMessageBuffer& os, const V& val)
 	return ((std::basic_ostream<char>&) os) << val;
 }
 
-#if LOG4CXX_UNICHAR_API || LOG4CXX_CFSTRING_API || LOG4CXX_LOGCHAR_IS_UNICHAR
+#if LOG4CXXNG_UNICHAR_API || LOG4CXXNG_CFSTRING_API || LOG4CXXNG_LOGCHAR_IS_UNICHAR
 /**
  *   This class is designed to support insertion operations
-*   in the message argument to the LOG4CXX_INFO and similar
+*   in the message argument to the LOG4CXXNG_INFO and similar
 *   macros and is not designed for general purpose use.
 */
-class LOG4CXX_EXPORT UniCharMessageBuffer
+class LOG4CXXNG_EXPORT UniCharMessageBuffer
 {
 	public:
 		/**
@@ -248,7 +248,7 @@ class LOG4CXX_EXPORT UniCharMessageBuffer
 		 */
 		UniCharMessageBuffer& operator<<(const UniChar msg);
 
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		/**
 		   *   Appends a string into the buffer and
 		   *   fixes the buffer to use char characters.
@@ -379,13 +379,13 @@ UniCharMessageBuffer::uostream& operator<<(UniCharMessageBuffer& os, const V& va
 }
 #endif
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 /**
  *   This class is designed to support insertion operations
-*   in the message argument to the LOG4CXX_INFO and similar
+*   in the message argument to the LOG4CXXNG_INFO and similar
 *   macros and is not designed for general purpose use.
 */
-class LOG4CXX_EXPORT WideMessageBuffer
+class LOG4CXXNG_EXPORT WideMessageBuffer
 {
 	public:
 		/**
@@ -545,11 +545,11 @@ std::basic_ostream<wchar_t>& operator<<(WideMessageBuffer& os, const V& val)
 }
 
 /**
- *   This class is used by the LOG4CXX_INFO and similar
+ *   This class is used by the LOG4CXXNG_INFO and similar
  *   macros to support insertion operators in the message parameter.
  *   The class is not intended for use outside of that context.
  */
-class LOG4CXX_EXPORT MessageBuffer
+class LOG4CXXNG_EXPORT MessageBuffer
 {
 	public:
 		/**
@@ -641,7 +641,7 @@ class LOG4CXX_EXPORT MessageBuffer
 		 */
 		WideMessageBuffer& operator<<(const wchar_t msg);
 
-#if LOG4CXX_UNICHAR_API || LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_UNICHAR_API || LOG4CXXNG_CFSTRING_API
 		/**
 		   *   Appends a string into the buffer and
 		   *   fixes the buffer to use char characters.
@@ -672,7 +672,7 @@ class LOG4CXX_EXPORT MessageBuffer
 		UniCharMessageBuffer& operator<<(const UniChar msg);
 #endif
 
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 		/**
 		   *   Appends a string into the buffer and
 		   *   fixes the buffer to use char characters.
@@ -766,7 +766,7 @@ class LOG4CXX_EXPORT MessageBuffer
 		 */
 		const std::wstring& str(std::basic_ostream<wchar_t>& os);
 
-#if LOG4CXX_UNICHAR_API || LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_UNICHAR_API || LOG4CXXNG_CFSTRING_API
 		/**
 		 *   Get content of buffer.
 		 *   @param buf used only to signal
@@ -809,7 +809,7 @@ class LOG4CXX_EXPORT MessageBuffer
 		 * Encapsulated wide message buffer, created on demand.
 		 */
 		WideMessageBuffer* wbuf;
-#if LOG4CXX_UNICHAR_API || LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_UNICHAR_API || LOG4CXXNG_CFSTRING_API
 		/**
 		 * Encapsulated wide message buffer, created on demand.
 		 */
@@ -823,15 +823,15 @@ std::ostream& operator<<(MessageBuffer& os, const V& val)
 	return ((std::ostream&) os) << val;
 }
 
-#if LOG4CXX_LOGCHAR_IS_UTF8
+#if LOG4CXXNG_LOGCHAR_IS_UTF8
 	typedef CharMessageBuffer LogCharMessageBuffer;
 #endif
 
-#if LOG4CXX_LOGCHAR_IS_WCHAR
+#if LOG4CXXNG_LOGCHAR_IS_WCHAR
 	typedef WideMessageBuffer LogCharMessageBuffer;
 #endif
 
-#if LOG4CXX_LOGCHAR_IS_UNICHAR
+#if LOG4CXXNG_LOGCHAR_IS_UNICHAR
 	typedef UniCharMessageBuffer LogCharMessageBuffer;
 #endif
 

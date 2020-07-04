@@ -24,16 +24,16 @@
 #include <log4cxxNG/helpers/stringhelper.h>
 
 
-log4cxx::helpers::RelativeTimeDateFormat::RelativeTimeDateFormat()
-	: DateFormat(), startTime(log4cxx::spi::LoggingEvent::getStartTime())
+log4cxxng::helpers::RelativeTimeDateFormat::RelativeTimeDateFormat()
+	: DateFormat(), startTime(log4cxxng::spi::LoggingEvent::getStartTime())
 {
 }
 
-void log4cxx::helpers::RelativeTimeDateFormat::format(
+void log4cxxng::helpers::RelativeTimeDateFormat::format(
 	LogString& s,
-	log4cxx_time_t date,
+	log4cxxng_time_t date,
 	Pool& p) const
 {
-	log4cxx_int64_t interval = (date - startTime) / APR_INT64_C(1000);
+	log4cxxng_int64_t interval = (date - startTime) / APR_INT64_C(1000);
 	StringHelper::toString(interval, p, s);
 }

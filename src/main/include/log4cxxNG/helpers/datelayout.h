@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_DATE_LAYOUT_H
-#define _LOG4CXX_HELPERS_DATE_LAYOUT_H
+#ifndef _LOG4CXXNG_HELPERS_DATE_LAYOUT_H
+#define _LOG4CXXNG_HELPERS_DATE_LAYOUT_H
 
 #include <log4cxxNG/layout.h>
 #include <log4cxxNG/helpers/dateformat.h>
@@ -27,7 +27,7 @@
 	#pragma warning ( disable: 4251 )
 #endif
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -35,7 +35,7 @@ namespace helpers
 This abstract layout takes care of all the date related options and
 formatting work.
 */
-class LOG4CXX_EXPORT DateLayout : public Layout
+class LOG4CXXNG_EXPORT DateLayout : public Layout
 {
 	private:
 		LogString timeZoneID;
@@ -48,7 +48,7 @@ class LOG4CXX_EXPORT DateLayout : public Layout
 		DateLayout(const LogString& dateLayoutOption);
 		virtual ~DateLayout();
 
-		virtual void activateOptions(log4cxx::helpers::Pool& p);
+		virtual void activateOptions(log4cxxng::helpers::Pool& p);
 		virtual void setOption(const LogString& option, const LogString& value);
 
 		/**
@@ -89,7 +89,7 @@ class LOG4CXX_EXPORT DateLayout : public Layout
 
 		void formatDate(LogString& s,
 			const spi::LoggingEventPtr& event,
-			log4cxx::helpers::Pool& p) const;
+			log4cxxng::helpers::Pool& p) const;
 
 	private:
 		//
@@ -99,10 +99,10 @@ class LOG4CXX_EXPORT DateLayout : public Layout
 
 };
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
-#endif // _LOG4CXX_HELPERS_DATE_LAYOUT_H
+#endif // _LOG4CXXNG_HELPERS_DATE_LAYOUT_H

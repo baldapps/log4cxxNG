@@ -20,8 +20,8 @@
 #include "../insertwide.h"
 #include "../logunit.h"
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 
 LOGUNIT_CLASS(PropertiesTestCase)
@@ -50,11 +50,11 @@ public:
 		//
 		//    read patternLayout1.properties
 		FileInputStreamPtr propFile =
-			new FileInputStream(LOG4CXX_STR("input/patternLayout1.properties"));
+			new FileInputStream(LOG4CXXNG_STR("input/patternLayout1.properties"));
 		Properties properties;
 		properties.load(propFile);
-		LogString pattern(properties.getProperty(LOG4CXX_STR("log4j.appender.testAppender.layout.ConversionPattern")));
-		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXX_STR("%-5p - %m%n"), pattern);
+		LogString pattern(properties.getProperty(LOG4CXXNG_STR("log4j.appender.testAppender.layout.ConversionPattern")));
+		LOGUNIT_ASSERT_EQUAL((LogString) LOG4CXXNG_STR("%-5p - %m%n"), pattern);
 	}
 
 	/**
@@ -63,11 +63,11 @@ public:
 	void testTab1()
 	{
 		FileInputStreamPtr propFile(
-			new FileInputStream(LOG4CXX_STR("input/propertiestestcase.properties")));
+			new FileInputStream(LOG4CXXNG_STR("input/propertiestestcase.properties")));
 		Properties properties;
 		properties.load(propFile);
-		LogString actual(properties.getProperty(LOG4CXX_STR("propertiestestcase.tab1")));
-		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXX_STR("tab delimited")), actual);
+		LogString actual(properties.getProperty(LOG4CXXNG_STR("propertiestestcase.tab1")));
+		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXXNG_STR("tab delimited")), actual);
 	}
 
 	/**
@@ -76,11 +76,11 @@ public:
 	void testTab2()
 	{
 		FileInputStreamPtr propFile(
-			new FileInputStream(LOG4CXX_STR("input/propertiestestcase.properties")));
+			new FileInputStream(LOG4CXXNG_STR("input/propertiestestcase.properties")));
 		Properties properties;
 		properties.load(propFile);
-		LogString actual(properties.getProperty(LOG4CXX_STR("propertiestestcase.tab2")));
-		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXX_STR("tab before key")), actual);
+		LogString actual(properties.getProperty(LOG4CXXNG_STR("propertiestestcase.tab2")));
+		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXXNG_STR("tab before key")), actual);
 	}
 
 	/**
@@ -89,13 +89,13 @@ public:
 	void testTab3()
 	{
 		FileInputStreamPtr propFile(
-			new FileInputStream(LOG4CXX_STR("input/propertiestestcase.properties")));
+			new FileInputStream(LOG4CXXNG_STR("input/propertiestestcase.properties")));
 		Properties properties;
 		properties.load(propFile);
-		LogString key(LOG4CXX_STR("propertiestestcase.tab3"));
+		LogString key(LOG4CXXNG_STR("propertiestestcase.tab3"));
 		key.append(1, 0x09);
 		LogString actual(properties.getProperty(key));
-		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXX_STR("key contains tab")), actual);
+		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXXNG_STR("key contains tab")), actual);
 	}
 
 	/**
@@ -104,11 +104,11 @@ public:
 	void testTab4()
 	{
 		FileInputStreamPtr propFile(
-			new FileInputStream(LOG4CXX_STR("input/propertiestestcase.properties")));
+			new FileInputStream(LOG4CXXNG_STR("input/propertiestestcase.properties")));
 		Properties properties;
 		properties.load(propFile);
-		LogString actual(properties.getProperty(LOG4CXX_STR("propertiestestcase.tab4")));
-		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXX_STR("tab after equals")), actual);
+		LogString actual(properties.getProperty(LOG4CXXNG_STR("propertiestestcase.tab4")));
+		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXXNG_STR("tab after equals")), actual);
 	}
 
 	/**
@@ -117,11 +117,11 @@ public:
 	void testTab5()
 	{
 		FileInputStreamPtr propFile(
-			new FileInputStream(LOG4CXX_STR("input/propertiestestcase.properties")));
+			new FileInputStream(LOG4CXXNG_STR("input/propertiestestcase.properties")));
 		Properties properties;
 		properties.load(propFile);
-		LogString actual(properties.getProperty(LOG4CXX_STR("propertiestestcase.tab5")));
-		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXX_STR("tab after continue")), actual);
+		LogString actual(properties.getProperty(LOG4CXXNG_STR("propertiestestcase.tab5")));
+		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXXNG_STR("tab after continue")), actual);
 	}
 
 	/**
@@ -130,12 +130,12 @@ public:
 	void testTab6()
 	{
 		FileInputStreamPtr propFile(
-			new FileInputStream(LOG4CXX_STR("input/propertiestestcase.properties")));
+			new FileInputStream(LOG4CXXNG_STR("input/propertiestestcase.properties")));
 		Properties properties;
 		properties.load(propFile);
-		LogString actual(properties.getProperty(LOG4CXX_STR("propertiestestcase.tab6")));
+		LogString actual(properties.getProperty(LOG4CXXNG_STR("propertiestestcase.tab6")));
 		LogString expected(1, 0x09);
-		expected.append(LOG4CXX_STR(" in value"));
+		expected.append(LOG4CXXNG_STR(" in value"));
 		LOGUNIT_ASSERT_EQUAL(expected, actual);
 	}
 
@@ -145,11 +145,11 @@ public:
 	void testTab7()
 	{
 		FileInputStreamPtr propFile(
-			new FileInputStream(LOG4CXX_STR("input/propertiestestcase.properties")));
+			new FileInputStream(LOG4CXXNG_STR("input/propertiestestcase.properties")));
 		Properties properties;
 		properties.load(propFile);
-		LogString actual(properties.getProperty(LOG4CXX_STR("propertiestestcase.tab7")));
-		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXX_STR("continuedvalue")), actual);
+		LogString actual(properties.getProperty(LOG4CXXNG_STR("propertiestestcase.tab7")));
+		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXXNG_STR("continuedvalue")), actual);
 	}
 
 	/**
@@ -158,11 +158,11 @@ public:
 	void testCRLF1()
 	{
 		FileInputStreamPtr propFile(
-			new FileInputStream(LOG4CXX_STR("input/propertiestestcase.properties")));
+			new FileInputStream(LOG4CXXNG_STR("input/propertiestestcase.properties")));
 		Properties properties;
 		properties.load(propFile);
-		LogString actual(properties.getProperty(LOG4CXX_STR("propertiestestcase.crlf1")));
-		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXX_STR("continuedvalue")), actual);
+		LogString actual(properties.getProperty(LOG4CXXNG_STR("propertiestestcase.crlf1")));
+		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXXNG_STR("continuedvalue")), actual);
 	}
 
 	/**
@@ -171,13 +171,13 @@ public:
 	void testEscT1()
 	{
 		FileInputStreamPtr propFile(
-			new FileInputStream(LOG4CXX_STR("input/propertiestestcase.properties")));
+			new FileInputStream(LOG4CXXNG_STR("input/propertiestestcase.properties")));
 		Properties properties;
 		properties.load(propFile);
-		LogString key(LOG4CXX_STR("propertiestestcase.esct1"));
+		LogString key(LOG4CXXNG_STR("propertiestestcase.esct1"));
 		key.append(1, 0x09);
 		LogString actual(properties.getProperty(key));
-		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXX_STR("key contains tab")), actual);
+		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXXNG_STR("key contains tab")), actual);
 	}
 
 
@@ -188,12 +188,12 @@ public:
 	void testEscT2()
 	{
 		FileInputStreamPtr propFile(
-			new FileInputStream(LOG4CXX_STR("input/propertiestestcase.properties")));
+			new FileInputStream(LOG4CXXNG_STR("input/propertiestestcase.properties")));
 		Properties properties;
 		properties.load(propFile);
-		LogString actual(properties.getProperty(LOG4CXX_STR("propertiestestcase.esct2")));
+		LogString actual(properties.getProperty(LOG4CXXNG_STR("propertiestestcase.esct2")));
 		LogString expected(1, 0x09);
-		expected.append(LOG4CXX_STR(" in value"));
+		expected.append(LOG4CXXNG_STR(" in value"));
 		LOGUNIT_ASSERT_EQUAL(expected, actual);
 	}
 
@@ -203,13 +203,13 @@ public:
 	void testEscN1()
 	{
 		FileInputStreamPtr propFile(
-			new FileInputStream(LOG4CXX_STR("input/propertiestestcase.properties")));
+			new FileInputStream(LOG4CXXNG_STR("input/propertiestestcase.properties")));
 		Properties properties;;
 		properties.load(propFile);
-		LogString key(LOG4CXX_STR("propertiestestcase.escn1"));
+		LogString key(LOG4CXXNG_STR("propertiestestcase.escn1"));
 		key.append(1, 0x0A);
 		LogString actual(properties.getProperty(key));
-		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXX_STR("key contains lf")), actual);
+		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXXNG_STR("key contains lf")), actual);
 	}
 
 
@@ -220,12 +220,12 @@ public:
 	void testEscN2()
 	{
 		FileInputStreamPtr propFile(
-			new FileInputStream(LOG4CXX_STR("input/propertiestestcase.properties")));
+			new FileInputStream(LOG4CXXNG_STR("input/propertiestestcase.properties")));
 		Properties properties;
 		properties.load(propFile);
-		LogString actual(properties.getProperty(LOG4CXX_STR("propertiestestcase.escn2")));
+		LogString actual(properties.getProperty(LOG4CXXNG_STR("propertiestestcase.escn2")));
 		LogString expected(1, 0x0A);
-		expected.append(LOG4CXX_STR(" in value"));
+		expected.append(LOG4CXXNG_STR(" in value"));
 		LOGUNIT_ASSERT_EQUAL(expected, actual);
 	}
 
@@ -235,13 +235,13 @@ public:
 	void testEscR1()
 	{
 		FileInputStreamPtr propFile(
-			new FileInputStream(LOG4CXX_STR("input/propertiestestcase.properties")));
+			new FileInputStream(LOG4CXXNG_STR("input/propertiestestcase.properties")));
 		Properties properties;
 		properties.load(propFile);
-		LogString key(LOG4CXX_STR("propertiestestcase.escr1"));
+		LogString key(LOG4CXXNG_STR("propertiestestcase.escr1"));
 		key.append(1, 0x0D);
 		LogString actual(properties.getProperty(key));
-		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXX_STR("key contains cr")), actual);
+		LOGUNIT_ASSERT_EQUAL(LogString(LOG4CXXNG_STR("key contains cr")), actual);
 	}
 
 
@@ -252,12 +252,12 @@ public:
 	void testEscR2()
 	{
 		FileInputStreamPtr propFile(
-			new FileInputStream(LOG4CXX_STR("input/propertiestestcase.properties")));
+			new FileInputStream(LOG4CXXNG_STR("input/propertiestestcase.properties")));
 		Properties properties;
 		properties.load(propFile);
-		LogString actual(properties.getProperty(LOG4CXX_STR("propertiestestcase.escr2")));
+		LogString actual(properties.getProperty(LOG4CXXNG_STR("propertiestestcase.escr2")));
 		LogString expected(1, 0x0D);
-		expected.append(LOG4CXX_STR(" in value"));
+		expected.append(LOG4CXXNG_STR(" in value"));
 		LOGUNIT_ASSERT_EQUAL(expected, actual);
 	}
 

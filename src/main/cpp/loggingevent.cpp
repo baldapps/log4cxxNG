@@ -22,8 +22,8 @@
 #include <log4cxxNG/helpers/loglog.h>
 #include <log4cxxNG/helpers/system.h>
 #include <log4cxxNG/helpers/socket.h>
-#if !defined(LOG4CXX)
-	#define LOG4CXX 1
+#if !defined(LOG4CXXNG)
+	#define LOG4CXXNG 1
 #endif
 #include <log4cxxNG/helpers/aprinitializer.h>
 #include <log4cxxNG/helpers/threadspecificdata.h>
@@ -38,19 +38,19 @@
 #include <log4cxxNG/logger.h>
 #include <log4cxxNG/private/log4cxxNG_private.h>
 
-using namespace log4cxx;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
-IMPLEMENT_LOG4CXX_OBJECT(LoggingEvent)
+IMPLEMENT_LOG4CXXNG_OBJECT(LoggingEvent)
 
 
 //
 //   Accessor for start time.
 //
-log4cxx_time_t LoggingEvent::getStartTime()
+log4cxxng_time_t LoggingEvent::getStartTime()
 {
-	return log4cxx::helpers::APRInitializer::initialize();
+	return log4cxxng::helpers::APRInitializer::initialize();
 }
 
 LoggingEvent::LoggingEvent() :
@@ -225,18 +225,18 @@ const LogString LoggingEvent::getCurrentThreadName()
 #if defined(_WIN32)
 	char result[20];
 	DWORD threadId = GetCurrentThreadId();
-	apr_snprintf(result, sizeof(result), LOG4CXX_WIN32_THREAD_FMTSPEC, threadId);
+	apr_snprintf(result, sizeof(result), LOG4CXXNG_WIN32_THREAD_FMTSPEC, threadId);
 #else
 	// apr_os_thread_t encoded in HEX takes needs as many characters
 	// as two times the size of the type, plus an additional null byte.
 	char result[sizeof(apr_os_thread_t) * 3 + 10];
 	apr_os_thread_t threadId = apr_os_thread_current();
-	apr_snprintf(result, sizeof(result), LOG4CXX_APR_THREAD_FMTSPEC, (void*) &threadId);
+	apr_snprintf(result, sizeof(result), LOG4CXXNG_APR_THREAD_FMTSPEC, (void*) &threadId);
 #endif
-	LOG4CXX_DECODE_CHAR(str, (const char*) result);
+	LOG4CXXNG_DECODE_CHAR(str, (const char*) result);
 	return str;
 #else
-	return LOG4CXX_STR("0x00000000");
+	return LOG4CXXNG_STR("0x00000000");
 #endif
 }
 

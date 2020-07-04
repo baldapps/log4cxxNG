@@ -15,24 +15,24 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_INTEGER_H
-#define _LOG4CXX_HELPERS_INTEGER_H
+#ifndef _LOG4CXXNG_HELPERS_INTEGER_H
+#define _LOG4CXXNG_HELPERS_INTEGER_H
 
 #include <log4cxxNG/helpers/objectimpl.h>
 
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
-class LOG4CXX_EXPORT Integer : public ObjectImpl
+class LOG4CXXNG_EXPORT Integer : public ObjectImpl
 {
 		const int val;
 	public:
-		DECLARE_LOG4CXX_OBJECT(Integer)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(Integer)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(Integer)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(Integer)
+		END_LOG4CXXNG_CAST_MAP()
 
 		Integer();
 		Integer(int i);
@@ -45,7 +45,7 @@ class LOG4CXX_EXPORT Integer : public ObjectImpl
 
 };
 
-LOG4CXX_PTR_DEF(Integer);
+LOG4CXXNG_PTR_DEF(Integer);
 
 }
 }

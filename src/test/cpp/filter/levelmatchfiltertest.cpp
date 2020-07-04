@@ -20,10 +20,10 @@
 #include <log4cxxNG/spi/loggingevent.h>
 #include "../logunit.h"
 
-using namespace log4cxx;
-using namespace log4cxx::filter;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::filter;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
 
 
 /**
@@ -46,12 +46,12 @@ public:
 	void test1()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.filter.LevelMatchFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.filter.LevelMatchFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		LevelMatchFilterPtr filter(new LevelMatchFilter());
-		filter->setLevelToMatch(LOG4CXX_STR("info"));
+		filter->setLevelToMatch(LOG4CXXNG_STR("info"));
 		Pool p;
 		filter->activateOptions(p);
 		LOGUNIT_ASSERT_EQUAL(Filter::ACCEPT, filter->decide(event));
@@ -64,12 +64,12 @@ public:
 	void test2()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.filter.LevelMatchFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.filter.LevelMatchFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		LevelMatchFilterPtr filter(new LevelMatchFilter());
-		filter->setLevelToMatch(LOG4CXX_STR("info"));
+		filter->setLevelToMatch(LOG4CXXNG_STR("info"));
 		filter->setAcceptOnMatch(false);
 		Pool p;
 		filter->activateOptions(p);
@@ -83,10 +83,10 @@ public:
 	void test3()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.filter.LevelMatchFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.filter.LevelMatchFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		LevelMatchFilterPtr filter(new LevelMatchFilter());
 		Pool p;
 		filter->activateOptions(p);
@@ -100,12 +100,12 @@ public:
 	void test4()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.filter.LevelMatchFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.filter.LevelMatchFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		LevelMatchFilterPtr filter(new LevelMatchFilter());
-		filter->setLevelToMatch(LOG4CXX_STR("debug"));
+		filter->setLevelToMatch(LOG4CXXNG_STR("debug"));
 		Pool p;
 		filter->activateOptions(p);
 		LOGUNIT_ASSERT_EQUAL(Filter::NEUTRAL, filter->decide(event));
@@ -118,12 +118,12 @@ public:
 	void test5()
 	{
 		LoggingEventPtr event(new LoggingEvent(
-				LOG4CXX_STR("org.apache.log4j.filter.LevelMatchFilterTest"),
+				LOG4CXXNG_STR("org.apache.log4j.filter.LevelMatchFilterTest"),
 				Level::getInfo(),
-				LOG4CXX_STR("Hello, World"),
-				LOG4CXX_LOCATION));
+				LOG4CXXNG_STR("Hello, World"),
+				LOG4CXXNG_LOCATION));
 		LevelMatchFilterPtr filter(new LevelMatchFilter());
-		filter->setLevelToMatch(LOG4CXX_STR("warn"));
+		filter->setLevelToMatch(LOG4CXXNG_STR("warn"));
 		Pool p;
 		filter->activateOptions(p);
 		LOGUNIT_ASSERT_EQUAL(Filter::NEUTRAL, filter->decide(event));

@@ -15,11 +15,11 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_PORTABILITY_H
-#define _LOG4CXX_PORTABILITY_H
+#ifndef _LOG4CXXNG_PORTABILITY_H
+#define _LOG4CXXNG_PORTABILITY_H
 
 //
 //    Obsolete file
 //
 
-#endif //_LOG4CXX_PORTABILITY_H
+#endif //_LOG4CXXNG_PORTABILITY_H

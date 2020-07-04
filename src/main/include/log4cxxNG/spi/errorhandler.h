@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_SPI_ERROR_HANDLER_H
-#define _LOG4CXX_SPI_ERROR_HANDLER_H
+#ifndef _LOG4CXXNG_SPI_ERROR_HANDLER_H
+#define _LOG4CXXNG_SPI_ERROR_HANDLER_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -29,7 +29,7 @@
 #include <log4cxxNG/appender.h>
 #include <log4cxxNG/spi/loggingevent.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace spi
 {
@@ -61,14 +61,14 @@ definition errors are hard to predict and to reproduce.
 that errors are not properly handled. You are most welcome to
 suggest new error handling policies or criticize existing policies.
 */
-class LOG4CXX_EXPORT ErrorHandler : public virtual OptionHandler
+class LOG4CXXNG_EXPORT ErrorHandler : public virtual OptionHandler
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(ErrorHandler)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(ErrorHandler)
-		LOG4CXX_CAST_ENTRY(OptionHandler)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(ErrorHandler)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(ErrorHandler)
+		LOG4CXXNG_CAST_ENTRY(OptionHandler)
+		END_LOG4CXXNG_CAST_MAP()
 
 		virtual ~ErrorHandler() {}
 
@@ -121,12 +121,12 @@ class LOG4CXX_EXPORT ErrorHandler : public virtual OptionHandler
 		virtual void setBackupAppender(const AppenderPtr& appender) = 0;
 };
 
-LOG4CXX_PTR_DEF(ErrorHandler);
+LOG4CXXNG_PTR_DEF(ErrorHandler);
 }  //namespace spi
-} //namespace log4cxx
+} //namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
 #endif
 
-#endif //_LOG4CXX_SPI_ERROR_HANDLER_H
+#endif //_LOG4CXXNG_SPI_ERROR_HANDLER_H

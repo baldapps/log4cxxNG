@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPER_PROPERTIES_H
-#define _LOG4CXX_HELPER_PROPERTIES_H
+#ifndef _LOG4CXXNG_HELPER_PROPERTIES_H
+#define _LOG4CXXNG_HELPER_PROPERTIES_H
 
 #if defined(_MSC_VER)
 	#pragma warning (push)
@@ -32,11 +32,11 @@
 #include <vector>
 #include <istream>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
-class LOG4CXX_EXPORT Properties
+class LOG4CXXNG_EXPORT Properties
 {
 	private:
 		typedef std::map<LogString, LogString> PropertyMap;
@@ -176,11 +176,11 @@ class LOG4CXX_EXPORT Properties
 		std::vector<LogString> propertyNames() const;
 }; // class Properties
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning (pop)
 #endif
 
 
-#endif //_LOG4CXX_HELPER_PROPERTIES_H
+#endif //_LOG4CXXNG_HELPER_PROPERTIES_H

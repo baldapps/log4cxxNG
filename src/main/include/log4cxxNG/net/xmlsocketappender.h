@@ -15,19 +15,19 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_NET_XML_SOCKET_APPENDER_H
-#define _LOG4CXX_NET_XML_SOCKET_APPENDER_H
+#ifndef _LOG4CXXNG_NET_XML_SOCKET_APPENDER_H
+#define _LOG4CXXNG_NET_XML_SOCKET_APPENDER_H
 
 #include <log4cxxNG/net/socketappenderskeleton.h>
 #include <log4cxxNG/helpers/writer.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace net
 {
 
 /**
-Sends {@link log4cxx::spi::LoggingEvent LoggingEvent} objects in XML format
+Sends {@link log4cxxng::spi::LoggingEvent LoggingEvent} objects in XML format
         to a remote a log server, usually a XMLSocketNode.
 
 <p>The XMLSocketAppender has the following properties:
@@ -85,7 +85,7 @@ calling the LogManager#shutdown method
 before exiting the application.
 */
 
-class LOG4CXX_EXPORT XMLSocketAppender : public SocketAppenderSkeleton
+class LOG4CXXNG_EXPORT XMLSocketAppender : public SocketAppenderSkeleton
 {
 	public:
 		/**
@@ -103,11 +103,11 @@ class LOG4CXX_EXPORT XMLSocketAppender : public SocketAppenderSkeleton
 		*/
 		static const int MAX_EVENT_LEN;
 
-		DECLARE_LOG4CXX_OBJECT(XMLSocketAppender)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(XMLSocketAppender)
-		LOG4CXX_CAST_ENTRY_CHAIN(AppenderSkeleton)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_OBJECT(XMLSocketAppender)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(XMLSocketAppender)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(AppenderSkeleton)
+		END_LOG4CXXNG_CAST_MAP()
 
 		XMLSocketAppender();
 		~XMLSocketAppender();
@@ -124,27 +124,27 @@ class LOG4CXX_EXPORT XMLSocketAppender : public SocketAppenderSkeleton
 
 
 	protected:
-		virtual void setSocket(log4cxx::helpers::SocketPtr& socket, log4cxx::helpers::Pool& p);
+		virtual void setSocket(log4cxxng::helpers::SocketPtr& socket, log4cxxng::helpers::Pool& p);
 
-		virtual void cleanUp(log4cxx::helpers::Pool& p);
+		virtual void cleanUp(log4cxxng::helpers::Pool& p);
 
 		virtual int getDefaultDelay() const;
 
 		virtual int getDefaultPort() const;
 
-		void append(const spi::LoggingEventPtr& event, log4cxx::helpers::Pool& pool);
+		void append(const spi::LoggingEventPtr& event, log4cxxng::helpers::Pool& pool);
 
 	private:
-		log4cxx::helpers::WriterPtr writer;
+		log4cxxng::helpers::WriterPtr writer;
 		//  prevent copy and assignment statements
 		XMLSocketAppender(const XMLSocketAppender&);
 		XMLSocketAppender& operator=(const XMLSocketAppender&);
 }; // class XMLSocketAppender
 
-LOG4CXX_PTR_DEF(XMLSocketAppender);
+LOG4CXXNG_PTR_DEF(XMLSocketAppender);
 
 } // namespace net
-} // namespace log4cxx
+} // namespace log4cxxng
 
-#endif // _LOG4CXX_NET_XML_SOCKET_APPENDER_H
+#endif // _LOG4CXXNG_NET_XML_SOCKET_APPENDER_H
 

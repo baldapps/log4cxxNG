@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_SPI_LOG_REPOSITORY_H
-#define _LOG4CXX_SPI_LOG_REPOSITORY_H
+#ifndef _LOG4CXXNG_SPI_LOG_REPOSITORY_H
+#define _LOG4CXXNG_SPI_LOG_REPOSITORY_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -29,7 +29,7 @@
 #include <log4cxxNG/level.h>
 #include <log4cxxNG/spi/hierarchyeventlistener.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace spi
 {
@@ -44,10 +44,10 @@ named hierarchy.
 <code>LoggerRepository</code> can be queried for existing loggers,
 can act as a point of registry for events related to loggers.
 */
-class LOG4CXX_EXPORT LoggerRepository : public virtual helpers::Object
+class LOG4CXXNG_EXPORT LoggerRepository : public virtual helpers::Object
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(LoggerRepository)
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(LoggerRepository)
 		virtual ~LoggerRepository() {}
 
 		/**
@@ -106,11 +106,11 @@ class LOG4CXX_EXPORT LoggerRepository : public virtual helpers::Object
 }; // class LoggerRepository
 
 }  // namespace spi
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
 #endif
 
 
-#endif //_LOG4CXX_SPI_LOG_REPOSITORY_H
+#endif //_LOG4CXXNG_SPI_LOG_REPOSITORY_H

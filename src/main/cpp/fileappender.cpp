@@ -28,11 +28,11 @@
 #include <log4cxxNG/helpers/bytebuffer.h>
 #include <log4cxxNG/helpers/synchronized.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-using namespace log4cxx::spi;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::spi;
 
-IMPLEMENT_LOG4CXX_OBJECT(FileAppender)
+IMPLEMENT_LOG4CXXNG_OBJECT(FileAppender)
 
 
 FileAppender::FileAppender()
@@ -120,28 +120,28 @@ void FileAppender::setBufferedIO(bool bufferedIO1)
 void FileAppender::setOption(const LogString& option,
 	const LogString& value)
 {
-	if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("FILE"), LOG4CXX_STR("file"))
-		|| StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("FILENAME"), LOG4CXX_STR("filename")))
+	if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("FILE"), LOG4CXXNG_STR("file"))
+		|| StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("FILENAME"), LOG4CXXNG_STR("filename")))
 	{
 		LOCK_W sync(mutex);
 		fileName = stripDuplicateBackslashes(value);
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("APPEND"), LOG4CXX_STR("append")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("APPEND"), LOG4CXXNG_STR("append")))
 	{
 		LOCK_W sync(mutex);
 		fileAppend = OptionConverter::toBoolean(value, true);
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("BUFFEREDIO"), LOG4CXX_STR("bufferedio")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("BUFFEREDIO"), LOG4CXXNG_STR("bufferedio")))
 	{
 		LOCK_W sync(mutex);
 		bufferedIO = OptionConverter::toBoolean(value, true);
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("IMMEDIATEFLUSH"), LOG4CXX_STR("immediateflush")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("IMMEDIATEFLUSH"), LOG4CXXNG_STR("immediateflush")))
 	{
 		LOCK_W sync(mutex);
 		bufferedIO = !OptionConverter::toBoolean(value, false);
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("BUFFERSIZE"), LOG4CXX_STR("buffersize")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("BUFFERSIZE"), LOG4CXXNG_STR("buffersize")))
 	{
 		LOCK_W sync(mutex);
 		bufferSize = OptionConverter::toFileSize(value, 8 * 1024);
@@ -166,20 +166,20 @@ void FileAppender::activateOptions(Pool& p)
 		catch (IOException& e)
 		{
 			errors++;
-			LogString msg(LOG4CXX_STR("setFile("));
+			LogString msg(LOG4CXXNG_STR("setFile("));
 			msg.append(fileName);
 			msg.append(1, (logchar) 0x2C /* ',' */);
 			StringHelper::toString(fileAppend, msg);
-			msg.append(LOG4CXX_STR(") call failed."));
+			msg.append(LOG4CXXNG_STR(") call failed."));
 			errorHandler->error(msg, e, ErrorCode::FILE_OPEN_FAILURE);
 		}
 	}
 	else
 	{
 		errors++;
-		LogLog::error(LogString(LOG4CXX_STR("File option not set for appender ["))
-			+  name + LOG4CXX_STR("]."));
-		LogLog::warn(LOG4CXX_STR("Are you using FileAppender instead of ConsoleAppender?"));
+		LogLog::error(LogString(LOG4CXXNG_STR("File option not set for appender ["))
+			+  name + LOG4CXXNG_STR("]."));
+		LogLog::warn(LOG4CXXNG_STR("Are you using FileAppender instead of ConsoleAppender?"));
 	}
 
 	if (errors == 0)
@@ -283,7 +283,7 @@ void FileAppender::setFile(
 	bool writeBOM = false;
 
 	if (StringHelper::equalsIgnoreCase(getEncoding(),
-			LOG4CXX_STR("utf-16"), LOG4CXX_STR("UTF-16")))
+			LOG4CXXNG_STR("utf-16"), LOG4CXXNG_STR("UTF-16")))
 	{
 		//
 		//    don't want to write a byte order mark if the file exists

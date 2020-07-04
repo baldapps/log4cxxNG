@@ -27,10 +27,10 @@
 #include <log4cxxNG/helpers/transcoder.h>
 #include <log4cxxNG/helpers/pool.h>
 
-using namespace log4cxx;
-using namespace log4cxx::spi;
-using namespace log4cxx::helpers;
-using namespace log4cxx::nt;
+using namespace log4cxxng;
+using namespace log4cxxng::spi;
+using namespace log4cxxng::helpers;
+using namespace log4cxxng::nt;
 
 class CCtUserSIDHelper
 {
@@ -88,7 +88,7 @@ class CCtUserSIDHelper
 		}
 };
 
-IMPLEMENT_LOG4CXX_OBJECT(NTEventLogAppender)
+IMPLEMENT_LOG4CXXNG_OBJECT(NTEventLogAppender)
 
 NTEventLogAppender::NTEventLogAppender() : hEventLog(NULL), pCurrentUserSID(NULL)
 {
@@ -125,15 +125,15 @@ void NTEventLogAppender::close()
 
 void NTEventLogAppender::setOption(const LogString& option, const LogString& value)
 {
-	if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("SERVER"), LOG4CXX_STR("server")))
+	if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("SERVER"), LOG4CXXNG_STR("server")))
 	{
 		server = value;
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("LOG"), LOG4CXX_STR("log")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("LOG"), LOG4CXXNG_STR("log")))
 	{
 		log = value;
 	}
-	else if (StringHelper::equalsIgnoreCase(option, LOG4CXX_STR("SOURCE"), LOG4CXX_STR("source")))
+	else if (StringHelper::equalsIgnoreCase(option, LOG4CXXNG_STR("SOURCE"), LOG4CXXNG_STR("source")))
 	{
 		source = value;
 	}
@@ -148,14 +148,14 @@ void NTEventLogAppender::activateOptions(Pool&)
 	if (source.empty())
 	{
 		LogLog::warn(
-			((LogString) LOG4CXX_STR("Source option not set for appender ["))
-			+ name + LOG4CXX_STR("]."));
+			((LogString) LOG4CXXNG_STR("Source option not set for appender ["))
+			+ name + LOG4CXXNG_STR("]."));
 		return;
 	}
 
 	if (log.empty())
 	{
-		log = LOG4CXX_STR("Application");
+		log = LOG4CXXNG_STR("Application");
 	}
 
 	close();
@@ -165,20 +165,20 @@ void NTEventLogAppender::activateOptions(Pool&)
 
 	addRegistryInfo();
 
-	LOG4CXX_ENCODE_WCHAR(wsource, source);
-	LOG4CXX_ENCODE_WCHAR(wserver, server);
+	LOG4CXXNG_ENCODE_WCHAR(wsource, source);
+	LOG4CXXNG_ENCODE_WCHAR(wserver, server);
 	hEventLog = ::RegisterEventSourceW(
 			wserver.empty() ? NULL : wserver.c_str(),
 			wsource.c_str());
 
 	if (hEventLog == NULL)
 	{
-		LogString msg(LOG4CXX_STR("Cannot register NT EventLog -- server: '"));
+		LogString msg(LOG4CXXNG_STR("Cannot register NT EventLog -- server: '"));
 		msg.append(server);
-		msg.append(LOG4CXX_STR("' source: '"));
+		msg.append(LOG4CXXNG_STR("' source: '"));
 		msg.append(source);
 		LogLog::error(msg);
-		LogLog::error(getErrorString(LOG4CXX_STR("RegisterEventSource")));
+		LogLog::error(getErrorString(LOG4CXXNG_STR("RegisterEventSource")));
 	}
 }
 
@@ -186,7 +186,7 @@ void NTEventLogAppender::append(const LoggingEventPtr& event, Pool& p)
 {
 	if (hEventLog == NULL)
 	{
-		LogLog::warn(LOG4CXX_STR("NT EventLog not opened."));
+		LogLog::warn(LOG4CXXNG_STR("NT EventLog not opened."));
 		return;
 	}
 
@@ -206,7 +206,7 @@ void NTEventLogAppender::append(const LoggingEventPtr& event, Pool& p)
 
 	if (!bSuccess)
 	{
-		LogLog::error(getErrorString(LOG4CXX_STR("ReportEvent")));
+		LogLog::error(getErrorString(LOG4CXXNG_STR("ReportEvent")));
 	}
 }
 
@@ -217,11 +217,11 @@ void NTEventLogAppender::addRegistryInfo()
 {
 	DWORD disposition = 0;
 	::HKEY hkey = 0;
-	LogString subkey(LOG4CXX_STR("SYSTEM\\CurrentControlSet\\Services\\EventLog\\"));
+	LogString subkey(LOG4CXXNG_STR("SYSTEM\\CurrentControlSet\\Services\\EventLog\\"));
 	subkey.append(log);
 	subkey.append(1, (logchar) 0x5C /* '\\' */);
 	subkey.append(source);
-	LOG4CXX_ENCODE_WCHAR(wsubkey, subkey);
+	LOG4CXXNG_ENCODE_WCHAR(wsubkey, subkey);
 
 	long stat = RegCreateKeyExW(HKEY_LOCAL_MACHINE, wsubkey.c_str(), 0, NULL,
 			REG_OPTION_NON_VOLATILE, KEY_SET_VALUE, NULL,
@@ -332,9 +332,9 @@ LogString NTEventLogAppender::getErrorString(const LogString& function)
 		MSGSIZE, NULL );
 
 	LogString msg(function);
-	msg.append(LOG4CXX_STR(" failed with error "));
+	msg.append(LOG4CXXNG_STR(" failed with error "));
 	StringHelper::toString((size_t) dw, p, msg);
-	msg.append(LOG4CXX_STR(": "));
+	msg.append(LOG4CXXNG_STR(": "));
 	Transcoder::decode(lpMsgBuf, msg);
 
 	return msg;

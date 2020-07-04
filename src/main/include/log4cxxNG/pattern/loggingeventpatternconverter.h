@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_PATTERN_LOGGING_EVENT_PATTERN_CONVERTER_H
-#define _LOG4CXX_PATTERN_LOGGING_EVENT_PATTERN_CONVERTER_H
+#ifndef _LOG4CXXNG_PATTERN_LOGGING_EVENT_PATTERN_CONVERTER_H
+#define _LOG4CXXNG_PATTERN_LOGGING_EVENT_PATTERN_CONVERTER_H
 
 #include <log4cxxNG/pattern/patternconverter.h>
 #include <log4cxxNG/spi/loggingevent.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 namespace pattern
@@ -34,7 +34,7 @@ namespace pattern
 *
 *
 */
-class LOG4CXX_EXPORT LoggingEventPatternConverter : public PatternConverter
+class LOG4CXXNG_EXPORT LoggingEventPatternConverter : public PatternConverter
 {
 	protected:
 		/**
@@ -46,11 +46,11 @@ class LOG4CXX_EXPORT LoggingEventPatternConverter : public PatternConverter
 			const LogString& name, const LogString& style);
 
 	public:
-		DECLARE_LOG4CXX_PATTERN(LoggingEventPatternConverter)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(LoggingEventPatternConverter)
-		LOG4CXX_CAST_ENTRY_CHAIN(PatternConverter)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_LOG4CXXNG_PATTERN(LoggingEventPatternConverter)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(LoggingEventPatternConverter)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(PatternConverter)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		 * Formats an event into a string buffer.
@@ -59,13 +59,13 @@ class LOG4CXX_EXPORT LoggingEventPatternConverter : public PatternConverter
 		 * @param p pool for memory allocations needing during format.
 		 */
 		virtual void format(
-			const log4cxx::spi::LoggingEventPtr& event,
+			const log4cxxng::spi::LoggingEventPtr& event,
 			LogString& toAppendTo,
-			log4cxx::helpers::Pool& p) const = 0;
+			log4cxxng::helpers::Pool& p) const = 0;
 
-		void format(const log4cxx::helpers::ObjectPtr& obj,
+		void format(const log4cxxng::helpers::ObjectPtr& obj,
 			LogString& toAppendTo,
-			log4cxx::helpers::Pool& p) const;
+			log4cxxng::helpers::Pool& p) const;
 
 		/**
 		 * Normally pattern converters are not meant to handle Exceptions although
@@ -79,7 +79,7 @@ class LOG4CXX_EXPORT LoggingEventPatternConverter : public PatternConverter
 		virtual bool handlesThrowable() const;
 };
 
-LOG4CXX_PTR_DEF(LoggingEventPatternConverter);
+LOG4CXXNG_PTR_DEF(LoggingEventPatternConverter);
 
 }
 }

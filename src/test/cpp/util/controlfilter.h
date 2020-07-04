@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_TESTS_UTIL_CONTROL_FILTER_H
-#define _LOG4CXX_TESTS_UTIL_CONTROL_FILTER_H
+#ifndef _LOG4CXXNG_TESTS_UTIL_CONTROL_FILTER_H
+#define _LOG4CXXNG_TESTS_UTIL_CONTROL_FILTER_H
 
 #include "filter.h"
 #include <vector>
 
-namespace log4cxx
+namespace log4cxxng
 {
 class ControlFilter : public Filter
 {
@@ -33,4 +33,4 @@ class ControlFilter : public Filter
 }
 
 
-#endif //_LOG4CXX_TESTS_UTIL_CONTROL_FILTER_H
+#endif //_LOG4CXXNG_TESTS_UTIL_CONTROL_FILTER_H

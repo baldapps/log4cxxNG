@@ -21,13 +21,13 @@
 #include <log4cxxNG/logmanager.h>
 #include <log4cxxNG/logger.h>
 
-using namespace log4cxx;
+using namespace log4cxxng;
 
 void BasicConfigurator::configure()
 {
 	LogManager::getLoggerRepository()->setConfigured(true);
 	LoggerPtr root = Logger::getRootLogger();
-	static const LogString TTCC_CONVERSION_PATTERN(LOG4CXX_STR("%r [%t] %p %c %x - %m%n"));
+	static const LogString TTCC_CONVERSION_PATTERN(LOG4CXXNG_STR("%r [%t] %p %c %x - %m%n"));
 	LayoutPtr layout(new PatternLayout(TTCC_CONVERSION_PATTERN));
 	AppenderPtr appender(new ConsoleAppender(layout));
 	root->addAppender(appender);

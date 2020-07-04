@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_STRICTMATH_H
-#define _LOG4CXX_HELPERS_STRICTMATH_H
+#ifndef _LOG4CXXNG_HELPERS_STRICTMATH_H
+#define _LOG4CXXNG_HELPERS_STRICTMATH_H
 
 #include <log4cxxNG/log4cxx.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
@@ -46,4 +46,4 @@ class StrictMath
 }  // namespace helpers
 } // namespace log4cx
 
-#endif //_LOG4CXX_HELPERS_STRICTMATH_H
+#endif //_LOG4CXXNG_HELPERS_STRICTMATH_H

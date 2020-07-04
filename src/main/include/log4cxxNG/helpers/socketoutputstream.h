@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_SOCKET_OUTPUT_STREAM_H
-#define _LOG4CXX_HELPERS_SOCKET_OUTPUT_STREAM_H
+#ifndef _LOG4CXXNG_HELPERS_SOCKET_OUTPUT_STREAM_H
+#define _LOG4CXXNG_HELPERS_SOCKET_OUTPUT_STREAM_H
 
 #if defined(_MSC_VER)
 	#pragma warning ( push )
@@ -28,20 +28,20 @@
 #include <log4cxxNG/helpers/outputstream.h>
 #include <log4cxxNG/helpers/socket.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 namespace helpers
 {
-LOG4CXX_LIST_DEF(ByteList, unsigned char);
+LOG4CXXNG_LIST_DEF(ByteList, unsigned char);
 
-class LOG4CXX_EXPORT SocketOutputStream : public OutputStream
+class LOG4CXXNG_EXPORT SocketOutputStream : public OutputStream
 {
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(SocketOutputStream)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(SocketOutputStream)
-		LOG4CXX_CAST_ENTRY_CHAIN(OutputStream)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(SocketOutputStream)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(SocketOutputStream)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(OutputStream)
+		END_LOG4CXXNG_CAST_MAP()
 
 		SocketOutputStream(const SocketPtr& socket);
 		~SocketOutputStream();
@@ -60,10 +60,10 @@ class LOG4CXX_EXPORT SocketOutputStream : public OutputStream
 
 };
 
-LOG4CXX_PTR_DEF(SocketOutputStream);
+LOG4CXXNG_PTR_DEF(SocketOutputStream);
 
 }  // namespace helpers
-} // namespace log4cxx
+} // namespace log4cxxng
 
 #if defined(_MSC_VER)
 	#pragma warning ( pop )
@@ -71,4 +71,4 @@ LOG4CXX_PTR_DEF(SocketOutputStream);
 
 
 
-#endif // _LOG4CXX_HELPERS_SOCKET_OUTPUT_STREAM_H
+#endif // _LOG4CXXNG_HELPERS_SOCKET_OUTPUT_STREAM_H

@@ -19,18 +19,18 @@
 #include <log4cxxNG/helpers/transcoder.h>
 #include <log4cxxNG/helpers/threadspecificdata.h>
 
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 	#include <CoreFoundation/CFString.h>
 #endif
 
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 MDC::MDC(const std::string& key1, const std::string& value) : key()
 {
 	Transcoder::decode(key1, key);
-	LOG4CXX_DECODE_CHAR(v, value);
+	LOG4CXXNG_DECODE_CHAR(v, value);
 	putLS(key, v);
 }
 
@@ -47,8 +47,8 @@ void MDC::putLS(const LogString& key, const LogString& value)
 
 void MDC::put(const std::string& key, const std::string& value)
 {
-	LOG4CXX_DECODE_CHAR(lkey, key);
-	LOG4CXX_DECODE_CHAR(lvalue, value);
+	LOG4CXXNG_DECODE_CHAR(lkey, key);
+	LOG4CXXNG_DECODE_CHAR(lvalue, value);
 	putLS(lkey, lvalue);
 }
 
@@ -76,12 +76,12 @@ bool MDC::get(const LogString& key, LogString& value)
 
 std::string MDC::get(const std::string& key)
 {
-	LOG4CXX_DECODE_CHAR(lkey, key);
+	LOG4CXXNG_DECODE_CHAR(lkey, key);
 	LogString lvalue;
 
 	if (get(lkey, lvalue))
 	{
-		LOG4CXX_ENCODE_CHAR(value, lvalue);
+		LOG4CXXNG_ENCODE_CHAR(value, lvalue);
 		return value;
 	}
 
@@ -111,12 +111,12 @@ bool MDC::remove(const LogString& key, LogString& value)
 
 std::string MDC::remove(const std::string& key)
 {
-	LOG4CXX_DECODE_CHAR(lkey, key);
+	LOG4CXXNG_DECODE_CHAR(lkey, key);
 	LogString lvalue;
 
 	if (remove(lkey, lvalue))
 	{
-		LOG4CXX_ENCODE_CHAR(value, lvalue);
+		LOG4CXXNG_ENCODE_CHAR(value, lvalue);
 		return value;
 	}
 
@@ -137,22 +137,22 @@ void MDC::clear()
 }
 
 
-#if LOG4CXX_WCHAR_T_API
+#if LOG4CXXNG_WCHAR_T_API
 MDC::MDC(const std::wstring& key1, const std::wstring& value) : key()
 {
 	Transcoder::decode(key1, key);
-	LOG4CXX_DECODE_WCHAR(v, value);
+	LOG4CXXNG_DECODE_WCHAR(v, value);
 	putLS(key, v);
 }
 
 std::wstring MDC::get(const std::wstring& key)
 {
-	LOG4CXX_DECODE_WCHAR(lkey, key);
+	LOG4CXXNG_DECODE_WCHAR(lkey, key);
 	LogString lvalue;
 
 	if (get(lkey, lvalue))
 	{
-		LOG4CXX_ENCODE_WCHAR(value, lvalue);
+		LOG4CXXNG_ENCODE_WCHAR(value, lvalue);
 		return value;
 	}
 
@@ -161,20 +161,20 @@ std::wstring MDC::get(const std::wstring& key)
 
 void MDC::put(const std::wstring& key, const std::wstring& value)
 {
-	LOG4CXX_DECODE_WCHAR(lkey, key);
-	LOG4CXX_DECODE_WCHAR(lvalue, value);
+	LOG4CXXNG_DECODE_WCHAR(lkey, key);
+	LOG4CXXNG_DECODE_WCHAR(lvalue, value);
 	putLS(lkey, lvalue);
 }
 
 
 std::wstring MDC::remove(const std::wstring& key)
 {
-	LOG4CXX_DECODE_WCHAR(lkey, key);
+	LOG4CXXNG_DECODE_WCHAR(lkey, key);
 	LogString lvalue;
 
 	if (remove(lkey, lvalue))
 	{
-		LOG4CXX_ENCODE_WCHAR(value, lvalue);
+		LOG4CXXNG_ENCODE_WCHAR(value, lvalue);
 		return value;
 	}
 
@@ -182,44 +182,44 @@ std::wstring MDC::remove(const std::wstring& key)
 }
 #endif
 
-#if LOG4CXX_UNICHAR_API
+#if LOG4CXXNG_UNICHAR_API
 MDC::MDC(const std::basic_string<UniChar>& key1, const std::basic_string<UniChar>& value)
 {
 	Transcoder::decode(key1, key);
-	LOG4CXX_DECODE_UNICHAR(v, value);
+	LOG4CXXNG_DECODE_UNICHAR(v, value);
 	putLS(key, v);
 }
 
-std::basic_string<log4cxx::UniChar> MDC::get(const std::basic_string<log4cxx::UniChar>& key)
+std::basic_string<log4cxxng::UniChar> MDC::get(const std::basic_string<log4cxxng::UniChar>& key)
 {
-	LOG4CXX_DECODE_UNICHAR(lkey, key);
+	LOG4CXXNG_DECODE_UNICHAR(lkey, key);
 	LogString lvalue;
 
 	if (get(lkey, lvalue))
 	{
-		LOG4CXX_ENCODE_UNICHAR(value, lvalue);
+		LOG4CXXNG_ENCODE_UNICHAR(value, lvalue);
 		return value;
 	}
 
 	return std::basic_string<UniChar>();
 }
 
-void MDC::put(const std::basic_string<UniChar>& key, const std::basic_string<log4cxx::UniChar>& value)
+void MDC::put(const std::basic_string<UniChar>& key, const std::basic_string<log4cxxng::UniChar>& value)
 {
-	LOG4CXX_DECODE_UNICHAR(lkey, key);
-	LOG4CXX_DECODE_UNICHAR(lvalue, value);
+	LOG4CXXNG_DECODE_UNICHAR(lkey, key);
+	LOG4CXXNG_DECODE_UNICHAR(lvalue, value);
 	putLS(lkey, lvalue);
 }
 
 
-std::basic_string<log4cxx::UniChar> MDC::remove(const std::basic_string<log4cxx::UniChar>& key)
+std::basic_string<log4cxxng::UniChar> MDC::remove(const std::basic_string<log4cxxng::UniChar>& key)
 {
-	LOG4CXX_DECODE_UNICHAR(lkey, key);
+	LOG4CXXNG_DECODE_UNICHAR(lkey, key);
 	LogString lvalue;
 
 	if (remove(lkey, lvalue))
 	{
-		LOG4CXX_ENCODE_UNICHAR(value, lvalue);
+		LOG4CXXNG_ENCODE_UNICHAR(value, lvalue);
 		return value;
 	}
 
@@ -227,23 +227,23 @@ std::basic_string<log4cxx::UniChar> MDC::remove(const std::basic_string<log4cxx:
 }
 #endif
 
-#if LOG4CXX_CFSTRING_API
+#if LOG4CXXNG_CFSTRING_API
 
 MDC::MDC(const CFStringRef& key1, const CFStringRef& value)
 {
 	Transcoder::decode(key1, key);
-	LOG4CXX_DECODE_CFSTRING(v, value);
+	LOG4CXXNG_DECODE_CFSTRING(v, value);
 	putLS(key, v);
 }
 
 CFStringRef MDC::get(const CFStringRef& key)
 {
-	LOG4CXX_DECODE_CFSTRING(lkey, key);
+	LOG4CXXNG_DECODE_CFSTRING(lkey, key);
 	LogString lvalue;
 
 	if (get(lkey, lvalue))
 	{
-		LOG4CXX_ENCODE_CFSTRING(value, lvalue);
+		LOG4CXXNG_ENCODE_CFSTRING(value, lvalue);
 		return value;
 	}
 
@@ -252,20 +252,20 @@ CFStringRef MDC::get(const CFStringRef& key)
 
 void MDC::put(const CFStringRef& key, const CFStringRef& value)
 {
-	LOG4CXX_DECODE_CFSTRING(lkey, key);
-	LOG4CXX_DECODE_CFSTRING(lvalue, value);
+	LOG4CXXNG_DECODE_CFSTRING(lkey, key);
+	LOG4CXXNG_DECODE_CFSTRING(lvalue, value);
 	putLS(lkey, lvalue);
 }
 
 
 CFStringRef MDC::remove(const CFStringRef& key)
 {
-	LOG4CXX_DECODE_CFSTRING(lkey, key);
+	LOG4CXXNG_DECODE_CFSTRING(lkey, key);
 	LogString lvalue;
 
 	if (remove(lkey, lvalue))
 	{
-		LOG4CXX_ENCODE_CFSTRING(value, lvalue);
+		LOG4CXXNG_ENCODE_CFSTRING(value, lvalue);
 		return value;
 	}
 

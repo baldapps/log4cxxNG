@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_HELPERS_INPUTSTREAMREADER_H
-#define _LOG4CXX_HELPERS_INPUTSTREAMREADER_H
+#ifndef _LOG4CXXNG_HELPERS_INPUTSTREAMREADER_H
+#define _LOG4CXXNG_HELPERS_INPUTSTREAMREADER_H
 
 #include <log4cxxNG/helpers/reader.h>
 #include <log4cxxNG/helpers/inputstream.h>
 #include <log4cxxNG/helpers/charsetdecoder.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 
 namespace helpers
@@ -33,18 +33,18 @@ namespace helpers
  * Decorates a byte based InputStream and provides appropriate
  * conversion to characters.
  */
-class LOG4CXX_EXPORT InputStreamReader : public Reader
+class LOG4CXXNG_EXPORT InputStreamReader : public Reader
 {
 	private:
 		InputStreamPtr in;
 		CharsetDecoderPtr dec;
 
 	public:
-		DECLARE_ABSTRACT_LOG4CXX_OBJECT(InputStreamReader)
-		BEGIN_LOG4CXX_CAST_MAP()
-		LOG4CXX_CAST_ENTRY(InputStreamReader)
-		LOG4CXX_CAST_ENTRY_CHAIN(Reader)
-		END_LOG4CXX_CAST_MAP()
+		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(InputStreamReader)
+		BEGIN_LOG4CXXNG_CAST_MAP()
+		LOG4CXXNG_CAST_ENTRY(InputStreamReader)
+		LOG4CXXNG_CAST_ENTRY_CHAIN(Reader)
+		END_LOG4CXXNG_CAST_MAP()
 
 		/**
 		 * Creates an InputStreamReader that uses the default charset.
@@ -87,9 +87,9 @@ class LOG4CXX_EXPORT InputStreamReader : public Reader
 		InputStreamReader& operator=(const InputStreamReader&);
 };
 
-LOG4CXX_PTR_DEF(InputStreamReader);
+LOG4CXXNG_PTR_DEF(InputStreamReader);
 } // namespace helpers
 
-}  //namespace log4cxx
+}  //namespace log4cxxng
 
-#endif //_LOG4CXX_HELPERS_INPUTSTREAMREADER_H
+#endif //_LOG4CXXNG_HELPERS_INPUTSTREAMREADER_H

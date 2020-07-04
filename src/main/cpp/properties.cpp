@@ -21,8 +21,8 @@
 #include <log4cxxNG/helpers/exception.h>
 #include <log4cxxNG/helpers/pool.h>
 
-using namespace log4cxx;
-using namespace log4cxx::helpers;
+using namespace log4cxxng;
+using namespace log4cxxng::helpers;
 
 class PropertyParser
 {

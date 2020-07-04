@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-#ifndef _LOG4CXX_PROVISION_NODE_H
-#define _LOG4CXX_PROVISION_NODE_H
+#ifndef _LOG4CXXNG_PROVISION_NODE_H
+#define _LOG4CXXNG_PROVISION_NODE_H
 
 #include <vector>
 #include <log4cxxNG/helpers/objectptr.h>
 #include <log4cxxNG/logger.h>
 
-namespace log4cxx
+namespace log4cxxng
 {
 class Logger;
 typedef helpers::ObjectPtrT<Logger> LoggerPtr;
@@ -30,6 +30,6 @@ typedef helpers::ObjectPtrT<Logger> LoggerPtr;
 
 typedef std::vector<LoggerPtr> ProvisionNode;
 
-}  // namespace log4cxx
+}  // namespace log4cxxng
 
-#endif //_LOG4CXX_PROVISION_NODE_H
+#endif //_LOG4CXXNG_PROVISION_NODE_H
