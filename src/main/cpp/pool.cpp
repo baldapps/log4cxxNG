@@ -47,7 +47,7 @@ Pool::Pool(apr_pool_t* p, bool release1) : pool(p), release(release1)
 
 Pool::~Pool()
 {
-	if (release)
+	if (release && !APRInitializer::isDestructed)
 	{
 		apr_pool_destroy(pool);
 	}
