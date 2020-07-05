@@ -31,6 +31,7 @@
 #include <log4cxxNG/helpers/objectimpl.h>
 #include <log4cxxNG/spi/hierarchyeventlistener.h>
 #include <log4cxxNG/helpers/pool.h>
+#include <mutex>
 
 namespace log4cxxng
 {
@@ -75,8 +76,7 @@ class LOG4CXXNG_EXPORT Hierarchy :
 		int thresholdInt;
 		LevelPtr threshold;
 
-		bool emittedNoAppenderWarning;
-		bool emittedNoResourceBundleWarning;
+		std::once_flag emittedNoAppenderWarning;
 
 	public:
 		DECLARE_ABSTRACT_LOG4CXXNG_OBJECT(Hierarchy)

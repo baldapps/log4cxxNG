@@ -58,11 +58,9 @@ Hierarchy::Hierarchy() :
 	root = new RootLogger(pool, Level::getDebug());
 	root->setHierarchy(this);
 	defaultFactory = new DefaultLoggerFactory();
-	emittedNoAppenderWarning = false;
 	configured = false;
 	thresholdInt = Level::ALL_INT;
 	threshold = Level::getAll();
-	emittedNoResourceBundleWarning = false;
 }
 
 Hierarchy::~Hierarchy()
@@ -107,20 +105,14 @@ void Hierarchy::clear()
 
 void Hierarchy::emitNoAppenderWarning(const LoggerPtr& logger)
 {
-	bool emitWarning = false;
-	{
-		synchronized sync(mutex);
-		emitWarning = !emittedNoAppenderWarning;
-		emittedNoAppenderWarning = true;
-	}
-
 	// No appender in hierarchy, warn user only once.
-	if (emitWarning)
-	{
-		LogLog::warn(((LogString) LOG4CXXNG_STR("No appender could be found for logger ("))
-			+ logger->getName() + LOG4CXXNG_STR(")."));
-		LogLog::warn(LOG4CXXNG_STR("Please initialize the log4cxx system properly."));
-	}
+	std::call_once(emittedNoAppenderWarning,
+			[&logger]() {
+				LogLog::warn(
+						((LogString) LOG4CXXNG_STR("No appender could be found for logger ("))
+								+ logger->getName() + LOG4CXXNG_STR(")."));
+				LogLog::warn(LOG4CXXNG_STR("Please initialize the log4cxxNG system properly."));
+			});
 }
 
 
