@@ -42,6 +42,8 @@
 #endif
 #include <log4cxxNG/helpers/aprinitializer.h>
 
+#include <cstdlib>
+
 using namespace log4cxxng;
 using namespace log4cxxng::spi;
 using namespace log4cxxng::helpers;
@@ -49,7 +51,6 @@ using namespace log4cxxng::helpers;
 IMPLEMENT_LOG4CXXNG_OBJECT(DefaultRepositorySelector)
 
 void* LogManager::guard = 0;
-
 
 
 RepositorySelectorPtr& LogManager::getRepositorySelector()
@@ -207,6 +208,10 @@ LoggerPtr LogManager::existsLS(const LogString& name)
 LoggerList LogManager::getCurrentLoggers()
 {
 	return getLoggerRepository()->getCurrentLoggers();
+}
+
+void LogManager::init() {
+	APRInitializer::initialize();
 }
 
 void LogManager::shutdown()

@@ -192,6 +192,11 @@ class LOG4CXXNG_EXPORT LogManager
 		static LoggerList getCurrentLoggers();
 
 		/**
+		Init the logging context
+		*/
+		static void init();
+
+		/**
 		Safely close and remove all appenders in all loggers including
 		the root logger.
 		*/

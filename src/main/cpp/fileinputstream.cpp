@@ -71,7 +71,7 @@ FileInputStream::FileInputStream(const File& aFile)
 
 FileInputStream::~FileInputStream()
 {
-	if (fileptr != NULL && !APRInitializer::isDestructed)
+	if (fileptr != NULL)
 	{
 		apr_file_close(fileptr);
 	}

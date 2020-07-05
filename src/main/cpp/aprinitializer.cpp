@@ -27,12 +27,10 @@
 #include <apr_thread_proc.h>
 #include <log4cxxNG/helpers/synchronized.h>
 #include <log4cxxNG/helpers/filewatchdog.h>
+#include <log4cxxNG/logmanager.h>
 
 using namespace log4cxxng::helpers;
 using namespace log4cxxng;
-
-bool APRInitializer::isDestructed = false;
-
 
 namespace
 {
@@ -45,6 +43,7 @@ extern "C" void tlsDestruct(void* ptr)
 APRInitializer::APRInitializer() : p(0), mutex(0), startTime(0), tlsKey(0)
 {
 	apr_initialize();
+	std::atexit(apr_terminate2);
 	apr_pool_create(&p, NULL);
 	apr_atomic_init(p);
 	startTime = apr_time_now();
@@ -71,12 +70,6 @@ APRInitializer::~APRInitializer()
 			delete *iter;
 		}
 	}
-
-	// TODO LOGCXX-322
-#ifndef APR_HAS_THREADS
-	apr_terminate();
-#endif
-	isDestructed = true;
 }
 
 APRInitializer& APRInitializer::getInstance()

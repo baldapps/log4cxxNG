@@ -43,7 +43,6 @@ class APRInitializer
 		static log4cxxng_time_t initialize();
 		static apr_pool_t* getRootPool();
 		static apr_threadkey_t* getTlsKey();
-		static bool isDestructed;
 
 		/**
 		 *  Register a FileWatchdog for deletion prior to

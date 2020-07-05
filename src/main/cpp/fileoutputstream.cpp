@@ -71,7 +71,7 @@ apr_file_t* FileOutputStream::open(const LogString& filename,
 
 FileOutputStream::~FileOutputStream()
 {
-	if (fileptr != NULL && !APRInitializer::isDestructed)
+	if (fileptr != NULL)
 	{
 		apr_file_close(fileptr);
 	}
