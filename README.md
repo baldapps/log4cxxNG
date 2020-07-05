@@ -23,7 +23,7 @@ For additional information see Log4cxx Apache project web page [here](https://lo
 
 ## HowTo
 
-Log4cxxNG use the same methods of Log4cxx so if you are already using Lo4cxx
+Log4cxxNG use the same methods of Log4cxx so if you are already using Log4cxx
 the porting is really easy. You need to be careful only to init and shutdown phases.
 Here a basic example:
 
