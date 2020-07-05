@@ -26,6 +26,7 @@
 #include <vector>
 #include <apr.h>
 #include <apr_strings.h>
+#include <log4cxxNG/helpers/exception.h>
 #if !defined(LOG4CXXNG)
 	#define LOG4CXXNG 1
 #endif
@@ -508,14 +509,13 @@ void Transcoder::encode(const LogString& src, std::wstring& dst)
 #if LOG4CXXNG_LOGCHAR_IS_WCHAR_T
 	dst.append(src);
 #else
-
-	for (LogString::const_iterator i = src.begin();
-		i != src.end();)
-	{
+	for (LogString::const_iterator i = src.begin(); i != src.end();) {
 		unsigned int cp = Transcoder::decode(src, i);
+		if (cp == 0xFFFF) {
+			throw IllegalArgumentException(LOG4CXXNG_STR("invalid multibyte string"));
+		}
 		encode(cp, dst);
 	}
-
 #endif
 }
 
