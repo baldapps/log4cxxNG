@@ -397,48 +397,43 @@ void* LOG4CXXNG_THREAD_FUNC AsyncAppender::dispatch(apr_thread_t* /*thread*/, vo
 	{
 		while (isActive)
 		{
-			//
-			//   process events after lock on buffer is released.
-			//
-			Pool p;
-			LoggingEventList events;
-			{
-				synchronized sync(pThis->bufferMutex);
-				size_t bufferSize = pThis->buffer.size();
-				isActive = !pThis->closed;
-
-				while ((bufferSize == 0) && isActive)
+			try {
+				//
+				//   process events after lock on buffer is released.
+				//
+				Pool p;
+				LoggingEventList events;
 				{
-					pThis->bufferNotEmpty.await(pThis->bufferMutex);
-					bufferSize = pThis->buffer.size();
+					synchronized sync(pThis->bufferMutex);
+					size_t bufferSize = pThis->buffer.size();
 					isActive = !pThis->closed;
+
+					while ((bufferSize == 0) && isActive) {
+						pThis->bufferNotEmpty.await(pThis->bufferMutex);
+						bufferSize = pThis->buffer.size();
+						isActive = !pThis->closed;
+					}
+
+					for (LoggingEventList::iterator eventIter = pThis->buffer.begin(); eventIter != pThis->buffer.end();
+							eventIter++) {
+						events.push_back(*eventIter);
+					}
+
+					for (DiscardMap::iterator discardIter = pThis->discardMap->begin();
+							discardIter != pThis->discardMap->end(); discardIter++) {
+						events.push_back(discardIter->second.createEvent(p));
+					}
+
+					pThis->buffer.clear();
+					pThis->discardMap->clear();
+					pThis->bufferNotFull.signalAll();
 				}
 
-				for (LoggingEventList::iterator eventIter = pThis->buffer.begin();
-					eventIter != pThis->buffer.end();
-					eventIter++)
-				{
-					events.push_back(*eventIter);
+				for (LoggingEventList::iterator iter = events.begin(); iter != events.end(); iter++) {
+					synchronized sync(pThis->appenders->getMutex());
+					pThis->appenders->appendLoopOnAppenders(*iter, p);
 				}
-
-				for (DiscardMap::iterator discardIter = pThis->discardMap->begin();
-					discardIter != pThis->discardMap->end();
-					discardIter++)
-				{
-					events.push_back(discardIter->second.createEvent(p));
-				}
-
-				pThis->buffer.clear();
-				pThis->discardMap->clear();
-				pThis->bufferNotFull.signalAll();
-			}
-
-			for (LoggingEventList::iterator iter = events.begin();
-				iter != events.end();
-				iter++)
-			{
-				synchronized sync(pThis->appenders->getMutex());
-				pThis->appenders->appendLoopOnAppenders(*iter, p);
+			} catch (IOException&) {
 			}
 		}
 	}
