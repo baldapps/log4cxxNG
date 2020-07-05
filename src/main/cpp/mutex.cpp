@@ -61,12 +61,6 @@ Mutex::Mutex(apr_pool_t* p)
 #if APR_HAS_THREADS
 	apr_status_t stat = apr_thread_mutex_create(&mutex,
 			APR_THREAD_MUTEX_NESTED, p);
-
-	if (stat != APR_SUCCESS)
-	{
-		throw MutexException(stat);
-	}
-
 #endif
 }
 
