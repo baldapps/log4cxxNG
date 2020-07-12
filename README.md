@@ -2,20 +2,23 @@
 
 Log4cxxNG is a C++ logging library based on Apache log4cxx project.
 
-Requirments:
+Requirements:
 * Apache Portable Runtime
 * CMake 3.11
 * Compiler with C++11 support
 
 ## Features
 
-* User can select different LogLevels – TRACE, DEBUG, INFO, WARN, ERROR, and FATAL
+* User can select different log levels: TRACE, DEBUG, INFO, WARN, ERROR, and FATAL
 * Hierarchical Loggers
 * It is possible to log asynchronously
 * Supports multiple appenders
-* User can select to enabled or disabled the logger
+* Full configuration of each logger: rotation, size, file name, destination
+* User can select to enable or disable the logger
 * Log can be sent to different and multiple output targets
 * User selected output formats
+* Configuration file can be changed at runtime
+* Thread-safe logging
 * Really similar to Log4j project
 * Cross-platform
 
